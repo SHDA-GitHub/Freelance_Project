@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585e17b10427e184d91ddeb7aa62b59f, type: 3}
+  m_Name: DivineIntervention
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  CardName: DivineIntervention
+  PlayerPlayText: Player prayed for help!
+  EnemyPlayText: Enemy prayed for help!
+  HoverInfoText: 'Heals you over time in small doses for 2 turns
+
+    Cost: 5.5 Mana'
+  playerCardType: 7
+  enemyCardType: 7
+  manaCost: 5.5
+  healthCost: 0
+  isSpell: 1
+  isHPDrainSpell: 0
+  effectAmountAttack: 10
+  effectAmountAttackOvertime: 10
+  effectAmountDefend: 7.5
+  effectAmountHeal: 7.5
+  effectAmountMana: 7.5
+  effectAmountTurnSkip: 2
+  playerCooldownTurns: 6
+  enemyCooldownTurns: 6
+  hasFlavortext: 0

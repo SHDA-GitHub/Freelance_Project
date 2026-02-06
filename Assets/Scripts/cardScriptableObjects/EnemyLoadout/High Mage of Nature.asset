@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bc12414e148e24faf4c10b83673a4f, type: 3}
+  m_Name: High Mage of Nature
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
+  enemyName: NatureMage
+  canUseSteal: 0
+  allowedCards:
+  - {fileID: 11400000, guid: 2d4f0375e1a834a40a4aea8a231d3ddf, type: 2}
+  - {fileID: 11400000, guid: 798b513ef01697d42984af0a2e1c6df5, type: 2}
+  - {fileID: 11400000, guid: aab677dba92c57b48a664e93cb75bea6, type: 2}
+  - {fileID: 11400000, guid: d7ef71016556fe247ad4d88b9a93c0bf, type: 2}
+  enemyType: 1

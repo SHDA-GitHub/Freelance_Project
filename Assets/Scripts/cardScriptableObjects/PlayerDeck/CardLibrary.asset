@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dee99d4adba804f895f115820a27e7, type: 3}
+  m_Name: CardLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::CardLibrary
+  allPlayerCards:
+  - cardData: {fileID: 11400000, guid: 6401693091922ae4b99408c900ff2ddc, type: 2}
+    cardPrefab: {fileID: 6442750953021423682, guid: c17b37085950b8841bea3bf6e78d7340, type: 3}
+    deckBuilderCardPrefab: {fileID: 7150227210922061793, guid: 5d5321089b6da0644b6ffd93ffa1c66a, type: 3}
+  - cardData: {fileID: 11400000, guid: 0c152caebb39917408f991c93128e5b1, type: 2}
+    cardPrefab: {fileID: 3116292742964671474, guid: 7fd4fe238c04f2d4bbf010c8e2c549ff, type: 3}
+    deckBuilderCardPrefab: {fileID: 1570416246840314950, guid: d11fce694c50511428a536611ce133ee, type: 3}
+  - cardData: {fileID: 11400000, guid: 7065aa5c5d3e32944ab63b3736c3dc9d, type: 2}
+    cardPrefab: {fileID: 6883726567024541569, guid: cfc08c4fa8843094f95b15f6f5c95230, type: 3}
+    deckBuilderCardPrefab: {fileID: 557284246136189784, guid: e61d83003bc3e474fb5f604c7870308e, type: 3}
+  - cardData: {fileID: 11400000, guid: 2168c57f1f75818469deb0f278138267, type: 2}
+    cardPrefab: {fileID: 881347980527364224, guid: 334032ff34bb3a44cafb7ce448abf449, type: 3}
+    deckBuilderCardPrefab: {fileID: 3365880065902929138, guid: 75a35e4dd628cee4b93377aac56e1242, type: 3}
+  - cardData: {fileID: 11400000, guid: 7b7fdc26ba9caca488a3f536a5b33c8e, type: 2}
+    cardPrefab: {fileID: 347199290216779550, guid: 3a03ae50b298ea84dab1a5e46127d139, type: 3}
+    deckBuilderCardPrefab: {fileID: 4236493239878670315, guid: 617357a67ba4f6f4d8e096d8330dfd1c, type: 3}
+  - cardData: {fileID: 11400000, guid: 88b466210ad3a6d4ea60c5a57ec6eb63, type: 2}
+    cardPrefab: {fileID: 8532640884034848828, guid: 96bbd2b344684d044b9da4d6f525af61, type: 3}
+    deckBuilderCardPrefab: {fileID: 4057628399623490241, guid: 9567fb76fdd5a2349b9048b559f73ff9, type: 3}
+  - cardData: {fileID: 11400000, guid: c7f9a2ae4249d0a4ba9f26aa1b311d34, type: 2}
+    cardPrefab: {fileID: 1812371203000956307, guid: 99ddc89216535494398f2d2692d01c1b, type: 3}
+    deckBuilderCardPrefab: {fileID: 882555852510962876, guid: f4ae31f96dea7a144a80e8a015cb3bb3, type: 3}
+  - cardData: {fileID: 11400000, guid: 900a8d2838fb5e548bac57737366cf67, type: 2}
+    cardPrefab: {fileID: 6756827245655796651, guid: 4cbf3c8f41916b74ab994f979eba66ad, type: 3}
+    deckBuilderCardPrefab: {fileID: 3642299383471926392, guid: 6ca3dda578ccb214ea4b64e462488342, type: 3}
+  - cardData: {fileID: 11400000, guid: b74bd25ce0fdf44419d38af4a6eaffc3, type: 2}
+    cardPrefab: {fileID: 3761895712554890953, guid: 55648762d7f24884695207b95c77d29a, type: 3}
+    deckBuilderCardPrefab: {fileID: 5842946848839734268, guid: b7422b5b52cc70b4eb870edb6ada8495, type: 3}
+  - cardData: {fileID: 11400000, guid: bb626011b3090e043be9bef358f77341, type: 2}
+    cardPrefab: {fileID: 5829845551379326243, guid: 083a5fd4b7c976b4aa9376d29009b2a3, type: 3}
+    deckBuilderCardPrefab: {fileID: 3446116111051776678, guid: cad2cd8e947829d478ad0dc41b4fb199, type: 3}
+  - cardData: {fileID: 11400000, guid: e958004f13ef29642aa7d21087083519, type: 2}
+    cardPrefab: {fileID: 9047104393720294184, guid: d1b0f363ef178234292974c07306197b, type: 3}
+    deckBuilderCardPrefab: {fileID: 2697902327333958117, guid: d93ffab079acc924b8e42064ed68df15, type: 3}
+  - cardData: {fileID: 11400000, guid: aab677dba92c57b48a664e93cb75bea6, type: 2}
+    cardPrefab: {fileID: 4770846559640101946, guid: 1f2afe13cf223714cb096de171d26230, type: 3}
+    deckBuilderCardPrefab: {fileID: 2191500976024872652, guid: 0eb1a52aec3a4e74fb0375379cf30ca3, type: 3}
+  - cardData: {fileID: 11400000, guid: ddced5791e659a346b49cd9df95c4a24, type: 2}
+    cardPrefab: {fileID: 9111183559504349049, guid: 40553eb2338134448ba95d45194cb73f, type: 3}
+    deckBuilderCardPrefab: {fileID: 9141209079939179490, guid: ddef9b98ba637a04a829f1c5b6116624, type: 3}
+  - cardData: {fileID: 11400000, guid: 4d96c5730f0344641986963b555562c9, type: 2}
+    cardPrefab: {fileID: 4388217187599615921, guid: 956b3b081f999754fab3b1a6cb77e5df, type: 3}
+    deckBuilderCardPrefab: {fileID: 3113289104922801789, guid: b9dee664f8b20324aa5c28b4614339e8, type: 3}
+  - cardData: {fileID: 11400000, guid: fa6b3ea77bf1bd04580a8301358b3af2, type: 2}
+    cardPrefab: {fileID: 6488707394506504308, guid: d97c9749a895e28448ff99bf6690703b, type: 3}
+    deckBuilderCardPrefab: {fileID: 2140592940879558208, guid: 95ae0d502bf3ea640bbdfe375f8b5752, type: 3}
+  - cardData: {fileID: 11400000, guid: 8f34b86e8e0d2944ca55abc97ee42f27, type: 2}
+    cardPrefab: {fileID: 2759746606196661289, guid: d87c0aecf69152f48adf06aefb5f5ab2, type: 3}
+    deckBuilderCardPrefab: {fileID: 4698843927791685878, guid: 46420c26f82176846be36a89f70b01b5, type: 3}
+  - cardData: {fileID: 11400000, guid: 2c3d68b4765752c469bda3ab5685461c, type: 2}
+    cardPrefab: {fileID: 7008235348162218364, guid: 7364aa1cffa56b54089bfc37e098142e, type: 3}
+    deckBuilderCardPrefab: {fileID: 6538078679111984421, guid: 0fdb39a6e06b35f42bb32456fb40ca85, type: 3}
+  - cardData: {fileID: 11400000, guid: 570b02f4a7e46b842885ecf54ea44a0d, type: 2}
+    cardPrefab: {fileID: 1790595948029529786, guid: 900c210b183912c4ab7b40de3ca4176b, type: 3}
+    deckBuilderCardPrefab: {fileID: 2622545835904690038, guid: ed43b9512b9ac4d41a4d2c7999bb28b4, type: 3}
+  - cardData: {fileID: 11400000, guid: d7ef71016556fe247ad4d88b9a93c0bf, type: 2}
+    cardPrefab: {fileID: 1380077912525176501, guid: 4b36f9d6574a70e488e62612591d6e38, type: 3}
+    deckBuilderCardPrefab: {fileID: 6361794839676628773, guid: becedab21cc4bbe4c9c5aa823424c384, type: 3}
+  - cardData: {fileID: 11400000, guid: d3be3d1c70e547b4bbf46512bae48aff, type: 2}
+    cardPrefab: {fileID: 7032892705173827979, guid: 5aef13b9f4d0ee146a90304b11ee09ab, type: 3}
+    deckBuilderCardPrefab: {fileID: 4947163764406864187, guid: 1a418f219b8daac448c000b22ce57f26, type: 3}
+  - cardData: {fileID: 11400000, guid: bd3731f765221114383544678d73cd75, type: 2}
+    cardPrefab: {fileID: 8850896005930653316, guid: ad4cd801ffd3ba64089d03055530f254, type: 3}
+    deckBuilderCardPrefab: {fileID: 1945816348787835535, guid: c1610f0e7316bfe41aa72324923165cc, type: 3}
+  - cardData: {fileID: 11400000, guid: 1b9d9b3ed788462498deb6534a4320f0, type: 2}
+    cardPrefab: {fileID: 6496617264647042796, guid: bfc19e03bb1fae24391b472e69c1097b, type: 3}
+    deckBuilderCardPrefab: {fileID: 5464841110012108433, guid: df7d6c488e0d2414a9260f447d1fadfc, type: 3}
+  - cardData: {fileID: 11400000, guid: 5a90380775fb9094a82e5741fea501a8, type: 2}
+    cardPrefab: {fileID: 3799634353728691891, guid: 738c7158c480ef04fae66476ced0ef36, type: 3}
+    deckBuilderCardPrefab: {fileID: 5613892932379229757, guid: 416f683c79688274fb1d23463eef3844, type: 3}
+  - cardData: {fileID: 11400000, guid: 08a7bafc2cbce76418ae560dcdb6d2cd, type: 2}
+    cardPrefab: {fileID: 6872633055533646747, guid: 1b94a9594dac6104f9d010c7b541ab1f, type: 3}
+    deckBuilderCardPrefab: {fileID: 8752765510938604488, guid: 2308a281431e69b40946a5e44646fcff, type: 3}
+  - cardData: {fileID: 11400000, guid: 10fe9f38d0a64c1429f7c4fbf678f9e8, type: 2}
+    cardPrefab: {fileID: 2580389217932591426, guid: 57222b16e95671547a97e473f0d13633, type: 3}
+    deckBuilderCardPrefab: {fileID: 466511031478770832, guid: 20c1d90897d3c884a87bc5564cfa0bf6, type: 3}
+  - cardData: {fileID: 11400000, guid: 2de6c3ab0cef281499c9cfbd14a75c08, type: 2}
+    cardPrefab: {fileID: 1434336728182559728, guid: 792106f331149bd4ea23575e7afcb689, type: 3}
+    deckBuilderCardPrefab: {fileID: 5982442224058248697, guid: abde44e51f622f243b0ed059e9ac08d9, type: 3}
+  - cardData: {fileID: 11400000, guid: c5ef3f3e686397549a1b5b07a63de471, type: 2}
+    cardPrefab: {fileID: 8407263760240155106, guid: 0bf1995613df9224588e7e4711d9e179, type: 3}
+    deckBuilderCardPrefab: {fileID: 6089514079335900681, guid: a37e5358b07ab504aa837d5c95699acf, type: 3}
+  - cardData: {fileID: 11400000, guid: a237a3658c3313648a9b27bca10ae6b3, type: 2}
+    cardPrefab: {fileID: 4448190577656699991, guid: ee607e9924c29ab4087d5f0ce6d4cbd1, type: 3}
+    deckBuilderCardPrefab: {fileID: 6071368959089644506, guid: 8ad71dd058396cf46aa398981374c55c, type: 3}
+  - cardData: {fileID: 11400000, guid: 25b529b811a4f58439ff77bf119e0ccb, type: 2}
+    cardPrefab: {fileID: 3397625160397733367, guid: 367cfd85bc691904989322a7331f69db, type: 3}
+    deckBuilderCardPrefab: {fileID: 6335030592497159840, guid: 1beeda1d34b29544ab39c4af476d2579, type: 3}
+  - cardData: {fileID: 11400000, guid: 798b513ef01697d42984af0a2e1c6df5, type: 2}
+    cardPrefab: {fileID: 602562607149309255, guid: ccbe8db844d1bc34bb8bda1e59dddda0, type: 3}
+    deckBuilderCardPrefab: {fileID: 7559742509829372448, guid: 178b0990817ecd84da34858232c18fe2, type: 3}
+  - cardData: {fileID: 11400000, guid: a8531dc677167d94688d159808879315, type: 2}
+    cardPrefab: {fileID: 5544175358078774652, guid: 0961344e0bc4dc14e833df29ce030a0e, type: 3}
+    deckBuilderCardPrefab: {fileID: 1084184588638057803, guid: 1316df4ff3c221041b68a1105115a100, type: 3}
+  - cardData: {fileID: 11400000, guid: e0e62375a4338cd45ab74910bdef5a8c, type: 2}
+    cardPrefab: {fileID: 9109217586723198586, guid: b98450d79b3b1b04fbe3cb03ee922dc9, type: 3}
+    deckBuilderCardPrefab: {fileID: 6168992640277149643, guid: 94bf5dc44fb3b5940afeed5f13aebd97, type: 3}
+  - cardData: {fileID: 11400000, guid: 21ecbaff2fdda9c4cb7dd4f1d6685729, type: 2}
+    cardPrefab: {fileID: 661138187653565548, guid: 9520523d7e2e9a74fabb4272bb1213f7, type: 3}
+    deckBuilderCardPrefab: {fileID: 4796036180601915620, guid: b378c6d84b538234d883dedcdd073e97, type: 3}

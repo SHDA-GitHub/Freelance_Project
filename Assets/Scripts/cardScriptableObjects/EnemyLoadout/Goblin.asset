@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bc12414e148e24faf4c10b83673a4f, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
+  enemyName: Goblin
+  canUseSteal: 1
+  allowedCards:
+  - {fileID: 11400000, guid: 7cb9d521015a7fa40a91335646a9ec35, type: 2}
+  - {fileID: 11400000, guid: c26e90a45ac742146b9edb4f9b17cb2f, type: 2}
+  - {fileID: 11400000, guid: 06a0aeebd8e5bef44b13edaa1469cd92, type: 2}

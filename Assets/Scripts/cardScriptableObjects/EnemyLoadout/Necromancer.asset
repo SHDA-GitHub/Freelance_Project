@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bc12414e148e24faf4c10b83673a4f, type: 3}
+  m_Name: Necromancer
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
+  enemyName: Necromancer
+  canUseSteal: 0
+  allowedCards:
+  - {fileID: 11400000, guid: 69b93c790c25a1742bf2728703fde9c4, type: 2}
+  - {fileID: 11400000, guid: 3c536fca36df944499d31018a77119ca, type: 2}
+  - {fileID: 11400000, guid: a8531dc677167d94688d159808879315, type: 2}
+  - {fileID: 11400000, guid: 900a8d2838fb5e548bac57737366cf67, type: 2}
+  enemyType: 1
