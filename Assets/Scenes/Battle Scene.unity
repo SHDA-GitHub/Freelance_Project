@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 199672505}
   - component: {fileID: 199672504}
   - component: {fileID: 199672503}
+  - component: {fileID: 199672506}
   m_Layer: 5
   m_Name: ForfeitButton
   m_TagString: Untagged
@@ -201,7 +202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199672504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 199672506}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: Forteit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199672504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +253,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199672501}
   m_CullTransparentMesh: 1
+--- !u!114 &199672506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199672501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68197a5b7cab7144f96b37b1810438fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Buttons
+  fade: {fileID: 0}
+  confirm: {fileID: 0}
+  audioSource: {fileID: 882039386}
+  tutorialManager: {fileID: 0}
+  gameManager: {fileID: 506090851}
+  deckBuilderWarningText: {fileID: 0}
+  deckBuilderSceneName: Deck Builder
 --- !u!1 &246392018
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +649,9 @@ MonoBehaviour:
   flashDuration: 1
   isDropshadow: 0
   startFade: 1
+  isImage: 0
+  isText: 0
+  isSprite: 0
   rColor: 0
   gColor: 0
   bColor: 0
@@ -989,8 +1024,8 @@ MonoBehaviour:
   characterType: 0
   currentHealth: 100
   maxHealth: 100
-  currentMana: 15
-  maxMana: 15
+  currentPP: 15
+  maxPP: 15
   enemyAI: {fileID: 0}
   damage: 10
   armor: 7.5
@@ -998,8 +1033,8 @@ MonoBehaviour:
   healPower: 15
   healthBar: {fileID: 0}
   ghostBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  manaGhostBar: {fileID: 0}
+  ppBar: {fileID: 0}
+  ppGhostBar: {fileID: 0}
 --- !u!1 &882039385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,12 +1579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2281f6fc9618234fb072eab9f876dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardInjector
-  cardLibrary: {fileID: 0}
-  threeCardSlots: []
-  fourCardSlots: []
-  battleCardSpawner: {fileID: 0}
+  attackLibrary: {fileID: 0}
+  threeAttackSlots: []
+  fourAttackSlots: []
+  battleAttackSpawner: {fileID: 0}
   Spawn: 1
-  numberOfCardsToInject: 3
+  numberOfAttacksToInject: 3
 --- !u!114 &2117898096
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
             playerCooldowns.Register(data);
         }
 
-        foreach (var card in enemyAI.enemyCards)
+        foreach (var card in enemyAI.enemyAttacks)
         enemyCooldowns.Register(card);
     }
 
@@ -608,7 +608,7 @@ public class GameManager : MonoBehaviour
         {
             switch (cardData.playerCardType)
             {
-                case PlayerCardType.Attack:
+                case PlayerAttackType.Attack:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (playerAttackMultiplierActive)
@@ -656,7 +656,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.Defend:
+                case PlayerAttackType.Defend:
                     if (playerDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
@@ -670,7 +670,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Player gains {cardData.effectAmountDefend} armor!");
                     break;
 
-                case PlayerCardType.Greatersword:
+                case PlayerAttackType.Greatersword:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (playerAttackMultiplierActive)
@@ -718,7 +718,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.Greatershield:
+                case PlayerAttackType.Greatershield:
                     if (playerDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
@@ -732,47 +732,47 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Player's defense greatly increased by {cardData.effectAmountDefend}!");
                     break;
 
-                case PlayerCardType.Heal:
+                case PlayerAttackType.Heal:
                     dealer.currentHealth = Mathf.Min(dealer.currentHealth + cardData.effectAmountHeal, dealer.maxHealth);
                     Debug.Log($"Player heals for {cardData.effectAmountHeal}!");
                     break;
 
-                case PlayerCardType.ManaRefill:
+                case PlayerAttackType.ManaRefill:
                     dealer.currentPP = Mathf.Min(dealer.currentPP + cardData.effectAmountMana, dealer.maxPP);
                     flavorTextUI.ShowPlayText($"{dealer.characterType} replenished Mana for {cardData.effectAmountMana}!");
                     Debug.Log($"Player replenished Mana for {cardData.effectAmountMana}!");
                     break;
 
-                case PlayerCardType.DivineIntervention:
+                case PlayerAttackType.DivineIntervention:
                     divineTurnsRemaining = divineDurationTurns;
                     playerStatusUI.SetStatus(StatusEffectPlayer.Protected, true);
                     Debug.Log("Player invokes Divine Intervention!");
                     break;
 
-                case PlayerCardType.Steal:
+                case PlayerAttackType.Steal:
                     {
                         List<StealTarget> targets = new();
 
-                        AttackData enemyHeal = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.Heal && enemyCooldowns.IsReady(c));
+                        AttackData enemyHeal = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.Heal && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyMana = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.ManaRefill && enemyCooldowns.IsReady(c));
+                        AttackData enemyMana = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.ManaRefill && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyAttackMultiplierCard = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.AttackMultiplier && enemyCooldowns.IsReady(c));
+                        AttackData enemyAttackMultiplierCard = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.AttackMultiplier && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyPoisonPotion = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.PoisonPotion && enemyCooldowns.IsReady(c));
+                        AttackData enemyPoisonPotion = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.PoisonPotion && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyParalysisPotion = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.ParalysisPotion && enemyCooldowns.IsReady(c));
+                        AttackData enemyParalysisPotion = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.ParalysisPotion && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyFirePotion = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.FirePotion && enemyCooldowns.IsReady(c));
+                        AttackData enemyFirePotion = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.FirePotion && enemyCooldowns.IsReady(c));
 
-                        AttackData enemyLightningPotion = enemyAI.enemyCards
-                            .Find(c => c.enemyCardType == EnemyCardType.LightningPotion && enemyCooldowns.IsReady(c));
+                        AttackData enemyLightningPotion = enemyAI.enemyAttacks
+                            .Find(c => c.enemyCardType == EnemyAttackType.LightningPotion && enemyCooldowns.IsReady(c));
 
                         if (enemyAttackMultiplierCard != null)
                             targets.Add(new StealTarget(StealTargetType.AttackMultiplier, 1f));
@@ -898,7 +898,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.CallOfNature:
+                case PlayerAttackType.CallOfNature:
                     float natureDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                     target.currentHealth -= natureDamage;
                     if (enemyCursedLinkActive)
@@ -923,7 +923,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Player unleashes nature's wrath on Enemy for {natureDamage}!");
                     break;
 
-                case PlayerCardType.AttackMultiplier:
+                case PlayerAttackType.AttackMultiplier:
                     playerAttackMultiplier = 2f;
                     playerAttackMultiplierActive = true;
                     attackMultiplierPotionTurnsRemaining = attackMultiplierDurationTurns;
@@ -932,7 +932,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Player's next attack damage is doubled!");
                     break;
 
-                case PlayerCardType.BlacksmithAnvil:
+                case PlayerAttackType.BlacksmithAnvil:
                     playerDefenseMultiplier = 2f;
                     playerDefenseMultiplierActive = true;
                     blacksmithAnvilTurnsRemaining = blacksmithAnvilDurationTurns;
@@ -941,7 +941,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Player's next defense is doubled!");
                     break;
 
-                case PlayerCardType.PoisonPotion:
+                case PlayerAttackType.PoisonPotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -968,18 +968,18 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.RestorationSpell:
+                case PlayerAttackType.RestorationSpell:
                     dealer.currentHealth = Mathf.Min(dealer.currentHealth + cardData.effectAmountHeal, dealer.maxHealth);
                     flavorTextUI.ShowPlayText($"Player used a spell to gain {cardData.effectAmountHeal} HP!");
                     break;
 
-                case PlayerCardType.KnowledgeTome:
+                case PlayerAttackType.KnowledgeTome:
                     dealer.currentPP = Mathf.Min(dealer.currentPP + cardData.effectAmountMana, dealer.maxPP);
                     flavorTextUI.ShowPlayText($"{dealer.characterType} restored a massive amount of Mana for {cardData.effectAmountMana}!");
                     Debug.Log($"Player restored a massive amount of Mana for {cardData.effectAmountMana}!");
                     break;
 
-                case PlayerCardType.BrimstoneRain:
+                case PlayerAttackType.BrimstoneRain:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1007,7 +1007,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.ZeusWrath:
+                case PlayerAttackType.ZeusWrath:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1034,7 +1034,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.BleedStrike:
+                case PlayerAttackType.BleedStrike:
                     float bleedDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                     target.currentHealth -= bleedDamage;
                     if (enemyCursedLinkActive)
@@ -1058,7 +1058,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"The Player's sharp edge causes {bleedDamage} damage!");
                     break;
 
-                case PlayerCardType.ParalysisPotion:
+                case PlayerAttackType.ParalysisPotion:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1082,7 +1082,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.FirePotion:
+                case PlayerAttackType.FirePotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -1108,7 +1108,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.LightningPotion:
+                case PlayerAttackType.LightningPotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -1134,7 +1134,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.ThiefSmokeBomb:
+                case PlayerAttackType.ThiefSmokeBomb:
                     {
                         int paralysisTurns = Mathf.RoundToInt(cardData.effectAmountTurnSkip);
                         playerAttackMultiplier = 1.5f;
@@ -1146,7 +1146,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.RefreshBreeze:
+                case PlayerAttackType.RefreshBreeze:
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend);
                         flavorTextUI.ShowPlayText($"The player summoned a gust of wind and cleansed their afflictions!");
@@ -1155,7 +1155,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.Riposte:
+                case PlayerAttackType.Riposte:
                     {
                         playerRiposteActive = true;
                         playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, true);
@@ -1163,7 +1163,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.EssenceLife:
+                case PlayerAttackType.EssenceLife:
                     {
                         if (dealer.currentPP < cardData.manaCost)
                         {
@@ -1181,7 +1181,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.EssenceMind:
+                case PlayerAttackType.EssenceMind:
                     {
                         if (dealer.currentHealth < 25)
                         {
@@ -1198,7 +1198,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.PoisonDart:
+                case PlayerAttackType.PoisonDart:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -1224,7 +1224,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.ShieldBash:
+                case PlayerAttackType.ShieldBash:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float armorGain = cardData.effectAmountDefend;
@@ -1257,7 +1257,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.OverheadSlash:
+                case PlayerAttackType.OverheadSlash:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float selfDamage = cardData.effectAmountAttackOvertime;
@@ -1309,7 +1309,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.VampiricBlade:
+                case PlayerAttackType.VampiricBlade:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float selfHeal = cardData.effectAmountHeal;
@@ -1377,7 +1377,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.BlessedBroadsword:
+                case PlayerAttackType.BlessedBroadsword:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (playerAttackMultiplierActive)
@@ -1440,7 +1440,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case PlayerCardType.HolyBarrier:
+                case PlayerAttackType.HolyBarrier:
                     if (playerDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
@@ -1459,7 +1459,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Player gains {cardData.effectAmountDefend} armor!");
                     break;
 
-                case PlayerCardType.CursedLink:
+                case PlayerAttackType.CursedLink:
                     {
                         playerCursedLinkActive = true;
                         cursedLinkTurnsRemaining = 2;
@@ -1468,7 +1468,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case PlayerCardType.FateCoin:
+                case PlayerAttackType.FateCoin:
                     {
                         bool goodOutcome = Random.value < 0.5f;
                         float fateBleedDamage = cardData.effectAmountAttackOvertime;
@@ -1519,7 +1519,7 @@ public class GameManager : MonoBehaviour
         {
             switch (cardData.enemyCardType)
             {
-                case EnemyCardType.Attack:
+                case EnemyAttackType.Attack:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (enemyAttackMultiplierActive)
@@ -1567,7 +1567,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.Defend:
+                case EnemyAttackType.Defend:
                     if (enemyDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
@@ -1581,18 +1581,18 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Enemy gains {cardData.effectAmountDefend} armor!");
                     break;
 
-                case EnemyCardType.Heal:
+                case EnemyAttackType.Heal:
                     dealer.currentHealth = Mathf.Min(dealer.currentHealth + cardData.effectAmountHeal, dealer.maxHealth);
                     Debug.Log($"Enemy heals for {cardData.effectAmountHeal}!");
                     break;
 
-                case EnemyCardType.ManaRefill:
+                case EnemyAttackType.ManaRefill:
                     dealer.currentPP = Mathf.Min(dealer.currentPP + cardData.effectAmountMana, dealer.maxPP);
                     flavorTextUI.ShowPlayText($"{dealer.characterType} replenished Mana for {cardData.effectAmountMana}!");
                     Debug.Log($"Enemy replenished Mana for {cardData.effectAmountMana}!");
                     break;
 
-                case EnemyCardType.Greatersword:
+                case EnemyAttackType.Greatersword:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (enemyAttackMultiplierActive)
@@ -1640,7 +1640,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.Greatershield:
+                case EnemyAttackType.Greatershield:
                     if (enemyDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
@@ -1654,36 +1654,36 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Enemy's defense greatly increased by {cardData.effectAmountDefend}!");
                     break;
 
-                case EnemyCardType.DivineIntervention:
+                case EnemyAttackType.DivineIntervention:
                     enemyDivineTurnsRemaining = divineDurationTurns;
                     enemyStatusUI.SetStatus(StatusEffectEnemy.Protected, true);
                     Debug.Log("Enemy invokes Divine Intervention!");
                     break;
 
-                case EnemyCardType.Steal:
+                case EnemyAttackType.Steal:
                     {
                         List<StealTarget> targets = new();
 
                         AttackData playerHeal = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.Heal && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.Heal && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerMana = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.ManaRefill && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.ManaRefill && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerAttackMultiplier = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.AttackMultiplier && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.AttackMultiplier && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerPoisonPotion = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.PoisonPotion && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.PoisonPotion && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerParalysisPotion = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.ParalysisPotion && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.ParalysisPotion && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerFirePotion = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.FirePotion && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.FirePotion && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
                         AttackData playerLightningPotion = playerCards
-                            .Find(c => c.GetCardData()?.playerCardType == PlayerCardType.LightningPotion && playerCooldowns.IsReady(c.GetCardData()))
+                            .Find(c => c.GetCardData()?.playerCardType == PlayerAttackType.LightningPotion && playerCooldowns.IsReady(c.GetCardData()))
                             ?.GetCardData();
 
                         if (playerHeal != null)
@@ -1814,7 +1814,7 @@ public class GameManager : MonoBehaviour
                     }
 
 
-                case EnemyCardType.CallOfNature:
+                case EnemyAttackType.CallOfNature:
                     float natureDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                     target.currentHealth -= natureDamage;
                     if (playerCursedLinkActive)
@@ -1839,7 +1839,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Enemy unleashes nature's wrath on Player for {natureDamage}!");
                     break;
 
-                case EnemyCardType.AttackMultiplier:
+                case EnemyAttackType.AttackMultiplier:
                     enemyAttackMultiplier = 2f;
                     enemyAttackMultiplierActive = true;
                     enemyAttackMultiplierPotionTurnsRemaining = attackMultiplierDurationTurns;
@@ -1848,7 +1848,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Enemy's next attack damage is doubled!");
                     break;
 
-                case EnemyCardType.BlacksmithAnvil:
+                case EnemyAttackType.BlacksmithAnvil:
                     enemyDefenseMultiplier = 2f;
                     enemyDefenseMultiplierActive = true;
                     enemyBlacksmithAnvilTurnsRemaining = blacksmithAnvilDurationTurns;
@@ -1857,7 +1857,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Enemy's next defense is doubled!");
                     break;
 
-                case EnemyCardType.PoisonPotion:
+                case EnemyAttackType.PoisonPotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -1884,18 +1884,18 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.RestorationSpell:
+                case EnemyAttackType.RestorationSpell:
                     dealer.currentHealth = Mathf.Min(dealer.currentHealth + cardData.effectAmountHeal, dealer.maxHealth);
                     flavorTextUI.ShowPlayText($"{dealer.characterType} used a spell to gain {cardData.effectAmountHeal} HP!");
                     break;
 
-                case EnemyCardType.KnowledgeTome:
+                case EnemyAttackType.KnowledgeTome:
                     dealer.currentPP = Mathf.Min(dealer.currentPP + cardData.effectAmountMana, dealer.maxPP);
                     flavorTextUI.ShowPlayText($"{dealer.characterType} restored a massive amount of Mana for {cardData.effectAmountMana}!");
                     Debug.Log($"{dealer.characterType} restored a massive amount of Mana for {cardData.effectAmountMana}!");
                     break;
 
-                case EnemyCardType.BrimstoneRain:
+                case EnemyAttackType.BrimstoneRain:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1923,7 +1923,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.ZeusWrath:
+                case EnemyAttackType.ZeusWrath:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1950,7 +1950,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.BleedStrike:
+                case EnemyAttackType.BleedStrike:
                     float bleedDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                     target.currentHealth -= bleedDamage;
                     if (playerCursedLinkActive)
@@ -1974,7 +1974,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Enemy's sharp edge causes {bleedDamage} damage!");
                     break;
 
-                case EnemyCardType.ParalysisPotion:
+                case EnemyAttackType.ParalysisPotion:
                     {
                         float impactDamage = Mathf.Max(cardData.effectAmountAttack - target.armor, 0);
                         target.currentHealth -= impactDamage;
@@ -1998,7 +1998,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.FirePotion:
+                case EnemyAttackType.FirePotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -2024,7 +2024,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.LightningPotion:
+                case EnemyAttackType.LightningPotion:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -2050,7 +2050,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.ThiefSmokeBomb:
+                case EnemyAttackType.ThiefSmokeBomb:
                     {
                         int paralysisTurns = Mathf.RoundToInt(cardData.effectAmountTurnSkip);
                         enemyAttackMultiplier = 1.5f;
@@ -2062,7 +2062,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.RefreshBreeze:
+                case EnemyAttackType.RefreshBreeze:
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend);
                         flavorTextUI.ShowPlayText($"{dealer.characterType} summoned a gust of wind and cleansed their afflictions!");
@@ -2071,7 +2071,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.Riposte:
+                case EnemyAttackType.Riposte:
                     {
                         enemyRiposteActive = true;
                         flavorTextUI.ShowPlayText("The enemy takes a steady and defensive stance, waiting to counter the player's strike.");
@@ -2079,7 +2079,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.EssenceLife:
+                case EnemyAttackType.EssenceLife:
                     {
                         if (dealer.currentPP < cardData.manaCost)
                         {
@@ -2095,7 +2095,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.EssenceMind:
+                case EnemyAttackType.EssenceMind:
                     {
                         if (dealer.currentHealth < 25)
                         {
@@ -2111,7 +2111,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.PoisonDart:
+                case EnemyAttackType.PoisonDart:
                     {
                         float impactDamage = cardData.effectAmountAttack;
                         target.currentHealth -= impactDamage;
@@ -2137,7 +2137,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.ShieldBash:
+                case EnemyAttackType.ShieldBash:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float armorGain = cardData.effectAmountDefend;
@@ -2170,7 +2170,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.OverheadSlash:
+                case EnemyAttackType.OverheadSlash:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float selfDamage = cardData.effectAmountAttackOvertime;
@@ -2222,7 +2222,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.VampiricBlade:
+                case EnemyAttackType.VampiricBlade:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         float selfHeal = cardData.effectAmountHeal;
@@ -2289,7 +2289,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.BlessedBroadsword:
+                case EnemyAttackType.BlessedBroadsword:
                     {
                         float rawDamage = cardData.effectAmountAttack;
                         if (enemyAttackMultiplierActive)
@@ -2352,7 +2352,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
 
-                case EnemyCardType.HolyBarrier:
+                case EnemyAttackType.HolyBarrier:
                     if (enemyDefenseMultiplierActive)
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
@@ -2371,7 +2371,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log($"Enemy gains {cardData.effectAmountDefend} armor!");
                     break;
 
-                case EnemyCardType.CursedLink:
+                case EnemyAttackType.CursedLink:
                     {
                         enemyCursedLinkActive = true;
                         playerStatusUI.SetStatus(StatusEffectPlayer.Linked, true);
@@ -2380,7 +2380,7 @@ public class GameManager : MonoBehaviour
                         break;
                     }
 
-                case EnemyCardType.FateCoin:
+                case EnemyAttackType.FateCoin:
                     {
                         bool goodOutcome = Random.value < 0.5f;
                         float fateBleedDamage = cardData.effectAmountAttackOvertime;
@@ -2821,7 +2821,7 @@ public class GameManager : MonoBehaviour
         enemyCooldowns = new CooldownTracker();
         enemyStats.currentHealth = enemyStats.maxHealth;
         enemyStats.currentPP = enemyStats.maxPP;
-        foreach (var card in enemyAI.enemyCards)
+        foreach (var card in enemyAI.enemyAttacks)
         enemyCooldowns.Register(card);
         AutoAssignStatistics();
         enemyMusicTrigger.StopMusic();
@@ -2848,7 +2848,7 @@ public class GameManager : MonoBehaviour
 
             playerCooldowns.Register(data);
         }
-        foreach (var card in enemyAI.enemyCards)
+        foreach (var card in enemyAI.enemyAttacks)
             enemyCooldowns.Register(card);
     }
 

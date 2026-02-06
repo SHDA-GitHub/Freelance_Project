@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyCardAnimation
 {
-    public AttackData cardData;
+    public AttackData attackData;
     public AnimationClip animationClip;
 }
 
@@ -21,8 +21,8 @@ public class EnemyAI : MonoBehaviour
     [Header("Loadout")]
     public EnemyLoadout loadout;
 
-    [Header("Enemy Cards")]
-    public List<AttackData> enemyCards => loadout.allowedCards;
+    [Header("Enemy Attacks")]
+    public List<AttackData> enemyAttacks => loadout.allowedAttacks;
     private Dictionary<AttackData, int> cooldowns = new Dictionary<AttackData, int>();
 
     [Header("Timings")]
@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private AnimationClip idleAnimation;
-    [SerializeField] private List<EnemyCardAnimation> cardAnimations = new();
+    [SerializeField] private List<EnemyCardAnimation> attackAnimations = new();
     [SerializeField] private AnimationClip hurtAnimation;
 
     [SerializeField] private float returnToIdleDelay = 0.5f;
@@ -54,10 +54,10 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        foreach (var card in loadout.allowedCards)
+        foreach (var attack in loadout.allowedAttacks)
         {
-            if (card == null) continue;
-            cooldowns[card] = 0;
+            if (attack == null) continue;
+            cooldowns[attack] = 0;
         }
 
         if (stats == null)
@@ -73,13 +73,13 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-    private void PlayAnimationForCard(AttackData card)
+    private void PlayAnimationForCard(AttackData attack)
     {
-        if (animator == null || card == null || isAnimationLocked) return;
+        if (animator == null || attack == null || isAnimationLocked) return;
 
-        foreach (var entry in cardAnimations)
+        foreach (var entry in attackAnimations)
         {
-            if (entry.cardData == card && entry.animationClip != null)
+            if (entry.attackData == attack && entry.animationClip != null)
             {
                 StartCoroutine(PlayLockedAnimation(entry.animationClip));
                 return;
@@ -135,7 +135,7 @@ public class EnemyAI : MonoBehaviour
 
         yield return new WaitForSeconds(thinkDelay);
 
-        currentState = EnemyState.PlayCard;
+        currentState = EnemyState.PlayAttack;
         PlaySelectedCard();
 
         yield return new WaitForSeconds(playDelay);
@@ -152,20 +152,20 @@ public class EnemyAI : MonoBehaviour
     {
         Dictionary<AttackData, float> weights = new Dictionary<AttackData, float>();
 
-        var availableCards = enemyCards.FindAll(c =>
+        var availableAttacks = enemyAttacks.FindAll(c =>
             GameManager.Instance.CanEnemyPlayCard(c) &&
-            (c.enemyCardType != EnemyCardType.Steal || loadout.canUseSteal)
+            (c.enemyCardType != EnemyAttackType.Steal || loadout.canUseSteal)
         );
 
-        if (availableCards.Count == 0)
+        if (availableAttacks.Count == 0)
         {
-            var attackCard = enemyCards.Find(c => c.enemyCardType == EnemyCardType.Attack);
-            if (attackCard != null)
-                availableCards.Add(attackCard);
+            var attack = enemyAttacks.Find(c => c.enemyCardType == EnemyAttackType.Attack);
+            if (attack != null)
+                availableAttacks.Add(attack);
         }
 
-        float baseWeight = 100f / availableCards.Count;
-        foreach (var card in availableCards)
+        float baseWeight = 100f / availableAttacks.Count;
+        foreach (var card in availableAttacks)
             weights.Add(card, baseWeight);
 
         return weights;
@@ -178,8 +178,8 @@ public class EnemyAI : MonoBehaviour
 
         foreach (var card in new List<AttackData>(weights.Keys))
         {
-            if (card.enemyCardType == EnemyCardType.Heal ||
-                card.enemyCardType == EnemyCardType.Defend)
+            if (card.enemyCardType == EnemyAttackType.Heal ||
+                card.enemyCardType == EnemyAttackType.Defend)
             {
                 weights[card] += 5f;
             }
@@ -190,7 +190,7 @@ public class EnemyAI : MonoBehaviour
     {
         foreach (var card in new List<AttackData>(weights.Keys))
         {
-            if (card.enemyCardType == EnemyCardType.Defend)
+            if (card.enemyCardType == EnemyAttackType.Defend)
             {
                 if (stats.armor >= stats.maxArmor)
                 {
@@ -198,7 +198,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
 
-            if (card.enemyCardType == EnemyCardType.Heal)
+            if (card.enemyCardType == EnemyAttackType.Heal)
             {
                 if (stats.HealthPercent >= 0.85f)
                 {
@@ -242,8 +242,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!GameManager.Instance.CanEnemyPlayCard(selectedCard))
         {
-            selectedCard = enemyCards.Find(c =>
-                c.enemyCardType == EnemyCardType.Attack &&
+            selectedCard = enemyAttacks.Find(c =>
+                c.enemyCardType == EnemyAttackType.Attack &&
                 GameManager.Instance.CanEnemyPlayCard(c));
 
             if (selectedCard == null) return;

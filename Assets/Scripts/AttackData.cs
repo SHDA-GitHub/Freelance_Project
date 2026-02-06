@@ -10,8 +10,8 @@ public class AttackData : ScriptableObject
     [TextArea] public string HoverInfoText;
 
     [Header("Card Types")]
-    public PlayerCardType playerCardType;
-    public EnemyCardType enemyCardType;
+    public PlayerAttackType playerCardType;
+    public EnemyAttackType enemyCardType;
 
     [Header("Mana")]
     [Min(0)] public float manaCost = 0;

@@ -9,8 +9,8 @@ public class EnemyLoadout : ScriptableObject
     [Header("AI Behavior Restrictions")]
     public bool canUseSteal = false;
 
-    [Tooltip("Cards this enemy is allowed to use")]
-    public List<AttackData> allowedCards = new List<AttackData>();
+    [Tooltip("Attacks this enemy is allowed to use")]
+    public List<AttackData> allowedAttacks = new List<AttackData>();
 
     public enum EnemyType
     {

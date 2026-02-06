@@ -2,6 +2,6 @@ public enum EnemyState
 {
     Idle,
     DecideAction,
-    PlayCard,
+    PlayAttack,
     EndTurn
 }

@@ -218,7 +218,7 @@ public class Statistics : MonoBehaviour
 
     private void ApplyEnemyMaxArmor()
     {
-        if (enemyAI == null || enemyAI.enemyCards == null)
+        if (enemyAI == null || enemyAI.enemyAttacks == null)
         {
             Debug.LogWarning("EnemyAI or enemyCards not assigned!");
             return;
@@ -226,9 +226,9 @@ public class Statistics : MonoBehaviour
 
         maxArmor = 0f;
 
-        for (int i = 0; i < enemyAI.enemyCards.Count; i++)
+        for (int i = 0; i < enemyAI.enemyAttacks.Count; i++)
         {
-            AttackData card = enemyAI.enemyCards[i];
+            AttackData card = enemyAI.enemyAttacks[i];
             if (card != null && ShieldMaxValues.ContainsKey(card.CardName))
             {
                 maxArmor = Mathf.Max(maxArmor, ShieldMaxValues[card.CardName]);

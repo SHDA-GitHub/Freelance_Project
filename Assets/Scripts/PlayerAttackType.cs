@@ -1,4 +1,4 @@
-public enum PlayerCardType
+public enum PlayerAttackType
 {
     Attack,
     Defend,

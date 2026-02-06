@@ -1,4 +1,4 @@
-public enum EnemyCardType
+public enum EnemyAttackType
 {
     Attack,
     Defend,
