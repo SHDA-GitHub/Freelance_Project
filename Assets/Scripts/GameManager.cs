@@ -10,32 +10,6 @@ public class GameManager : MonoBehaviour
 
     public TurnState currentTurn;
 
-    public enum StatusEffectPlayer
-    {
-        DefenseUp,
-        AttackUp,
-        Protected,
-        Poisoned,
-        Bleeding,
-        Burning,
-        Frozen,
-        Electrocuted,
-        Linked
-    }
-
-    public enum StatusEffectEnemy
-    {
-        DefenseUp,
-        AttackUp,
-        Protected,
-        Poisoned,
-        Bleeding,
-        Burning,
-        Frozen,
-        Electrocuted,
-        Linked
-    }
-
     private bool ShouldSpawnBoss()
     {
         int currentRound = consecutiveEnemiesDefeated + 1;
@@ -149,23 +123,16 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    [Header("Enemy Pools By Level")]
-    [SerializeField] private List<GameObject> level1Enemies = new();
-    [SerializeField] private List<GameObject> level2Enemies = new();
-    [SerializeField] private List<GameObject> level3Enemies = new();
-    [SerializeField] private List<GameObject> level4Enemies = new();
-    [SerializeField] private List<GameObject> bossEnemies = new();
+    [Header("Battle Setup")]
+    [SerializeField] private GameObject enemyToSpawn;
 
     [SerializeField] public FlavorTextUI flavorTextUI;
     [SerializeField] private EnemyAI enemyAI;
-    [SerializeField] private StatusEffectUI playerStatusUI;
-    [SerializeField] private StatusEffectUI enemyStatusUI;
     [SerializeField] private FadeScript fade;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private EnemyMusicTrigger enemyMusicTrigger;
     [SerializeField] private EnemyBackgroundTrigger enemyBackgroundTrigger;
-    [SerializeField] private PlayerAnimationController playerAnimationController;
     private int consecutiveEnemiesDefeated = 0;
 
     public List<Attack> playerCards;
@@ -219,14 +186,44 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        InitializeEnemyWeights();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(InitializeBattle());
+    }
+
+    private IEnumerator InitializeBattle()
+    {
+        currentTurn = TurnState.Busy;
+
+        SpawnExplicitEnemy();
+
+        yield return null;
+
         AutoAssignStatistics();
 
+        RegisterPlayerCards();
+
+        RegisterEnemyCards();
+
+        ResetPlayer();
+        ClearAllEnemyCombatState();
+
+        enemyMusicTrigger.EnemyFindSequence();
+        enemyBackgroundTrigger.EnemyFindSequence();
+
+        yield return fade.ImageFadeOutFlash();
+
+        StartPlayerTurn();
+    }
+
+    private void RegisterPlayerCards()
+    {
+        playerCooldowns = new CooldownTracker();
         playerCards = new List<Attack>(
             FindObjectsByType<Attack>(FindObjectsSortMode.None)
         );
-
-        enemyAI = FindFirstObjectByType<EnemyAI>();
 
         foreach (var card in playerCards)
         {
@@ -241,9 +238,50 @@ public class GameManager : MonoBehaviour
 
             playerCooldowns.Register(data);
         }
+    }
+
+    private void RegisterEnemyCards()
+    {
+        enemyCooldowns = new CooldownTracker();
 
         foreach (var card in enemyAI.enemyAttacks)
-        enemyCooldowns.Register(card);
+        {
+            enemyCooldowns.Register(card);
+        }
+    }
+
+    private IEnumerator ReturnToMainScene()
+    {
+        currentTurn = TurnState.Busy;
+        yield return new WaitForSeconds(1.25f);
+        yield return fade.ImageFadeInFlash();
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene("Main Scene");
+    }
+
+    private void SpawnExplicitEnemy()
+    {
+        if (enemyToSpawn == null)
+        {
+            Debug.LogError("GameManager: No EnemyToSpawn assigned!");
+            return;
+        }
+
+        if (enemyAI != null)
+            Destroy(enemyAI.gameObject);
+
+        GameObject enemyGO = Instantiate(
+            enemyToSpawn,
+            enemySpawnPoint.position,
+            Quaternion.identity
+        );
+
+        enemyAI = enemyGO.GetComponent<EnemyAI>();
+        enemyStats = enemyGO.GetComponent<Statistics>();
+
+        enemyStats.currentHealth = enemyStats.maxHealth;
+        enemyStats.currentPP = enemyStats.maxPP;
+        enemyStats.BindEnemyUI();
     }
 
     private void AutoAssignStatistics()
@@ -335,7 +373,6 @@ public class GameManager : MonoBehaviour
         if (playerRiposteActive)
         {
             playerRiposteActive = false;
-            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
         }
 
             if (divineTurnsRemaining > 0)
@@ -343,7 +380,6 @@ public class GameManager : MonoBehaviour
             playerStats.currentHealth = Mathf.Min(playerStats.currentHealth + divineHealAmount, playerStats.maxHealth);
             divineTurnsRemaining--;
             if (divineTurnsRemaining == 0) Debug.Log("Divine Intervention ended");
-            playerStatusUI.SetStatus(StatusEffectPlayer.Protected, false);
         }
 
         if (holyBarrierTurnsRemaining > 0)
@@ -352,7 +388,6 @@ public class GameManager : MonoBehaviour
             if (holyBarrierTurnsRemaining == 0)
             {
                 Debug.Log("Holy Barrier ended");
-                playerStatusUI.SetStatus(StatusEffectPlayer.Protected, false);
                 playerHolyBarrierActive = false;
             }
         }
@@ -363,7 +398,6 @@ public class GameManager : MonoBehaviour
             if (attackMultiplierPotionTurnsRemaining == 0)
             { 
                 Debug.Log("Attack Multiplier ended");
-                playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                 playerAttackMultiplierActive = false;
             }
         }
@@ -374,7 +408,6 @@ public class GameManager : MonoBehaviour
             if (blacksmithAnvilTurnsRemaining == 0)
             {
                 Debug.Log("Defense Multiplier ended");
-                playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                 playerDefenseMultiplierActive = false;
             }
         }
@@ -385,7 +418,6 @@ public class GameManager : MonoBehaviour
             if (cursedLinkTurnsRemaining == 0)
             {
                 Debug.Log("The cursed link fades.");
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Linked, false);
                 playerCursedLinkActive = false;
             }
         }
@@ -447,13 +479,11 @@ public class GameManager : MonoBehaviour
         if (enemyRiposteActive == true)
         {
         enemyRiposteActive = false;
-        enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
         }
 
         if (enemyDivineTurnsRemaining > 0)
         {
             enemyStats.currentHealth = Mathf.Min(enemyStats.currentHealth + divineHealAmount, enemyStats.maxHealth);
-            enemyStatusUI.SetStatus(StatusEffectEnemy.Protected, false);
             enemyDivineTurnsRemaining--;
         }
 
@@ -462,7 +492,6 @@ public class GameManager : MonoBehaviour
             enemyHolyBarrierTurnsRemaining--;
             if (enemyHolyBarrierTurnsRemaining == 0)
             {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Protected, false);
                 enemyHolyBarrierActive = false;
             }
         }
@@ -472,7 +501,6 @@ public class GameManager : MonoBehaviour
             enemyAttackMultiplierPotionTurnsRemaining--;
             if (enemyAttackMultiplierPotionTurnsRemaining == 0)
             {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                 enemyAttackMultiplierActive = false;
             }
         }
@@ -482,7 +510,6 @@ public class GameManager : MonoBehaviour
             enemyBlacksmithAnvilTurnsRemaining--;
             if (enemyBlacksmithAnvilTurnsRemaining == 0)
             {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                 enemyDefenseMultiplierActive = false;
             }
         }
@@ -492,7 +519,6 @@ public class GameManager : MonoBehaviour
             enemyCursedLinkTurnsRemaining--;
             if (enemyCursedLinkTurnsRemaining == 0)
             {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Linked, false);
                 enemyCursedLinkActive = false;
             }
         }
@@ -534,11 +560,6 @@ public class GameManager : MonoBehaviour
             }
 
             return;
-        }
-
-        if (playerAnimationController != null)
-        {
-            playerAnimationController.PlayCardAnimation(cardData);
         }
 
         if (cardData.isSpell)
@@ -616,7 +637,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -632,7 +652,6 @@ public class GameManager : MonoBehaviour
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             if (playerCursedLinkActive)
                             {
                                 enemyStats.currentHealth -= riposteDamage;
@@ -661,7 +680,6 @@ public class GameManager : MonoBehaviour
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
                         playerDefenseMultiplierActive = false;
-                        playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                     }
                     else
                     {
@@ -678,7 +696,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -694,7 +711,6 @@ public class GameManager : MonoBehaviour
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             if (playerCursedLinkActive)
                             {
                                 enemyStats.currentHealth -= riposteDamage;
@@ -723,7 +739,6 @@ public class GameManager : MonoBehaviour
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
                         playerDefenseMultiplierActive = false;
-                        playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                     }
                     else
                     {
@@ -745,7 +760,6 @@ public class GameManager : MonoBehaviour
 
                 case PlayerAttackType.DivineIntervention:
                     divineTurnsRemaining = divineDurationTurns;
-                    playerStatusUI.SetStatus(StatusEffectPlayer.Protected, true);
                     Debug.Log("Player invokes Divine Intervention!");
                     break;
 
@@ -835,7 +849,6 @@ public class GameManager : MonoBehaviour
                                 playerAttackMultiplier = 2f;
                                 playerAttackMultiplierActive = true;
                                 flavorTextUI.ShowPlayText("You stole the enemy's attack potion!");
-                                playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, true);
                                 break;
 
                             case StealTargetType.PoisonPotion:
@@ -854,7 +867,6 @@ public class GameManager : MonoBehaviour
                                     activePoisons[dealer] = new PoisonEffect(poisonDamage, poisonDuration);
                                 }
                                 flavorTextUI.ShowPlayText($"The player stole a poison potion and it backfires on them!");
-                                playerStatusUI.SetStatus(StatusEffectPlayer.Poisoned, true);
                                 break;
 
                             case StealTargetType.FirePotion:
@@ -873,7 +885,6 @@ public class GameManager : MonoBehaviour
                                     activeFire[dealer] = new FireEffect(fireDamage, fireDuration);
                                 }
                                 flavorTextUI.ShowPlayText($"The player stole a fire potion and it backfires on them!");
-                                playerStatusUI.SetStatus(StatusEffectPlayer.Burning, true);
                                 break;
 
                             case StealTargetType.LightningPotion:
@@ -892,7 +903,6 @@ public class GameManager : MonoBehaviour
                                     activeThunder[dealer] = new ThunderEffect(lightningDamage, lightningDuration);
                                 }
                                 flavorTextUI.ShowPlayText($"The player stole a lightning potion and it backfires on them!");
-                                playerStatusUI.SetStatus(StatusEffectPlayer.Electrocuted, true);
                                 break;
                         }
                         break;
@@ -919,7 +929,6 @@ public class GameManager : MonoBehaviour
                         activeBlood[enemyStats] = new BloodEffect(bloodDamage, bloodDuration);
                     }
                     flavorTextUI.ShowPlayText($"{dealer.characterType} unleashes nature's wrath on Enemy for {natureDamage}!");
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.Bleeding, true);
                     Debug.Log($"Player unleashes nature's wrath on Enemy for {natureDamage}!");
                     break;
 
@@ -928,7 +937,6 @@ public class GameManager : MonoBehaviour
                     playerAttackMultiplierActive = true;
                     attackMultiplierPotionTurnsRemaining = attackMultiplierDurationTurns;
                     flavorTextUI.ShowPlayText("Player drank an invigorating potion and doubled their melee damage for the next turn!");
-                    playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, true);
                     Debug.Log("Player's next attack damage is doubled!");
                     break;
 
@@ -937,7 +945,6 @@ public class GameManager : MonoBehaviour
                     playerDefenseMultiplierActive = true;
                     blacksmithAnvilTurnsRemaining = blacksmithAnvilDurationTurns;
                     flavorTextUI.ShowPlayText("Player hardened their shield with the anvil and doubled their defense for the next turn!");
-                    playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, true);
                     Debug.Log("Player's next defense is doubled!");
                     break;
 
@@ -963,7 +970,6 @@ public class GameManager : MonoBehaviour
                         }
                         if (cardData.hasFlavortext == true)
                         { flavorTextUI.ShowPlayText("You threw a poison potion at the enemy!"); }
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Poisoned, true);
                         Debug.Log($"Enemy poisoned for {poisonDamage} damage per turn for {poisonDuration} turns.");
                     }
                     break;
@@ -1002,7 +1008,6 @@ public class GameManager : MonoBehaviour
                         }
                         if (cardData.hasFlavortext == true)
                         { flavorTextUI.ShowPlayText("You rained down fire on the enemy!"); }
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Burning, true);
                         Debug.Log($"Enemy on fire for {fireDamage} damage per turn for {fireDuration} turns.");
                     }
                     break;
@@ -1029,7 +1034,6 @@ public class GameManager : MonoBehaviour
                             activeThunder[enemyStats] = new ThunderEffect(thunderDamage, thunderDuration);
                         }
                         flavorTextUI.ShowPlayText("You smited the enemy with the power of Zeus!");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Electrocuted, true);
                         Debug.Log($"Enemy was electrocuted for {thunderDamage} damage per turn for {thunderDuration} turns.");
                     }
                     break;
@@ -1054,7 +1058,6 @@ public class GameManager : MonoBehaviour
                     {
                         activeBlood[enemyStats] = new BloodEffect(bleedingDamage, bleedingDuration);
                     }
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.Bleeding, true);
                     Debug.Log($"The Player's sharp edge causes {bleedDamage} damage!");
                     break;
 
@@ -1077,7 +1080,6 @@ public class GameManager : MonoBehaviour
                             else
                             { flavorTextUI.ShowPlayText($"The player threw a Paralysis Potion at the enemy! Enemy is paralyzed for {paralysisTurns} turn{(paralysisTurns > 1 ? "s" : "")}!"); }
                         }
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Frozen, true);
                         Debug.Log($"Enemy paralyzed for {paralysisTurns} turns.");
                     }
                     break;
@@ -1103,7 +1105,6 @@ public class GameManager : MonoBehaviour
                             activeFire[enemyStats] = new FireEffect(fireDamage, fireDuration);
                         }
                         flavorTextUI.ShowPlayText($"You threw a fire potion at the enemy!");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Burning, true);
                         Debug.Log($"Enemy enflamed for {fireDamage} damage per turn for {fireDuration} turns.");
                         break;
                     }
@@ -1129,7 +1130,6 @@ public class GameManager : MonoBehaviour
                             activeThunder[enemyStats] = new ThunderEffect(thunderDamage, thunderDuration);
                         }
                         flavorTextUI.ShowPlayText($"You threw a lightning potion at the enemy!");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Electrocuted, true);
                         Debug.Log($"Enemy electrocuted for {thunderDamage} damage per turn for {thunderDuration} turns.");
                         break;
                     }
@@ -1139,7 +1139,6 @@ public class GameManager : MonoBehaviour
                         int paralysisTurns = Mathf.RoundToInt(cardData.effectAmountTurnSkip);
                         playerAttackMultiplier = 1.5f;
                         playerAttackMultiplierActive = true;
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Frozen, true);
                         ApplyParalysis(enemyStats, paralysisTurns);
                         flavorTextUI.ShowPlayText($"The player threw a smoke bomb at the enemy! The player gets lucky strike next turn and enemy is stunned for {paralysisTurns} turn{(paralysisTurns > 1 ? "s" : "")}!");
                         Debug.Log($"Enemy stunned for {paralysisTurns} turns.");
@@ -1158,7 +1157,6 @@ public class GameManager : MonoBehaviour
                 case PlayerAttackType.Riposte:
                     {
                         playerRiposteActive = true;
-                        playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, true);
                         flavorTextUI.ShowPlayText("The player takes a steady and defensive stance, waiting to counter the enemy's strike.");
                         break;
                     }
@@ -1219,7 +1217,6 @@ public class GameManager : MonoBehaviour
                             activePoisons[enemyStats] = new PoisonEffect(poisonDamage, poisonDuration);
                         }
                         flavorTextUI.ShowPlayText("You shot a poison dart at the enemy!");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Poisoned, true);
                         Debug.Log($"Enemy poisoned for {poisonDamage} damage per turn for {poisonDuration} turns.");
                     }
                     break;
@@ -1233,14 +1230,12 @@ public class GameManager : MonoBehaviour
                             rawDamage *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
                         if (playerDefenseMultiplierActive)
                         {
                             armorGain *= playerDefenseMultiplier;
                             playerDefenseMultiplierActive = false;
                             playerDefenseMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                         }
                         float effectiveArmor = Mathf.Max(target.armor, 0);
                         float damage = Mathf.Max(rawDamage - effectiveArmor, 0);
@@ -1267,7 +1262,6 @@ public class GameManager : MonoBehaviour
                             selfDamage *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -1283,7 +1277,6 @@ public class GameManager : MonoBehaviour
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             if (playerCursedLinkActive)
                             {
                                 enemyStats.currentHealth -= riposteDamage;
@@ -1319,7 +1312,6 @@ public class GameManager : MonoBehaviour
                             selfHeal *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
                         float armorBeforeHit = target.armor;
                         float effectiveArmor = Mathf.Max(armorBeforeHit, 0);
@@ -1334,7 +1326,6 @@ public class GameManager : MonoBehaviour
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             if (playerCursedLinkActive)
                             {
                                 enemyStats.currentHealth -= riposteDamage;
@@ -1385,7 +1376,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= playerAttackMultiplier;
                             playerAttackMultiplierActive = false;
                             playerAttackMultiplier = 1f;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -1401,7 +1391,6 @@ public class GameManager : MonoBehaviour
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             if (playerCursedLinkActive)
                             {
                                 enemyStats.currentHealth -= riposteDamage;
@@ -1425,13 +1414,11 @@ public class GameManager : MonoBehaviour
                         if (enemyAttackMultiplierActive)
                         {
                             enemyAttackMultiplierActive = false;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                             flavorTextUI.ShowPlayText($"The player swung their broadsword at the enemy and dealt {damage} damage, removing their attack buff!");
                         }
                         else if (enemyDefenseMultiplierActive)
                         {
                             enemyDefenseMultiplierActive = false;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                             flavorTextUI.ShowPlayText($"The player swung their broadsword at the enemy and dealt {damage} damage, removing their defense buff!");
                         }
                         else
@@ -1446,7 +1433,6 @@ public class GameManager : MonoBehaviour
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * playerDefenseMultiplier);
                         playerHolyBarrierActive = true;
                         playerDefenseMultiplierActive = false;
-                        playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                     }
                     else
                     {
@@ -1455,7 +1441,6 @@ public class GameManager : MonoBehaviour
                     }
                     holyBarrierTurnsRemaining = holyBarrierDurationTurns;
                     flavorTextUI.ShowPlayText("The player raises a holy barrier and is immune to status effects next turn!");
-                    playerStatusUI.SetStatus(StatusEffectPlayer.Protected, true);
                     Debug.Log($"Player gains {cardData.effectAmountDefend} armor!");
                     break;
 
@@ -1464,7 +1449,6 @@ public class GameManager : MonoBehaviour
                         playerCursedLinkActive = true;
                         cursedLinkTurnsRemaining = 2;
                         flavorTextUI.ShowPlayText("Your soul binds with the enemy — pain shall be shared!");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.Linked, true);
                         break;
                     }
 
@@ -1482,8 +1466,6 @@ public class GameManager : MonoBehaviour
                             attackMultiplierPotionTurnsRemaining = 2;
                             blacksmithAnvilTurnsRemaining = 2;
                             ClearAllStatusEffects(dealer);
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, true);
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, true);
                             flavorTextUI.ShowPlayText("Fate smiles upon you! Power and protection surge through your body!");
                             Debug.Log("Fate's Coin: Good outcome");
                         }
@@ -1504,8 +1486,6 @@ public class GameManager : MonoBehaviour
                             {
                                 activeBlood[playerStats] = new BloodEffect(fateBleedDamage, bleedDuration);
                             }
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, true);
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, true);
                             flavorTextUI.ShowPlayText("Fate turns against you! Weakness seeps in as blood spills...");
                             Debug.Log("Fate's Coin: Bad outcome");
                         }
@@ -1527,7 +1507,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -1540,7 +1519,6 @@ public class GameManager : MonoBehaviour
                             float blocked = damage * riposteblock;
                             float finalDamage = damage - blocked;
                             float riposteDamage = damage * ripostereturn;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
@@ -1572,7 +1550,6 @@ public class GameManager : MonoBehaviour
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
                         enemyDefenseMultiplierActive = false;
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                     }
                     else
                     {
@@ -1600,7 +1577,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -1613,7 +1589,6 @@ public class GameManager : MonoBehaviour
                             float blocked = damage * riposteblock;
                             float finalDamage = damage - blocked;
                             float riposteDamage = damage * ripostereturn;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
@@ -1645,7 +1620,6 @@ public class GameManager : MonoBehaviour
                     {
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
                         enemyDefenseMultiplierActive = false;
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                     }
                     else
                     {
@@ -1656,7 +1630,6 @@ public class GameManager : MonoBehaviour
 
                 case EnemyAttackType.DivineIntervention:
                     enemyDivineTurnsRemaining = divineDurationTurns;
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.Protected, true);
                     Debug.Log("Enemy invokes Divine Intervention!");
                     break;
 
@@ -1747,7 +1720,6 @@ public class GameManager : MonoBehaviour
                                 enemyAttackMultiplier = 2f;
                                 enemyAttackMultiplierActive = true;
                                 playerCooldowns.SetCooldown(playerAttackMultiplier, playerAttackMultiplier.playerCooldownTurns);
-                                enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, true);
                                 flavorTextUI.ShowPlayText($"{dealer.characterType} stole your attack buff!");
                                 break;
 
@@ -1768,7 +1740,6 @@ public class GameManager : MonoBehaviour
                                 {
                                     activePoisons[dealer] = new PoisonEffect(poisonDamage, poisonDuration);
                                 }
-                                enemyStatusUI.SetStatus(StatusEffectEnemy.Poisoned, true);
                                 flavorTextUI.ShowPlayText($"{dealer.characterType} stole a poison potion and it backfires on them!");
                                 break;
 
@@ -1787,7 +1758,6 @@ public class GameManager : MonoBehaviour
                                 {
                                     activeFire[dealer] = new FireEffect(fireDamage, fireDuration);
                                 }
-                                enemyStatusUI.SetStatus(StatusEffectEnemy.Burning, true);
                                 flavorTextUI.ShowPlayText($"{dealer.characterType} stole a fire potion and it backfires on them!");
                                 break;
 
@@ -1806,7 +1776,6 @@ public class GameManager : MonoBehaviour
                                 {
                                     activeThunder[dealer] = new ThunderEffect(lightningDamage, lightningDuration);
                                 }
-                                enemyStatusUI.SetStatus(StatusEffectEnemy.Electrocuted, true);
                                 flavorTextUI.ShowPlayText($"{dealer.characterType} stole a lightning potion and it backfires on them!");
                                 break;
                         }
@@ -1835,7 +1804,6 @@ public class GameManager : MonoBehaviour
                         activeBlood[playerStats] = new BloodEffect(bloodDamage, bloodDuration);
                     }
                     flavorTextUI.ShowPlayText($"{dealer.characterType} unleashes nature's wrath on Player for {natureDamage}!");
-                    playerStatusUI.SetStatus(StatusEffectPlayer.Bleeding, true);
                     Debug.Log($"Enemy unleashes nature's wrath on Player for {natureDamage}!");
                     break;
 
@@ -1844,7 +1812,6 @@ public class GameManager : MonoBehaviour
                     enemyAttackMultiplierActive = true;
                     enemyAttackMultiplierPotionTurnsRemaining = attackMultiplierDurationTurns;
                     flavorTextUI.ShowPlayText($"{dealer.characterType} drank an invigorating potion and doubled their melee damage for the next turn!");
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, true);
                     Debug.Log("Enemy's next attack damage is doubled!");
                     break;
 
@@ -1853,7 +1820,6 @@ public class GameManager : MonoBehaviour
                     enemyDefenseMultiplierActive = true;
                     enemyBlacksmithAnvilTurnsRemaining = blacksmithAnvilDurationTurns;
                     flavorTextUI.ShowPlayText($"{dealer.characterType} hardened their shield with the anvil and doubled their defense for the next turn!");
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, true);
                     Debug.Log("Enemy's next defense is doubled!");
                     break;
 
@@ -1879,7 +1845,6 @@ public class GameManager : MonoBehaviour
                         }
                         if (cardData.hasFlavortext == true)
                         { flavorTextUI.ShowPlayText($"{dealer.characterType} threw a poison potion at you!"); }
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Poisoned, true);
                         Debug.Log($"Player poisoned for {poisonDamage} damage per turn for {poisonDuration} turns.");
                     }
                     break;
@@ -1918,7 +1883,6 @@ public class GameManager : MonoBehaviour
                         }
                         if (cardData.hasFlavortext == true)
                         { flavorTextUI.ShowPlayText($"{dealer.characterType} rained down fire on you!"); }
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Burning, true);
                         Debug.Log($"Player on fire for {fireDamage} damage per turn for {fireDuration} turns.");
                     }
                     break;
@@ -1945,7 +1909,6 @@ public class GameManager : MonoBehaviour
                             activeThunder[playerStats] = new ThunderEffect(thunderDamage, thunderDuration);
                         }
                         flavorTextUI.ShowPlayText($"{dealer.characterType} smited you with the power of Zeus!");
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Electrocuted, true);
                         Debug.Log($"Player was electrocuted for {thunderDamage} damage per turn for {thunderDuration} turns.");
                     }
                     break;
@@ -1970,7 +1933,6 @@ public class GameManager : MonoBehaviour
                     {
                         activeBlood[playerStats] = new BloodEffect(bleedingDamage, bleedingDuration);
                     }
-                    playerStatusUI.SetStatus(StatusEffectPlayer.Bleeding, true);
                     Debug.Log($"Enemy's sharp edge causes {bleedDamage} damage!");
                     break;
 
@@ -1992,7 +1954,6 @@ public class GameManager : MonoBehaviour
                             { flavorTextUI.ShowPlayText($"The Enemy threw a Paralysis Potion at the player, but it failed!"); }
                             else
                             { flavorTextUI.ShowPlayText($"{dealer.characterType} threw a Paralysis Potion at the player! Player is paralyzed for {paralysisTurns} turn{(paralysisTurns > 1 ? "s" : "")}!"); }
-                            playerStatusUI.SetStatus(StatusEffectPlayer.Frozen, true);
                         }
                         Debug.Log($"Player paralyzed for {paralysisTurns} turns.");
                     }
@@ -2019,7 +1980,6 @@ public class GameManager : MonoBehaviour
                             activeFire[playerStats] = new FireEffect(fireDamage, fireDuration);
                         }
                         flavorTextUI.ShowPlayText($"{dealer.characterType} threw a fire potion at you!");
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Burning, true);
                         Debug.Log($"Player enflamed for {fireDamage} damage per turn for {fireDuration} turns.");
                     }
                     break;
@@ -2045,7 +2005,6 @@ public class GameManager : MonoBehaviour
                             activeThunder[playerStats] = new ThunderEffect(thunderDamage, thunderDuration);
                         }
                         flavorTextUI.ShowPlayText($"{dealer.characterType} threw a lightning potion at you!");
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Electrocuted, true);
                         Debug.Log($"Player electrocuted for {thunderDamage} damage per turn for {thunderDuration} turns.");
                         break;
                     }
@@ -2057,7 +2016,6 @@ public class GameManager : MonoBehaviour
                         enemyAttackMultiplierActive = true;
                         ApplyParalysis(playerStats, paralysisTurns);
                         flavorTextUI.ShowPlayText($"{dealer.characterType} threw a smoke bomb at the player! {dealer.characterType} gets lucky strike next turn and player is stunned for {paralysisTurns} turn{(paralysisTurns > 1 ? "s" : "")}!");
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Frozen, true);
                         Debug.Log($"Player stunned for {paralysisTurns} turns.");
                         break;
                     }
@@ -2075,7 +2033,6 @@ public class GameManager : MonoBehaviour
                     {
                         enemyRiposteActive = true;
                         flavorTextUI.ShowPlayText("The enemy takes a steady and defensive stance, waiting to counter the player's strike.");
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, true);
                         break;
                     }
 
@@ -2132,7 +2089,6 @@ public class GameManager : MonoBehaviour
                             activePoisons[playerStats] = new PoisonEffect(poisonDamage, poisonDuration);
                         }
                         flavorTextUI.ShowPlayText($"{dealer.characterType} shot a poison dart at you!");
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Poisoned, true);
                         Debug.Log($"Player poisoned for {poisonDamage} damage per turn for {poisonDuration} turns.");
                     }
                     break;
@@ -2146,14 +2102,12 @@ public class GameManager : MonoBehaviour
                             rawDamage *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
                         if (enemyDefenseMultiplierActive)
                         {
                             armorGain *= enemyDefenseMultiplier;
                             enemyDefenseMultiplierActive = false;
                             enemyDefenseMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                         }
                         float effectiveArmor = Mathf.Max(target.armor, 0);
                         float damage = Mathf.Max(rawDamage - effectiveArmor, 0);
@@ -2180,7 +2134,6 @@ public class GameManager : MonoBehaviour
                             selfDamage *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -2193,7 +2146,6 @@ public class GameManager : MonoBehaviour
                             float blocked = damage * riposteblock;
                             float finalDamage = damage - blocked;
                             float riposteDamage = damage * ripostereturn;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
@@ -2232,7 +2184,6 @@ public class GameManager : MonoBehaviour
                             selfHeal *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
                         float armorBeforeHit = target.armor;
                         float effectiveArmor = Mathf.Max(armorBeforeHit, 0);
@@ -2244,7 +2195,6 @@ public class GameManager : MonoBehaviour
                             float blocked = damage * riposteblock;
                             float finalDamage = damage - blocked;
                             float riposteDamage = damage * ripostereturn;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
@@ -2297,7 +2247,6 @@ public class GameManager : MonoBehaviour
                             rawDamage *= enemyAttackMultiplier;
                             enemyAttackMultiplierActive = false;
                             enemyAttackMultiplier = 1f;
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, false);
                         }
 
                         float effectiveArmor = Mathf.Max(target.armor, 0);
@@ -2310,7 +2259,6 @@ public class GameManager : MonoBehaviour
                             float blocked = damage * riposteblock;
                             float finalDamage = damage - blocked;
                             float riposteDamage = damage * ripostereturn;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
 
                             target.currentHealth -= finalDamage;
                             dealer.currentHealth -= riposteDamage;
@@ -2337,13 +2285,11 @@ public class GameManager : MonoBehaviour
                         if (playerAttackMultiplierActive)
                         {
                             playerAttackMultiplierActive = false;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.AttackUp, false);
                             flavorTextUI.ShowPlayText($"{dealer.characterType} swung their broadsword at the player and dealt {damage} damage, removing their attack buff!");
                         }
                         else if (playerDefenseMultiplierActive)
                         {
                             playerDefenseMultiplierActive = false;
-                            playerStatusUI.SetStatus(StatusEffectPlayer.DefenseUp, false);
                             flavorTextUI.ShowPlayText($"{dealer.characterType} swung their broadsword at the player and dealt {damage} damage, removing their defense buff!");
                         }
                         else
@@ -2358,7 +2304,6 @@ public class GameManager : MonoBehaviour
                         dealer.armor = Mathf.Max(dealer.armor, cardData.effectAmountDefend * enemyDefenseMultiplier);
                         enemyHolyBarrierActive = true;
                         enemyDefenseMultiplierActive = false;
-                        enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, false);
                     }
                     else
                     {
@@ -2367,14 +2312,12 @@ public class GameManager : MonoBehaviour
                     }
                     enemyHolyBarrierTurnsRemaining = holyBarrierDurationTurns;
                     flavorTextUI.ShowPlayText($"{dealer.characterType} raises a holy barrier and is immune to status effects next turn!");
-                    enemyStatusUI.SetStatus(StatusEffectEnemy.Protected, true);
                     Debug.Log($"Enemy gains {cardData.effectAmountDefend} armor!");
                     break;
 
                 case EnemyAttackType.CursedLink:
                     {
                         enemyCursedLinkActive = true;
-                        playerStatusUI.SetStatus(StatusEffectPlayer.Linked, true);
                         enemyCursedLinkTurnsRemaining = 2;
                         flavorTextUI.ShowPlayText("The enemy's soul binds with you — pain shall be shared!");
                         break;
@@ -2394,8 +2337,6 @@ public class GameManager : MonoBehaviour
                             enemyAttackMultiplierPotionTurnsRemaining = 2;
                             enemyBlacksmithAnvilTurnsRemaining = 2;
                             ClearAllStatusEffects(dealer);
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, true);
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, true);
                             flavorTextUI.ShowPlayText($"Fate smiles upon {dealer.characterType}! Power and protection surge through your body!");
                             Debug.Log("Fate's Coin: Good outcome");
                         }
@@ -2416,8 +2357,6 @@ public class GameManager : MonoBehaviour
                             {
                                 activeBlood[enemyStats] = new BloodEffect(fateBleedDamage, bleedDuration);
                             }
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.AttackUp, true);
-                            enemyStatusUI.SetStatus(StatusEffectEnemy.DefenseUp, true);
                             flavorTextUI.ShowPlayText($"Fate turns against {dealer.characterType}! Weakness seeps in as blood spills...");
                             Debug.Log("Fate's Coin: Bad outcome");
                         }
@@ -2454,10 +2393,6 @@ public class GameManager : MonoBehaviour
                 t.weight = Mathf.Max(0f, t.weight - detract);
         }
     }
-    public void StartNextBattle()
-    {
-        StartCoroutine(NextBattleRoutine());
-    }
 
     private void ApplyPoisonDamage(Statistics target)
     {
@@ -2480,14 +2415,6 @@ public class GameManager : MonoBehaviour
         effect.turnsRemaining--;
         if (effect.turnsRemaining <= 0)
         {
-            if (target.characterType == Statistics.CharacterType.Player)
-            {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Poisoned, false);
-            }
-            else
-            {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Poisoned, false);
-            }
             activePoisons.Remove(target);
             Debug.Log($"{target.characterType} is no longer poisoned.");
         }
@@ -2516,14 +2443,6 @@ public class GameManager : MonoBehaviour
 
         if (effect.turnsRemaining <= 0)
         {
-            if (target.characterType == Statistics.CharacterType.Player)
-            {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Burning, false);
-            }
-            else
-            {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Burning, false);
-            }
             activeFire.Remove(target);
             Debug.Log($"{target.characterType} is no longer on fire.");
         }
@@ -2552,14 +2471,6 @@ public class GameManager : MonoBehaviour
 
         if (effect.turnsRemaining <= 0)
         {
-            if (target.characterType == Statistics.CharacterType.Player)
-            {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Electrocuted, false);
-            }
-            else
-            {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Electrocuted, false);
-            }
             activeThunder.Remove(target);
             Debug.Log($"{target.characterType} is no longer electrocuted.");
         }
@@ -2588,14 +2499,6 @@ public class GameManager : MonoBehaviour
 
         if (effect.turnsRemaining <= 0)
         {
-            if (target.characterType == Statistics.CharacterType.Player)
-            {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Bleeding, false);
-            }
-            else
-            {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Bleeding, false);
-            }
             activeBlood.Remove(target);
             Debug.Log($"{target.characterType} is no longer bleeding.");
         }
@@ -2622,14 +2525,6 @@ public class GameManager : MonoBehaviour
 
         if (activeParalysis[target] <= 0)
         {
-            if (target.characterType == Statistics.CharacterType.Player)
-            {
-                playerStatusUI.SetStatus(StatusEffectPlayer.Frozen, false);
-            }
-            else
-            {
-                enemyStatusUI.SetStatus(StatusEffectEnemy.Frozen, false);
-            }
             activeParalysis.Remove(target);
             Debug.Log($"{target.characterType} is no longer stuck in place.");
         }
@@ -2642,17 +2537,6 @@ public class GameManager : MonoBehaviour
         activeThunder.Remove(target);
         activeBlood.Remove(target);
         activeParalysis.Remove(target);
-        var ui = GetUI(target);
-        if (target.characterType == Statistics.CharacterType.Player)
-        {
-            foreach (StatusEffectPlayer effect in System.Enum.GetValues(typeof(StatusEffectPlayer)))
-            { ui.SetStatus(effect, false); }
-        }
-        else if (target.characterType == Statistics.CharacterType.Enemy)
-        {
-            foreach (StatusEffectEnemy effect in System.Enum.GetValues(typeof(StatusEffectEnemy)))
-            { ui.SetStatus(effect, false); }
-        }
         Debug.Log($"{target.characterType} had all status effects cleansed!");
     }
     public void ClearAllEnemyCombatState()
@@ -2676,13 +2560,6 @@ public class GameManager : MonoBehaviour
         enemyCursedLinkTurnsRemaining = 0;
     }
 
-    private StatusEffectUI GetUI(Statistics stats)
-    {
-        return stats.characterType == Statistics.CharacterType.Player
-            ? playerStatusUI
-            : enemyStatusUI;
-    }
-
     private IEnumerator ProcessDeath(Statistics character)
     {
         isProcessingDeath = true;
@@ -2690,48 +2567,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         HandleDeath(character);
         isProcessingDeath = false;
-    }
-    private GameObject PickEnemyPrefab()
-    {
-        List<GameObject> pool = new();
-        int level = playerStats.playerStats.currentLevel;
-
-        if (ShouldSpawnBoss())
-        {
-            pool.AddRange(bossEnemies);
-        }
-        else
-        {
-            if (level >= 1) pool.AddRange(level1Enemies);
-            if (level >= 2) pool.AddRange(level2Enemies);
-            if (level >= 3) pool.AddRange(level3Enemies);
-            if (level >= 4) pool.AddRange(level4Enemies);
-        }
-
-        if (pool.Count == 0)
-        {
-            Debug.LogError("Enemy pool is empty!");
-            return null;
-        }
-
-        float totalWeight = 0f;
-        foreach (var enemy in pool)
-            totalWeight += enemySpawnWeights[enemy];
-
-        float roll = Random.Range(0f, totalWeight);
-        float running = 0f;
-
-        foreach (var enemy in pool)
-        {
-            running += enemySpawnWeights[enemy];
-            if (roll <= running)
-            {
-                AdjustEnemySpawnWeights(enemy);
-                return enemy;
-            }
-        }
-
-        return pool[0];
     }
 
     private void HandleDeath(Statistics character)
@@ -2749,40 +2584,10 @@ public class GameManager : MonoBehaviour
         {
             flavorTextUI.ShowPlayText("You have defeated the enemy!");
             enemyAI.StartCoroutine(enemyAI.Die());
-
-            consecutiveEnemiesDefeated++;
-
-            if (consecutiveEnemiesDefeated >= 5)
-            {
-                consecutiveEnemiesDefeated = 0;
-                StartCoroutine(GoToDeckBuilder());
-            }
-            else
-            {
-                StartNextBattle();
-            }
+            StartCoroutine(ReturnToMainScene());
         }
     }
 
-    private IEnumerator GoToDeckBuilder()
-    {
-        currentTurn = TurnState.Busy;
-        yield return fade.ImageFadeInFlash();
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Deck Builder");
-    }
-
-    private IEnumerator NextBattleRoutine()
-    {
-        currentTurn = TurnState.Busy;
-        yield return fade.ImageFadeInFlash();
-        ResetPlayer();
-        StartCoroutine(SpawnNewEnemy());
-        flavorTextUI.ShowPlayText("Your turn.");
-        yield return new WaitForSeconds(0.25f);
-        yield return fade.ImageFadeOutFlash();
-        StartPlayerTurn();
-    }
     private void ResetPlayer()
     {
         playerStats.currentHealth = playerStats.maxHealth;
@@ -2796,39 +2601,6 @@ public class GameManager : MonoBehaviour
         blacksmithAnvilTurnsRemaining = 0;
         attackMultiplierPotionTurnsRemaining = 0;
         turnCounter = 0;
-    }
-
-    IEnumerator SpawnNewEnemy()
-    {
-        ClearAllEnemyCombatState();
-        ClearAllStatusEffects(enemyStats);
-
-        if (enemyAI != null)
-            Destroy(enemyAI.gameObject);
-
-        GameObject enemyPrefab = PickEnemyPrefab();
-        if (enemyPrefab == null)
-            yield break;
-
-        GameObject enemyGO = Instantiate(
-            enemyPrefab,
-            enemySpawnPoint.position,
-            Quaternion.identity
-        );
-        enemyAI = enemyGO.GetComponent<EnemyAI>();
-        enemyStats = enemyGO.GetComponent<Statistics>();
-        yield return null;
-        enemyCooldowns = new CooldownTracker();
-        enemyStats.currentHealth = enemyStats.maxHealth;
-        enemyStats.currentPP = enemyStats.maxPP;
-        foreach (var card in enemyAI.enemyAttacks)
-        enemyCooldowns.Register(card);
-        AutoAssignStatistics();
-        enemyMusicTrigger.StopMusic();
-        yield return null;
-        enemyMusicTrigger.EnemyFindSequence();
-        enemyBackgroundTrigger.EnemyFindSequence();
-        enemyStats.BindEnemyUI();
     }
 
     public void RegisterCards()
@@ -2899,25 +2671,6 @@ public class GameManager : MonoBehaviour
             int cd = playerCooldowns.GetCooldown(card.GetCardData());
             card.SetCooldownVisual(cd);
         }
-    }
-    private void InitializeEnemyWeights()
-    {
-        enemySpawnWeights.Clear();
-
-        void AddEnemies(List<GameObject> list)
-        {
-            foreach (var enemy in list)
-            {
-                if (!enemySpawnWeights.ContainsKey(enemy))
-                    enemySpawnWeights.Add(enemy, enemyPickWeightMax);
-            }
-        }
-
-        AddEnemies(level1Enemies);
-        AddEnemies(level2Enemies);
-        AddEnemies(level3Enemies);
-        AddEnemies(level4Enemies);
-        AddEnemies(bossEnemies);
     }
 
     private void AdjustEnemySpawnWeights(GameObject spawnedEnemy)

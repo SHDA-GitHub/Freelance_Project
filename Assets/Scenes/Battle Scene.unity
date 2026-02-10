@@ -715,6 +715,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlavorTextUI
   text: {fileID: 1045033813}
+--- !u!1 &778720917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778720918}
+  m_Layer: 0
+  m_Name: EnemySpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778720918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778720917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788278486
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBackgroundTrigger
   enemyAI: {fileID: 0}
   loadoutBackgrounds: []
-  backgroundSpriteRenderer: {fileID: 0}
+  backgroundSpriteRenderer: {fileID: 1829633665}
 --- !u!1 &853912318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,4 +1697,5 @@ SceneRoots:
   - {fileID: 882039387}
   - {fileID: 408731266}
   - {fileID: 849644932}
+  - {fileID: 778720918}
   - {fileID: 879654188}
