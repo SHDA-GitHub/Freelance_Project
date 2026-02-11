@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,9 @@ public class TurnManager : MonoBehaviour
     public TurnType currentTurn = TurnType.Player;
     public List<CharacterStats> playerParty = new List<CharacterStats>();
     public List<CharacterStats> enemyParty = new List<CharacterStats>();
+    public bool isBattleActive = true;
 
+    public FlavorTextUI flavorTextUI;
     private int currentCharacterIndex = 0;
 
     private void Awake()
@@ -21,11 +24,34 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(StartBattle());
+    }
+    private IEnumerator StartBattle()
+    {
+        if (enemyParty.Count > 0)
+        {
+            string[] encounterMessages = {
+                "{0} has appeared",
+                "{0} blocks your path",
+                "{0} approaches you",
+                "You encountered {0}"
+            };
+
+            string message = string.Format(
+                encounterMessages[Random.Range(0, encounterMessages.Length)],
+                enemyParty[0].characterName
+            );
+
+            yield return flavorTextUI.ShowTextCoroutine(message);
+            yield return new WaitForSeconds(0.5f);
+        }
+
         StartTurn();
     }
 
     public void StartTurn()
     {
+        if (!isBattleActive) return;
         if (currentTurn == TurnType.Player)
         {
             if (currentCharacterIndex >= playerParty.Count)
@@ -37,7 +63,7 @@ public class TurnManager : MonoBehaviour
             }
 
             var character = playerParty[currentCharacterIndex];
-            character.StartTurn();
+            StartCoroutine(PlayerTurnCoroutine(character));
         }
         else
         {
@@ -50,13 +76,84 @@ public class TurnManager : MonoBehaviour
             }
 
             var enemy = enemyParty[currentCharacterIndex];
-            enemy.StartTurn();
+            StartCoroutine(EnemyTurnCoroutine(enemy));
         }
     }
 
+    private IEnumerator PlayerTurnCoroutine(CharacterStats player)
+    {
+        yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
+        UIManager.Instance.ShowPlayerOptions(player);
+    }
+
+    private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
+    {
+        yield return flavorTextUI.ShowTextCoroutine($"Enemy {enemy.characterName} is taking its turn...");
+
+        if (playerParty.Count > 0)
+        {
+            var target = playerParty[0];
+            var attack = enemy.attacks[0];
+            yield return CombatSystem.Instance.ExecuteAttack(enemy, target, attack);
+        }
+        else
+        {
+            EndTurn();
+        }
+    }
+
+
     public void EndTurn()
     {
+        if (!isBattleActive)
+        return;
         currentCharacterIndex++;
         StartTurn();
+    }
+
+    public void CheckWinLose()
+    {
+        bool allEnemiesDead = true;
+        foreach (var enemy in enemyParty)
+        {
+            if (enemy.currentHealth > 0)
+            {
+                allEnemiesDead = false;
+                break;
+            }
+        }
+
+        if (allEnemiesDead)
+        {
+            Debug.Log("Players Win!");
+            EndBattle(true);
+            return;
+        }
+
+        bool allPlayersDead = true;
+        foreach (var player in playerParty)
+        {
+            if (player.currentHealth > 0)
+            {
+                allPlayersDead = false;
+                break;
+            }
+        }
+
+        if (allPlayersDead)
+        {
+            Debug.Log("Players Lose!");
+            EndBattle(false);
+        }
+    }
+
+    private void EndBattle(bool playerWon)
+    {
+        if (playerWon)
+            Debug.Log("Victory screen here!");
+        else
+            Debug.Log("Defeat screen here!");
+
+        isBattleActive = false;
     }
 }

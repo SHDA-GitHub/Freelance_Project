@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +7,9 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject attackMenu;
     public GameObject itemMenu;
+
+    public MenuController attackMenuController;
+    public MenuController itemMenuController;
 
     private CharacterStats currentCharacter;
 
@@ -29,11 +31,15 @@ public class UIManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         attackMenu.SetActive(true);
+
+        attackMenuController.ShowAttackMenu(currentCharacter);
     }
 
     public void OnItemSelected()
     {
         mainMenu.SetActive(false);
         itemMenu.SetActive(true);
+
+        itemMenuController.ShowItemMenu(currentCharacter);
     }
 }

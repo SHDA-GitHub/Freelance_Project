@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatSystem : MonoBehaviour
 {
     public static CombatSystem Instance;
+    public FlavorTextUI flavorTextUI;
+    public CharacterStats playerAttacks;
 
     private void Awake()
     {
@@ -11,15 +14,25 @@ public class CombatSystem : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void ExecuteAttack(CharacterStats attacker, CharacterStats target, Attack attack)
+    public IEnumerator ExecuteAttack(CharacterStats attacker, CharacterStats target, Attack attack)
     {
-        if (attacker.currentPP < attack.powerCost) return;
-
+        if (attacker.currentPP < attack.powerCost)
+        {
+            yield break;
+        }
         attacker.currentPP -= attack.powerCost;
-        target.ReceiveDamage(attack.damage);
-
+        string message = !string.IsNullOrEmpty(attack.flavorText)
+            ? attack.flavorText
+            : $"{attacker.characterName} used {attack.attackName}!";
+        yield return flavorTextUI.ShowTextCoroutine(message);
         if (attack.attackSound != null)
             AudioSource.PlayClipAtPoint(attack.attackSound, target.transform.position);
+        target.ReceiveDamage(attack.damage);
+        yield return StartCoroutine(FlashDamageEffect(target));
+        yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!");
+        TurnManager.Instance.CheckWinLose();
+        yield return new WaitForSeconds(0.3f);
+        TurnManager.Instance.EndTurn();
     }
 
     public IEnumerator FlashDamageEffect(CharacterStats target)
@@ -30,6 +43,8 @@ public class CombatSystem : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             sr.color = new Color(1, 1, 1, 0);
+            yield return new WaitForSeconds(0.1f);
+            sr.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(0.1f);
             sr.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(0.1f);
