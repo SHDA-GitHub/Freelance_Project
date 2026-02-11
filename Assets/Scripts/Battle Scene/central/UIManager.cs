@@ -42,4 +42,11 @@ public class UIManager : MonoBehaviour
 
         itemMenuController.ShowItemMenu(currentCharacter);
     }
+
+    public void HideAllMenus()
+    {
+        mainMenu.SetActive(false);
+        attackMenu.SetActive(false);
+        itemMenu.SetActive(false);
+    }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Bite
+  m_Name: Bark
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  attackName: Bite
+  attackName: Bark
   powerCost: 0
-  damage: 2
+  damage: 0
   attackSound: {fileID: 8300000, guid: 2ff3db8b0c8fb4f4dbbafc3cb2a5e1e1, type: 3}
   consumable: 1
-  flavorText: The wild dog bit you!
+  flavorText: The wild dog barked at you
