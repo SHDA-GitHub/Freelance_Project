@@ -682,26 +682,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   currentTurn: 0
-  level1Enemies: []
-  level2Enemies: []
-  level3Enemies: []
-  level4Enemies: []
-  bossEnemies: []
+  enemyToSpawn: {fileID: 0}
   flavorTextUI: {fileID: 0}
   enemyAI: {fileID: 0}
-  playerStatusUI: {fileID: 0}
-  enemyStatusUI: {fileID: 0}
   fade: {fileID: 0}
   enemyPrefab: {fileID: 0}
   enemySpawnPoint: {fileID: 0}
   enemyMusicTrigger: {fileID: 0}
   enemyBackgroundTrigger: {fileID: 0}
-  playerAnimationController: {fileID: 0}
+  consecutiveEnemiesDefeated: 0
   playerCards: []
   playerStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  playerCooldowns: {}
+  enemyCooldowns: {}
+  turnCounter: 0
+  enemyTurnOffset: 1
   endPlayerTurnDelay: 1.75
   endEnemyTurnDelay: 1.75
+  divineTurnsRemaining: 0
+  holyBarrierTurnsRemaining: 0
+  blacksmithAnvilTurnsRemaining: 0
+  attackMultiplierPotionTurnsRemaining: 0
+  enemyHolyBarrierTurnsRemaining: 0
+  enemyBlacksmithAnvilTurnsRemaining: 0
+  enemyAttackMultiplierPotionTurnsRemaining: 0
+  enemyDivineTurnsRemaining: 0
+  isProcessingDeath: 0
+  gameIsOver: 0
+  playerAttackMultiplier: 1
+  playerAttackMultiplierActive: 0
+  enemyAttackMultiplier: 1
+  enemyAttackMultiplierActive: 0
+  playerDefenseMultiplier: 1
+  playerDefenseMultiplierActive: 0
+  enemyDefenseMultiplier: 1
+  enemyDefenseMultiplierActive: 0
+  playerRiposteActive: 0
+  enemyRiposteActive: 0
+  playerHolyBarrierActive: 0
+  enemyHolyBarrierActive: 0
+  playerCursedLinkActive: 0
+  enemyCursedLinkActive: 0
+  cursedLinkTurnsRemaining: 0
+  enemyCursedLinkTurnsRemaining: 0
+  riposteblock: 0.75
+  ripostereturn: 0.5
 --- !u!114 &506090852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1092,8 @@ MonoBehaviour:
   ghostBar: {fileID: 0}
   ppBar: {fileID: 0}
   ppGhostBar: {fileID: 0}
+  ghostTimer: 0
+  ppGhostTimer: 0
 --- !u!1 &882039385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1684,7 @@ MonoBehaviour:
   threeCardSlots: []
   fourCardSlots: []
   cardLibrary: {fileID: 0}
+  spawnedCards: []
 --- !u!114 &2117898097
 MonoBehaviour:
   m_ObjectHideFlags: 0
