@@ -46,8 +46,7 @@ public class MenuController : MonoBehaviour
             {
                 var target = TurnManager.Instance.enemyParty[0];
                 UIManager.Instance.HideAllMenus();
-                CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack);
-                TurnManager.Instance.EndTurn();
+                CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack));
             }
         );
     }
@@ -79,9 +78,8 @@ public class MenuController : MonoBehaviour
             {
                 var target = TurnManager.Instance.enemyParty[0];
                 UIManager.Instance.HideAllMenus();
-                CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack);
+                CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack));
                 Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, character);
-                TurnManager.Instance.EndTurn();
             }
         );
     }

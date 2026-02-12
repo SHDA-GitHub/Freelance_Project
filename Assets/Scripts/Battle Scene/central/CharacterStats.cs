@@ -27,7 +27,7 @@ public class CharacterStats : MonoBehaviour
         if (attacks.Count == 0) return;
 
         var attack = attacks[Random.Range(0, attacks.Count)];
-        CombatSystem.Instance.ExecuteAttack(this, TurnManager.Instance.playerParty[0], attack);
+        CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteAttack(this, TurnManager.Instance.playerParty[0], attack));
         TurnManager.Instance.EndTurn();
     }
 
