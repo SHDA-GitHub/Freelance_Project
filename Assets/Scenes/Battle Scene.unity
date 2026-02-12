@@ -1332,7 +1332,6 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
-  - {fileID: 2061152904}
   enemyParty:
   - {fileID: 211957934}
   isBattleActive: 1
@@ -3365,7 +3364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
