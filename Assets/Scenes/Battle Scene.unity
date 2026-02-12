@@ -1398,6 +1398,11 @@ MonoBehaviour:
   - {fileID: 211957934}
   isBattleActive: 1
   flavorTextUI: {fileID: 506090852}
+  musicSource: {fileID: 408731265}
+  audioManager: {fileID: 882039386}
+  victoryClip: {fileID: 8300000, guid: 8ad88572a54006647905321aee00450c, type: 3}
+  enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
+  fadeDuration: 1.5
 --- !u!114 &506090854
 MonoBehaviour:
   m_ObjectHideFlags: 0
