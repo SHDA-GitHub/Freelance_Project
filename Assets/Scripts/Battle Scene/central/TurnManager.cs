@@ -15,6 +15,12 @@ public class TurnManager : MonoBehaviour
 
     public FlavorTextUI flavorTextUI;
     private int currentCharacterIndex = 0;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource audioManager;
+    [SerializeField] private AudioClip victoryClip;
+    [SerializeField] private AudioClip enemyDeath;
+    [SerializeField] private float fadeDuration = 1.5f;
+
 
     private void Awake()
     {
@@ -125,8 +131,8 @@ public class TurnManager : MonoBehaviour
 
         if (allEnemiesDead)
         {
-            Debug.Log("Players Win!");
-            EndBattle(true);
+            isBattleActive = false;
+            StartCoroutine(HandleVictory());
             return;
         }
 
@@ -155,5 +161,45 @@ public class TurnManager : MonoBehaviour
             Debug.Log("Defeat screen here!");
 
         isBattleActive = false;
+    }
+
+    private IEnumerator HandleVictory()
+    {
+        isBattleActive = false;
+        foreach (var enemy in enemyParty)
+        {
+            if (enemy != null)
+                yield return StartCoroutine(FadeOutEnemy(enemy));
+        }
+        if (musicSource != null)
+            musicSource.Stop();
+        if (victoryClip != null && musicSource != null)
+        {
+            musicSource.clip = victoryClip;
+            musicSource.Play();
+        }
+        yield return flavorTextUI.ShowTextCoroutine("You won!");
+    }
+
+    private IEnumerator FadeOutEnemy(CharacterStats enemy)
+    {
+        SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
+        if (sr == null) yield break;
+        audioManager.clip = enemyDeath;
+        audioManager.Play();
+        float elapsed = 0f;
+        Color originalColor = sr.color;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+
+        enemy.gameObject.SetActive(false);
     }
 }
