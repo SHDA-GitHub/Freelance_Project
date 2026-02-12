@@ -31,12 +31,6 @@ public class CharacterStats : MonoBehaviour
         TurnManager.Instance.EndTurn();
     }
 
-    public void RemoveAttack(Attack attack, CharacterStats target)
-    {
-        if (attack.consumable)
-            attacks.Remove(attack);
-    }
-
     public void ReceiveDamage(int amount)
     {
         currentHealth -= amount;

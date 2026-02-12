@@ -35,6 +35,27 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.EndTurn();
     }
 
+    public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
+    {
+        if (attacker.currentPP < specAttack.powerCost)
+        {
+            yield break;
+        }
+        attacker.currentPP -= specAttack.powerCost;
+        string message = !string.IsNullOrEmpty(specAttack.flavorText)
+            ? specAttack.flavorText
+            : $"{attacker.characterName} used {specAttack.specAttackName}!";
+        yield return flavorTextUI.ShowTextCoroutine(message);
+        if (specAttack.attackSound != null)
+            AudioSource.PlayClipAtPoint(specAttack.attackSound, target.transform.position);
+        target.ReceiveDamage(specAttack.damage);
+        yield return StartCoroutine(FlashDamageEffect(target));
+        yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!");
+        TurnManager.Instance.CheckWinLose();
+        yield return new WaitForSeconds(0.3f);
+        TurnManager.Instance.EndTurn();
+    }
+
     public IEnumerator FlashDamageEffect(CharacterStats target)
     {
         SpriteRenderer sr = target.GetComponent<SpriteRenderer>();

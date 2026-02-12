@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Kick
-  m_EditorClassIdentifier: Assembly-CSharp::Attack
-  attackName: Kick
+  m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
+  m_Name: Shoe Throw
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
+  specAttackName: ShoeThrow
   powerCost: 1
-  damage: 2
+  damage: 3
   attackSound: {fileID: 8300000, guid: f0e3f1d8327c21645b80cf7fd149ff98, type: 3}
-  consumable: 1
-  flavorText: Cassie strikes the enemy with a kick
+  oneUse: 1
+  flavorText: Billy threw a brown boot at the enemy!

@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
     public List<Item> items = new List<Item>();
+    public List<SpecialAttack> specAttacks = new List<SpecialAttack>();
 
     private void Awake()
     {
@@ -31,5 +32,13 @@ public class Inventory : MonoBehaviour
 
         if (item.consumable)
             items.Remove(item);
+    }
+
+    public void UseSpecialAttack(SpecialAttack specAttack, CharacterStats target)
+    {
+        if (!specAttacks.Contains(specAttack)) return;
+
+        if (specAttack.oneUse)
+            specAttacks.Remove(specAttack);
     }
 }

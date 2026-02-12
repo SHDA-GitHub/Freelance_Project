@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -62,6 +63,24 @@ public class MenuController : MonoBehaviour
             {
                 UIManager.Instance.HideAllMenus();
                 Inventory.Instance.UseItem(item as Item, character);
+                TurnManager.Instance.EndTurn();
+            }
+        );
+    }
+
+    public MenuController specAttackMenuController;
+
+    public void ShowSpecialAttackMenu(CharacterStats player)
+    {
+        specAttackMenuController.ShowMenu<SpecialAttack>(
+            Inventory.Instance.specAttacks,
+            player,
+            (character, specAttack) =>
+            {
+                var target = TurnManager.Instance.enemyParty[0];
+                UIManager.Instance.HideAllMenus();
+                CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack);
+                Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, character);
                 TurnManager.Instance.EndTurn();
             }
         );

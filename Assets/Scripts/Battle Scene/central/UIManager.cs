@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject attackMenu;
     public GameObject itemMenu;
+    public GameObject specialMenu;
 
     public MenuController attackMenuController;
     public MenuController itemMenuController;
+    public MenuController specialAttackMenuController;
 
     private CharacterStats currentCharacter;
 
@@ -43,10 +45,19 @@ public class UIManager : MonoBehaviour
         itemMenuController.ShowItemMenu(currentCharacter);
     }
 
+    public void OnSpecSelected()
+    {
+        mainMenu.SetActive(false);
+        specialMenu.SetActive(true);
+
+        specialAttackMenuController.ShowSpecialAttackMenu(currentCharacter);
+    }
+
     public void HideAllMenus()
     {
         mainMenu.SetActive(false);
         attackMenu.SetActive(false);
         itemMenu.SetActive(false);
+        specialMenu.SetActive(false);
     }
 }
