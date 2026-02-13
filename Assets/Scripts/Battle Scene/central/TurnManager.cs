@@ -171,9 +171,9 @@ public class TurnManager : MonoBehaviour
             if (enemy != null)
                 yield return StartCoroutine(FadeOutEnemy(enemy));
         }
-        if (audioManager != null)
-            audioManager.Stop();
-        if (victoryClip != null && musicSource != null)
+        if (musicSource != null)
+            musicSource.Stop();
+        if (victoryClip != null && audioManager != null)
         {
             audioManager.clip = victoryClip;
             audioManager.Play();

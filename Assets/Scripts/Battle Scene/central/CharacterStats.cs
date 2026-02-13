@@ -12,6 +12,9 @@ public class CharacterStats : MonoBehaviour
     public int level;
     public int currentEXP;
 
+    [Header("Enemy Only")]
+    public EnemyLoadout enemyLoadout;
+
     public List<Attack> attacks;
 
     public void StartTurn()
@@ -24,10 +27,25 @@ public class CharacterStats : MonoBehaviour
 
     void PerformEnemyAction()
     {
-        if (attacks.Count == 0) return;
+        if (enemyLoadout == null)
+        {
+            Debug.LogWarning($"{characterName} has no EnemyLoadout assigned!");
+            return;
+        }
 
-        var attack = attacks[Random.Range(0, attacks.Count)];
-        CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteAttack(this, TurnManager.Instance.playerParty[0], attack));
+        Attack attack = enemyLoadout.GetRandomAttack();
+
+        if (attack == null)
+            return;
+
+        CombatSystem.Instance.StartCoroutine(
+            CombatSystem.Instance.ExecuteAttack(
+                this,
+                TurnManager.Instance.playerParty[0],
+                attack
+            )
+        );
+
         TurnManager.Instance.EndTurn();
     }
 

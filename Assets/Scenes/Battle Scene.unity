@@ -561,8 +561,8 @@ MonoBehaviour:
   currentPP: 1
   level: 1
   currentEXP: 0
-  attacks:
-  - {fileID: 11400000, guid: 5c43c5661390a2a4f87267c83b75a0dd, type: 2}
+  enemyLoadout: {fileID: 11400000, guid: 0e9e3826f3f42344cacc85650ad079b4, type: 2}
+  attacks: []
 --- !u!1 &246392018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1394,7 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
+  - {fileID: 2061152904}
   enemyParty:
   - {fileID: 211957934}
   isBattleActive: 1
@@ -1493,7 +1494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PP:'
+  m_text: 'PP: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1629,7 +1630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP:'
+  m_text: 'HP: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1957,6 +1958,7 @@ MonoBehaviour:
   currentPP: 5
   level: 1
   currentEXP: 0
+  enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
 --- !u!1 &882039385
@@ -3023,7 +3025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.9, y: -1}
+  m_AnchoredPosition: {x: -24.9, y: -27}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533117251
@@ -3432,7 +3434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.9, y: -27}
+  m_AnchoredPosition: {x: -24.9, y: -1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854574070
@@ -3834,7 +3836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3854,6 +3856,7 @@ MonoBehaviour:
   currentPP: 5
   level: 1
   currentEXP: 0
+  enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
 --- !u!212 &2061152905
