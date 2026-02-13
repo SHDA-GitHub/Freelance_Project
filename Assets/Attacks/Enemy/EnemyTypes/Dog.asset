@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
   m_Name: Dog
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
-  enemyName: Dog
+  enemyName: Wild Dog
   attackSlots:
   - {fileID: 11400000, guid: 5c43c5661390a2a4f87267c83b75a0dd, type: 2}
   - {fileID: 11400000, guid: 19efe7cc7904a6940b13f49c08be798f, type: 2}

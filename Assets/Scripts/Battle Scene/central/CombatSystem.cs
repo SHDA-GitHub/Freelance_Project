@@ -29,7 +29,8 @@ public class CombatSystem : MonoBehaviour
             AudioSource.PlayClipAtPoint(attack.attackSound, target.transform.position);
         target.ReceiveDamage(attack.damage);
         yield return StartCoroutine(FlashDamageEffect(target));
-        yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!");
+        if (attack.damage > 0)
+        { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
         TurnManager.Instance.EndTurn();

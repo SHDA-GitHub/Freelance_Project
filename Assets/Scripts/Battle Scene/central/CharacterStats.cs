@@ -45,8 +45,6 @@ public class CharacterStats : MonoBehaviour
                 attack
             )
         );
-
-        TurnManager.Instance.EndTurn();
     }
 
     public void ReceiveDamage(int amount)
