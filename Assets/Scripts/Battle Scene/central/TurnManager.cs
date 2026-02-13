@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
     public List<CharacterStats> enemyParty = new List<CharacterStats>();
     public bool isBattleActive = true;
 
+    public BattleHUD battleHUD;
     public FlavorTextUI flavorTextUI;
     private int currentCharacterIndex = 0;
     [SerializeField] private AudioSource musicSource;
@@ -88,6 +89,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator PlayerTurnCoroutine(CharacterStats player)
     {
+        battleHUD.SetCharacter(player);
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
         UIManager.Instance.ShowPlayerOptions(player);
     }

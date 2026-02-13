@@ -21,6 +21,7 @@ public class CombatSystem : MonoBehaviour
             yield break;
         }
         attacker.currentPP -= attack.powerCost;
+        TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(attack.flavorText)
             ? attack.flavorText
             : $"{attacker.characterName} used {attack.attackName}!";
@@ -28,6 +29,7 @@ public class CombatSystem : MonoBehaviour
         if (attack.attackSound != null)
             AudioSource.PlayClipAtPoint(attack.attackSound, target.transform.position);
         target.ReceiveDamage(attack.damage);
+        TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
@@ -43,6 +45,7 @@ public class CombatSystem : MonoBehaviour
             yield break;
         }
         attacker.currentPP -= specAttack.powerCost;
+        TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(specAttack.flavorText)
             ? specAttack.flavorText
             : $"{attacker.characterName} used {specAttack.specAttackName}!";
@@ -50,6 +53,7 @@ public class CombatSystem : MonoBehaviour
         if (specAttack.attackSound != null)
             AudioSource.PlayClipAtPoint(specAttack.attackSound, target.transform.position);
         target.ReceiveDamage(specAttack.damage);
+        TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!");
         TurnManager.Instance.CheckWinLose();
