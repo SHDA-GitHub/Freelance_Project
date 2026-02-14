@@ -37,6 +37,12 @@ public class UIManager : MonoBehaviour
         attackMenuController.ShowAttackMenu(currentCharacter);
     }
 
+    public void OnAttackCanceled()
+    {
+        mainMenu.SetActive(true);
+        attackMenu.SetActive(false);
+    }
+
     public void OnItemSelected()
     {
         mainMenu.SetActive(false);
@@ -45,12 +51,24 @@ public class UIManager : MonoBehaviour
         itemMenuController.ShowItemMenu(currentCharacter);
     }
 
+    public void OnItemCanceled()
+    {
+        mainMenu.SetActive(true);
+        itemMenu.SetActive(false);
+    }
+
     public void OnSpecSelected()
     {
         mainMenu.SetActive(false);
         specialMenu.SetActive(true);
 
         specialAttackMenuController.ShowSpecialAttackMenu(currentCharacter);
+    }
+
+    public void OnSpecCanceled()
+    {
+        mainMenu.SetActive(true);
+        specialMenu.SetActive(false);
     }
 
     public void HideAllMenus()
