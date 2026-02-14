@@ -54,7 +54,6 @@ public class CombatSystem : MonoBehaviour
             AudioSource.PlayClipAtPoint(specAttack.attackSound, target.transform.position);
         target.ReceiveDamage(specAttack.damage);
         TurnManager.Instance.battleHUD.UpdateHUD();
-        yield return StartCoroutine(FlashDamageEffect(target));
         yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!");
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);

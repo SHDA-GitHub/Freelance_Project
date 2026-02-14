@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public enum TurnType { Player, Enemy }
 
@@ -12,6 +14,7 @@ public class TurnManager : MonoBehaviour
     public List<CharacterStats> playerParty = new List<CharacterStats>();
     public List<CharacterStats> enemyParty = new List<CharacterStats>();
     public bool isBattleActive = true;
+    private Controls controls;
 
     public BattleHUD battleHUD;
     public FlavorTextUI flavorTextUI;
@@ -20,13 +23,20 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private AudioSource audioManager;
     [SerializeField] private AudioClip victoryClip;
     [SerializeField] private AudioClip enemyDeath;
+    private int currentTargetIndex = 0;
+    private bool isSelectingTarget = false;
+    private Coroutine targetFlickerCoroutine;
     [SerializeField] private float fadeDuration = 1.5f;
+    private CharacterStats lastTarget;
 
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        controls = new Controls();
+        controls.UI.Enable();
     }
 
     private void Start()
@@ -123,6 +133,129 @@ public class TurnManager : MonoBehaviour
         return;
         currentCharacterIndex++;
         StartTurn();
+    }
+    public void StartTargetSelection(System.Action<CharacterStats> onTargetConfirmed)
+    {
+        if (enemyParty.Count == 0) return;
+
+        isSelectingTarget = true;
+        currentTargetIndex = GetNextAliveEnemyIndex(0);
+
+        StartCoroutine(TargetSelectionRoutine(onTargetConfirmed));
+    }
+
+    private int GetNextAliveEnemyIndex(int startIndex)
+    {
+        if (enemyParty.Count == 0)
+            return -1;
+
+        int count = enemyParty.Count;
+
+        startIndex = (startIndex % count + count) % count;
+
+        for (int i = 0; i < count; i++)
+        {
+            int index = (startIndex + i) % count;
+
+            if (enemyParty[index] != null && enemyParty[index].currentHealth > 0)
+                return index;
+        }
+
+        return -1;
+    }
+
+    private IEnumerator TargetSelectionRoutine(System.Action<CharacterStats> onTargetConfirmed)
+    {
+        while (isSelectingTarget)
+        {
+            if (currentTargetIndex < 0 || currentTargetIndex >= enemyParty.Count)
+                yield break;
+
+            CharacterStats currentTarget = enemyParty[currentTargetIndex];
+
+            if (currentTarget != lastTarget)
+            {
+                flavorTextUI.ShowImmediateText($"Target: {currentTarget.characterName}");
+
+                if (lastTarget != null)
+                {
+                    SpriteRenderer oldSR = lastTarget.GetComponent<SpriteRenderer>();
+                    if (oldSR != null)
+                        oldSR.color = Color.white;
+                }
+
+                if (targetFlickerCoroutine != null)
+                    StopCoroutine(targetFlickerCoroutine);
+
+                targetFlickerCoroutine = StartCoroutine(FlickerSprite(currentTarget));
+
+                lastTarget = currentTarget;
+
+            }
+
+            if (controls.UI.Navigate.triggered)
+            {
+                Vector2 input = controls.UI.Navigate.ReadValue<Vector2>();
+
+                if (input.x > 0)
+                    currentTargetIndex = GetNextAliveEnemyIndex(currentTargetIndex + 1);
+
+                if (input.x < 0)
+                    currentTargetIndex = GetNextAliveEnemyIndex(currentTargetIndex - 1);
+            }
+
+            if (controls.UI.Submit.triggered)
+            {
+                isSelectingTarget = false;
+
+                if (targetFlickerCoroutine != null)
+                    StopCoroutine(targetFlickerCoroutine);
+                    ResetTargetVisual();
+
+                onTargetConfirmed?.Invoke(currentTarget);
+                yield break;
+            }
+
+            if (controls.UI.Cancel.triggered)
+            {
+                isSelectingTarget = false;
+
+                if (targetFlickerCoroutine != null)
+                    StopCoroutine(targetFlickerCoroutine);
+                    ResetTargetVisual();
+
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+    private IEnumerator FlickerSprite(CharacterStats target)
+    {
+        SpriteRenderer sr = target.GetComponent<SpriteRenderer>();
+        if (sr == null) yield break;
+
+        Color originalColor = sr.color;
+
+        while (true)
+        {
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+            yield return new WaitForSeconds(0.6f);
+
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+            yield return new WaitForSeconds(0.7f);
+        }
+    }
+    private void ResetTargetVisual()
+    {
+        if (lastTarget != null)
+        {
+            SpriteRenderer sr = lastTarget.GetComponent<SpriteRenderer>();
+            if (sr != null)
+                sr.color = Color.white;
+        }
+
+        lastTarget = null;
     }
 
     public void CheckWinLose()

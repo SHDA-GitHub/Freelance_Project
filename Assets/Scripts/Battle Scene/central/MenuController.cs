@@ -9,7 +9,11 @@ public class MenuController : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform buttonContainer;
 
-    public void ShowMenu<T>(List<T> actions, CharacterStats currentCharacter, System.Action<CharacterStats, T> onClickCallback)
+    public void ShowMenu<T>(
+        List<T> actions,
+        CharacterStats currentCharacter,
+        System.Action<CharacterStats, T> onClickCallback,
+        bool closeOnClick = true)
     where T : ScriptableObject
     {
         foreach (Transform child in buttonContainer)
@@ -23,7 +27,9 @@ public class MenuController : MonoBehaviour
                 actionButton.Setup(action, (a) =>
                 {
                     onClickCallback?.Invoke(currentCharacter, a as T);
-                    gameObject.SetActive(false);
+                    if (closeOnClick)
+                        gameObject.SetActive(false);
+
                 });
             }
             gameObject.SetActive(true);
@@ -44,10 +50,15 @@ public class MenuController : MonoBehaviour
             player,
             (character, attack) =>
             {
-                var target = TurnManager.Instance.enemyParty[0];
-                UIManager.Instance.HideAllMenus();
-                CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack));
-            }
+
+                TurnManager.Instance.StartTargetSelection((target) =>
+                {
+                    UIManager.Instance.HideAllMenus();
+
+                    StartCoroutine(CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack));
+                });
+            },
+            closeOnClick: false
         );
     }
 
@@ -76,11 +87,17 @@ public class MenuController : MonoBehaviour
             player,
             (character, specAttack) =>
             {
-                var target = TurnManager.Instance.enemyParty[0];
                 UIManager.Instance.HideAllMenus();
-                CombatSystem.Instance.StartCoroutine(CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack));
+
+                TurnManager.Instance.StartTargetSelection((target) =>
+                {
+                    StartCoroutine(
+                        CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack)
+                    );
+                });
                 Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, character);
-            }
+            },
+            closeOnClick: false
         );
     }
 }

@@ -1,6 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEditor.Rendering;
+using UnityEngine;
 
 public class FlavorTextUI : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class FlavorTextUI : MonoBehaviour
         text.text = "";
         typingCoroutine = StartCoroutine(TypeText(message));
         yield return typingCoroutine;
+    }
+
+    public void ShowImmediateText(string message)
+    {
+        StopAllCoroutines();
+        text.text = message;
     }
 
     private IEnumerator TypeText(string message)
