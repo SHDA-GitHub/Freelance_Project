@@ -33,6 +33,9 @@ public class CombatSystem : MonoBehaviour
         yield return StartCoroutine(FlashDamageEffect(target));
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
+        if (target.currentHealth <= 0)
+        { yield return TurnManager.Instance.HandleEnemyDeath(target); }
+        TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
         TurnManager.Instance.EndTurn();
@@ -54,7 +57,12 @@ public class CombatSystem : MonoBehaviour
             AudioSource.PlayClipAtPoint(specAttack.attackSound, target.transform.position);
         target.ReceiveDamage(specAttack.damage);
         TurnManager.Instance.battleHUD.UpdateHUD();
-        yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!");
+        yield return StartCoroutine(FlashDamageEffect(target));
+        if (specAttack.damage > 0)
+        { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
+        if (target.currentHealth <= 0)
+        { yield return TurnManager.Instance.HandleEnemyDeath(target); }
+        TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
         TurnManager.Instance.EndTurn();

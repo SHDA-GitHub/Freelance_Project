@@ -343,4 +343,20 @@ public class TurnManager : MonoBehaviour
 
         enemy.gameObject.SetActive(false);
     }
+
+    public IEnumerator HandleEnemyDeath(CharacterStats enemy)
+    {
+        if (enemyParty.Contains(enemy))
+        {
+            yield return StartCoroutine(FadeOutEnemy(enemy));
+            enemyParty.Remove(enemy);
+
+            if (currentTurn == TurnType.Enemy)
+            {
+                currentCharacterIndex--;
+            }
+
+            CheckWinLose();
+        }
+    }
 }

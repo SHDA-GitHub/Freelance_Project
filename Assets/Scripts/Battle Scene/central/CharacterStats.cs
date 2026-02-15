@@ -51,13 +51,11 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
-        StartCoroutine(CombatSystem.Instance.FlashDamageEffect(this));
     }
 
     public void ApplyOvertimeDamage(int damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
-        StartCoroutine(CombatSystem.Instance.FlashDamageEffect(this));
     }
 }
