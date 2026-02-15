@@ -27,7 +27,7 @@ public class CombatSystem : MonoBehaviour
             : $"{attacker.characterName} used {attack.attackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (attack.attackSound != null)
-            AudioSource.PlayClipAtPoint(attack.attackSound, target.transform.position);
+        AudioManager.Instance.PlaySFX(attack.attackSound);
         target.ReceiveDamage(attack.damage);
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
@@ -54,7 +54,7 @@ public class CombatSystem : MonoBehaviour
             : $"{attacker.characterName} used {specAttack.specAttackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (specAttack.attackSound != null)
-            AudioSource.PlayClipAtPoint(specAttack.attackSound, target.transform.position);
+        AudioManager.Instance.PlaySFX(specAttack.attackSound);
         target.ReceiveDamage(specAttack.damage);
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
