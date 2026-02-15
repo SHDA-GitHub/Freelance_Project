@@ -13,11 +13,14 @@ public class FlavorTextUI : MonoBehaviour
 
     public IEnumerator ShowTextCoroutine(string message)
     {
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
 
         text.text = "";
+
         typingCoroutine = StartCoroutine(TypeText(message));
-        yield return typingCoroutine;
+
+        yield return new WaitUntil(() => typingCoroutine == null);
     }
 
     public void ShowImmediateText(string message)

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class Item : ScriptableObject
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
+    public FlavorTextUI flavorTextUI;
     public List<Item> items = new List<Item>();
     public List<SpecialAttack> specAttacks = new List<SpecialAttack>();
 
@@ -22,16 +24,6 @@ public class Inventory : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-    }
-
-    public void UseItem(Item item, CharacterStats target)
-    {
-        if (!items.Contains(item)) return;
-
-        target.currentHealth = Mathf.Min(target.currentHealth + item.healAmount, target.maxHealth);
-
-        if (item.consumable)
-            items.Remove(item);
     }
 
     public void UseSpecialAttack(SpecialAttack specAttack, CharacterStats target)

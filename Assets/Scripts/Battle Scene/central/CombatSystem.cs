@@ -68,6 +68,29 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.EndTurn();
     }
 
+    public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)
+    {
+        if (!Inventory.Instance.items.Contains(item))
+            yield break;
+        string message = !string.IsNullOrEmpty(item.flavorText)
+            ? item.flavorText
+            : $"{user.characterName} used {item.itemName}!";
+        yield return flavorTextUI.ShowTextCoroutine(message);
+        if (item.itemSound != null)
+            AudioManager.Instance.PlaySFX(item.itemSound);
+        target.currentHealth = Mathf.Min(target.currentHealth + item.healAmount, target.maxHealth);
+        yield return new WaitForSeconds(0.75f);
+        TurnManager.Instance.battleHUD.UpdateHUD();
+        if (item.healAmount > 0)
+            yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} recovered {item.healAmount} HP!");
+        if (item.consumable)
+            Inventory.Instance.items.Remove(item);
+
+        yield return new WaitForSeconds(0.3f);
+
+        TurnManager.Instance.EndTurn();
+    }
+
     public IEnumerator FlashDamageEffect(CharacterStats target)
     {
         SpriteRenderer sr = target.GetComponent<SpriteRenderer>();

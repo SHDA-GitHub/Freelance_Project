@@ -72,9 +72,12 @@ public class MenuController : MonoBehaviour
             (character, item) =>
             {
                 UIManager.Instance.HideAllMenus();
-                Inventory.Instance.UseItem(item as Item, character);
-                TurnManager.Instance.EndTurn();
-            }
+
+                StartCoroutine(
+                    CombatSystem.Instance.ExecuteItem(character, character, item as Item)
+                );
+            },
+            closeOnClick: false
         );
     }
 

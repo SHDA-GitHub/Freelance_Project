@@ -3224,6 +3224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d62636a09b87248b6a8ed418ca4cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  flavorTextUI: {fileID: 506090852}
   items:
   - {fileID: 11400000, guid: 9444a17cba3552946a92898edbecdf2c, type: 2}
   specAttacks:
