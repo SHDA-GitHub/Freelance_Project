@@ -47,17 +47,61 @@ public class TurnManager : MonoBehaviour
     {
         if (enemyParty.Count > 0)
         {
-            string[] encounterMessages = {
+            string message = "";
+
+            if (enemyParty.Count == 1)
+            {
+                string[] encounterMessages =
+                {
                 "{0} has appeared",
                 "{0} blocks your path",
                 "{0} approaches you",
                 "You encountered {0}"
             };
 
-            string message = string.Format(
-                encounterMessages[Random.Range(0, encounterMessages.Length)],
-                enemyParty[0].characterName
-            );
+                message = string.Format(
+                    encounterMessages[Random.Range(0, encounterMessages.Length)],
+                    enemyParty[0].characterName
+                );
+            }
+
+            else if (enemyParty.Count == 2)
+            {
+                CharacterStats randomEnemy = enemyParty[Random.Range(0, enemyParty.Count)];
+
+                string[] twoEnemyMessages =
+                {
+                "You confront {0} and its cohort",
+                "You encounter {0} and its cohort",
+                "{0} and its cohort block your path",
+                "{0} stands before you with its cohort"
+            };
+
+                message = string.Format(
+                    twoEnemyMessages[Random.Range(0, twoEnemyMessages.Length)],
+                    randomEnemy.characterName
+                );
+            }
+
+            else if (enemyParty.Count >= 3)
+            {
+                CharacterStats randomEnemy = enemyParty[Random.Range(0, enemyParty.Count)];
+
+                string[] multiEnemyMessages =
+                {
+                "You confront {0} and co.",
+                "You encounter {0} and co.",
+                "You confront {0} and its cohorts",
+                "You encounter {0} and its cohorts",
+                "{0} leads its cohorts into battle",
+                "{0} and its cohorts surround you"
+            };
+
+                message = string.Format(
+                    multiEnemyMessages[Random.Range(0, multiEnemyMessages.Length)],
+                    randomEnemy.characterName
+                );
+            }
 
             yield return flavorTextUI.ShowTextCoroutine(message);
             yield return new WaitForSeconds(0.5f);
