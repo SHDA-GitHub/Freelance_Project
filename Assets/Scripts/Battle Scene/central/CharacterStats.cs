@@ -58,4 +58,5 @@ public class CharacterStats : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
     }
+
 }

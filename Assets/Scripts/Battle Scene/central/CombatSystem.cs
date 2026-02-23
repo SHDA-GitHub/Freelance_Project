@@ -46,7 +46,10 @@ public class CombatSystem : MonoBehaviour
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
         if (target.currentHealth <= 0)
-        { yield return TurnManager.Instance.HandleEnemyDeath(target); }
+        {
+            yield return TurnManager.Instance.HandleEnemyDeath(target);
+            yield return TurnManager.Instance.HandlePlayerDeath(target);
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
@@ -73,7 +76,9 @@ public class CombatSystem : MonoBehaviour
         if (specAttack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
         if (target.currentHealth <= 0)
-        { yield return TurnManager.Instance.HandleEnemyDeath(target); }
+        { yield return TurnManager.Instance.HandleEnemyDeath(target);
+          yield return TurnManager.Instance.HandlePlayerDeath(target);
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);

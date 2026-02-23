@@ -24,6 +24,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private AudioClip victoryClip;
     [SerializeField] private AudioClip cancelSound;
     [SerializeField] private AudioClip enemyDeath;
+    [SerializeField] private AudioClip playerDeath;
     private int currentTargetIndex = 0;
     private bool isSelectingTarget = false;
     private Coroutine targetFlickerCoroutine;
@@ -125,6 +126,14 @@ public class TurnManager : MonoBehaviour
             }
 
             var character = playerParty[currentCharacterIndex];
+
+            if (character.currentHealth <= 0)
+            {
+                currentCharacterIndex++;
+                StartTurn();
+                return;
+            }
+
             StartCoroutine(PlayerTurnCoroutine(character));
         }
         else
@@ -371,6 +380,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator FadeOutEnemy(CharacterStats enemy)
     {
+        yield return flavorTextUI.ShowTextCoroutine($"{enemy.characterName} has been defeated!");
         SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
         if (sr == null) yield break;
         audioManager.clip = enemyDeath;
@@ -389,6 +399,16 @@ public class TurnManager : MonoBehaviour
         sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
 
         enemy.gameObject.SetActive(false);
+    }
+
+    public IEnumerator HandlePlayerDeath(CharacterStats player)
+    {
+        if (playerParty.Contains(player))
+        {
+            yield return flavorTextUI.ShowTextCoroutine($"{player.characterName} has been knocked out!");
+            audioManager.clip = playerDeath;
+            audioManager.Play();
+        }
     }
 
     public void CancelTargetSelection()
