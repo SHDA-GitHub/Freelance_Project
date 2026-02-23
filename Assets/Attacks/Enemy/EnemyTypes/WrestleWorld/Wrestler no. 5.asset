@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
   m_Name: Wrestler no. 5
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
-  enemyName: Wrestler no. 2
+  enemyName: Wrestler no. 5
   attackSlots: []
