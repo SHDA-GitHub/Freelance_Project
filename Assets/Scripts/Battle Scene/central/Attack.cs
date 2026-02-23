@@ -7,6 +7,5 @@ public class Attack : ScriptableObject
     public int powerCost;
     public int damage;
     public AudioClip attackSound;
-    public bool consumable = true;
     [TextArea] public string flavorText;
 }
