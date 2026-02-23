@@ -1328,7 +1328,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatSystem
   flavorTextUI: {fileID: 506090852}
+  statusEffectGain: {fileID: 8300000, guid: 7e54cf22e8890dc4bad2e92fcaad1e49, type: 3}
+  audioManager: {fileID: 882039389}
   playerAttacks: {fileID: 879654192}
+  battleCamera: {fileID: 1658588352}
+  shakeAmount: 0.4
+  shakeDuration: 0.4
+  shakeSpeed: 0.02
 --- !u!114 &506090856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,6 +1503,8 @@ MonoBehaviour:
   currentEXP: 0
   enemyLoadout: {fileID: 11400000, guid: 16a894a0961c6e34788a4a6daa3fd8c1, type: 2}
   attacks: []
+  activeStatusEffects: []
+  overtimeDamage: 2
 --- !u!61 &534052352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2185,6 +2193,8 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
   - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
+  activeStatusEffects: []
+  overtimeDamage: 2
 --- !u!82 &879654193
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3521,7 +3531,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4224,6 +4234,8 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
   - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
+  activeStatusEffects: []
+  overtimeDamage: 2
 --- !u!212 &2061152905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4554,6 +4566,8 @@ MonoBehaviour:
   currentEXP: 0
   enemyLoadout: {fileID: 11400000, guid: 0e9e3826f3f42344cacc85650ad079b4, type: 2}
   attacks: []
+  activeStatusEffects: []
+  overtimeDamage: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

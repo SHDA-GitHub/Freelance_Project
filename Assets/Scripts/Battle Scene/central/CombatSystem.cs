@@ -6,7 +6,17 @@ public class CombatSystem : MonoBehaviour
 {
     public static CombatSystem Instance;
     public FlavorTextUI flavorTextUI;
+    [SerializeField] private AudioClip statusEffectGain;
+    [SerializeField] private AudioSource audioManager;
     public CharacterStats playerAttacks;
+
+    [Header("Camera Shake")]
+    [SerializeField] private Transform battleCamera;
+    [SerializeField] private float shakeAmount = 1f;
+    [SerializeField] private float shakeDuration = 0.2f;
+    [SerializeField] private float shakeSpeed = 0.02f;
+
+    private Vector3 originalCameraPosition;
 
     private void Awake()
     {
@@ -41,6 +51,10 @@ public class CombatSystem : MonoBehaviour
         if (attack.attackSound != null)
         AudioManager.Instance.PlaySFX(attack.attackSound);
         target.ReceiveDamage(attack.damage);
+        if (TurnManager.Instance.playerParty.Contains(target))
+        {
+            StartCoroutine(ShakeCamera());
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         if (attack.damage > 0)
@@ -49,6 +63,21 @@ public class CombatSystem : MonoBehaviour
         {
             yield return TurnManager.Instance.HandleEnemyDeath(target);
             yield return TurnManager.Instance.HandlePlayerDeath(target);
+        }
+        if (attack.statusEffect != StatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < attack.statusChance)
+            {
+                target.ApplyStatus(attack.statusEffect, attack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is now {attack.statusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
@@ -71,6 +100,10 @@ public class CombatSystem : MonoBehaviour
         if (specAttack.attackSound != null)
         AudioManager.Instance.PlaySFX(specAttack.attackSound);
         target.ReceiveDamage(specAttack.damage);
+        if (TurnManager.Instance.playerParty.Contains(target) || specAttack.specialAttackCamShake)
+        {
+            StartCoroutine(ShakeCamera());
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         if (specAttack.damage > 0)
@@ -78,6 +111,21 @@ public class CombatSystem : MonoBehaviour
         if (target.currentHealth <= 0)
         { yield return TurnManager.Instance.HandleEnemyDeath(target);
           yield return TurnManager.Instance.HandlePlayerDeath(target);
+        }
+        if (specAttack.statusEffect != StatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < specAttack.statusChance)
+            {
+                target.ApplyStatus(specAttack.statusEffect, specAttack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is now {specAttack.statusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
@@ -130,5 +178,30 @@ public class CombatSystem : MonoBehaviour
             sr.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public IEnumerator ShakeCamera()
+    {
+        if (battleCamera == null)
+            yield break;
+
+        originalCameraPosition = battleCamera.localPosition;
+
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetY = Random.Range(-shakeAmount, shakeAmount);
+            battleCamera.localPosition = new Vector3(
+                originalCameraPosition.x,
+                originalCameraPosition.y + offsetY,
+                originalCameraPosition.z
+            );
+
+            elapsed += shakeSpeed;
+            yield return new WaitForSeconds(shakeSpeed);
+        }
+
+        battleCamera.localPosition = originalCameraPosition;
     }
 }
