@@ -84,9 +84,17 @@ public class CombatSystem : MonoBehaviour
     {
         if (!Inventory.Instance.items.Contains(item))
             yield break;
-        string message = !string.IsNullOrEmpty(item.flavorText)
-            ? FormatFlavorText(item.flavorText, user, target, item.itemName, item.healAmount)
-            : $"{user.characterName} used {item.itemName}!";
+        string message;
+        if (user != target && TurnManager.Instance.playerParty.Contains(target))
+        {
+            message = $"{user.characterName} used {item.itemName} on {target.characterName}!";
+        }
+        else
+        {
+            message = !string.IsNullOrEmpty(item.flavorText)
+                ? FormatFlavorText(item.flavorText, user, target, item.itemName, item.healAmount)
+                : $"{user.characterName} used {item.itemName}!";
+        }
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (item.itemSound != null)
             AudioManager.Instance.PlaySFX(item.itemSound);
