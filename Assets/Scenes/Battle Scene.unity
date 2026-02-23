@@ -2182,6 +2182,7 @@ MonoBehaviour:
   enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
+  - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
 --- !u!82 &879654193
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4130,6 +4131,7 @@ MonoBehaviour:
   enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
+  - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
 --- !u!212 &2061152905
 SpriteRenderer:
   m_ObjectHideFlags: 0

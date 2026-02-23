@@ -50,6 +50,7 @@ public class MenuController : MonoBehaviour
             player,
             (character, attack) =>
             {
+                UIManager.Instance.HideAllMenus();
 
                 TurnManager.Instance.StartTargetSelection((target) =>
                 {
