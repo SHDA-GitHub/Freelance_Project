@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Drunk
+  characterName: The Drunk
   maxHealth: 10
   currentHealth: 10
   maxPP: 1
@@ -2984,6 +2984,7 @@ MonoBehaviour:
   specAttacks:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
+  - {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
