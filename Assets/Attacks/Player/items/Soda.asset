@@ -16,4 +16,4 @@ MonoBehaviour:
   healAmount: 2
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   consumable: 1
-  flavorText: Billy drank a can of soda
+  flavorText: '{attacker} drank a can of {action}'

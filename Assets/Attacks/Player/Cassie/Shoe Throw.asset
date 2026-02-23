@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 3
   attackSound: {fileID: 8300000, guid: f0e3f1d8327c21645b80cf7fd149ff98, type: 3}
   oneUse: 1
-  flavorText: Cassie threw a ballet shoe at the enemy!
+  flavorText: '{attacker} threw a ballet shoe at {target}!'

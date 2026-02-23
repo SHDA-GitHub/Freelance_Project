@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 2
   attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
   consumable: 0
-  flavorText: Billy strikes the enemy with a punch
+  flavorText: '{attacker} strikes {target} with a punch'

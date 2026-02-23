@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   attackName: Puke
   powerCost: 0
-  damage: 1
+  damage: 2
   attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
   consumable: 0
-  flavorText: The drunken man barfed all over!
+  flavorText: '{attacker} barfed all over {target}!'

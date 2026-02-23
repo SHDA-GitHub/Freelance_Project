@@ -14,6 +14,18 @@ public class CombatSystem : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private string FormatFlavorText(string template, CharacterStats attacker, CharacterStats target, string actionName, int damage = 0)
+    {
+        if (string.IsNullOrEmpty(template))
+            return "";
+
+        return template
+            .Replace("{attacker}", attacker.characterName)
+            .Replace("{target}", target.characterName)
+            .Replace("{action}", actionName)
+            .Replace("{damage}", damage.ToString());
+    }
+
     public IEnumerator ExecuteAttack(CharacterStats attacker, CharacterStats target, Attack attack)
     {
         if (attacker.currentPP < attack.powerCost)
@@ -23,7 +35,7 @@ public class CombatSystem : MonoBehaviour
         attacker.currentPP -= attack.powerCost;
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(attack.flavorText)
-            ? attack.flavorText
+            ? FormatFlavorText(attack.flavorText, attacker, target, attack.attackName, attack.damage)
             : $"{attacker.characterName} used {attack.attackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (attack.attackSound != null)
@@ -50,7 +62,7 @@ public class CombatSystem : MonoBehaviour
         attacker.currentPP -= specAttack.powerCost;
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(specAttack.flavorText)
-            ? specAttack.flavorText
+            ? FormatFlavorText(specAttack.flavorText, attacker, target, specAttack.specAttackName, specAttack.damage)
             : $"{attacker.characterName} used {specAttack.specAttackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (specAttack.attackSound != null)
@@ -73,7 +85,7 @@ public class CombatSystem : MonoBehaviour
         if (!Inventory.Instance.items.Contains(item))
             yield break;
         string message = !string.IsNullOrEmpty(item.flavorText)
-            ? item.flavorText
+            ? FormatFlavorText(item.flavorText, user, target, item.itemName, item.healAmount)
             : $"{user.characterName} used {item.itemName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (item.itemSound != null)

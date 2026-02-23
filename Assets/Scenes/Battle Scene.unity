@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 534052351}
   - component: {fileID: 534052350}
   m_Layer: 5
-  m_Name: Wild Dog
+  m_Name: Drunk
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1372,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 778720918}
@@ -1486,14 +1486,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Wild Dog
-  maxHealth: 5
-  currentHealth: 5
+  characterName: Drunk
+  maxHealth: 10
+  currentHealth: 10
   maxPP: 1
   currentPP: 1
   level: 1
   currentEXP: 0
-  enemyLoadout: {fileID: 11400000, guid: 0e9e3826f3f42344cacc85650ad079b4, type: 2}
+  enemyLoadout: {fileID: 11400000, guid: 16a894a0961c6e34788a4a6daa3fd8c1, type: 2}
   attacks: []
 --- !u!61 &534052352
 BoxCollider2D:
@@ -1588,7 +1588,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -470662035, guid: 3ba474895985f9044a526b35a2f1373e, type: 3}
+  m_Sprite: {fileID: -1596419595, guid: 7c953577a4e78fa4cb76aca65380cc2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4355,7 +4355,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 778720918}

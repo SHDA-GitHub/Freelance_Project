@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Kick
+  m_Name: Belt strike
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  attackName: Kick
+  attackName: Belt strike
   powerCost: 0
-  damage: 1
-  attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
-  consumable: 0
-  flavorText: '{attacker} strikes {target} with a kick'
+  damage: 5
+  attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
+  consumable: 1
+  flavorText: '{attacker} struck {target} with a belt!'

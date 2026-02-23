@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 2
   attackSound: {fileID: 8300000, guid: 2ff3db8b0c8fb4f4dbbafc3cb2a5e1e1, type: 3}
   consumable: 1
-  flavorText: The wild dog bit you!
+  flavorText: '{attacker} sunk its teeth into {target}!'

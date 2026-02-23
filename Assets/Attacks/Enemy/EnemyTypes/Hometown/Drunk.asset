@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Drunk
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Drunk
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: cb87a120603b8864b9d1e7aab7c487a0, type: 2}
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}

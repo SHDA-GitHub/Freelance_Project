@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 4
   attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
   oneUse: 1
-  flavorText: Billy hits the enemy with a baseball bat!
+  flavorText: '{attacker} hits {target} with a baseball bat!'

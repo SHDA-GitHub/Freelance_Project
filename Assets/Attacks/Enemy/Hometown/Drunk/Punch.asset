@@ -17,6 +17,6 @@ MonoBehaviour:
   damage: 3
   attackSound: {fileID: 8300000, guid: 2ff3db8b0c8fb4f4dbbafc3cb2a5e1e1, type: 3}
   consumable: 0
-  flavorText: 'The drunk man punched!
+  flavorText: '{attacker} punched {target}!
 
 '
