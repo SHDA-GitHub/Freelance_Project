@@ -22,13 +22,14 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource audioManager;
     [SerializeField] private AudioClip victoryClip;
+    [SerializeField] private AudioClip cancelSound;
     [SerializeField] private AudioClip enemyDeath;
     private int currentTargetIndex = 0;
     private bool isSelectingTarget = false;
     private Coroutine targetFlickerCoroutine;
     [SerializeField] private float fadeDuration = 1.5f;
     private CharacterStats lastTarget;
-
+    private CharacterStats currentActingCharacter;
 
     private void Awake()
     {
@@ -143,6 +144,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator PlayerTurnCoroutine(CharacterStats player)
     {
+        currentActingCharacter = player;
         battleHUD.SetCharacter(player);
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
         UIManager.Instance.ShowPlayerOptions(player);
@@ -178,44 +180,49 @@ public class TurnManager : MonoBehaviour
         currentCharacterIndex++;
         StartTurn();
     }
-    public void StartTargetSelection(System.Action<CharacterStats> onTargetConfirmed)
+
+    public void StartTargetSelection(
+        List<CharacterStats> possibleTargets,
+        System.Action<CharacterStats> onTargetConfirmed)
     {
-        if (enemyParty.Count == 0) return;
+        if (possibleTargets == null || possibleTargets.Count == 0)
+            return;
 
         isSelectingTarget = true;
-        currentTargetIndex = GetNextAliveEnemyIndex(0);
+        currentTargetIndex = GetNextAliveIndex(possibleTargets, 0);
 
-        StartCoroutine(TargetSelectionRoutine(onTargetConfirmed));
+        StartCoroutine(TargetSelectionRoutine(possibleTargets, onTargetConfirmed));
     }
 
-    private int GetNextAliveEnemyIndex(int startIndex)
+    private int GetNextAliveIndex(List<CharacterStats> list, int startIndex)
     {
-        if (enemyParty.Count == 0)
+        if (list.Count == 0)
             return -1;
 
-        int count = enemyParty.Count;
-
+        int count = list.Count;
         startIndex = (startIndex % count + count) % count;
 
         for (int i = 0; i < count; i++)
         {
             int index = (startIndex + i) % count;
 
-            if (enemyParty[index] != null && enemyParty[index].currentHealth > 0)
+            if (list[index] != null && list[index].currentHealth > 0)
                 return index;
         }
 
         return -1;
     }
 
-    private IEnumerator TargetSelectionRoutine(System.Action<CharacterStats> onTargetConfirmed)
+    private IEnumerator TargetSelectionRoutine(
+        List<CharacterStats> targetList,
+        System.Action<CharacterStats> onTargetConfirmed)
     {
         while (isSelectingTarget)
         {
-            if (currentTargetIndex < 0 || currentTargetIndex >= enemyParty.Count)
+            if (currentTargetIndex < 0 || currentTargetIndex >= targetList.Count)
                 yield break;
 
-            CharacterStats currentTarget = enemyParty[currentTargetIndex];
+            CharacterStats currentTarget = targetList[currentTargetIndex];
 
             if (currentTarget != lastTarget)
             {
@@ -232,9 +239,7 @@ public class TurnManager : MonoBehaviour
                     StopCoroutine(targetFlickerCoroutine);
 
                 targetFlickerCoroutine = StartCoroutine(FlickerSprite(currentTarget));
-
                 lastTarget = currentTarget;
-
             }
 
             if (controls.UI.Navigate.triggered)
@@ -242,10 +247,10 @@ public class TurnManager : MonoBehaviour
                 Vector2 input = controls.UI.Navigate.ReadValue<Vector2>();
 
                 if (input.x > 0)
-                    currentTargetIndex = GetNextAliveEnemyIndex(currentTargetIndex + 1);
+                    currentTargetIndex = GetNextAliveIndex(targetList, currentTargetIndex + 1);
 
                 if (input.x < 0)
-                    currentTargetIndex = GetNextAliveEnemyIndex(currentTargetIndex - 1);
+                    currentTargetIndex = GetNextAliveIndex(targetList, currentTargetIndex - 1);
             }
 
             if (controls.UI.Submit.triggered)
@@ -254,7 +259,8 @@ public class TurnManager : MonoBehaviour
 
                 if (targetFlickerCoroutine != null)
                     StopCoroutine(targetFlickerCoroutine);
-                    ResetTargetVisual();
+
+                ResetTargetVisual();
 
                 onTargetConfirmed?.Invoke(currentTarget);
                 yield break;
@@ -262,18 +268,15 @@ public class TurnManager : MonoBehaviour
 
             if (controls.UI.Cancel.triggered)
             {
-                isSelectingTarget = false;
-
-                if (targetFlickerCoroutine != null)
-                    StopCoroutine(targetFlickerCoroutine);
-                    ResetTargetVisual();
-
+                CancelTargetSelection();
+                AudioManager.Instance.PlaySFX(cancelSound);
                 yield break;
             }
 
             yield return null;
         }
     }
+
     private IEnumerator FlickerSprite(CharacterStats target)
     {
         SpriteRenderer sr = target.GetComponent<SpriteRenderer>();
@@ -386,6 +389,22 @@ public class TurnManager : MonoBehaviour
         sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
 
         enemy.gameObject.SetActive(false);
+    }
+
+    public void CancelTargetSelection()
+    {
+        isSelectingTarget = false;
+
+        if (targetFlickerCoroutine != null)
+            StopCoroutine(targetFlickerCoroutine);
+
+        ResetTargetVisual();
+
+        currentTargetIndex = 0;
+        if (currentActingCharacter != null)
+            flavorTextUI.ShowImmediateText($"It's {currentActingCharacter.characterName}'s turn!");
+        if (currentActingCharacter != null)
+            UIManager.Instance.ShowPlayerOptions(currentActingCharacter);
     }
 
     public IEnumerator HandleEnemyDeath(CharacterStats enemy)

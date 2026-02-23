@@ -52,8 +52,10 @@ public class MenuController : MonoBehaviour
             {
                 UIManager.Instance.HideAllMenus();
 
-                TurnManager.Instance.StartTargetSelection((target) =>
-                {
+                TurnManager.Instance.StartTargetSelection(
+                    TurnManager.Instance.enemyParty,
+                    (target) =>
+                    {
                     UIManager.Instance.HideAllMenus();
 
                     StartCoroutine(CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack));
@@ -74,9 +76,16 @@ public class MenuController : MonoBehaviour
             {
                 UIManager.Instance.HideAllMenus();
 
-                StartCoroutine(
-                    CombatSystem.Instance.ExecuteItem(character, character, item as Item)
-                );
+            TurnManager.Instance.StartTargetSelection(
+                TurnManager.Instance.playerParty,
+                (target) =>
+                {
+                    UIManager.Instance.HideAllMenus();
+
+                    StartCoroutine(
+                        CombatSystem.Instance.ExecuteItem(character, target, item as Item)
+                    );
+                });
             },
             closeOnClick: false
         );
@@ -93,8 +102,10 @@ public class MenuController : MonoBehaviour
             {
                 UIManager.Instance.HideAllMenus();
 
-                TurnManager.Instance.StartTargetSelection((target) =>
-                {
+                TurnManager.Instance.StartTargetSelection(
+                    TurnManager.Instance.enemyParty,
+                    (target) =>
+                    {
                     StartCoroutine(
                         CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack)
                     );
