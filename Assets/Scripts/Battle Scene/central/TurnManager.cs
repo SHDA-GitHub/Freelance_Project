@@ -150,7 +150,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
-        yield return flavorTextUI.ShowTextCoroutine($"Enemy {enemy.characterName} is taking its turn...");
+        yield return flavorTextUI.ShowTextCoroutine($"{enemy.characterName} is taking its turn...");
 
         if (playerParty.Count > 0)
         {
