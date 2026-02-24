@@ -1,10 +1,10 @@
 [System.Serializable]
 public class StatusEffect
 {
-    public StatusEffectType type;
+    public DOTStatusEffectType type;
     public int duration;
 
-    public StatusEffect(StatusEffectType type, int duration)
+    public StatusEffect(DOTStatusEffectType type, int duration)
     {
         this.type = type;
         this.duration = duration;

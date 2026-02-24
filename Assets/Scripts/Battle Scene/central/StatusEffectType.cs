@@ -1,8 +1,25 @@
-public enum StatusEffectType
+public enum DOTStatusEffectType
 {
     None,
-    Burning,
-    Poisoned,
-    Sick,
-    Shocked
+    burning,
+    poisoned,
+    sick,
+    shocked,
+    bleeding,
+}
+
+public enum StunStatusEffectType
+{
+    None,
+    freeze,
+    sleepiness,
+    paralysis,
+}
+
+public enum MissStatusEffectType
+{
+    None,
+    scared,
+    confused,
+    dizzy,
 }

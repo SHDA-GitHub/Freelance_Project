@@ -162,24 +162,24 @@ public class TurnManager : MonoBehaviour
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
         yield return flavorTextUI.ShowTextCoroutine($"{enemy.characterName} is taking its turn...");
+        List<CharacterStats> alivePlayers = playerParty
+            .FindAll(p => p != null && p.currentHealth > 0);
 
-        if (playerParty.Count > 0)
+        if (alivePlayers.Count == 0)
+            yield break;
+        CharacterStats target = alivePlayers[Random.Range(0, alivePlayers.Count)];
+
+        if (enemy.enemyLoadout == null)
         {
-            var target = playerParty[0];
-
-            if (enemy.enemyLoadout == null)
-            {
-                Debug.LogWarning($"{enemy.characterName} has no EnemyLoadout assigned!");
-                yield break;
-            }
-
-            var attack = enemy.enemyLoadout.GetRandomAttack();
-
-            if (attack == null)
-                yield break;
-
-            yield return CombatSystem.Instance.ExecuteAttack(enemy, target, attack);
+            Debug.LogWarning($"{enemy.characterName} has no EnemyLoadout assigned!");
+            yield break;
         }
+
+        var attack = enemy.enemyLoadout.GetRandomAttack();
+        if (attack == null)
+            yield break;
+
+        yield return CombatSystem.Instance.ExecuteAttack(enemy, target, attack);
     }
 
     public void EndTurn()

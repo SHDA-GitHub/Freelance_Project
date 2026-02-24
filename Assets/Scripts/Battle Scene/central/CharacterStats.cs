@@ -55,9 +55,9 @@ public class CharacterStats : MonoBehaviour
         );
     }
 
-    public void ApplyStatus(StatusEffectType type, int duration)
+    public void ApplyStatus(DOTStatusEffectType type, int duration)
     {
-        if (type == StatusEffectType.None)
+        if (type == DOTStatusEffectType.None)
             return;
         StatusEffect existing = activeStatusEffects.Find(s => s.type == type);
         if (existing != null)

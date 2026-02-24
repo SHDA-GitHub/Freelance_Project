@@ -52,7 +52,7 @@ public class CombatSystem : MonoBehaviour
         if (attack.attackSound != null)
         AudioManager.Instance.PlaySFX(attack.attackSound);
         target.ReceiveDamage(attack.damage);
-        if (TurnManager.Instance.playerParty.Contains(target))
+        if (TurnManager.Instance.playerParty.Contains(target) && attack.damage > 0)
         {
             StartCoroutine(ShakeCamera());
         }
@@ -65,7 +65,7 @@ public class CombatSystem : MonoBehaviour
             yield return TurnManager.Instance.HandleEnemyDeath(target);
             yield return TurnManager.Instance.HandlePlayerDeath(target);
         }
-        if (attack.statusEffect != StatusEffectType.None)
+        if (attack.statusEffect != DOTStatusEffectType.None)
         {
             int roll = Random.Range(0, 100);
 
@@ -102,7 +102,11 @@ public class CombatSystem : MonoBehaviour
         if (specAttack.attackSound != null)
         AudioManager.Instance.PlaySFX(specAttack.attackSound);
         target.ReceiveDamage(specAttack.damage);
-        if (TurnManager.Instance.playerParty.Contains(target) || specAttack.specialAttackCamShake)
+        if (specAttack.specialAttackCamShake)
+        {
+            StartCoroutine(ShakeCamera());
+        }
+        if (TurnManager.Instance.playerParty.Contains(target) && specAttack.damage > 0)
         {
             StartCoroutine(ShakeCamera());
         }
@@ -114,7 +118,7 @@ public class CombatSystem : MonoBehaviour
         { yield return TurnManager.Instance.HandleEnemyDeath(target);
           yield return TurnManager.Instance.HandlePlayerDeath(target);
         }
-        if (specAttack.statusEffect != StatusEffectType.None)
+        if (specAttack.statusEffect != DOTStatusEffectType.None)
         {
             int roll = Random.Range(0, 100);
 

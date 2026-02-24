@@ -4,7 +4,9 @@ using UnityEngine;
 public class Attack : ScriptableObject
 {
     [Header("Status Effect")]
-    public StatusEffectType statusEffect = StatusEffectType.None;
+    public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
+    public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
+    public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
 
     [Range(0, 100)]
     public int statusChance = 0;

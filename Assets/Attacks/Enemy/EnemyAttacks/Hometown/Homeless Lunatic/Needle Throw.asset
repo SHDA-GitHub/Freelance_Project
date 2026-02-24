@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Puke
+  m_Name: Needle Throw
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  statusEffect: 3
-  statusChance: 90
-  statusDuration: 2
-  attackName: Puke
+  statusEffect: 2
+  statusChance: 85
+  statusDuration: 3
+  attackName: Needle throw
   powerCost: 0
   damage: 1
-  attackSound: {fileID: 8300000, guid: 89da5b1922abb0b4eb2c5d2dd30e5a88, type: 3}
-  flavorText: '{attacker} barfed all over {target}!'
+  attackSound: {fileID: 8300000, guid: 2ff3db8b0c8fb4f4dbbafc3cb2a5e1e1, type: 3}
+  flavorText: '{attacker} threw a used needle at {target}'

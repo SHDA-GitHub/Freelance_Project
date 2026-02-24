@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialAttack : ScriptableObject
 {
     [Header("Status Effect")]
-    public StatusEffectType statusEffect = StatusEffectType.None;
+    public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
 
     [Range(0, 100)]
     public int statusChance = 0;
