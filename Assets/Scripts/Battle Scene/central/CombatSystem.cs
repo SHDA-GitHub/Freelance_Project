@@ -58,8 +58,6 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
-
-                TurnManager.Instance.EndTurn();
                 yield break;
             }
         }
@@ -127,10 +125,6 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
-        if (!attack.targetAllEnemies)
-        {
-            TurnManager.Instance.EndTurn();
-        }
     }
 
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
@@ -155,8 +149,6 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
-
-                TurnManager.Instance.EndTurn();
                 yield break;
             }
         }
@@ -227,10 +219,6 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
-        if (!specAttack.targetAllEnemies)
-        {
-            TurnManager.Instance.EndTurn();
-        }
     }
 
     public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)

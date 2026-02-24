@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
   m_Name: Wild Rambling
   m_EditorClassIdentifier: Assembly-CSharp::Attack
+  targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 2
-  statusChance: 60
+  statusChance: 100
   statusDuration: 2
   attackName: Wild Rambling
   powerCost: 0
   damage: 0
   attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  flavorText: '{attacker} muttered undecipherable gibberish'
+  flavorText: '{attacker} yelled undecipherable gibberish'

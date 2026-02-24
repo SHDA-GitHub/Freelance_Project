@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
   m_Name: Bark
   m_EditorClassIdentifier: Assembly-CSharp::Attack
+  targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 1
-  statusChance: 45
+  statusChance: 100
   statusDuration: 2
   attackName: Bark
   powerCost: 0

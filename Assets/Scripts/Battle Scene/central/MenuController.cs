@@ -56,22 +56,7 @@ public class MenuController : MonoBehaviour
                     TurnManager.Instance.enemyParty,
                     (target) =>
                     {
-                        if (attack.targetAllEnemies)
-                        {
-                            StartCoroutine(
-                                CombatSystem.Instance.ExecuteAttackOnAll(
-                                    player,
-                                    TurnManager.Instance.enemyParty,
-                                    attack
-                                )
-                            );
-                        }
-                        else
-                        {
-                            StartCoroutine(
-                                CombatSystem.Instance.ExecuteAttack(player, target, attack)
-                            );
-                        }
+                        TurnManager.Instance.PlayerUseAttack(player, target, attack);
                     },
                     attack.targetAllEnemies
                 );
@@ -121,22 +106,7 @@ public class MenuController : MonoBehaviour
                     TurnManager.Instance.enemyParty,
                     (target) =>
                     {
-                        if (specAttack.targetAllEnemies)
-                        {
-                            StartCoroutine(
-                                CombatSystem.Instance.ExecuteSpecialAttackOnAll(
-                                    player,
-                                    TurnManager.Instance.enemyParty,
-                                    specAttack
-                                )
-                            );
-                        }
-                        else
-                        {
-                            StartCoroutine(
-                                CombatSystem.Instance.ExecuteSpecialAttack(player, target, specAttack)
-                            );
-                        }
+                        TurnManager.Instance.PlayerUseSpecialAttack(player, target, specAttack);
                     },
                     specAttack.targetAllEnemies
                 );

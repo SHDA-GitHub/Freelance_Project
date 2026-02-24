@@ -179,7 +179,27 @@ public class TurnManager : MonoBehaviour
         if (attack == null)
             yield break;
 
-        yield return CombatSystem.Instance.ExecuteAttack(enemy, target, attack);
+        if (attack.targetAllEnemies)
+        {
+            List<CharacterStats> livePlayers = playerParty
+                .FindAll(p => p != null && p.currentHealth > 0);
+
+            yield return CombatSystem.Instance.ExecuteAttackOnAll(
+                enemy,
+                livePlayers,
+                attack
+            );
+        }
+        else
+        {
+            yield return CombatSystem.Instance.ExecuteAttack(
+                enemy,
+                target,
+                attack
+            );
+        }
+
+        EndTurn();
     }
 
     public void EndTurn()
@@ -504,5 +524,70 @@ public class TurnManager : MonoBehaviour
 
             CheckWinLose();
         }
+    }
+
+    private IEnumerator PlayerAttackRoutine(
+    CharacterStats player,
+    CharacterStats target,
+    Attack attack)
+    {
+        if (attack.targetAllEnemies)
+        {
+            List<CharacterStats> aliveEnemies = enemyParty
+                .FindAll(e => e != null && e.currentHealth > 0);
+
+            yield return CombatSystem.Instance.ExecuteAttackOnAll(
+                player,
+                aliveEnemies,
+                attack
+            );
+        }
+        else
+        {
+            yield return CombatSystem.Instance.ExecuteAttack(
+                player,
+                target,
+                attack
+            );
+        }
+        EndTurn();
+    }
+
+    private IEnumerator PlayerSpecialAttackRoutine(
+       CharacterStats player,
+       CharacterStats target,
+       SpecialAttack specAttack)
+    {
+        if (specAttack.targetAllEnemies)
+        {
+            List<CharacterStats> aliveEnemies = enemyParty
+                .FindAll(e => e != null && e.currentHealth > 0);
+
+            yield return CombatSystem.Instance.ExecuteSpecialAttackOnAll(
+                player,
+                aliveEnemies,
+                specAttack
+            );
+        }
+        else
+        {
+            yield return CombatSystem.Instance.ExecuteSpecialAttack(
+                player,
+                target,
+                specAttack
+            );
+        }
+
+        EndTurn();
+    }
+
+    public void PlayerUseAttack(CharacterStats player, CharacterStats target, Attack attack)
+    {
+        StartCoroutine(PlayerAttackRoutine(player, target, attack));
+    }
+
+    public void PlayerUseSpecialAttack(CharacterStats player, CharacterStats target, SpecialAttack specAttack)
+    {
+        StartCoroutine(PlayerSpecialAttackRoutine(player, target, specAttack));
     }
 }
