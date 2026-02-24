@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class CombatSystem : MonoBehaviour
 {
@@ -87,6 +88,7 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
     {
+        Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, attacker);
         if (attacker.currentPP < specAttack.powerCost)
         {
             yield break;

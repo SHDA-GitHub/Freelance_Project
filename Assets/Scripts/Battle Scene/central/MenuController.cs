@@ -110,7 +110,6 @@ public class MenuController : MonoBehaviour
                         CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack)
                     );
                 });
-                Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, character);
             },
             closeOnClick: false
         );
