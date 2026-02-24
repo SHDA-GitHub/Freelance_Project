@@ -49,6 +49,20 @@ public class CombatSystem : MonoBehaviour
             ? FormatFlavorText(attack.flavorText, attacker, target, attack.attackName, attack.damage)
             : $"{attacker.characterName} used {attack.attackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
+        if (attacker.activeMissEffects.Count > 0)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < 50)
+            {
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{attacker.characterName} missed their attack!"
+                );
+
+                TurnManager.Instance.EndTurn();
+                yield break;
+            }
+        }
         if (attack.attackSound != null)
         AudioManager.Instance.PlaySFX(attack.attackSound);
         target.ReceiveDamage(attack.damage);
@@ -80,6 +94,36 @@ public class CombatSystem : MonoBehaviour
                 audioManager.Play();
             }
         }
+        if (attack.stunstatusEffect != StunStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < attack.statusChance)
+            {
+                target.ApplyStun(attack.stunstatusEffect, attack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {attack.stunstatusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
+        }
+        if (attack.missStatusEffect != MissStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < attack.statusChance)
+            {
+                target.ApplyMiss(attack.missStatusEffect, attack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {attack.missStatusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
@@ -99,6 +143,20 @@ public class CombatSystem : MonoBehaviour
             ? FormatFlavorText(specAttack.flavorText, attacker, target, specAttack.specAttackName, specAttack.damage)
             : $"{attacker.characterName} used {specAttack.specAttackName}!";
         yield return flavorTextUI.ShowTextCoroutine(message);
+        if (attacker.activeMissEffects.Count > 0)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < 50)
+            {
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{attacker.characterName} missed their attack!"
+                );
+
+                TurnManager.Instance.EndTurn();
+                yield break;
+            }
+        }
         if (specAttack.attackSound != null)
         AudioManager.Instance.PlaySFX(specAttack.attackSound);
         target.ReceiveDamage(specAttack.damage);
@@ -128,6 +186,36 @@ public class CombatSystem : MonoBehaviour
 
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{target.characterName} is now {specAttack.statusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
+        }
+        if (specAttack.stunstatusEffect != StunStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < specAttack.statusChance)
+            {
+                target.ApplyStun(specAttack.stunstatusEffect, specAttack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {specAttack.stunstatusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+            }
+        }
+        if (specAttack.missStatusEffect != MissStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < specAttack.statusChance)
+            {
+                target.ApplyMiss(specAttack.missStatusEffect, specAttack.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {specAttack.missStatusEffect}!"
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();

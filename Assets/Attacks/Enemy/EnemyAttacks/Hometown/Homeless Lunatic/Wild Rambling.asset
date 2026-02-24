@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Wild Rambling
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   statusEffect: 0
-  statusChance: 50
+  stunstatusEffect: 0
+  missStatusEffect: 2
+  statusChance: 60
   statusDuration: 2
   attackName: Wild Rambling
   powerCost: 0

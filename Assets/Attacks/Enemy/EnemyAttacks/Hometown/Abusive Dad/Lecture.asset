@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Lecture
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   statusEffect: 0
-  statusChance: 0
+  stunstatusEffect: 0
+  missStatusEffect: 1
+  statusChance: 90
   statusDuration: 2
   attackName: Lecture
   powerCost: 0
   damage: 0
   attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  flavorText: '{attacker} gave a stern talking to {target}'
+  flavorText: '{attacker} told {target} they made him do this'

@@ -6,6 +6,8 @@ public class SpecialAttack : ScriptableObject
 {
     [Header("Status Effect")]
     public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
+    public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
+    public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
 
     [Range(0, 100)]
     public int statusChance = 0;

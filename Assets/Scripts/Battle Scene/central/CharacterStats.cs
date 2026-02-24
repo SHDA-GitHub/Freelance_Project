@@ -17,12 +17,32 @@ public class CharacterStats : MonoBehaviour
 
     public List<Attack> attacks;
     public List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
+    public List<StunStatusEffect> activeStunEffects = new List<StunStatusEffect>();
+    public List<MissStatusEffect> activeMissEffects = new List<MissStatusEffect>();
 
     [SerializeField] private int overtimeDamage = 1;
 
     public void StartTurn()
     {
         ApplyStatusEffects();
+
+        if (IsStunned())
+        {
+            CombatSystem.Instance.StartCoroutine(
+                CombatSystem.Instance.flavorTextUI.ShowTextCoroutine(
+                    $"{characterName} is {activeStunEffects[0].type}!"
+                )
+            );
+
+            ReduceStunEffects();
+            ReduceMissEffects();
+
+            TurnManager.Instance.EndTurn();
+            return;
+        }
+
+        ReduceStunEffects();
+        ReduceMissEffects();
 
         if (currentHealth <= 0)
             return;
@@ -70,6 +90,22 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public void ApplyStun(StunStatusEffectType type, int duration)
+    {
+        if (type == StunStatusEffectType.None)
+            return;
+
+        activeStunEffects.Add(new StunStatusEffect(type, duration));
+    }
+
+    public void ApplyMiss(MissStatusEffectType type, int duration)
+    {
+        if (type == MissStatusEffectType.None)
+            return;
+
+        activeMissEffects.Add(new MissStatusEffect(type, duration));
+    }
+
     private void ApplyStatusEffects()
     {
         for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
@@ -110,4 +146,28 @@ public class CharacterStats : MonoBehaviour
         currentHealth = Mathf.Max(currentHealth, 0);
     }
 
+    bool IsStunned()
+    {
+        return activeStunEffects.Count > 0;
+    }
+
+    void ReduceStunEffects()
+    {
+        for (int i = activeStunEffects.Count - 1; i >= 0; i--)
+        {
+            activeStunEffects[i].duration--;
+            if (activeStunEffects[i].duration <= 0)
+                activeStunEffects.RemoveAt(i);
+        }
+    }
+
+    void ReduceMissEffects()
+    {
+        for (int i = activeMissEffects.Count - 1; i >= 0; i--)
+        {
+            activeMissEffects[i].duration--;
+            if (activeMissEffects[i].duration <= 0)
+                activeMissEffects.RemoveAt(i);
+        }
+    }
 }

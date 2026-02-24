@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Bark
+  m_Name: Plasma Shot
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 1
-  statusChance: 45
-  statusDuration: 2
-  attackName: Bark
+  missStatusEffect: 0
+  statusChance: 0
+  statusDuration: 0
+  attackName: Plasma Shot
   powerCost: 0
-  damage: 0
-  attackSound: {fileID: 8300000, guid: 2ff3db8b0c8fb4f4dbbafc3cb2a5e1e1, type: 3}
-  flavorText: '{attacker} barked at {target}!'
+  damage: 2
+  attackSound: {fileID: 8300000, guid: 8f03ec2f9b3814543bc905a180c09431, type: 3}
+  flavorText: '{attacker} shot plasma at {target}!'

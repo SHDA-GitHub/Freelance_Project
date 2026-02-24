@@ -11,9 +11,9 @@ public enum DOTStatusEffectType
 public enum StunStatusEffectType
 {
     None,
-    freeze,
-    sleepiness,
-    paralysis,
+    frozen,
+    sleepy,
+    paralyzed,
 }
 
 public enum MissStatusEffectType
