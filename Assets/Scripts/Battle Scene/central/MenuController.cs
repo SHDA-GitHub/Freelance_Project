@@ -58,15 +58,13 @@ public class MenuController : MonoBehaviour
                     {
                         if (attack.targetAllEnemies)
                         {
-                            foreach (var enemy in TurnManager.Instance.enemyParty)
-                            {
-                                if (enemy != null && enemy.currentHealth > 0)
-                                {
-                                    StartCoroutine(
-                                        CombatSystem.Instance.ExecuteAttack(player, enemy, attack)
-                                    );
-                                }
-                            }
+                            StartCoroutine(
+                                CombatSystem.Instance.ExecuteAttackOnAll(
+                                    player,
+                                    TurnManager.Instance.enemyParty,
+                                    attack
+                                )
+                            );
                         }
                         else
                         {
@@ -125,15 +123,13 @@ public class MenuController : MonoBehaviour
                     {
                         if (specAttack.targetAllEnemies)
                         {
-                            foreach (var enemy in TurnManager.Instance.enemyParty)
-                            {
-                                if (enemy != null && enemy.currentHealth > 0)
-                                {
-                                    StartCoroutine(
-                                        CombatSystem.Instance.ExecuteSpecialAttack(player, enemy, specAttack)
-                                    );
-                                }
-                            }
+                            StartCoroutine(
+                                CombatSystem.Instance.ExecuteSpecialAttackOnAll(
+                                    player,
+                                    TurnManager.Instance.enemyParty,
+                                    specAttack
+                                )
+                            );
                         }
                         else
                         {

@@ -127,7 +127,10 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
-        TurnManager.Instance.EndTurn();
+        if (!attack.targetAllEnemies)
+        {
+            TurnManager.Instance.EndTurn();
+        }
     }
 
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
@@ -224,7 +227,10 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
         yield return new WaitForSeconds(0.3f);
-        TurnManager.Instance.EndTurn();
+        if (!specAttack.targetAllEnemies)
+        {
+            TurnManager.Instance.EndTurn();
+        }
     }
 
     public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)
@@ -254,6 +260,42 @@ public class CombatSystem : MonoBehaviour
             Inventory.Instance.items.Remove(item);
 
         yield return new WaitForSeconds(0.3f);
+
+        TurnManager.Instance.EndTurn();
+    }
+
+    public IEnumerator ExecuteAttackOnAll(
+    CharacterStats attacker,
+    List<CharacterStats> targets,
+    Attack attack)
+    {
+        foreach (var target in targets)
+        {
+            if (target != null && target.currentHealth > 0)
+            {
+                yield return StartCoroutine(
+                    ExecuteAttack(attacker, target, attack)
+                );
+            }
+        }
+
+        TurnManager.Instance.EndTurn();
+    }
+
+    public IEnumerator ExecuteSpecialAttackOnAll(
+    CharacterStats attacker,
+    List<CharacterStats> targets,
+    SpecialAttack specAttack)
+    {
+        foreach (var target in targets)
+        {
+            if (target != null && target.currentHealth > 0)
+            {
+                yield return StartCoroutine(
+                    ExecuteSpecialAttack(attacker, target, specAttack)
+                );
+            }
+        }
 
         TurnManager.Instance.EndTurn();
     }
