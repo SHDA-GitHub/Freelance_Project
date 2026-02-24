@@ -32,6 +32,18 @@ public class TurnManager : MonoBehaviour
     private CharacterStats lastTarget;
     private CharacterStats currentActingCharacter;
 
+    [Header("Enemy Preset")]
+    [SerializeField] private EnemyPreset currentEnemyPreset;
+
+    [Header("Enemy Spawn Points (3 Enemies)")]
+    [SerializeField] private Transform middleSlot;
+    [SerializeField] private Transform leftSlot;
+    [SerializeField] private Transform rightSlot;
+
+    [Header("Enemy Spawn Points (2 Enemies)")]
+    [SerializeField] private Transform twoEnemyLeftSlot;
+    [SerializeField] private Transform twoEnemyRightSlot;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -43,6 +55,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        SpawnEnemiesFromPreset();
         StartCoroutine(StartBattle());
     }
     private IEnumerator StartBattle()
@@ -631,5 +644,60 @@ public class TurnManager : MonoBehaviour
     public void PlayerUseSpecialAttack(CharacterStats player, CharacterStats target, SpecialAttack specAttack)
     {
         StartCoroutine(PlayerSpecialAttackRoutine(player, target, specAttack));
+    }
+
+    private void SpawnEnemiesFromPreset()
+    {
+        if (currentEnemyPreset == null)
+        {
+            Debug.LogWarning("No EnemyPreset assigned!");
+            return;
+        }
+
+        enemyParty.Clear();
+
+        List<GameObject> prefabs = currentEnemyPreset.EnemyPrefabs;
+
+        if (prefabs.Count == 0)
+            return;
+
+        if (prefabs.Count == 1)
+        {
+            SpawnEnemy(prefabs[0], middleSlot);
+        }
+        else if (prefabs.Count == 2)
+        {
+            SpawnEnemy(prefabs[0], twoEnemyLeftSlot);
+            SpawnEnemy(prefabs[1], twoEnemyRightSlot);
+        }
+        else if (prefabs.Count == 3)
+        {
+
+            SpawnEnemy(prefabs[2], middleSlot);
+            SpawnEnemy(prefabs[1], leftSlot);
+            SpawnEnemy(prefabs[0], rightSlot);
+        }
+    }
+
+    private void SpawnEnemy(GameObject prefab, Transform spawnPoint)
+    {
+        if (prefab == null || spawnPoint == null)
+            return;
+
+        GameObject enemyGO = Instantiate(prefab, spawnPoint);
+
+        enemyGO.transform.localPosition = Vector3.zero;
+        enemyGO.transform.localRotation = Quaternion.identity;
+
+        CharacterStats stats = enemyGO.GetComponent<CharacterStats>();
+
+        if (stats != null)
+        {
+            enemyParty.Add(stats);
+        }
+        else
+        {
+            Debug.LogWarning($"Spawned enemy {prefab.name} has no CharacterStats!");
+        }
     }
 }
