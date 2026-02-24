@@ -192,14 +192,21 @@ public class TurnManager : MonoBehaviour
 
     public void StartTargetSelection(
         List<CharacterStats> possibleTargets,
-        System.Action<CharacterStats> onTargetConfirmed)
+        System.Action<CharacterStats> onTargetConfirmed,
+        bool targetAll = false)
     {
         if (possibleTargets == null || possibleTargets.Count == 0)
             return;
 
         isSelectingTarget = true;
-        currentTargetIndex = GetNextAliveIndex(possibleTargets, 0);
 
+        if (targetAll)
+        {
+            StartCoroutine(TargetAllRoutine(possibleTargets, onTargetConfirmed));
+            return;
+        }
+
+        currentTargetIndex = GetNextAliveIndex(possibleTargets, 0);
         StartCoroutine(TargetSelectionRoutine(possibleTargets, onTargetConfirmed));
     }
 
@@ -286,6 +293,48 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    private IEnumerator TargetAllRoutine(
+    List<CharacterStats> targetList,
+    System.Action<CharacterStats> onTargetConfirmed)
+    {
+        flavorTextUI.ShowImmediateText("Target: All");
+
+        List<Coroutine> flickers = new List<Coroutine>();
+
+        foreach (var target in targetList)
+        {
+            if (target != null && target.currentHealth > 0)
+            {
+                flickers.Add(StartCoroutine(FlickerSprite(target)));
+            }
+        }
+
+        while (isSelectingTarget)
+        {
+            if (controls.UI.Submit.triggered)
+            {
+                isSelectingTarget = false;
+
+                foreach (var c in flickers)
+                    if (c != null) StopCoroutine(c);
+
+                ResetAllTargetVisuals(targetList);
+
+                onTargetConfirmed?.Invoke(null);
+
+                yield break;
+            }
+
+            if (controls.UI.Cancel.triggered)
+            {
+                CancelTargetSelection();
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
     private IEnumerator FlickerSprite(CharacterStats target)
     {
         SpriteRenderer sr = target.GetComponent<SpriteRenderer>();
@@ -302,6 +351,7 @@ public class TurnManager : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
         }
     }
+
     private void ResetTargetVisual()
     {
         if (lastTarget != null)
@@ -312,6 +362,19 @@ public class TurnManager : MonoBehaviour
         }
 
         lastTarget = null;
+    }
+
+    private void ResetAllTargetVisuals(List<CharacterStats> targets)
+    {
+        foreach (var target in targets)
+        {
+            if (target != null)
+            {
+                SpriteRenderer sr = target.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                    sr.color = Color.white;
+            }
+        }
     }
 
     public void CheckWinLose()

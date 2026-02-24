@@ -10,11 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Shoe Throw
+  m_Name: Fireworks
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  specAttackName: brown boot
-  powerCost: 1
+  targetAllEnemies: 1
+  statusEffect: 1
+  stunstatusEffect: 0
+  missStatusEffect: 0
+  statusChance: 75
+  statusDuration: 2
+  specAttackName: Fireworks
+  powerCost: 2
   damage: 3
-  attackSound: {fileID: 8300000, guid: f0e3f1d8327c21645b80cf7fd149ff98, type: 3}
+  attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
+  specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} threw a {action} at {target}!'
+  flavorText: '{attacker} used {action}!'

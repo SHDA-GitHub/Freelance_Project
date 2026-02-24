@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAttack", menuName = "Battle/Attack")]
 public class Attack : ScriptableObject
 {
+    [Header("Targeting")]
+    public bool targetAllEnemies = false;
+
     [Header("Status Effect")]
     public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;

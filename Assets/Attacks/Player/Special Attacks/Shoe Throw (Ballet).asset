@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
+  m_Name: Shoe Throw (Ballet)
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
+  specAttackName: ballet shoe
+  powerCost: 1
+  damage: 3
+  attackSound: {fileID: 8300000, guid: f0e3f1d8327c21645b80cf7fd149ff98, type: 3}
+  oneUse: 1
+  flavorText: '{attacker} threw a {action} at {target}!'

@@ -56,10 +56,27 @@ public class MenuController : MonoBehaviour
                     TurnManager.Instance.enemyParty,
                     (target) =>
                     {
-                    UIManager.Instance.HideAllMenus();
-
-                    StartCoroutine(CombatSystem.Instance.ExecuteAttack(character, target, attack as Attack));
-                });
+                        if (attack.targetAllEnemies)
+                        {
+                            foreach (var enemy in TurnManager.Instance.enemyParty)
+                            {
+                                if (enemy != null && enemy.currentHealth > 0)
+                                {
+                                    StartCoroutine(
+                                        CombatSystem.Instance.ExecuteAttack(player, enemy, attack)
+                                    );
+                                }
+                            }
+                        }
+                        else
+                        {
+                            StartCoroutine(
+                                CombatSystem.Instance.ExecuteAttack(player, target, attack)
+                            );
+                        }
+                    },
+                    attack.targetAllEnemies
+                );
             },
             closeOnClick: false
         );
@@ -106,10 +123,27 @@ public class MenuController : MonoBehaviour
                     TurnManager.Instance.enemyParty,
                     (target) =>
                     {
-                    StartCoroutine(
-                        CombatSystem.Instance.ExecuteSpecialAttack(character, target, specAttack as SpecialAttack)
-                    );
-                });
+                        if (specAttack.targetAllEnemies)
+                        {
+                            foreach (var enemy in TurnManager.Instance.enemyParty)
+                            {
+                                if (enemy != null && enemy.currentHealth > 0)
+                                {
+                                    StartCoroutine(
+                                        CombatSystem.Instance.ExecuteSpecialAttack(player, enemy, specAttack)
+                                    );
+                                }
+                            }
+                        }
+                        else
+                        {
+                            StartCoroutine(
+                                CombatSystem.Instance.ExecuteSpecialAttack(player, target, specAttack)
+                            );
+                        }
+                    },
+                    specAttack.targetAllEnemies
+                );
             },
             closeOnClick: false
         );

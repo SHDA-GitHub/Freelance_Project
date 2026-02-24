@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Shoe Throw
+  m_Name: Shoe Throw (Boot)
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  specAttackName: ballet shoe
+  specAttackName: brown boot
   powerCost: 1
   damage: 3
   attackSound: {fileID: 8300000, guid: f0e3f1d8327c21645b80cf7fd149ff98, type: 3}

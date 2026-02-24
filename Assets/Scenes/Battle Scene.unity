@@ -273,6 +273,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 108b5f556e3bad744bf57cc80b12d028, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &64985931
 BoxCollider2D:
@@ -727,6 +729,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 2821a0b06a7ad674eaef338b2876a8b1, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &123470273
 BoxCollider2D:
@@ -1295,7 +1299,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: af22b482beaf23747ac7a3a4a5102d62, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0f0295d992c3eef40bf535a3da8606c8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1802,7 +1806,8 @@ MonoBehaviour:
   - {fileID: 879654192}
   - {fileID: 2061152904}
   enemyParty:
-  - {fileID: 1306992573}
+  - {fileID: 7905106002333738311}
+  - {fileID: 1439946078}
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
   flavorTextUI: {fileID: 506090852}
@@ -2021,6 +2026,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 16a894a0961c6e34788a4a6daa3fd8c1, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &534052352
 BoxCollider2D:
@@ -2416,6 +2423,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 6525d257291d57844a2ce52bfd73fae5, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &569745907
 BoxCollider2D:
@@ -2675,6 +2684,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 9da003008606d20438dd69681950f2d6, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &618264735
 BoxCollider2D:
@@ -2934,6 +2945,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: de3df0b5f87aaf8419f51c19a1cb00ba, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &669444524
 BoxCollider2D:
@@ -3193,6 +3206,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: db3597c658eeeae45943a834797f8bb0, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &682614460
 BoxCollider2D:
@@ -3636,11 +3651,11 @@ MonoBehaviour:
   - {fileID: 241658719265508300, guid: 22685719acd331947b985f0f43169b78, type: 3}
   finalBossBG: {fileID: 0}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 0
+  isNormalEnemy: 1
   isMiniBoss: 0
   isBoss: 0
   isFinalBoss: 0
-  isMoonSoldier: 1
+  isMoonSoldier: 0
 --- !u!1 &879654187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,8 +3685,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.49, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3722,8 +3737,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -1609148262, guid: 0da7b224e2e450d4ab4f39cfa10774a2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3757,6 +3772,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
   - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!82 &879654193
 AudioSource:
@@ -4408,7 +4425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1306992571
 Transform:
   m_ObjectHideFlags: 0
@@ -4543,6 +4560,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 9b566574793a1a141a48b3881e03307f, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &1306992574
 BoxCollider2D:
@@ -4802,6 +4821,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 75fdf0d1febe76140b2f427598bdcee5, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &1327070995
 BoxCollider2D:
@@ -5061,6 +5082,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: b5c1f876c33bb1f479ce554ac6023a2f, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &1362508153
 BoxCollider2D:
@@ -5338,6 +5361,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
   - {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
+  - {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
@@ -5448,7 +5472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439946076
 Transform:
   m_ObjectHideFlags: 0
@@ -5583,6 +5607,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: f63cebf30bcd5cd4ea085e95e98a8d77, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!61 &1439946079
 BoxCollider2D:
@@ -6834,6 +6860,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
   - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!212 &2061152905
 SpriteRenderer:
@@ -6882,8 +6910,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -1609148262, guid: 0da7b224e2e450d4ab4f39cfa10774a2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6903,8 +6931,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7085,7 +7113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &5573508011396408209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7166,6 +7194,8 @@ MonoBehaviour:
   enemyLoadout: {fileID: 11400000, guid: 0e9e3826f3f42344cacc85650ad079b4, type: 2}
   attacks: []
   activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
   overtimeDamage: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
