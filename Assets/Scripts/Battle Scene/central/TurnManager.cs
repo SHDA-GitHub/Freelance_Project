@@ -155,38 +155,71 @@ public class TurnManager : MonoBehaviour
     {
         currentActingCharacter = player;
         battleHUD.SetCharacter(player);
+
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
+
+        player.ApplyStatusEffects();
+
+        if (player.IsStunned())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName} is stunned!"
+            );
+
+            EndTurn();
+            yield break;
+        }
+
         UIManager.Instance.ShowPlayerOptions(player);
     }
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
-        yield return flavorTextUI.ShowTextCoroutine($"{enemy.characterName} is taking its turn...");
+        currentActingCharacter = enemy;
+
+        yield return flavorTextUI.ShowTextCoroutine(
+            $"{enemy.characterName} is taking its turn..."
+        );
+        enemy.ApplyStatusEffects();
+        if (enemy.currentHealth <= 0)
+        {
+            yield return HandleEnemyDeath(enemy);
+            yield break;
+        }
+        if (enemy.IsStunned())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{enemy.characterName} is stunned and cannot move!"
+            );
+
+            EndTurn();
+            yield break;
+        }
         List<CharacterStats> alivePlayers = playerParty
             .FindAll(p => p != null && p.currentHealth > 0);
 
         if (alivePlayers.Count == 0)
             yield break;
-        CharacterStats target = alivePlayers[Random.Range(0, alivePlayers.Count)];
 
+        CharacterStats target =
+            alivePlayers[Random.Range(0, alivePlayers.Count)];
         if (enemy.enemyLoadout == null)
         {
-            Debug.LogWarning($"{enemy.characterName} has no EnemyLoadout assigned!");
+            Debug.LogWarning(
+                $"{enemy.characterName} has no EnemyLoadout assigned!"
+            );
             yield break;
         }
-
         var attack = enemy.enemyLoadout.GetRandomAttack();
+
         if (attack == null)
             yield break;
 
         if (attack.targetAllEnemies)
         {
-            List<CharacterStats> livePlayers = playerParty
-                .FindAll(p => p != null && p.currentHealth > 0);
-
             yield return CombatSystem.Instance.ExecuteAttackOnAll(
                 enemy,
-                livePlayers,
+                alivePlayers,
                 attack
             );
         }
@@ -198,14 +231,18 @@ public class TurnManager : MonoBehaviour
                 attack
             );
         }
-
         EndTurn();
     }
 
     public void EndTurn()
     {
         if (!isBattleActive)
-        return;
+            return;
+        if (currentActingCharacter != null)
+        {
+            currentActingCharacter.ReduceAllEffectsAfterTurn();
+        }
+
         currentCharacterIndex++;
         StartTurn();
     }

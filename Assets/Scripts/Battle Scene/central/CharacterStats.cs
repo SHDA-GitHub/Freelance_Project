@@ -22,37 +22,6 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] private int overtimeDamage = 1;
 
-    public void StartTurn()
-    {
-        ApplyStatusEffects();
-
-        if (IsStunned())
-        {
-            CombatSystem.Instance.StartCoroutine(
-                CombatSystem.Instance.flavorTextUI.ShowTextCoroutine(
-                    $"{characterName} is {activeStunEffects[0].type}!"
-                )
-            );
-
-            ReduceStunEffects();
-            ReduceMissEffects();
-
-            TurnManager.Instance.EndTurn();
-            return;
-        }
-
-        ReduceStunEffects();
-        ReduceMissEffects();
-
-        if (currentHealth <= 0)
-            return;
-
-        if (TurnManager.Instance.currentTurn == TurnType.Player)
-            UIManager.Instance.ShowPlayerOptions(this);
-        else
-            PerformEnemyAction();
-    }
-
     void PerformEnemyAction()
     {
         if (enemyLoadout == null)
@@ -106,7 +75,7 @@ public class CharacterStats : MonoBehaviour
         activeMissEffects.Add(new MissStatusEffect(type, duration));
     }
 
-    private void ApplyStatusEffects()
+    public void ApplyStatusEffects()
     {
         for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
         {
@@ -119,8 +88,6 @@ public class CharacterStats : MonoBehaviour
                     $"{characterName} is {effect.type} and took {overtimeDamage} damage!"
                 )
             );
-
-            effect.duration--;
 
             if (effect.duration <= 0)
             {
@@ -146,9 +113,28 @@ public class CharacterStats : MonoBehaviour
         currentHealth = Mathf.Max(currentHealth, 0);
     }
 
-    bool IsStunned()
+    public bool IsStunned()
     {
         return activeStunEffects.Count > 0;
+    }
+    public void ReduceAllEffectsAfterTurn()
+    {
+        ReduceStunEffects();
+        ReduceMissEffects();
+        ReduceDOTDurations();
+    }
+
+    void ReduceDOTDurations()
+    {
+        for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
+        {
+            activeStatusEffects[i].duration--;
+
+            if (activeStatusEffects[i].duration <= 0)
+            {
+                activeStatusEffects.RemoveAt(i);
+            }
+        }
     }
 
     void ReduceStunEffects()
