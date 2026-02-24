@@ -58,7 +58,7 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
-                yield break;
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (attack.attackSound != null)
@@ -72,6 +72,7 @@ public class CombatSystem : MonoBehaviour
         yield return StartCoroutine(FlashDamageEffect(target));
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
+        yield return new WaitForSeconds(0.3f);
         if (target.currentHealth <= 0)
         {
             yield return TurnManager.Instance.HandleEnemyDeath(target);
@@ -124,7 +125,6 @@ public class CombatSystem : MonoBehaviour
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
-        yield return new WaitForSeconds(0.3f);
     }
 
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
@@ -149,7 +149,7 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
-                yield break;
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (specAttack.attackSound != null)
@@ -167,6 +167,7 @@ public class CombatSystem : MonoBehaviour
         yield return StartCoroutine(FlashDamageEffect(target));
         if (specAttack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
+        yield return new WaitForSeconds(0.3f);
         if (target.currentHealth <= 0)
         { yield return TurnManager.Instance.HandleEnemyDeath(target);
           yield return TurnManager.Instance.HandlePlayerDeath(target);
@@ -218,7 +219,6 @@ public class CombatSystem : MonoBehaviour
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
-        yield return new WaitForSeconds(0.3f);
     }
 
     public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)
@@ -266,8 +266,6 @@ public class CombatSystem : MonoBehaviour
                 );
             }
         }
-
-        TurnManager.Instance.EndTurn();
     }
 
     public IEnumerator ExecuteSpecialAttackOnAll(
@@ -284,8 +282,6 @@ public class CombatSystem : MonoBehaviour
                 );
             }
         }
-
-        TurnManager.Instance.EndTurn();
     }
 
     public IEnumerator FlashDamageEffect(CharacterStats target)

@@ -165,6 +165,7 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} is stunned!"
             );
+            yield return new WaitForSeconds(0.3f);
 
             EndTurn();
             yield break;
@@ -180,6 +181,7 @@ public class TurnManager : MonoBehaviour
         yield return flavorTextUI.ShowTextCoroutine(
             $"{enemy.characterName} is taking its turn..."
         );
+        yield return new WaitForSeconds(0.3f);
         enemy.ApplyStatusEffects();
         if (enemy.currentHealth <= 0)
         {
@@ -191,6 +193,7 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName} is stunned and cannot move!"
             );
+            yield return new WaitForSeconds(0.3f);
 
             EndTurn();
             yield break;
@@ -231,6 +234,8 @@ public class TurnManager : MonoBehaviour
                 attack
             );
         }
+
+        yield return new WaitForSeconds(0.3f);
         EndTurn();
     }
 
