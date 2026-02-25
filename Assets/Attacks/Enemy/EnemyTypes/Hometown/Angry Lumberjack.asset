@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Angry Lumberjack
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Angry Lumberjack
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: edf048db39c43b64092fa8a000880827, type: 2}
+  - {fileID: 11400000, guid: 506a551e304e59f4e973c2b01be3150d, type: 2}

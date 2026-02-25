@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Wild Rambling
+  m_Name: Facial Check
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 2
-  statusChance: 100
+  missStatusEffect: 4
+  statusChance: 75
   statusDuration: 2
-  attackName: Wild Rambling
+  attackName: Facial Check
   powerCost: 0
-  damage: 1
-  attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  flavorText: '{attacker} starts screaming about satellites reading your thoughts'
+  damage: 2
+  attackSound: {fileID: 8300000, guid: 3aa4e91896568fe4cbc07731889cd210, type: 3}
+  flavorText: '{attacker} used a mirror, reflecting light into {target}''s eyes'

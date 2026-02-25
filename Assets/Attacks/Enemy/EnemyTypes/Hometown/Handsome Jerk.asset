@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Handsome Jerk
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Handsome Jerk
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: 716b36612f309b148b1637a8d7c57a27, type: 2}
+  - {fileID: 0}

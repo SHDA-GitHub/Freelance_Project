@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Angry Farmer
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Angry Farmer
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: 6ee30b9ef44241846818841f4b3ab2dd, type: 2}
+  - {fileID: 11400000, guid: 42fc1e9d59486264f8de4446d6c9f876, type: 2}
