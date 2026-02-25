@@ -22,4 +22,5 @@ public enum MissStatusEffectType
     scared,
     confused,
     dizzy,
+    blinded,
 }
