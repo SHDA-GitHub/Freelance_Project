@@ -8,6 +8,24 @@ public class MenuController : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public Transform buttonContainer;
+    private Controls controls;
+
+    private void Awake()
+    {
+        controls = new Controls();
+        controls.UI.Enable();
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeSelf && controls.UI.Cancel.triggered)
+        {
+            HideMenu();
+            UIManager.Instance.ShowPlayerOptions(
+            TurnManager.Instance.GetCurrentPlayer()
+            );
+        }
+    }
 
     public void ShowMenu<T>(
         List<T> actions,

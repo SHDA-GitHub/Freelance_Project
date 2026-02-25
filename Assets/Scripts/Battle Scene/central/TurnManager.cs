@@ -711,4 +711,9 @@ public class TurnManager : MonoBehaviour
             Debug.LogWarning($"Spawned enemy {prefab.name} has no CharacterStats!");
         }
     }
+
+    public CharacterStats GetCurrentPlayer()
+    {
+        return currentActingCharacter;
+    }
 }

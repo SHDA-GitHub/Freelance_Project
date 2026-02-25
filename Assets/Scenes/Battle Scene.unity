@@ -1543,7 +1543,6 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
-  - {fileID: 2061152904}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -1555,7 +1554,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 2d6c072de85355c4ba125599fa5d0934, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -4875,7 +4874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
