@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
     public FlavorTextUI flavorTextUI;
     public List<InventoryItem> items = new List<InventoryItem>();
-    public List<SpecialAttack> specAttacks = new List<SpecialAttack>();
+    public List<InventorySpecialAttack> specAttacks = new List<InventorySpecialAttack>();
 
     private void Awake()
     {
@@ -16,11 +16,12 @@ public class Inventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void UseSpecialAttack(SpecialAttack specAttack, CharacterStats target)
+    public void UseSpecialAttack(InventorySpecialAttack invSpecAttack)
     {
-        if (!specAttacks.Contains(specAttack)) return;
+        if (!specAttacks.Contains(invSpecAttack))
+            return;
 
-        if (specAttack.oneUse)
-            specAttacks.Remove(specAttack);
+        if (invSpecAttack.attackData.oneUse)
+            specAttacks.Remove(invSpecAttack);
     }
 }

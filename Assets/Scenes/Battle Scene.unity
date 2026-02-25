@@ -1038,7 +1038,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: af22b482beaf23747ac7a3a4a5102d62, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6eaf10ce373f94740ba4dd29d78a2a1c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: ba96cb7f7bf7ade4388fc748c3bd7f00, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2346,11 +2346,11 @@ MonoBehaviour:
   - {fileID: 241658719265508300, guid: 22685719acd331947b985f0f43169b78, type: 3}
   finalBossBG: {fileID: 0}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 0
+  isNormalEnemy: 1
   isMiniBoss: 0
   isBoss: 0
   isFinalBoss: 0
-  isMoonSoldier: 1
+  isMoonSoldier: 0
 --- !u!1 &879654187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,12 +3664,13 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   specAttacks:
-  - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
-  - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
-  - {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
-  - {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
-  - {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
-  - {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
+  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
+  - attackData: {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
+  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - attackData: {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
+  - attackData: {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
+  - attackData: {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0

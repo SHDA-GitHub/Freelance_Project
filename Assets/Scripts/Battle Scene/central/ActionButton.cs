@@ -30,8 +30,8 @@ public class ActionButton : MonoBehaviour
         if (action is Attack attack)
             return attack.attackName;
 
-        if (action is SpecialAttack specAttack)
-            return specAttack.specAttackName;
+        if (action is InventorySpecialAttack invSpec)
+            return invSpec.attackData.specAttackName;
 
         if (action is InventoryItem invItem)
             return invItem.itemData.itemName;

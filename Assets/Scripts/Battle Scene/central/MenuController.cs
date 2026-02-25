@@ -104,10 +104,10 @@ public class MenuController : MonoBehaviour
 
     public void ShowSpecialAttackMenu(CharacterStats player)
     {
-        specAttackMenuController.ShowMenu<SpecialAttack>(
+        specAttackMenuController.ShowMenu<InventorySpecialAttack>(
             Inventory.Instance.specAttacks,
             player,
-            (character, specAttack) =>
+            (character, invSpecAttack) =>
             {
                 UIManager.Instance.HideAllMenus();
 
@@ -115,9 +115,9 @@ public class MenuController : MonoBehaviour
                     TurnManager.Instance.enemyParty,
                     (target) =>
                     {
-                        TurnManager.Instance.PlayerUseSpecialAttack(player, target, specAttack);
+                        TurnManager.Instance.PlayerUseSpecialAttack(player, target, invSpecAttack);
                     },
-                    specAttack.targetAllEnemies
+                    invSpecAttack.attackData.targetAllEnemies
                 );
             },
             closeOnClick: false

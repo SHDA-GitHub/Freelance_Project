@@ -122,9 +122,9 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
     }
 
-    public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
+    public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, InventorySpecialAttack invSpecAttack)
     {
-        Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, attacker);
+        SpecialAttack specAttack = invSpecAttack.attackData;
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(specAttack.flavorText)
             ? FormatFlavorText(specAttack.flavorText, attacker, target, specAttack.specAttackName, specAttack.damage)
@@ -269,7 +269,7 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.CheckWinLose();
     }
 
-    public IEnumerator ExecuteSpecialAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, SpecialAttack specAttack)
+    public IEnumerator ExecuteSpecialAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, InventorySpecialAttack invSpecAttack)
     {
         List<CharacterStats> hitTargets = new List<CharacterStats>();
 
@@ -277,7 +277,7 @@ public class CombatSystem : MonoBehaviour
         {
             if (target != null && target.currentHealth > 0)
             {
-                yield return StartCoroutine(ExecuteSpecialAttack(attacker, target, specAttack));
+                yield return StartCoroutine(ExecuteSpecialAttack(attacker, target, invSpecAttack));
                 hitTargets.Add(target);
             }
         }

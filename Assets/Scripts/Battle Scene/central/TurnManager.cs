@@ -650,15 +650,20 @@ public class TurnManager : MonoBehaviour
     private IEnumerator PlayerSpecialAttackRoutine(
         CharacterStats player,
         CharacterStats target,
-        SpecialAttack specAttack)
+        InventorySpecialAttack invSpecAttack)
     {
+        SpecialAttack specAttack = invSpecAttack.attackData;
+
         if (player.currentPP < specAttack.powerCost)
             yield break;
 
         player.currentPP -= specAttack.powerCost;
         battleHUD.UpdateHUD();
 
-        if (specAttack.targetAllEnemies)
+        if (specAttack.oneUse)
+            Inventory.Instance.specAttacks.Remove(invSpecAttack);
+
+        if (target == null)
         {
             List<CharacterStats> aliveEnemies =
                 enemyParty.FindAll(e => e != null && e.currentHealth > 0);
@@ -666,7 +671,7 @@ public class TurnManager : MonoBehaviour
             yield return CombatSystem.Instance.ExecuteSpecialAttackOnAll(
                 player,
                 aliveEnemies,
-                specAttack
+                invSpecAttack
             );
         }
         else
@@ -674,7 +679,7 @@ public class TurnManager : MonoBehaviour
             yield return CombatSystem.Instance.ExecuteSpecialAttack(
                 player,
                 target,
-                specAttack
+                invSpecAttack
             );
 
             if (target.currentHealth <= 0)
@@ -694,9 +699,12 @@ public class TurnManager : MonoBehaviour
         StartCoroutine(PlayerAttackRoutine(player, target, attack));
     }
 
-    public void PlayerUseSpecialAttack(CharacterStats player, CharacterStats target, SpecialAttack specAttack)
+    public void PlayerUseSpecialAttack(
+        CharacterStats player,
+        CharacterStats target,
+        InventorySpecialAttack invSpecAttack)
     {
-        StartCoroutine(PlayerSpecialAttackRoutine(player, target, specAttack));
+        StartCoroutine(PlayerSpecialAttackRoutine(player, target, invSpecAttack));
     }
 
     private void SpawnEnemiesFromPreset()
