@@ -14,6 +14,21 @@ public class UIManager : MonoBehaviour
     public MenuController specialAttackMenuController;
 
     private CharacterStats currentCharacter;
+    private Controls controls;
+
+    private void Start()
+    {
+        controls = new Controls();
+        controls.UI.Enable();
+    }
+
+    private void Update()
+    {
+        if (!mainMenu.activeSelf && controls.UI.Cancel.triggered)
+        {
+            ShowPlayerOptions(currentCharacter);
+        }
+    }
 
     private void Awake()
     {
@@ -27,6 +42,7 @@ public class UIManager : MonoBehaviour
         mainMenu.SetActive(true);
         attackMenu.SetActive(false);
         itemMenu.SetActive(false);
+        specialMenu.SetActive(false);
     }
 
     public void OnAttackSelected()

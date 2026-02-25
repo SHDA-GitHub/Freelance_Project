@@ -16,17 +16,6 @@ public class MenuController : MonoBehaviour
         controls.UI.Enable();
     }
 
-    private void Update()
-    {
-        if (gameObject.activeSelf && controls.UI.Cancel.triggered)
-        {
-            HideMenu();
-            UIManager.Instance.ShowPlayerOptions(
-            TurnManager.Instance.GetCurrentPlayer()
-            );
-        }
-    }
-
     public void ShowMenu<T>(
         List<T> actions,
         CharacterStats currentCharacter,

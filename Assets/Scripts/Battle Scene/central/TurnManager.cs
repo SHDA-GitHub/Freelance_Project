@@ -599,8 +599,9 @@ public class TurnManager : MonoBehaviour
     {
         if (attack.targetAllEnemies)
         {
-            List<CharacterStats> aliveEnemies = enemyParty
-                .FindAll(e => e != null && e.currentHealth > 0);
+            List<CharacterStats> aliveEnemies = new List<CharacterStats>(
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0)
+            );
 
             yield return CombatSystem.Instance.ExecuteAttackOnAll(
                 player,
@@ -626,8 +627,9 @@ public class TurnManager : MonoBehaviour
     {
         if (specAttack.targetAllEnemies)
         {
-            List<CharacterStats> aliveEnemies = enemyParty
-                .FindAll(e => e != null && e.currentHealth > 0);
+            List<CharacterStats> aliveEnemies = new List<CharacterStats>(
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0)
+            );
 
             yield return CombatSystem.Instance.ExecuteSpecialAttackOnAll(
                 player,

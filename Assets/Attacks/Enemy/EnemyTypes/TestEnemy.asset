@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: TestEnemy
   attackSlots:
-  - {fileID: 11400000, guid: 5996de707e1a30f4983e4a4e6a88f703, type: 2}
+  - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}

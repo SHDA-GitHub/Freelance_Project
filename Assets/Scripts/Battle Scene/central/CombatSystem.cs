@@ -265,6 +265,8 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, Attack attack)
     {
+        List<CharacterStats> snapshot = new List<CharacterStats>(targets);
+
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
@@ -276,6 +278,8 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteSpecialAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, SpecialAttack specAttack)
     {
+        List<CharacterStats> snapshot = new List<CharacterStats>(targets);
+
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
