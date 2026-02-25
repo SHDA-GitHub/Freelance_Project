@@ -1038,7 +1038,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0f0295d992c3eef40bf535a3da8606c8, type: 3}
+  m_Resource: {fileID: 8300000, guid: af22b482beaf23747ac7a3a4a5102d62, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlavorTextUI
   text: {fileID: 1045033813}
   typeSound: {fileID: 485524771}
-  letterDelay: 0.045
+  letterDelay: 0.0375
 --- !u!114 &506090853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: 731b2cfa80233324a9677914e5eb3487, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -1577,6 +1577,8 @@ MonoBehaviour:
   attackMenu: {fileID: 462310167}
   itemMenu: {fileID: 1424906908}
   specialMenu: {fileID: 1983552262}
+  audioManager: {fileID: 882039389}
+  cancelSound: {fileID: 8300000, guid: 9d448dc3ef59911478311e47cd32a29b, type: 3}
   attackMenuController: {fileID: 1592073203}
   itemMenuController: {fileID: 1573874368}
   specialAttackMenuController: {fileID: 1511911596}
@@ -1597,9 +1599,9 @@ MonoBehaviour:
   audioManager: {fileID: 882039389}
   playerAttacks: {fileID: 879654192}
   battleCamera: {fileID: 1658588352}
-  shakeAmount: 0.4
-  shakeDuration: 0.4
-  shakeSpeed: 0.02
+  shakeAmount: 0.5
+  shakeDuration: 0.55
+  shakeSpeed: 0.015
 --- !u!114 &506090856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,11 +2346,11 @@ MonoBehaviour:
   - {fileID: 241658719265508300, guid: 22685719acd331947b985f0f43169b78, type: 3}
   finalBossBG: {fileID: 0}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 1
+  isNormalEnemy: 0
   isMiniBoss: 0
   isBoss: 0
   isFinalBoss: 0
-  isMoonSoldier: 0
+  isMoonSoldier: 1
 --- !u!1 &879654187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: Billy
   maxHealth: 10
-  currentHealth: 10
+  currentHealth: 1
   maxPP: 5
   currentPP: 5
   level: 1
@@ -3657,11 +3659,13 @@ MonoBehaviour:
   flavorTextUI: {fileID: 506090852}
   items:
   - {fileID: 11400000, guid: 9444a17cba3552946a92898edbecdf2c, type: 2}
+  - {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
+  - {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+  - {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
   specAttacks:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
   - {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
-  - {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
   - {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
 --- !u!4 &1406268199
 Transform:

@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject attackMenu;
     public GameObject itemMenu;
     public GameObject specialMenu;
-
+    [SerializeField] private AudioSource audioManager;
+    [SerializeField] private AudioClip cancelSound;
     public MenuController attackMenuController;
     public MenuController itemMenuController;
     public MenuController specialAttackMenuController;
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         if (!mainMenu.activeSelf && controls.UI.Cancel.triggered)
         {
+            AudioManager.Instance.PlaySFX(cancelSound);
             ShowPlayerOptions(currentCharacter);
         }
     }

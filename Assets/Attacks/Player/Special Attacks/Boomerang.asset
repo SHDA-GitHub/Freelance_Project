@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
+  m_Name: Boomerang
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
+  targetAllEnemies: 0
+  statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 3
+  statusChance: 40
+  statusDuration: 2
+  specAttackName: boomerang
+  powerCost: 1
+  damage: 2
+  attackSound: {fileID: 8300000, guid: edc8857d14dbf3d41b9c99c1505b9197, type: 3}
+  specialAttackCamShake: 0
+  oneUse: 1
+  flavorText: '{attacker} threw a {action}!'

@@ -275,7 +275,8 @@ public class TurnManager : MonoBehaviour
     public void StartTargetSelection(
         List<CharacterStats> possibleTargets,
         System.Action<CharacterStats> onTargetConfirmed,
-        bool targetAll = false)
+        bool targetAll = false,
+        bool includeDead = false)
     {
         if (possibleTargets == null || possibleTargets.Count == 0)
             return;
@@ -288,11 +289,11 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        currentTargetIndex = GetNextAliveIndex(possibleTargets, 0);
-        StartCoroutine(TargetSelectionRoutine(possibleTargets, onTargetConfirmed));
+        currentTargetIndex = GetNextValidIndex(possibleTargets, 0, includeDead);
+        StartCoroutine(TargetSelectionRoutine(possibleTargets, onTargetConfirmed, includeDead));
     }
 
-    private int GetNextAliveIndex(List<CharacterStats> list, int startIndex)
+    private int GetNextValidIndex(List<CharacterStats> list, int startIndex, bool includeDead)
     {
         if (list.Count == 0)
             return -1;
@@ -304,7 +305,13 @@ public class TurnManager : MonoBehaviour
         {
             int index = (startIndex + i) % count;
 
-            if (list[index] != null && list[index].currentHealth > 0)
+            if (list[index] == null)
+                continue;
+
+            if (includeDead)
+                return index;
+
+            if (list[index].currentHealth > 0)
                 return index;
         }
 
@@ -313,7 +320,8 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator TargetSelectionRoutine(
         List<CharacterStats> targetList,
-        System.Action<CharacterStats> onTargetConfirmed)
+        System.Action<CharacterStats> onTargetConfirmed,
+        bool includeDead)
     {
         while (isSelectingTarget)
         {
@@ -345,10 +353,10 @@ public class TurnManager : MonoBehaviour
                 Vector2 input = controls.UI.Navigate.ReadValue<Vector2>();
 
                 if (input.x > 0)
-                    currentTargetIndex = GetNextAliveIndex(targetList, currentTargetIndex + 1);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
 
                 if (input.x < 0)
-                    currentTargetIndex = GetNextAliveIndex(targetList, currentTargetIndex - 1);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
             }
 
             if (controls.UI.Submit.triggered)
@@ -551,8 +559,6 @@ public class TurnManager : MonoBehaviour
         if (playerParty.Contains(player))
         {
             yield return flavorTextUI.ShowTextCoroutine($"{player.characterName} has been knocked out!");
-
-            playerParty.Remove(player);
 
             if (currentTurn == TurnType.Player)
             {

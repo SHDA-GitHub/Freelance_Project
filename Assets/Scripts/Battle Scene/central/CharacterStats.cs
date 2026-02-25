@@ -22,28 +22,6 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] private int overtimeDamage = 1;
 
-    void PerformEnemyAction()
-    {
-        if (enemyLoadout == null)
-        {
-            Debug.LogWarning($"{characterName} has no EnemyLoadout assigned!");
-            return;
-        }
-
-        Attack attack = enemyLoadout.GetRandomAttack();
-
-        if (attack == null)
-            return;
-
-        CombatSystem.Instance.StartCoroutine(
-            CombatSystem.Instance.ExecuteAttack(
-                this,
-                TurnManager.Instance.playerParty[0],
-                attack
-            )
-        );
-    }
-
     public void ApplyStatus(DOTStatusEffectType type, int duration)
     {
         if (type == DOTStatusEffectType.None)

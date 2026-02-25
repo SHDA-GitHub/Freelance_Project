@@ -83,16 +83,19 @@ public class MenuController : MonoBehaviour
             {
                 UIManager.Instance.HideAllMenus();
 
-            TurnManager.Instance.StartTargetSelection(
-                TurnManager.Instance.playerParty,
-                (target) =>
-                {
-                    UIManager.Instance.HideAllMenus();
+                TurnManager.Instance.StartTargetSelection(
+                    TurnManager.Instance.playerParty,
+                    (target) =>
+                    {
+                        UIManager.Instance.HideAllMenus();
 
-                    StartCoroutine(
-                        CombatSystem.Instance.ExecuteItem(character, target, item as Item)
-                    );
-                });
+                        StartCoroutine(
+                            CombatSystem.Instance.ExecuteItem(character, target, item as Item)
+                        );
+                    },
+                    false,
+                    true
+                );
             },
             closeOnClick: false
         );
