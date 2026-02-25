@@ -19,7 +19,7 @@ MonoBehaviour:
   statusChance: 75
   statusDuration: 2
   specAttackName: Fireworks
-  powerCost: 2
+  powerCost: 3
   damage: 3
   attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
   specialAttackCamShake: 1

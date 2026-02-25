@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Bully
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Bully
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: b8e284944fe97a44d9625628ed4ed1f3, type: 2}
+  - {fileID: 11400000, guid: 8f3bd582edc95d64d8f2ffbeb08c94bd, type: 2}
+  - {fileID: 11400000, guid: c8cd255dbcd2c144f9ce511ab858ecb8, type: 2}

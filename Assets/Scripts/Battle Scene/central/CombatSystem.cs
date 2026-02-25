@@ -91,6 +91,7 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (attack.stunstatusEffect != StunStatusEffectType.None)
@@ -106,6 +107,7 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (attack.missStatusEffect != MissStatusEffectType.None)
@@ -121,8 +123,11 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
+
+        Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
     }
@@ -185,6 +190,7 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (specAttack.stunstatusEffect != StunStatusEffectType.None)
@@ -200,6 +206,7 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (specAttack.missStatusEffect != MissStatusEffectType.None)
@@ -215,8 +222,10 @@ public class CombatSystem : MonoBehaviour
                 );
                 audioManager.clip = statusEffectGain;
                 audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
             }
         }
+        Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
         TurnManager.Instance.CheckWinLose();
     }
@@ -252,34 +261,24 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.EndTurn();
     }
 
-    public IEnumerator ExecuteAttackOnAll(
-    CharacterStats attacker,
-    List<CharacterStats> targets,
-    Attack attack)
+    public IEnumerator ExecuteAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, Attack attack)
     {
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
             {
-                yield return StartCoroutine(
-                    ExecuteAttack(attacker, target, attack)
-                );
+                yield return StartCoroutine(ExecuteAttack(attacker, target, attack));
             }
         }
     }
 
-    public IEnumerator ExecuteSpecialAttackOnAll(
-    CharacterStats attacker,
-    List<CharacterStats> targets,
-    SpecialAttack specAttack)
+    public IEnumerator ExecuteSpecialAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, SpecialAttack specAttack)
     {
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
             {
-                yield return StartCoroutine(
-                    ExecuteSpecialAttack(attacker, target, specAttack)
-                );
+                yield return StartCoroutine(ExecuteSpecialAttack(attacker, target, specAttack));
             }
         }
     }
