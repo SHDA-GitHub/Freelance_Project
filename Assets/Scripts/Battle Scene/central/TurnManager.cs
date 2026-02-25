@@ -246,10 +246,17 @@ public class TurnManager : MonoBehaviour
                 target,
                 attack
             );
-        }
 
-        yield return new WaitForSeconds(0.3f);
-        EndTurn();
+            if (target.currentHealth <= 0)
+            {
+                yield return HandleEnemyDeath(target);
+                yield return HandlePlayerDeath(target);
+            }
+
+            CheckWinLose();
+        }
+            yield return new WaitForSeconds(0.3f);
+            EndTurn();
     }
 
     public void EndTurn()
@@ -549,7 +556,7 @@ public class TurnManager : MonoBehaviour
 
             if (currentTurn == TurnType.Player)
             {
-                currentCharacterIndex--;
+                currentCharacterIndex = Mathf.Max(currentCharacterIndex - 1, 0);
             }
 
             player.ReduceAllEffectsAfterTurn();
@@ -585,7 +592,7 @@ public class TurnManager : MonoBehaviour
 
             if (currentTurn == TurnType.Enemy)
             {
-                currentCharacterIndex--;
+                currentCharacterIndex = Mathf.Max(currentCharacterIndex - 1, 0);
             }
 
             CheckWinLose();
@@ -593,15 +600,20 @@ public class TurnManager : MonoBehaviour
     }
 
     private IEnumerator PlayerAttackRoutine(
-    CharacterStats player,
-    CharacterStats target,
-    Attack attack)
+        CharacterStats player,
+        CharacterStats target,
+        Attack attack)
     {
+        if (player.currentPP < attack.powerCost)
+            yield break;
+
+        player.currentPP -= attack.powerCost;
+        battleHUD.UpdateHUD();
+
         if (attack.targetAllEnemies)
         {
-            List<CharacterStats> aliveEnemies = new List<CharacterStats>(
-                enemyParty.FindAll(e => e != null && e.currentHealth > 0)
-            );
+            List<CharacterStats> aliveEnemies =
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0);
 
             yield return CombatSystem.Instance.ExecuteAttackOnAll(
                 player,
@@ -616,20 +628,34 @@ public class TurnManager : MonoBehaviour
                 target,
                 attack
             );
+
+            if (target.currentHealth <= 0)
+            {
+                yield return HandleEnemyDeath(target);
+                yield return HandlePlayerDeath(target);
+            }
+
+            CheckWinLose();
         }
+
         EndTurn();
     }
 
     private IEnumerator PlayerSpecialAttackRoutine(
-       CharacterStats player,
-       CharacterStats target,
-       SpecialAttack specAttack)
+        CharacterStats player,
+        CharacterStats target,
+        SpecialAttack specAttack)
     {
+        if (player.currentPP < specAttack.powerCost)
+            yield break;
+
+        player.currentPP -= specAttack.powerCost;
+        battleHUD.UpdateHUD();
+
         if (specAttack.targetAllEnemies)
         {
-            List<CharacterStats> aliveEnemies = new List<CharacterStats>(
-                enemyParty.FindAll(e => e != null && e.currentHealth > 0)
-            );
+            List<CharacterStats> aliveEnemies =
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0);
 
             yield return CombatSystem.Instance.ExecuteSpecialAttackOnAll(
                 player,
@@ -644,6 +670,14 @@ public class TurnManager : MonoBehaviour
                 target,
                 specAttack
             );
+
+            if (target.currentHealth <= 0)
+            {
+                yield return HandleEnemyDeath(target);
+                yield return HandlePlayerDeath(target);
+            }
+
+            CheckWinLose();
         }
 
         EndTurn();

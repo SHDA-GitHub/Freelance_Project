@@ -39,11 +39,6 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteAttack(CharacterStats attacker, CharacterStats target, Attack attack)
     {
-        if (attacker.currentPP < attack.powerCost)
-        {
-            yield break;
-        }
-        attacker.currentPP -= attack.powerCost;
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(attack.flavorText)
             ? FormatFlavorText(attack.flavorText, attacker, target, attack.attackName, attack.damage)
@@ -74,11 +69,6 @@ public class CombatSystem : MonoBehaviour
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
         yield return new WaitForSeconds(0.3f);
-        if (target.currentHealth <= 0)
-        {
-            yield return TurnManager.Instance.HandleEnemyDeath(target);
-            yield return TurnManager.Instance.HandlePlayerDeath(target);
-        }
         if (attack.statusEffect != DOTStatusEffectType.None)
         {
             int roll = Random.Range(0, 100);
@@ -130,17 +120,11 @@ public class CombatSystem : MonoBehaviour
 
         Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
-        TurnManager.Instance.CheckWinLose();
     }
 
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, SpecialAttack specAttack)
     {
         Inventory.Instance.UseSpecialAttack(specAttack as SpecialAttack, attacker);
-        if (attacker.currentPP < specAttack.powerCost)
-        {
-            yield break;
-        }
-        attacker.currentPP -= specAttack.powerCost;
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(specAttack.flavorText)
             ? FormatFlavorText(specAttack.flavorText, attacker, target, specAttack.specAttackName, specAttack.damage)
@@ -175,10 +159,6 @@ public class CombatSystem : MonoBehaviour
         if (specAttack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
         yield return new WaitForSeconds(0.3f);
-        if (target.currentHealth <= 0)
-        { yield return TurnManager.Instance.HandleEnemyDeath(target);
-          yield return TurnManager.Instance.HandlePlayerDeath(target);
-        }
         if (specAttack.statusEffect != DOTStatusEffectType.None)
         {
             int roll = Random.Range(0, 100);
@@ -229,7 +209,6 @@ public class CombatSystem : MonoBehaviour
         }
         Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
-        TurnManager.Instance.CheckWinLose();
     }
 
     public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)
@@ -265,28 +244,52 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, Attack attack)
     {
-        List<CharacterStats> snapshot = new List<CharacterStats>(targets);
+        List<CharacterStats> hitTargets = new List<CharacterStats>();
 
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
             {
                 yield return StartCoroutine(ExecuteAttack(attacker, target, attack));
+                hitTargets.Add(target);
             }
         }
+
+        foreach (var target in hitTargets)
+        {
+            if (target.currentHealth <= 0)
+            {
+                yield return TurnManager.Instance.HandleEnemyDeath(target);
+                yield return TurnManager.Instance.HandlePlayerDeath(target);
+            }
+        }
+
+        TurnManager.Instance.CheckWinLose();
     }
 
     public IEnumerator ExecuteSpecialAttackOnAll(CharacterStats attacker, List<CharacterStats> targets, SpecialAttack specAttack)
     {
-        List<CharacterStats> snapshot = new List<CharacterStats>(targets);
+        List<CharacterStats> hitTargets = new List<CharacterStats>();
 
         foreach (var target in targets)
         {
             if (target != null && target.currentHealth > 0)
             {
                 yield return StartCoroutine(ExecuteSpecialAttack(attacker, target, specAttack));
+                hitTargets.Add(target);
             }
         }
+
+        foreach (var target in hitTargets)
+        {
+            if (target.currentHealth <= 0)
+            {
+                yield return TurnManager.Instance.HandleEnemyDeath(target);
+                yield return TurnManager.Instance.HandlePlayerDeath(target);
+            }
+        }
+
+        TurnManager.Instance.CheckWinLose();
     }
 
     public IEnumerator FlashDamageEffect(CharacterStats target)
