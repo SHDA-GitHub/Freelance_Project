@@ -544,8 +544,19 @@ public class TurnManager : MonoBehaviour
         if (playerParty.Contains(player))
         {
             yield return flavorTextUI.ShowTextCoroutine($"{player.characterName} has been knocked out!");
+
+            playerParty.Remove(player);
+
+            if (currentTurn == TurnType.Player)
+            {
+                currentCharacterIndex--;
+            }
+
+            player.ReduceAllEffectsAfterTurn();
             audioManager.clip = playerDeath;
             audioManager.Play();
+
+            CheckWinLose();
         }
     }
 

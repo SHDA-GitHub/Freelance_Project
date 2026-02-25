@@ -59,6 +59,7 @@ public class CombatSystem : MonoBehaviour
                     $"{attacker.characterName} missed their attack!"
                 );
                 yield return new WaitForSeconds(0.3f);
+                TurnManager.Instance.EndTurn();
             }
         }
         if (attack.attackSound != null)
@@ -155,6 +156,7 @@ public class CombatSystem : MonoBehaviour
                     $"{attacker.characterName} missed their attack!"
                 );
                 yield return new WaitForSeconds(0.3f);
+                TurnManager.Instance.EndTurn();
             }
         }
         if (specAttack.attackSound != null)

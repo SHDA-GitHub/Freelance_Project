@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
   m_Name: Abusive Dad
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 7190765823491387487, guid: 0e23c713005689848ad234f7a91b1113, type: 3}
