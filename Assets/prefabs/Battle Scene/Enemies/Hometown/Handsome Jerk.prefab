@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: The Handsome Jerk
+  characterName: Handsome Jerk
   maxHealth: 12
   currentHealth: 12
   maxPP: 1

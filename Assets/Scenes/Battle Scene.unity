@@ -1038,7 +1038,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 6eaf10ce373f94740ba4dd29d78a2a1c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 72a7c3347cbdc8a49a533ce57b479544, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: ba96cb7f7bf7ade4388fc748c3bd7f00, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 22baa533a12c70f45a033143bd66e9f0, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
