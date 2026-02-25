@@ -2457,7 +2457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: Billy
   maxHealth: 10
-  currentHealth: 1
+  currentHealth: 10
   maxPP: 5
   currentPP: 5
   level: 1
