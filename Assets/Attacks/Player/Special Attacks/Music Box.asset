@@ -17,11 +17,11 @@ MonoBehaviour:
   stunstatusEffect: 2
   missStatusEffect: 0
   statusChance: 85
-  statusDuration: 2
+  statusDuration: 1
   specAttackName: music box
   powerCost: 1
   damage: 0
-  attackSound: {fileID: 8300000, guid: 83b0d4ef209dc784492da547d2a553d9, type: 3}
+  attackSound: {fileID: 8300000, guid: 3bd0e75d4fb5f35448e16ebb678d111a, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} played a {action}!'

@@ -21,7 +21,6 @@ public class MenuController : MonoBehaviour
         CharacterStats currentCharacter,
         System.Action<CharacterStats, T> onClickCallback,
         bool closeOnClick = true)
-    where T : ScriptableObject
     {
         foreach (Transform child in buttonContainer)
             Destroy(child.gameObject);
@@ -33,7 +32,7 @@ public class MenuController : MonoBehaviour
             {
                 actionButton.Setup(action, (a) =>
                 {
-                    onClickCallback?.Invoke(currentCharacter, a as T);
+                    onClickCallback?.Invoke(currentCharacter, (T)a);
                     if (closeOnClick)
                         gameObject.SetActive(false);
 
@@ -76,10 +75,10 @@ public class MenuController : MonoBehaviour
 
     public void ShowItemMenu(CharacterStats player)
     {
-        itemMenuController.ShowMenu<Item>(
+        itemMenuController.ShowMenu<InventoryItem>(
             Inventory.Instance.items,
             player,
-            (character, item) =>
+            (character, invItem) =>
             {
                 UIManager.Instance.HideAllMenus();
 
@@ -90,7 +89,7 @@ public class MenuController : MonoBehaviour
                         UIManager.Instance.HideAllMenus();
 
                         StartCoroutine(
-                            CombatSystem.Instance.ExecuteItem(character, target, item as Item)
+                            CombatSystem.Instance.ExecuteItem(character, target, invItem)
                         );
                     },
                     false,

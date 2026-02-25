@@ -211,10 +211,12 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
     }
 
-    public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, Item item)
+    public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, InventoryItem invItem)
     {
-        if (!Inventory.Instance.items.Contains(item))
+        if (!Inventory.Instance.items.Contains(invItem))
             yield break;
+
+        Item item = invItem.itemData;
         string message;
         if (user != target && TurnManager.Instance.playerParty.Contains(target))
         {
@@ -235,7 +237,7 @@ public class CombatSystem : MonoBehaviour
         if (item.healAmount > 0)
             yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} recovered {item.healAmount} HP!");
         if (item.consumable)
-            Inventory.Instance.items.Remove(item);
+            Inventory.Instance.items.Remove(invItem);
 
         yield return new WaitForSeconds(0.3f);
 

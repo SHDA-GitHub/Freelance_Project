@@ -17,7 +17,7 @@ MonoBehaviour:
   stunstatusEffect: 0
   missStatusEffect: 3
   statusChance: 40
-  statusDuration: 2
+  statusDuration: 1
   specAttackName: boomerang
   powerCost: 1
   damage: 2

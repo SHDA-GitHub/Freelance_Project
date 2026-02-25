@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
     public FlavorTextUI flavorTextUI;
-    public List<Item> items = new List<Item>();
+    public List<InventoryItem> items = new List<InventoryItem>();
     public List<SpecialAttack> specAttacks = new List<SpecialAttack>();
 
     private void Awake()

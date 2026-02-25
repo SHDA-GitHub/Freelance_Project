@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlavorTextUI
   text: {fileID: 1045033813}
   typeSound: {fileID: 485524771}
-  letterDelay: 0.0375
+  letterDelay: 0.0425
 --- !u!114 &506090853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3658,15 +3658,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   flavorTextUI: {fileID: 506090852}
   items:
-  - {fileID: 11400000, guid: 9444a17cba3552946a92898edbecdf2c, type: 2}
-  - {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
-  - {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-  - {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
+  - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
+  - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+  - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
+  - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
+  - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   specAttacks:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
   - {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
   - {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
+  - {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
