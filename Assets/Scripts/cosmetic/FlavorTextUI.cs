@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class FlavorTextUI : MonoBehaviour
@@ -9,7 +8,13 @@ public class FlavorTextUI : MonoBehaviour
     [SerializeField] private AudioSource typeSound;
     [SerializeField] private float letterDelay = 0.05f;
 
+    private float speedMultiplier = 2f;
     private Coroutine typingCoroutine;
+
+    public void SetFastMode(bool fast)
+    {
+        speedMultiplier = fast ? 2f : 1f;
+    }
 
     public IEnumerator ShowTextCoroutine(string message)
     {
@@ -17,7 +22,6 @@ public class FlavorTextUI : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         text.text = "";
-
         typingCoroutine = StartCoroutine(TypeText(message));
 
         yield return new WaitUntil(() => typingCoroutine == null);
@@ -40,7 +44,8 @@ public class FlavorTextUI : MonoBehaviour
             if (typeSound != null)
                 typeSound.Play();
 
-            yield return new WaitForSeconds(letterDelay);
+            float adjustedDelay = letterDelay / speedMultiplier;
+            yield return new WaitForSeconds(adjustedDelay);
         }
 
         typingCoroutine = null;

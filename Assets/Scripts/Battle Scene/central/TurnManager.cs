@@ -58,6 +58,19 @@ public class TurnManager : MonoBehaviour
         SpawnEnemiesFromPreset();
         StartCoroutine(StartBattle());
     }
+
+    private void Update()
+    {
+        if (controls.UI.Submit.IsPressed())
+        {
+            flavorTextUI.SetFastMode(true);
+        }
+        else
+        {
+            flavorTextUI.SetFastMode(false);
+        }
+    }
+
     private IEnumerator StartBattle()
     {
         if (enemyParty.Count > 0)
