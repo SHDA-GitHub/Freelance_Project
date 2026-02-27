@@ -21,7 +21,7 @@ MonoBehaviour:
   specAttackName: boomerang
   powerCost: 1
   damage: 2
-  attackSound: {fileID: 8300000, guid: edc8857d14dbf3d41b9c99c1505b9197, type: 3}
+  attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} threw a {action}!'
