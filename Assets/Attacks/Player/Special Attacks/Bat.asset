@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
+  targetAllEnemies: 0
   statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 0
   statusChance: 0
   statusDuration: 2
   specAttackName: Baseball Bat
-  powerCost: 2
+  powerCost: 3
   damage: 4
   attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
   specialAttackCamShake: 1

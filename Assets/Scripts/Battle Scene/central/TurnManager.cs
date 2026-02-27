@@ -139,6 +139,11 @@ public class TurnManager : MonoBehaviour
             }
 
             var character = playerParty[currentCharacterIndex];
+            if (character.currentHealth > 0)
+            {
+                character.currentPP = Mathf.Min(character.currentPP + 1, character.maxPP);
+                battleHUD.UpdateHUD();
+            }
 
             if (character.currentHealth <= 0)
             {
@@ -160,6 +165,11 @@ public class TurnManager : MonoBehaviour
             }
 
             var enemy = enemyParty[currentCharacterIndex];
+            if (enemy.currentHealth > 0)
+            {
+                enemy.currentPP = Mathf.Min(enemy.currentPP + 1, enemy.maxPP);
+            }
+
             StartCoroutine(EnemyTurnCoroutine(enemy));
         }
     }
@@ -375,6 +385,7 @@ public class TurnManager : MonoBehaviour
             if (controls.UI.Cancel.triggered)
             {
                 CancelTargetSelection();
+                StopCoroutine(targetFlickerCoroutine);
                 AudioManager.Instance.PlaySFX(cancelSound);
                 yield break;
             }
@@ -418,6 +429,7 @@ public class TurnManager : MonoBehaviour
             if (controls.UI.Cancel.triggered)
             {
                 CancelTargetSelection();
+                StopCoroutine(targetFlickerCoroutine);
                 yield break;
             }
 
@@ -611,7 +623,16 @@ public class TurnManager : MonoBehaviour
         Attack attack)
     {
         if (player.currentPP < attack.powerCost)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName} does not have enough PP to use {attack.attackName}!"
+            );
+
+            AudioManager.Instance.PlaySFX(cancelSound);
+
+            UIManager.Instance.ShowPlayerOptions(player);
             yield break;
+        }
 
         player.currentPP -= attack.powerCost;
         battleHUD.UpdateHUD();
@@ -655,7 +676,16 @@ public class TurnManager : MonoBehaviour
         SpecialAttack specAttack = invSpecAttack.attackData;
 
         if (player.currentPP < specAttack.powerCost)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName} does not have enough PP to use {specAttack.specAttackName}!"
+            );
+
+            AudioManager.Instance.PlaySFX(cancelSound);
+
+            UIManager.Instance.ShowPlayerOptions(player);
             yield break;
+        }
 
         player.currentPP -= specAttack.powerCost;
         battleHUD.UpdateHUD();

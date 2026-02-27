@@ -1038,7 +1038,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 6eaf10ce373f94740ba4dd29d78a2a1c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8d6d4b0736338d54b9f5a71fb61e029b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: ba96cb7f7bf7ade4388fc748c3bd7f00, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: c4f2338bd49294942bf79524afb8686d, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2346,8 +2346,8 @@ MonoBehaviour:
   - {fileID: 241658719265508300, guid: 22685719acd331947b985f0f43169b78, type: 3}
   finalBossBG: {fileID: 0}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 1
-  isMiniBoss: 0
+  isNormalEnemy: 0
+  isMiniBoss: 1
   isBoss: 0
   isFinalBoss: 0
   isMoonSoldier: 0
@@ -4993,9 +4993,9 @@ SceneRoots:
   - {fileID: 1829633666}
   - {fileID: 1406268199}
   - {fileID: 506090847}
+  - {fileID: 408731266}
   - {fileID: 882039387}
   - {fileID: 485524772}
-  - {fileID: 408731266}
   - {fileID: 849644932}
   - {fileID: 778720918}
   - {fileID: 879654188}
