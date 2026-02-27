@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 3
-  statusChance: 35
+  statusChance: 45
   statusDuration: 2
   specAttackName: Yo-Yo
   powerCost: 2

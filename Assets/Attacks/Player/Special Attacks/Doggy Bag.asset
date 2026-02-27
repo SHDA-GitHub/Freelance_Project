@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
-  statusChance: 75
+  statusChance: 100
   statusDuration: 1
   specAttackName: Doggy Bag
   powerCost: 2

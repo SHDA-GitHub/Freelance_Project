@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Barfbag
+  m_Name: Firecracker
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
-  statusEffect: 3
+  statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
-  statusChance: 100
+  statusChance: 70
   statusDuration: 1
-  specAttackName: Barfbag
+  specAttackName: Firecracker
   powerCost: 2
-  damage: 1
-  attackSound: {fileID: 8300000, guid: e58448275507a834f94cfd6f61448a84, type: 3}
-  specialAttackCamShake: 0
+  damage: 2
+  attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
+  specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} threw a mysterious saggy bag at {target}'
+  flavorText: '{attacker} threw a lit firecracker at {target}'

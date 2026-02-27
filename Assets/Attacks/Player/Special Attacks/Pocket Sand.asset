@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 4
-  statusChance: 50
+  statusChance: 65
   statusDuration: 1
   specAttackName: pocket sand
   powerCost: 1

@@ -254,8 +254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -0.18}
+  m_SizeDelta: {x: 100, y: 91.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &110808409
 MonoBehaviour:
@@ -266,23 +266,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 110808407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
     m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 75, y: 25}
+  m_Spacing: {x: -53, y: -3}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &123470269
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,8 +815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -0.18}
+  m_SizeDelta: {x: 100, y: 91.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264509807
 MonoBehaviour:
@@ -829,23 +827,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 264509805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
     m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 75, y: 25}
+  m_Spacing: {x: -53, y: -3}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &296506675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,7 +1287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488510841}
-  - component: {fileID: 488510844}
+  - component: {fileID: 488510842}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -1306,7 +1302,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488510840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1315,10 +1311,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -0.18}
+  m_SizeDelta: {x: 100, y: 91.19}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &488510844
+--- !u!114 &488510842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1327,23 +1323,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 488510840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
     m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 75, y: 25}
+  m_Spacing: {x: -53, y: -3}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &506090844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,17 +3595,21 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   specAttacks:
+  - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
+  - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
   - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - attackData: {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
+  - attackData: {fileID: 11400000, guid: 9a00123c322652b4692c3f4f73bb1e8e, type: 2}
+  - attackData: {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
+  - attackData: {fileID: 11400000, guid: 19c3a8a096585c641ac026d29bc492f7, type: 2}
   - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
-  - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
   - attackData: {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
+  - attackData: {fileID: 11400000, guid: 753abb07883443a459d0f7f263e9c06d, type: 2}
   - attackData: {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
   - attackData: {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
-  - attackData: {fileID: 11400000, guid: 753abb07883443a459d0f7f263e9c06d, type: 2}
-  - attackData: {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
-  - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
   - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
+  - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
+  - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
