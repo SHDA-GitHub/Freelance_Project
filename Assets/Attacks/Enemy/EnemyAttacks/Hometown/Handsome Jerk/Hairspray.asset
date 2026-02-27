@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Confidence
+  m_Name: Hairspray
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  targetAllEnemies: 0
-  statusEffect: 0
+  targetAllEnemies: 1
+  statusEffect: 3
   stunstatusEffect: 0
-  missStatusEffect: 2
-  statusChance: 35
+  missStatusEffect: 0
+  statusChance: 60
   statusDuration: 2
-  attackName: Confidence
+  attackName: Hairspray
   powerCost: 0
   damage: 1
-  attackSound: {fileID: 8300000, guid: 3aa4e91896568fe4cbc07731889cd210, type: 3}
-  flavorText: '{attacker} flashed a dashing smile at {target}'
+  attackSound: {fileID: 8300000, guid: 11f049487d3833845bf9c621b9c81d0e, type: 3}
+  flavorText: '{attacker} applied an inconsiderate amount of hairspray to himself'
