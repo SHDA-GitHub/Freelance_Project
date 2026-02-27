@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
   m_Name: Music Box
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  targetAllEnemies: 1
+  targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 2
   missStatusEffect: 0

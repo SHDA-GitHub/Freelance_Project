@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Shoe Throw (Ballet)
+  m_Name: Pocket Sand
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
-  statusChance: 0
-  statusDuration: 2
-  specAttackName: ballet shoe
-  powerCost: 2
-  damage: 3
-  attackSound: {fileID: 8300000, guid: 2e0e1036172ccec4c99933b13d9c8064, type: 3}
+  missStatusEffect: 4
+  statusChance: 50
+  statusDuration: 1
+  specAttackName: pocket sand
+  powerCost: 1
+  damage: 0
+  attackSound: {fileID: 8300000, guid: 11f049487d3833845bf9c621b9c81d0e, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw a {action} at {target}!'
+  flavorText: '{attacker} threw pocket sand into {target}''s eyes!'

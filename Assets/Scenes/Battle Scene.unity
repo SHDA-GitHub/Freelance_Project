@@ -3604,10 +3604,14 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - attackData: {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
   - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
-  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
   - attackData: {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
   - attackData: {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
   - attackData: {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
+  - attackData: {fileID: 11400000, guid: 753abb07883443a459d0f7f263e9c06d, type: 2}
+  - attackData: {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
+  - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
+  - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0

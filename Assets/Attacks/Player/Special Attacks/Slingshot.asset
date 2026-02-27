@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Shoe Throw (Ballet)
+  m_Name: Slingshot
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  targetAllEnemies: 0
+  targetAllEnemies: 1
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
-  statusChance: 0
-  statusDuration: 2
-  specAttackName: ballet shoe
+  missStatusEffect: 3
+  statusChance: 15
+  statusDuration: 1
+  specAttackName: Slingshot
   powerCost: 2
-  damage: 3
-  attackSound: {fileID: 8300000, guid: 2e0e1036172ccec4c99933b13d9c8064, type: 3}
+  damage: 2
+  attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw a {action} at {target}!'
+  flavorText: '{attacker} fired a slingshot at {target}'
