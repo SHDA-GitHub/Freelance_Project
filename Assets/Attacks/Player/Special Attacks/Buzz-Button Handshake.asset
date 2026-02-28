@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Yo-Yo Whiplash
+  m_Name: Buzz-Button Handshake
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  targetAllEnemies: 1
-  statusEffect: 0
+  targetAllEnemies: 0
+  statusEffect: 4
   stunstatusEffect: 0
-  missStatusEffect: 3
-  statusChance: 45
-  statusDuration: 2
-  specAttackName: Yo-Yo
-  powerCost: 3
-  damage: 2
-  attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
+  missStatusEffect: 0
+  statusChance: 60
+  statusDuration: 1
+  specAttackName: Buzz-Button Handshake
+  powerCost: 2
+  damage: 1
+  attackSound: {fileID: 8300000, guid: 89da5b1922abb0b4eb2c5d2dd30e5a88, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} swung a yo-yo at {target}'
+  flavorText: '{attacker} shook hands with {target}, giving an electrifying surprise'

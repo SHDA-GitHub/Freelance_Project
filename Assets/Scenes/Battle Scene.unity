@@ -3684,9 +3684,13 @@ MonoBehaviour:
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+  - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+  - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
+  - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
+  - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
@@ -3703,6 +3707,8 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
+  - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
+  - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0

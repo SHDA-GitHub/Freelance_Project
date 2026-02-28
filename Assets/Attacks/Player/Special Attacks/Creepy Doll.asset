@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 1
-  statusChance: 55
+  statusChance: 65
   statusDuration: 2
   specAttackName: Creepy Doll
   powerCost: 1
