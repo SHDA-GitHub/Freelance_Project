@@ -212,6 +212,8 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
+        enemy.ApplyStatusEffects();
+
         BossPhaseController phaseController = enemy.GetComponent<BossPhaseController>();
 
         if (phaseController != null)
@@ -225,7 +227,6 @@ public class TurnManager : MonoBehaviour
             $"{enemy.characterName} is taking its turn..."
         );
         yield return new WaitForSeconds(0.3f);
-        enemy.ApplyStatusEffects();
         if (enemy.currentHealth <= 0)
         {
             yield return HandleEnemyDeath(enemy);

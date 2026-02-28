@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 859827642657360743}
   - component: {fileID: 1163969470218227253}
   - component: {fileID: 1122587502657054084}
+  - component: {fileID: 4974024867689741610}
   m_Layer: 5
   m_Name: Yornu
   m_TagString: Enemy
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767039248239139663}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.52607, y: 0.41163, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
@@ -261,3 +262,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4974024867689741610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767039248239139663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e792a06f0ed60f541836ff298f10711e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPhaseController
+  phases:
+  - hpThreshold: 40
+    backgroundPrefab: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
+    phaseName: abstract
+    phaseMusic: {fileID: 8300000, guid: 0fa2fcb5101bc434495cbb6db3581467, type: 3}
+  - hpThreshold: 30
+    backgroundPrefab: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
+    phaseName: ungraspable
+    phaseMusic: {fileID: 8300000, guid: aee7bfdbddf382947bc3f12e1cb80b90, type: 3}
+  - hpThreshold: 15
+    backgroundPrefab: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
+    phaseName: inconceivable
+    phaseMusic: {fileID: 8300000, guid: 2a651da60619f334db415f8f5b777650, type: 3}
+  flashOverlay: {fileID: 0}
+  flashSpeed: 0.05
+  flashCount: 4

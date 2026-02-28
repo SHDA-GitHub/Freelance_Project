@@ -89,4 +89,13 @@ public class BackgroundManager : MonoBehaviour
             Debug.LogWarning("No background selected or array is empty.");
         }
     }
+
+    public void OverrideBackground(GameObject newBG)
+    {
+        if (currentBackground != null)
+            Destroy(currentBackground);
+
+        currentBackground = Instantiate(newBG, backgroundParent);
+        currentBackground.transform.localPosition = Vector3.zero;
+    }
 }

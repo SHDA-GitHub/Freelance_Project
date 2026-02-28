@@ -2275,15 +2275,15 @@ MonoBehaviour:
   - {fileID: 4379346491126905352, guid: 063159f0c79b6cb4093adedaae4679b7, type: 3}
   - {fileID: 6758234784956051809, guid: 42a04c17d55dad048a50c8b584c8f183, type: 3}
   - {fileID: 241658719265508300, guid: 22685719acd331947b985f0f43169b78, type: 3}
-  finalBossBGPhase1: {fileID: 0}
-  finalBossBGPhase2: {fileID: 0}
-  finalBossBGPhase3: {fileID: 0}
-  finalBossBGPhase4: {fileID: 0}
+  finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
+  finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
+  finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
+  finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
   isNormalEnemy: 0
   isMiniBoss: 0
   isBoss: 0
-  isFinalBossPhase: 0
+  isFinalBossPhase: 1
   isMoonSoldier: 0
 --- !u!1 &855608624
 GameObject:

@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class BossPhase : MonoBehaviour
+[System.Serializable]
+public class BossPhase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int hpThreshold;
+    public GameObject backgroundPrefab;
+    public string phaseName;
+    public AudioClip phaseMusic;
 }
