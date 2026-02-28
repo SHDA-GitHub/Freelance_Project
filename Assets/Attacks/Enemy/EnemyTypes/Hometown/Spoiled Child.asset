@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Spoiled Child
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Spoiled Child
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 5e9639ef1ececa845b74583d35ba02e8, type: 2}
+  - {fileID: 11400000, guid: 57f1ba730b2b4bb43a9e22c29c57ade1, type: 2}
+  - {fileID: 11400000, guid: 238887aecb2692143a72ab9933ef14d6, type: 2}

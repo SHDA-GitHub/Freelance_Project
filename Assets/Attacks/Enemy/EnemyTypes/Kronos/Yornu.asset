@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: Yornu
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Yornu
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 095d6cbbbdb4952498fb3c16aaaba32b, type: 2}
+  - {fileID: 11400000, guid: 8b90cde4b58307047b97ff68619d3b83, type: 2}
+  - {fileID: 11400000, guid: b10e6fff0f745ea459dcb84228295d57, type: 2}
+  - {fileID: 11400000, guid: ef9f50074dbf4e246ae79ad62b516c6e, type: 2}
+  - {fileID: 11400000, guid: 1d2cb02a3ad2f3941afa10d36def82b4, type: 2}

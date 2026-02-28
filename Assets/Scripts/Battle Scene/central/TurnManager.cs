@@ -212,6 +212,13 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
+        BossPhaseController phaseController = enemy.GetComponent<BossPhaseController>();
+
+        if (phaseController != null)
+        {
+            yield return phaseController.TryHandlePhaseTransition();
+        }
+
         currentActingCharacter = enemy;
 
         yield return flavorTextUI.ShowTextCoroutine(

@@ -15,7 +15,10 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] private GameObject[] bossBG;
 
     [Header("Final Boss Background")]
-    [SerializeField] private GameObject finalBossBG;
+    [SerializeField] private GameObject finalBossBGPhase1;
+    [SerializeField] private GameObject finalBossBGPhase2;
+    [SerializeField] private GameObject finalBossBGPhase3;
+    [SerializeField] private GameObject finalBossBGPhase4;
 
     [Header("Moon Soldier Background")]
     [SerializeField] private GameObject MoonSoldierBG;
@@ -24,7 +27,7 @@ public class BackgroundManager : MonoBehaviour
     public bool isNormalEnemy;
     public bool isMiniBoss;
     public bool isBoss;
-    public bool isFinalBoss;
+    public int isFinalBossPhase = 0;
     public bool isMoonSoldier;
 
     private GameObject currentBackground;
@@ -43,9 +46,21 @@ public class BackgroundManager : MonoBehaviour
 
         GameObject bgToSpawn = null;
 
-        if (isFinalBoss && finalBossBG != null)
+        if (isFinalBossPhase == 1 && finalBossBGPhase1 != null)
         {
-            bgToSpawn = finalBossBG;
+            bgToSpawn = finalBossBGPhase1;
+        }
+        if (isFinalBossPhase == 2 && finalBossBGPhase2 != null)
+        {
+            bgToSpawn = finalBossBGPhase2;
+        }
+        if (isFinalBossPhase == 3 && finalBossBGPhase3 != null)
+        {
+            bgToSpawn = finalBossBGPhase3;
+        }
+        if (isFinalBossPhase == 4 && finalBossBGPhase4 != null)
+        {
+            bgToSpawn = finalBossBGPhase4;
         }
         if (isMoonSoldier && MoonSoldierBG != null)
         {
