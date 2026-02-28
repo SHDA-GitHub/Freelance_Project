@@ -336,8 +336,6 @@ public class CombatSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(0.75f);
         TurnManager.Instance.battleHUD.UpdateHUD();
-        if (item.healAmount > 0)
-            yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} recovered {item.healAmount} HP!");
         if (item.consumable)
             Inventory.Instance.items.Remove(invItem);
 
