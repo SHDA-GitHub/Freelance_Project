@@ -195,6 +195,7 @@ public class TurnManager : MonoBehaviour
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
 
         player.ApplyStatusEffects();
+        battleHUD.UpdateHUD();
 
         if (player.IsStunned())
         {
