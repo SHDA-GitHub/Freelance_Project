@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Smart Mints
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Smart Mints
-  healAmount: 5
+  healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0
+  ppAmount: 5
+  restorePPToAllParty: 0
+  splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 1
   removeStun: 0

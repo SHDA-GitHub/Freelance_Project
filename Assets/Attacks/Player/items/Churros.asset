@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Churros
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: churros
-  healAmount: 4
-  healAllParty: 1
-  splitHealAcrossParty: 0
+  healAmount: 6
+  healAllParty: 0
+  splitHealAcrossParty: 1
+  ppAmount: 0
+  restorePPToAllParty: 0
+  splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 0
   removeStun: 0

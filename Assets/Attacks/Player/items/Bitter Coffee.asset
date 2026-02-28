@@ -16,6 +16,9 @@ MonoBehaviour:
   healAmount: 1
   healAllParty: 0
   splitHealAcrossParty: 0
+  ppAmount: 2
+  restorePPToAllParty: 0
+  splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 0
   removeStun: 0
