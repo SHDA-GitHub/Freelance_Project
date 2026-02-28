@@ -231,7 +231,109 @@ public class CombatSystem : MonoBehaviour
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (item.itemSound != null)
             AudioManager.Instance.PlaySFX(item.itemSound);
-        target.currentHealth = Mathf.Min(target.currentHealth + item.healAmount, target.maxHealth);
+        if (item.healAllParty)
+        {
+            List<CharacterStats> party = TurnManager.Instance.playerParty
+                .FindAll(p => p != null && p.currentHealth > 0);
+
+            int healAmount = item.healAmount;
+
+            if (item.splitHealAcrossParty && party.Count > 0)
+            {
+                healAmount = item.healAmount / party.Count;
+            }
+
+            foreach (var member in party)
+            {
+                member.currentHealth = Mathf.Min(member.currentHealth + healAmount, member.maxHealth);
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{member.characterName} recovered {healAmount} HP!"
+                );
+            }
+        }
+        else
+        {
+            target.currentHealth = Mathf.Min(target.currentHealth + item.healAmount, target.maxHealth);
+
+            if (item.healAmount > 0)
+            {
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} recovered {item.healAmount} HP!"
+                );
+            }
+        }
+        if (item.ppAmount > 0)
+        {
+            if (item.restorePPToAllParty)
+            {
+                List<CharacterStats> party = TurnManager.Instance.playerParty
+                    .FindAll(p => p != null && p.currentHealth > 0);
+
+                int ppRestore = item.ppAmount;
+
+                if (item.splitPPAcrossParty && party.Count > 0)
+                {
+                    ppRestore = item.ppAmount / party.Count;
+                }
+
+                foreach (var member in party)
+                {
+                    member.currentPP = Mathf.Min(member.currentPP + ppRestore, member.maxPP);
+
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{member.characterName} recovered {ppRestore} PP!"
+                    );
+                }
+            }
+            else
+            {
+                target.currentPP = Mathf.Min(target.currentPP + item.ppAmount, target.maxPP);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} recovered {item.ppAmount} PP!"
+                );
+            }
+        }
+        void Cleanse(CharacterStats character)
+        {
+            if (item.removeAllStatusEffects)
+            {
+                character.RemoveAllStatusEffects();
+                flavorTextUI.ShowImmediateText($"{character.characterName} was cleansed!");
+                return;
+            }
+
+            if (item.removeDOT)
+            {
+                character.RemoveDOTEffects();
+                flavorTextUI.ShowImmediateText($"{character.characterName} was cured!");
+            }
+
+            if (item.removeStun)
+            {
+                character.RemoveStunEffects();
+                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer stunned!");
+            }
+
+            if (item.removeMiss)
+            {
+                character.RemoveMissEffects();
+                flavorTextUI.ShowImmediateText($"{character.characterName}'s accuracy was restored!");
+            }
+        }
+
+        if (item.healAllParty)
+        {
+            foreach (var member in TurnManager.Instance.playerParty)
+            {
+                if (member != null)
+                    Cleanse(member);
+            }
+        }
+        else
+        {
+            Cleanse(target);
+        }
         yield return new WaitForSeconds(0.75f);
         TurnManager.Instance.battleHUD.UpdateHUD();
         if (item.healAmount > 0)

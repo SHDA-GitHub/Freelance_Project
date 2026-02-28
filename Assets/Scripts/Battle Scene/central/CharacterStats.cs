@@ -134,4 +134,26 @@ public class CharacterStats : MonoBehaviour
                 activeMissEffects.RemoveAt(i);
         }
     }
+
+    public void RemoveAllStatusEffects()
+    {
+        activeStatusEffects.Clear();
+        activeStunEffects.Clear();
+        activeMissEffects.Clear();
+    }
+
+    public void RemoveDOTEffects()
+    {
+        activeStatusEffects.Clear();
+    }
+
+    public void RemoveStunEffects()
+    {
+        activeStunEffects.Clear();
+    }
+
+    public void RemoveMissEffects()
+    {
+        activeMissEffects.Clear();
+    }
 }

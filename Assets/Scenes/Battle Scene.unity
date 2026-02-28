@@ -972,7 +972,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 861aebe7a4e33ab44902c1499255300d, type: 3}
+  m_Resource: {fileID: 8300000, guid: d925a7e9f7a1e63418a50b793804570d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: 694f980affdb5f143b08a9dd890218a9, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 22baa533a12c70f45a033143bd66e9f0, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2280,10 +2280,10 @@ MonoBehaviour:
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 0
+  isNormalEnemy: 1
   isMiniBoss: 0
   isBoss: 0
-  isFinalBossPhase: 1
+  isFinalBossPhase: 0
   isMoonSoldier: 0
 --- !u!1 &855608624
 GameObject:
@@ -3691,6 +3691,7 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
+  - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
@@ -3707,7 +3708,6 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
-  - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
 --- !u!4 &1406268199
 Transform:

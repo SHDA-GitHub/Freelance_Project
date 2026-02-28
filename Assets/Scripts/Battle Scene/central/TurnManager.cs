@@ -598,7 +598,7 @@ public class TurnManager : MonoBehaviour
                 currentCharacterIndex = Mathf.Max(currentCharacterIndex - 1, 0);
             }
 
-            player.ReduceAllEffectsAfterTurn();
+            player.RemoveAllStatusEffects();
             audioManager.clip = playerDeath;
             audioManager.Play();
 
