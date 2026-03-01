@@ -716,6 +716,7 @@ public class TurnManager : MonoBehaviour
             );
 
             AudioManager.Instance.PlaySFX(cancelSound);
+            StopCoroutine(targetFlickerCoroutine);
 
             UIManager.Instance.ShowPlayerOptions(player);
             yield break;

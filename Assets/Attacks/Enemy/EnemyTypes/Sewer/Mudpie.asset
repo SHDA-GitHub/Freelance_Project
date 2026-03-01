@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Mudpie
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Mudpie
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: c3a40c2f28046e64a98705a1a6d43e98, type: 2}
+  - {fileID: 11400000, guid: 25e87af882fa0c14bb9bfa9ac2aa31a3, type: 2}

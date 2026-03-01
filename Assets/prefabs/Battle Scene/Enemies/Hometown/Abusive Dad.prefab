@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: Abusive Dad
-  maxHealth: 23
-  currentHealth: 23
+  maxHealth: 25
+  currentHealth: 25
   maxPP: 1
   currentPP: 1
   level: 1

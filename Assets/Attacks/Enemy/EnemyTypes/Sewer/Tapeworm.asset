@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Tapeworm
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Tapeworm
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 13f23c4b35ac2fc4690978920d7d011d, type: 2}
+  - {fileID: 11400000, guid: ed87bbd39adb13a46862464a80d482b0, type: 2}

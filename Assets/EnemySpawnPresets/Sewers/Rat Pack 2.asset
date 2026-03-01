@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
+  m_Name: Rat Pack 2
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
+  enemyPrefabs:
+  - {fileID: 747957889557216021, guid: deab59e592eda6e4b9c040defb2a6ad0, type: 3}
+  - {fileID: 4954901842076974861, guid: 67c103152ef11f54baff833f2c11e2f8, type: 3}

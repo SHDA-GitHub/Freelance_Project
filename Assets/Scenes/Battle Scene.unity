@@ -711,7 +711,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d925a7e9f7a1e63418a50b793804570d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0bf21aa2fc2f6bb418a963cf7a0fb3a8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: 22baa533a12c70f45a033143bd66e9f0, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 82528576afcd3c2468054a1c5faa71a0, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -3170,6 +3170,8 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
+  - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
+  - itemData: {fileID: 11400000, guid: bfb8179dbbe23d444851e5454a292c96, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}

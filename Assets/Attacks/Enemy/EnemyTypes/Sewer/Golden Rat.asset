@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Golden Rat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Golden Rat
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 2707c48d702cb2646a2fc4cb6d63a98d, type: 2}
+  - {fileID: 11400000, guid: ebdd094ffe1b24e4a8e25d0da6e71136, type: 2}

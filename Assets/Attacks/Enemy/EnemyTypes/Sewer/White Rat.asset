@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: White Rat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: White Rat
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 3a7641ce10dafd14ab6b5607274c29cc, type: 2}
+  - {fileID: 11400000, guid: e6cbccc6e46728740afee726723a0dcf, type: 2}

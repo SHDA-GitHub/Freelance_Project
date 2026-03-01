@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Black Rat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Black Rat
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 3aa38e4991ac92d4ea4ee3a036033680, type: 2}
+  - {fileID: 11400000, guid: 7c6bcd242415539428ef66564676b754, type: 2}

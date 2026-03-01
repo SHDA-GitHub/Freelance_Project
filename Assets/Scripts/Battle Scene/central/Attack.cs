@@ -11,6 +11,10 @@ public class Attack : ScriptableObject
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
     public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
 
+    [Header("Life Steal / Heal On Hit")]
+    public bool healOnHit = false;
+    public int healAmount = 0;
+
     [Range(0, 100)]
     public int statusChance = 0;
 

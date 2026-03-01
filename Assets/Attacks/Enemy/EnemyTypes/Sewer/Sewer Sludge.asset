@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Sewer Sludge
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Sewer Sludge
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 87ed8202b8854e7418528c485b4940d9, type: 2}
+  - {fileID: 11400000, guid: e4f13e4896d050349975cd0eabe60dd2, type: 2}

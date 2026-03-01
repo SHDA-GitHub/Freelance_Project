@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
   - {fileID: 4299039550130440096, guid: f9e087efddcfeb04a88a63b4cc3da884, type: 3}
-  - {fileID: 1599212988156579436, guid: f5e5093c81c810d4dbf3e4836d7e95dd, type: 3}
+  - {fileID: 1599212988156579436, guid: a0e1508a2e84062459ca9a13520f3482, type: 3}

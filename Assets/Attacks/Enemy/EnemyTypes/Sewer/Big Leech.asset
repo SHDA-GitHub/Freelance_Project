@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Big Leech
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Big Leech
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 7abb61205012675478bca149b923c0f3, type: 2}
+  - {fileID: 11400000, guid: 5fa379cb80340834e91176efcd3d06f6, type: 2}

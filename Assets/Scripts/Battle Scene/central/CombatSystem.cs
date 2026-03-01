@@ -64,11 +64,25 @@ public class CombatSystem : MonoBehaviour
         {
             StartCoroutine(ShakeCamera());
         }
-        TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
         yield return new WaitForSeconds(0.3f);
+        if (attack.healOnHit && TurnManager.Instance.playerParty.Contains(target))
+        {
+            int healValue = Mathf.Max(0, attack.healAmount);
+
+            attacker.currentHealth = Mathf.Min(
+                attacker.currentHealth + healValue,
+                attacker.maxHealth
+            );
+
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{attacker.characterName} recovered {healValue} HP!"
+            );
+            TurnManager.Instance.battleHUD.UpdateHUD();
+        }
+        TurnManager.Instance.battleHUD.UpdateHUD();
         if (attack.statusEffect != DOTStatusEffectType.None)
         {
             int roll = Random.Range(0, 100);
@@ -231,6 +245,7 @@ public class CombatSystem : MonoBehaviour
         yield return flavorTextUI.ShowTextCoroutine(message);
         if (item.itemSound != null)
             AudioManager.Instance.PlaySFX(item.itemSound);
+            yield return new WaitForSeconds(0.3f);
         if (item.healAllParty)
         {
             List<CharacterStats> party = TurnManager.Instance.playerParty
