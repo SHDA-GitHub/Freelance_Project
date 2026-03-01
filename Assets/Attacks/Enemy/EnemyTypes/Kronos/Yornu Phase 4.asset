@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
+  m_Name: Yornu Phase 4
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
+  enemyName: Yornu
+  attackSlots:
+  - {fileID: 11400000, guid: 095d6cbbbdb4952498fb3c16aaaba32b, type: 2}
+  - {fileID: 11400000, guid: 8b90cde4b58307047b97ff68619d3b83, type: 2}
+  - {fileID: 11400000, guid: b10e6fff0f745ea459dcb84228295d57, type: 2}
+  - {fileID: 11400000, guid: ef9f50074dbf4e246ae79ad62b516c6e, type: 2}
+  - {fileID: 11400000, guid: 1d2cb02a3ad2f3941afa10d36def82b4, type: 2}
+  - {fileID: 11400000, guid: 192dbdf7475fb0d4699f7f72b9e54462, type: 2}

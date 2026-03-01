@@ -6,18 +6,26 @@ public class BossPhaseController : MonoBehaviour
 {
     [SerializeField] private List<BossPhase> phases = new List<BossPhase>();
     [SerializeField] private SpriteRenderer flashOverlay;
+    private BackgroundManager backgroundManager;
     [SerializeField] private float flashSpeed = 0.05f;
     [SerializeField] private int flashCount = 6;
 
     private CharacterStats stats;
     private int currentPhaseIndex = 0;
     private bool isTransitioning = false;
+    public bool newBackground = true;
 
     private AudioSource musicSource;
 
     private void Awake()
     {
         stats = GetComponent<CharacterStats>();
+        backgroundManager = FindFirstObjectByType<BackgroundManager>();
+
+        if (backgroundManager == null)
+        {
+            Debug.LogWarning("No BackgroundManager found in scene.");
+        }
 
         if (flashOverlay == null)
         {
@@ -55,6 +63,9 @@ public class BossPhaseController : MonoBehaviour
 
     public IEnumerator TryHandlePhaseTransition()
     {
+        if (stats.currentHealth <= 0)
+            yield break;
+
         if (isTransitioning) yield break;
         if (currentPhaseIndex >= phases.Count) yield break;
 
@@ -70,26 +81,46 @@ public class BossPhaseController : MonoBehaviour
             isTransitioning = false;
         }
     }
+    private void ChangeBackground(BossPhase phase)
+    {
+        if (!newBackground) return;
+        if (phase.backgroundPrefab == null) return;
+        if (backgroundManager == null) return;
+
+        backgroundManager.OverrideBackground(phase.backgroundPrefab);
+    }
 
     private IEnumerator HandlePhaseTransition(BossPhase phase)
     {
+        string introText = !string.IsNullOrEmpty(phase.introFlavorText)
+            ? FormatPhaseText(phase.introFlavorText, phase)
+            : $"{stats.characterName} is changing form...";
+
         yield return TurnManager.Instance.flavorTextUI
-            .ShowTextCoroutine($"{stats.characterName} is changing form...");
+            .ShowTextCoroutine(introText);
+
         yield return new WaitForSeconds(0.3f);
 
         yield return StartCoroutine(FlashWhite());
 
-        BackgroundManager bgManager = FindFirstObjectByType<BackgroundManager>();
-        if (bgManager != null)
-        {
-            bgManager.OverrideBackground(phase.backgroundPrefab);
-        }
-
         ChangeMusic(phase);
 
+        ChangeBackground(phase);
+
+        stats.SetInvisible();
+        if (phase.newEnemyPreset != null)
+        {
+            yield return StartCoroutine(
+                TurnManager.Instance.ReplaceEnemyPreset(phase.newEnemyPreset)
+            );
+        }
+
+        string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
+            ? FormatPhaseText(phase.transformFlavorText, phase)
+            : $"{stats.characterName} became {phase.phaseName}!";
+
         yield return TurnManager.Instance.flavorTextUI
-            .ShowTextCoroutine($"{stats.characterName} became {phase.phaseName}");
-        yield return new WaitForSeconds(0.3f);
+            .ShowTextCoroutine(transformText);
     }
 
     private void ChangeMusic(BossPhase phase)
@@ -104,7 +135,7 @@ public class BossPhaseController : MonoBehaviour
         }
     }
 
-    private IEnumerator FlashWhite()
+    public IEnumerator FlashWhite()
     {
         if (flashOverlay == null) yield break;
 
@@ -116,5 +147,15 @@ public class BossPhaseController : MonoBehaviour
             flashOverlay.color = new Color(1, 1, 1, 0);
             yield return new WaitForSeconds(flashSpeed);
         }
+    }
+
+    private string FormatPhaseText(string template, BossPhase phase)
+    {
+        if (string.IsNullOrEmpty(template))
+            return "";
+
+        return template
+            .Replace("{attacker}", stats.characterName)
+            .Replace("{phase}", phase.phaseName);
     }
 }

@@ -156,4 +156,13 @@ public class CharacterStats : MonoBehaviour
     {
         activeMissEffects.Clear();
     }
+
+    public void SetInvisible()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr == null) return;
+
+        Color c = sr.color;
+        sr.color = new Color(c.r, c.g, c.b, 0f);
+    }
 }

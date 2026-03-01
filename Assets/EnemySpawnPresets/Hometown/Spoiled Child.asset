@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
   m_Name: Spoiled Child
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 1599212988156579436, guid: f5e5093c81c810d4dbf3e4836d7e95dd, type: 3}

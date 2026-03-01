@@ -220,6 +220,17 @@ public class TurnManager : MonoBehaviour
         if (phaseController != null)
         {
             yield return phaseController.TryHandlePhaseTransition();
+            SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
+            if (sr != null && sr.color.a == 0f)
+            {
+                enemyParty.Remove(enemy);
+                Destroy(enemy.gameObject);
+
+                currentTurn = TurnType.Player;
+                currentCharacterIndex = 0;
+                StartTurn();
+                yield break;
+            }
         }
 
         currentActingCharacter = enemy;
@@ -646,6 +657,7 @@ public class TurnManager : MonoBehaviour
     {
         if (player.currentPP < attack.powerCost)
         {
+            StopCoroutine(targetFlickerCoroutine);
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} does not have enough PP to use {attack.attackName}!"
             );
@@ -790,6 +802,36 @@ public class TurnManager : MonoBehaviour
             SpawnEnemy(prefabs[1], leftSlot);
             SpawnEnemy(prefabs[0], rightSlot);
         }
+        Debug.Log("Spawning from preset: " + currentEnemyPreset.name);
+        Debug.Log("Prefab count: " + currentEnemyPreset.EnemyPrefabs.Count);
+    }
+
+    public IEnumerator ReplaceEnemyPreset(EnemyPreset newPreset)
+    {
+        if (newPreset == null)
+            yield break;
+
+        currentEnemyPreset = newPreset;
+
+        List<GameObject> prefabs = newPreset.EnemyPrefabs;
+
+        if (prefabs.Count == 1)
+        {
+            SpawnEnemy(prefabs[0], middleSlot);
+        }
+        else if (prefabs.Count == 2)
+        {
+            SpawnEnemy(prefabs[0], twoEnemyLeftSlot);
+            SpawnEnemy(prefabs[1], twoEnemyRightSlot);
+        }
+        else if (prefabs.Count == 3)
+        {
+            SpawnEnemy(prefabs[2], middleSlot);
+            SpawnEnemy(prefabs[1], leftSlot);
+            SpawnEnemy(prefabs[0], rightSlot);
+        }
+
+        yield return null;
     }
 
     private void SpawnEnemy(GameObject prefab, Transform spawnPoint)
