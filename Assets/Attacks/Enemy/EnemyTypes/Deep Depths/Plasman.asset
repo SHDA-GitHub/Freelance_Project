@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Plasman
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Plasman
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: b10e6fff0f745ea459dcb84228295d57, type: 2}
+  - {fileID: 11400000, guid: 227b3cd0eb396824796966918594c3d5, type: 2}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Flaman
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Flaman
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: d99c576785e5a394b826d1ae65dfc941, type: 2}
