@@ -192,10 +192,10 @@ public class TurnManager : MonoBehaviour
         currentActingCharacter = player;
         battleHUD.SetCharacter(player);
 
-        yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
-
         player.ApplyStatusEffects();
         battleHUD.UpdateHUD();
+
+        yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
 
         if (player.IsStunned())
         {

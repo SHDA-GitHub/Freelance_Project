@@ -118,9 +118,11 @@ public class BossPhaseController : MonoBehaviour
         string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
             ? FormatPhaseText(phase.transformFlavorText, phase)
             : $"{stats.characterName} became {phase.phaseName}!";
-
+        
         yield return TurnManager.Instance.flavorTextUI
             .ShowTextCoroutine(transformText);
+
+        yield return new WaitForSeconds(0.3f);
     }
 
     private void ChangeMusic(BossPhase phase)
