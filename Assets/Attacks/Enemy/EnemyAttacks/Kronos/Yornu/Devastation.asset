@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Devastation
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
-  statusEffect: 4
+  statusEffect: 0
   stunstatusEffect: 3
   missStatusEffect: 0
+  healOnHit: 0
+  healAmount: 0
   statusChance: 65
   statusDuration: 1
   attackName: Devastation

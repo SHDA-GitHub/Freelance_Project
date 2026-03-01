@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Fear
+  m_Name: Lifeforce Absorption
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  targetAllEnemies: 0
+  targetAllEnemies: 1
   statusEffect: 0
   stunstatusEffect: 3
   missStatusEffect: 0
-  statusChance: 80
-  statusDuration: 1
-  attackName: Fear
+  healOnHit: 1
+  healAmount: 3
+  statusChance: 35
+  statusDuration: 2
+  attackName: Lifeforce Absorption
   powerCost: 0
-  damage: 2
+  damage: 1
   attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  flavorText: '{attacker} struck fear into {target}'
+  flavorText: '{attacker} tried to absorb the soul out of {target}'
