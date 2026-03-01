@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Surf & Turf
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Surf & Turf
-  healAmount: 10
+  healAmount: 7
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 5
+  ppAmount: 4
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
+  removeDOT: 1
   removeStun: 0
   removeMiss: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}

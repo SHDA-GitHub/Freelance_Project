@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Soda
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: soda
-  healAmount: 7
+  healAmount: 4
+  healAllParty: 0
+  splitHealAcrossParty: 0
+  ppAmount: 0
+  restorePPToAllParty: 0
+  splitPPAcrossParty: 0
+  removeAllStatusEffects: 0
+  removeDOT: 0
+  removeStun: 0
+  removeMiss: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   consumable: 1
   flavorText: '{attacker} drank a can of {action}'

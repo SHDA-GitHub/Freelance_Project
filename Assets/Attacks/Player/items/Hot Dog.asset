@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Churros
+  m_Name: Hot Dog
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: churros
-  healAmount: 6
-  healAllParty: 1
-  splitHealAcrossParty: 1
+  itemName: hot dog
+  healAmount: 7
+  healAllParty: 0
+  splitHealAcrossParty: 0
   ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
@@ -25,4 +25,4 @@ MonoBehaviour:
   removeMiss: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   consumable: 1
-  flavorText: '{attacker} shared some {action}'
+  flavorText: '{attacker} ate a {action}'

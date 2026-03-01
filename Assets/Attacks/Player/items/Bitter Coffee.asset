@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Bitter Coffee
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Bitter Coffee
-  healAmount: 1
+  healAmount: 3
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 2
+  ppAmount: 1
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 0
-  removeStun: 0
-  removeMiss: 1
+  removeStun: 1
+  removeMiss: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   consumable: 1
   flavorText: '{attacker} drank the {action}'
