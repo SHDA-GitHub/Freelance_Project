@@ -277,16 +277,13 @@ public class TurnManager : MonoBehaviour
 
         if (phaseController != null)
         {
-            yield return phaseController.TryHandlePhaseTransition();
-            SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
-            if (sr != null && sr.color.a == 0f)
-            {
-                enemyParty.Remove(enemy);
-                Destroy(enemy.gameObject);
+            int enemyCountBefore = enemyParty.Count;
 
-                currentTurn = TurnType.Player;
-                currentCharacterIndex = 0;
-                StartTurn();
+            yield return phaseController.TryHandlePhaseTransition();
+
+            if (enemyParty.Count != enemyCountBefore)
+            {
+                EndTurn();
                 yield break;
             }
         }

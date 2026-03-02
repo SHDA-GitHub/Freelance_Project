@@ -104,12 +104,9 @@ public class BossPhaseController : MonoBehaviour
         yield return StartCoroutine(FlashWhite());
 
         ChangeMusic(phase);
-
         ChangeBackground(phase);
 
         stats.SetInvisible();
-
-        TurnManager.Instance.enemyParty.Remove(stats);
 
         if (TurnManager.Instance.currentTurn == TurnType.Enemy)
         {
@@ -117,16 +114,24 @@ public class BossPhaseController : MonoBehaviour
                 Mathf.Max(TurnManager.Instance.currentCharacterIndex - 1, 0);
         }
 
-        Destroy(gameObject);
+        TurnManager.Instance.enemyParty.Remove(stats);
+
+        if (phase.newEnemyPreset != null)
+        {
+            yield return StartCoroutine(
+            TurnManager.Instance.ReplaceEnemyPreset(phase.newEnemyPreset)
+            );
+        }
 
         string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
             ? FormatPhaseText(phase.transformFlavorText, phase)
             : $"{stats.characterName} became {phase.phaseName}!";
-        
+
         yield return TurnManager.Instance.flavorTextUI
             .ShowTextCoroutine(transformText);
 
         yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
     }
 
     private void ChangeMusic(BossPhase phase)

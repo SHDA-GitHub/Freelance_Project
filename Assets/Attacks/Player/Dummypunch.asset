@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
   m_Name: Dummypunch
   m_EditorClassIdentifier: Assembly-CSharp::Attack
+  targetAllEnemies: 0
+  statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 
+  statusChance: 0
+  statusDuration: 2
   attackName: Dummypunch
   powerCost: 0
-  damage: 0
+  damage: 10
   attackSound: {fileID: 8300000, guid: 7e54cf22e8890dc4bad2e92fcaad1e49, type: 3}
-  consumable: 0
   flavorText: '{attacker} didn''t attack'
