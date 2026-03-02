@@ -20,7 +20,7 @@ public class CharacterStats : MonoBehaviour
     public List<StunStatusEffect> activeStunEffects = new List<StunStatusEffect>();
     public List<MissStatusEffect> activeMissEffects = new List<MissStatusEffect>();
 
-    [SerializeField] private int overtimeDamage = 1;
+    public int overtimeDamage = 1;
 
     public void ApplyStatus(DOTStatusEffectType type, int duration)
     {
@@ -95,6 +95,17 @@ public class CharacterStats : MonoBehaviour
     {
         return activeStunEffects.Count > 0;
     }
+
+    public bool IsDOT()
+    {
+        return activeStatusEffects.Count > 0;
+    }
+
+    public bool IsMissAttack()
+    {
+        return activeMissEffects.Count > 0;
+    }
+
     public void ReduceAllEffectsAfterTurn()
     {
         ReduceStunEffects();
@@ -102,7 +113,7 @@ public class CharacterStats : MonoBehaviour
         ReduceDOTDurations();
     }
 
-    void ReduceDOTDurations()
+    public void ReduceDOTDurations()
     {
         for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
         {
@@ -115,7 +126,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    void ReduceStunEffects()
+    public void ReduceStunEffects()
     {
         for (int i = activeStunEffects.Count - 1; i >= 0; i--)
         {
@@ -125,7 +136,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    void ReduceMissEffects()
+    public void ReduceMissEffects()
     {
         for (int i = activeMissEffects.Count - 1; i >= 0; i--)
         {

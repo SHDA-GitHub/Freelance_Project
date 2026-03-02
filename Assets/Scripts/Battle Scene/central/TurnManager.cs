@@ -195,15 +195,34 @@ public class TurnManager : MonoBehaviour
         player.ApplyStatusEffects();
         battleHUD.UpdateHUD();
 
+        if (player.IsDOT())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName} took {player.overtimeDamage} damage from their affliction"
+            );
+            player.ReduceDOTDurations();
+            yield return new WaitForSeconds(0.3f);
+        }
+
         if (player.IsStunned())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{player.characterName} is stunned and cannot move!"
+                $"{player.characterName} is stunned and cannot move"
             );
+            player.ReduceStunEffects();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
             yield break;
+        }
+
+        if (player.IsMissAttack())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName}'s accuracy is still disrupted"
+            );
+            player.ReduceMissEffects();
+            yield return new WaitForSeconds(0.3f);
         }
 
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
@@ -220,15 +239,35 @@ public class TurnManager : MonoBehaviour
             yield return HandleEnemyDeath(enemy);
             yield break;
         }
+
+        if (enemy.IsDOT())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{enemy.characterName} took {enemy.overtimeDamage} damage from their affliction"
+            );
+            enemy.ReduceDOTDurations();
+            yield return new WaitForSeconds(0.3f);
+        }
+
         if (enemy.IsStunned())
         {
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName} is stunned and cannot move!"
             );
+            enemy.ReduceStunEffects();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
             yield break;
+        }
+
+        if (enemy.IsMissAttack())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{enemy.characterName}'s accuracy is still disrupted"
+            );
+            enemy.ReduceMissEffects();
+            yield return new WaitForSeconds(0.3f);
         }
 
         BossPhaseController phaseController = enemy.GetComponent<BossPhaseController>();
@@ -307,10 +346,6 @@ public class TurnManager : MonoBehaviour
     {
         if (!isBattleActive)
             return;
-        if (currentActingCharacter != null)
-        {
-            currentActingCharacter.ReduceAllEffectsAfterTurn();
-        }
 
         currentCharacterIndex++;
         StartTurn();
@@ -408,9 +443,9 @@ public class TurnManager : MonoBehaviour
                 isSelectingTarget = false;
 
                 if (targetFlickerCoroutine != null)
-                    StopCoroutine(targetFlickerCoroutine);
 
                 ResetTargetVisual();
+                StopCoroutine(targetFlickerCoroutine);
 
                 onTargetConfirmed?.Invoke(currentTarget);
                 yield break;
@@ -418,6 +453,7 @@ public class TurnManager : MonoBehaviour
 
             if (controls.UI.Cancel.triggered)
             {
+                ResetTargetVisual();
                 CancelTargetSelection();
                 StopCoroutine(targetFlickerCoroutine);
                 AudioManager.Instance.PlaySFX(cancelSound);
@@ -454,6 +490,7 @@ public class TurnManager : MonoBehaviour
                     if (c != null) StopCoroutine(c);
 
                 ResetAllTargetVisuals(targetList);
+                StopCoroutine(targetFlickerCoroutine);
 
                 onTargetConfirmed?.Invoke(null);
 
@@ -463,6 +500,7 @@ public class TurnManager : MonoBehaviour
             if (controls.UI.Cancel.triggered)
             {
                 CancelTargetSelection();
+                ResetAllTargetVisuals(targetList);
                 StopCoroutine(targetFlickerCoroutine);
                 yield break;
             }
