@@ -76,8 +76,13 @@ public class PlayerControl : MonoBehaviour
             Vector3 moveDirection = (camForward * m_Movement.z) + (camRight * m_Movement.x);
             moveDirection.Normalize();
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+            if (Mathf.Abs(m_Movement.z) > 0.01f)
+            {
+                float targetYRotation = (m_Movement.z > 0) ? 0f : 180f;
+
+                Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+            }
 
             Vector3 moveOffset = moveDirection * m_Speed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveOffset);
