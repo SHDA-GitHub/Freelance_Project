@@ -1,0 +1,454 @@
+fileFormatVersion: 2
+guid: fb02284a9b0ae334b9b391df50bfe680
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 783
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6687f3ffaa30ac4438b0646a54a17958
+      internalID: 527845646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 783
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66cc8fda2fd66d5489b4bdfef2f44ff2
+      internalID: 1316333835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_2
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 783
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da6230cd49dbf5468073935ffa94053
+      internalID: 37540791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_3
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 783
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d8e55d18a2e8c408fe9f87668f5602
+      internalID: -415952124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 522
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8faa94ef88d58924b9e5560edb70487a
+      internalID: 241582834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_5
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 522
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2227a3b26dc955e4082a593fae8c807c
+      internalID: -271784666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_6
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 522
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 593a1cf5f57d5ed4ab936e7a7cec04fc
+      internalID: -736262373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_7
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 522
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78fc68313d222c843a403ee0d6dc8a01
+      internalID: -627149534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 261
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406fa0a3802c4bb45a7bfb55f10e7452
+      internalID: -142323190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_9
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 261
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf37a5699f8602499f3c96b11da6192
+      internalID: 1321358862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 261
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990902a4007324e4a8e9153f8c5f72d7
+      internalID: 1512889159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_11
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 261
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ea31b6d4e4a47346b6fb15ce6e477f0
+      internalID: -1608654943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74eb7b526e3765947b551e88cf9488af
+      internalID: -1146108182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_13
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77607e6e862876488892c79febfeaa5
+      internalID: -695617317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 651b4cfeb4669754e923e38b30c5ca7c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":5.0},"gridSpriteSize":{"x":262.0,"y":222.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":10.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":true,"isAlternate":false}'
+    nameFileIdTable:
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_0: 527845646
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_1: 1316333835
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_10: 1512889159
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_11: -1608654943
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_12: -1146108182
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_13: -695617317
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_2: 37540791
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_3: -415952124
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_4: 241582834
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_5: -271784666
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_6: -736262373
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_7: -627149534
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_8: -142323190
+      Game Boy Advance - Mother 3 (JPN) - Battle Backgrounds - Baked Yammonster_9: 1321358862
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

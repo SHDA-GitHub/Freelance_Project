@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e7108772321e54f82bfb9f7da34802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyPatrolScript
-  enemyType: {fileID: 0}
+  enemyType: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
   wanderRadius: 5
   wanderTimer: 2
 --- !u!195 &62968693
