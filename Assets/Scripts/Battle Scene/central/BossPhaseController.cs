@@ -108,12 +108,16 @@ public class BossPhaseController : MonoBehaviour
         ChangeBackground(phase);
 
         stats.SetInvisible();
-        if (phase.newEnemyPreset != null)
+
+        TurnManager.Instance.enemyParty.Remove(stats);
+
+        if (TurnManager.Instance.currentTurn == TurnType.Enemy)
         {
-            yield return StartCoroutine(
-                TurnManager.Instance.ReplaceEnemyPreset(phase.newEnemyPreset)
-            );
+            TurnManager.Instance.currentCharacterIndex =
+                Mathf.Max(TurnManager.Instance.currentCharacterIndex - 1, 0);
         }
+
+        Destroy(gameObject);
 
         string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
             ? FormatPhaseText(phase.transformFlavorText, phase)

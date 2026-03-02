@@ -18,7 +18,7 @@ public class TurnManager : MonoBehaviour
 
     public BattleHUD battleHUD;
     public FlavorTextUI flavorTextUI;
-    private int currentCharacterIndex = 0;
+    public int currentCharacterIndex = 0;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource audioManager;
     [SerializeField] private AudioClip victoryClip;
@@ -411,7 +411,9 @@ public class TurnManager : MonoBehaviour
 
             if (currentTarget != lastTarget)
             {
-                flavorTextUI.ShowImmediateText($"Target: {currentTarget.characterName}");
+                flavorTextUI.ShowImmediateText(
+                    $"Target: {currentTarget.characterName}\n" +
+                    $"HP: {currentTarget.currentHealth}");
 
                 if (lastTarget != null)
                 {
@@ -435,7 +437,7 @@ public class TurnManager : MonoBehaviour
                     currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
 
                 if (input.x < 0)
-                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex - 1, includeDead);
             }
 
             if (controls.UI.Submit.triggered)
@@ -445,7 +447,6 @@ public class TurnManager : MonoBehaviour
                 if (targetFlickerCoroutine != null)
 
                 ResetTargetVisual();
-                StopCoroutine(targetFlickerCoroutine);
 
                 onTargetConfirmed?.Invoke(currentTarget);
                 yield break;
@@ -453,9 +454,12 @@ public class TurnManager : MonoBehaviour
 
             if (controls.UI.Cancel.triggered)
             {
+                isSelectingTarget = false;
+
+                if (targetFlickerCoroutine != null)
+
                 ResetTargetVisual();
                 CancelTargetSelection();
-                StopCoroutine(targetFlickerCoroutine);
                 AudioManager.Instance.PlaySFX(cancelSound);
                 yield break;
             }
@@ -489,8 +493,8 @@ public class TurnManager : MonoBehaviour
                 foreach (var c in flickers)
                     if (c != null) StopCoroutine(c);
 
+                ResetTargetVisual();
                 ResetAllTargetVisuals(targetList);
-                StopCoroutine(targetFlickerCoroutine);
 
                 onTargetConfirmed?.Invoke(null);
 
@@ -499,9 +503,14 @@ public class TurnManager : MonoBehaviour
 
             if (controls.UI.Cancel.triggered)
             {
+                isSelectingTarget = false;
+
+                foreach (var c in flickers)
+                    if (c != null) StopCoroutine(c);
+
+                ResetTargetVisual();
                 CancelTargetSelection();
                 ResetAllTargetVisuals(targetList);
-                StopCoroutine(targetFlickerCoroutine);
                 yield break;
             }
 
@@ -511,15 +520,19 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator FlickerSprite(CharacterStats target)
     {
+        if (target == null) yield break;
+
         SpriteRenderer sr = target.GetComponent<SpriteRenderer>();
         if (sr == null) yield break;
 
         Color originalColor = sr.color;
 
-        while (true)
+        while (target != null && sr != null)
         {
             sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
             yield return new WaitForSeconds(0.6f);
+
+            if (sr == null) yield break;
 
             sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
             yield return new WaitForSeconds(0.7f);
