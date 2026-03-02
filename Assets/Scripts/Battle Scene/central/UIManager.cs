@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject specialMenu;
     [SerializeField] private AudioSource audioManager;
     [SerializeField] private AudioClip cancelSound;
+    [SerializeField] private TurnManager turnManager;
     public MenuController attackMenuController;
     public MenuController itemMenuController;
     public MenuController specialAttackMenuController;
@@ -41,6 +42,9 @@ public class UIManager : MonoBehaviour
     public void ShowPlayerOptions(CharacterStats character)
     {
         currentCharacter = character;
+
+        turnManager.HideDescription();
+
         mainMenu.SetActive(true);
         attackMenu.SetActive(false);
         itemMenu.SetActive(false);
@@ -95,5 +99,6 @@ public class UIManager : MonoBehaviour
         attackMenu.SetActive(false);
         itemMenu.SetActive(false);
         specialMenu.SetActive(false);
+        turnManager.HideDescription();
     }
 }

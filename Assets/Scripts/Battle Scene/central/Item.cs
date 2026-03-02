@@ -24,6 +24,9 @@ public class Item : ScriptableObject
     [Header("Audio")]
     public AudioClip itemSound;
 
+    [TextArea(3, 6)]
+    public string descriptionText;
+
     public bool consumable = true;
 
     [TextArea] public string flavorText;

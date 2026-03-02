@@ -16,6 +16,9 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
+  descriptionText: 'DMG: 3
+
+    Required PP: 2'
   statusChance: 0
   statusDuration: 2
   specAttackName: Brown Boot

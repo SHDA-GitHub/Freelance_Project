@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -25,6 +26,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private AudioClip cancelSound;
     [SerializeField] private AudioClip enemyDeath;
     [SerializeField] private AudioClip playerDeath;
+    [SerializeField] private GameObject descriptionMenu;
+    [SerializeField] private TextMeshProUGUI descriptionTextUI;
     private int currentTargetIndex = 0;
     private bool isSelectingTarget = false;
     private Coroutine targetFlickerCoroutine;
@@ -445,9 +448,11 @@ public class TurnManager : MonoBehaviour
                 isSelectingTarget = false;
 
                 if (targetFlickerCoroutine != null)
-
+                {
+                    StopCoroutine(targetFlickerCoroutine);
+                    targetFlickerCoroutine = null;
+                }
                 ResetTargetVisual();
-
                 onTargetConfirmed?.Invoke(currentTarget);
                 yield break;
             }
@@ -457,7 +462,10 @@ public class TurnManager : MonoBehaviour
                 isSelectingTarget = false;
 
                 if (targetFlickerCoroutine != null)
-
+                {
+                    StopCoroutine(targetFlickerCoroutine);
+                    targetFlickerCoroutine = null;
+                }
                 ResetTargetVisual();
                 CancelTargetSelection();
                 AudioManager.Instance.PlaySFX(cancelSound);
@@ -494,8 +502,12 @@ public class TurnManager : MonoBehaviour
                     if (c != null) StopCoroutine(c);
 
                 ResetTargetVisual();
+                if (targetFlickerCoroutine != null)
+                {
+                    StopCoroutine(targetFlickerCoroutine);
+                    targetFlickerCoroutine = null;
+                }
                 ResetAllTargetVisuals(targetList);
-
                 onTargetConfirmed?.Invoke(null);
 
                 yield break;
@@ -510,6 +522,11 @@ public class TurnManager : MonoBehaviour
 
                 ResetTargetVisual();
                 CancelTargetSelection();
+                if (targetFlickerCoroutine != null)
+                {
+                    StopCoroutine(targetFlickerCoroutine);
+                    targetFlickerCoroutine = null;
+                }
                 ResetAllTargetVisuals(targetList);
                 yield break;
             }
@@ -539,7 +556,7 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    private void ResetTargetVisual()
+    public void ResetTargetVisual()
     {
         if (lastTarget != null)
         {
@@ -551,7 +568,7 @@ public class TurnManager : MonoBehaviour
         lastTarget = null;
     }
 
-    private void ResetAllTargetVisuals(List<CharacterStats> targets)
+    public void ResetAllTargetVisuals(List<CharacterStats> targets)
     {
         foreach (var target in targets)
         {
@@ -907,6 +924,29 @@ public class TurnManager : MonoBehaviour
         {
             Debug.LogWarning($"Spawned enemy {prefab.name} has no CharacterStats!");
         }
+    }
+    public void ShowDescription(string text)
+    {
+        if (!UIManager.Instance.attackMenu.activeSelf &&
+            !UIManager.Instance.itemMenu.activeSelf &&
+            !UIManager.Instance.specialMenu.activeSelf)
+        {
+            return;
+        }
+
+        if (descriptionMenu == null || descriptionTextUI == null)
+            return;
+
+        descriptionMenu.SetActive(true);
+        descriptionTextUI.text = text;
+    }
+
+    public void HideDescription()
+    {
+        if (descriptionMenu == null)
+            return;
+
+        descriptionMenu.SetActive(false);
     }
 
     public CharacterStats GetCurrentPlayer()

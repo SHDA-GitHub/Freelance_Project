@@ -16,6 +16,9 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 2
   missStatusEffect: 0
+  descriptionText: 'Required PP: 1
+
+    Chance to inflict sleepiness onto enemy'
   statusChance: 85
   statusDuration: 1
   specAttackName: music box

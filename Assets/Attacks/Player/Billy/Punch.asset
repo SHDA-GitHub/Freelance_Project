@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
   m_Name: Punch
   m_EditorClassIdentifier: Assembly-CSharp::Attack
+  targetAllEnemies: 0
+  statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 'DMG: 2'
+  statusChance: 0
+  statusDuration: 2
   attackName: Punch
   powerCost: 0
   damage: 2
   attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
-  consumable: 0
   flavorText: '{attacker} strikes {target} with a punch'

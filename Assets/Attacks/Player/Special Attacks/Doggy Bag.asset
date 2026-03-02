@@ -16,6 +16,12 @@ MonoBehaviour:
   statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
+  descriptionText: 'DMG: 1
+
+    Required PP: 2
+
+    Chance to inflict sickness onto
+    enemy'
   statusChance: 100
   statusDuration: 1
   specAttackName: Doggy Bag

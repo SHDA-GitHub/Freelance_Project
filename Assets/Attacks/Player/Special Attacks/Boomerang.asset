@@ -16,6 +16,12 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 3
+  descriptionText: 'DMG: 2
+
+    Required PP: 1
+
+    Chance to inflict dizziness onto
+    enemy'
   statusChance: 40
   statusDuration: 1
   specAttackName: boomerang

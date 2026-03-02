@@ -12,6 +12,9 @@ public class SpecialAttack : ScriptableObject
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
     public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
 
+    [TextArea(3, 6)]
+    public string descriptionText;
+
     [Range(0, 100)]
     public int statusChance = 0;
 

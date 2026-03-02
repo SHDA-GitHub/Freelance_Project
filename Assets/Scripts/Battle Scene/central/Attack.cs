@@ -15,6 +15,9 @@ public class Attack : ScriptableObject
     public bool healOnHit = false;
     public int healAmount = 0;
 
+    [TextArea(3, 6)]
+    public string descriptionText;
+
     [Range(0, 100)]
     public int statusChance = 0;
 

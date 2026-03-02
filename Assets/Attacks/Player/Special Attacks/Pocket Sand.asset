@@ -16,6 +16,9 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 4
+  descriptionText: 'Required PP: 1
+
+    Chance to inflict blindness onto enemy'
   statusChance: 65
   statusDuration: 1
   specAttackName: pocket sand

@@ -24,5 +24,10 @@ MonoBehaviour:
   removeStun: 0
   removeMiss: 1
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
+  descriptionText: 'HP: 20
+
+    PP: 10
+
+    If split: divided per party member'
   consumable: 1
   flavorText: '{attacker} shared some of the {action}'

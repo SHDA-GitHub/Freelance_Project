@@ -16,6 +16,12 @@ MonoBehaviour:
   statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
+  descriptionText: 'DMG: 2
+
+    Required PP: 2
+
+    Chance to inflict fire damage
+    onto enemy'
   statusChance: 70
   statusDuration: 1
   specAttackName: Firecracker
