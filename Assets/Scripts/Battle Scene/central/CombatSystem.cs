@@ -65,6 +65,7 @@ public class CombatSystem : MonoBehaviour
             StartCoroutine(ShakeCamera());
         }
         yield return StartCoroutine(FlashDamageEffect(target));
+        yield return new WaitForSeconds(0.3f);
         if (attack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
         yield return new WaitForSeconds(0.3f);
@@ -81,6 +82,7 @@ public class CombatSystem : MonoBehaviour
                 $"{attacker.characterName} recovered {healValue} HP!"
             );
             TurnManager.Instance.battleHUD.UpdateHUD();
+            yield return new WaitForSeconds(0.3f);
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         if (attack.statusEffect != DOTStatusEffectType.None)
@@ -170,6 +172,7 @@ public class CombatSystem : MonoBehaviour
         }
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
+        yield return new WaitForSeconds(0.3f);
         if (specAttack.damage > 0)
         { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
         yield return new WaitForSeconds(0.3f);
@@ -264,6 +267,7 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{member.characterName} recovered {healAmount} HP!"
                 );
+                yield return new WaitForSeconds(0.3f);
             }
         }
         else
@@ -275,6 +279,7 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{target.characterName} recovered {item.healAmount} HP!"
                 );
+                yield return new WaitForSeconds(0.3f);
             }
         }
         if (item.ppAmount > 0)
@@ -298,6 +303,7 @@ public class CombatSystem : MonoBehaviour
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{member.characterName} recovered {ppRestore} PP!"
                     );
+                    yield return new WaitForSeconds(0.3f);
                 }
             }
             else
@@ -307,6 +313,7 @@ public class CombatSystem : MonoBehaviour
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{target.characterName} recovered {item.ppAmount} PP!"
                 );
+                yield return new WaitForSeconds(0.3f);
             }
         }
         void Cleanse(CharacterStats character)

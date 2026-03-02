@@ -195,12 +195,10 @@ public class TurnManager : MonoBehaviour
         player.ApplyStatusEffects();
         battleHUD.UpdateHUD();
 
-        yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
-
         if (player.IsStunned())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{player.characterName} is stunned!"
+                $"{player.characterName} is stunned and cannot move!"
             );
             yield return new WaitForSeconds(0.3f);
 
@@ -208,12 +206,30 @@ public class TurnManager : MonoBehaviour
             yield break;
         }
 
+        yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
+
         UIManager.Instance.ShowPlayerOptions(player);
     }
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
         enemy.ApplyStatusEffects();
+
+        if (enemy.currentHealth <= 0)
+        {
+            yield return HandleEnemyDeath(enemy);
+            yield break;
+        }
+        if (enemy.IsStunned())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{enemy.characterName} is stunned and cannot move!"
+            );
+            yield return new WaitForSeconds(0.3f);
+
+            EndTurn();
+            yield break;
+        }
 
         BossPhaseController phaseController = enemy.GetComponent<BossPhaseController>();
 
@@ -239,21 +255,6 @@ public class TurnManager : MonoBehaviour
             $"{enemy.characterName} is taking its turn..."
         );
         yield return new WaitForSeconds(0.3f);
-        if (enemy.currentHealth <= 0)
-        {
-            yield return HandleEnemyDeath(enemy);
-            yield break;
-        }
-        if (enemy.IsStunned())
-        {
-            yield return flavorTextUI.ShowTextCoroutine(
-                $"{enemy.characterName} is stunned and cannot move!"
-            );
-            yield return new WaitForSeconds(0.3f);
-
-            EndTurn();
-            yield break;
-        }
         List<CharacterStats> alivePlayers = playerParty
             .FindAll(p => p != null && p.currentHealth > 0);
 

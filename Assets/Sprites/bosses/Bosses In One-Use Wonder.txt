@@ -10,8 +10,8 @@ Hometown:
 
 Faithville:
 - Bully (Mini Boss)
-- King Malos Phase 1 (Big Boss)
-- King Malos Phase 2 (End-chapter Boss)
+- King Maros Phase 1 (Big Boss)
+- King Maros Phase 2 (End-chapter Boss)
 
 Coastside (Faithville Sub-Area):
 - Angry Coastguard (Mini Boss)

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Wild pack
+  m_Name: King Maros Phase 2 (Summon)
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
-  - {fileID: 7965860517802082853, guid: a42cf54cc6c14c74ea913287ad4a5ff7, type: 3}
-  - {fileID: 5613294174726454788, guid: 4816aab60373293499164e9c6b90ccb5, type: 3}
-  - {fileID: 2778561805019917486, guid: 97fc06e9a0e3e74428f1830192086c27, type: 3}
+  - {fileID: 8682602015697355520, guid: b0f1b860a20ee4f4f91cbb11513c2553, type: 3}
+  - {fileID: 8682602015697355520, guid: b0f1b860a20ee4f4f91cbb11513c2553, type: 3}
+  - {fileID: 6363502032668524555, guid: ea30ad55e1342974784d8ab484b83250, type: 3}

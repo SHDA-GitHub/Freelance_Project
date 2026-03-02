@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Cultist Priest
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Cultist Priest
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 1015f03a93a92be40a01f41a5cdeb4fe, type: 2}
+  - {fileID: 11400000, guid: e239066373ac0db409d7882c0dd51fbd, type: 2}
+  - {fileID: 11400000, guid: aecf16b06ac87be47bd2fd8524e6599e, type: 2}

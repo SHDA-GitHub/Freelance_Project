@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Cult Follower
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Cult Follower
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 0e7dbc0c8292f9943a36c17122cfd3d9, type: 2}
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: ee612414ed3d2a344b937c41386a336c, type: 2}

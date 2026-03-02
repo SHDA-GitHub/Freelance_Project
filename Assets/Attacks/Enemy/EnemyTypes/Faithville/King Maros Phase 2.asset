@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: King Maros Phase 2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: King Maros Phase 2
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: c3111bafc436bbb4fb54bba5a44713b4, type: 2}
+  - {fileID: 11400000, guid: 3a5aa645cf0ebcb40b12b97a77896264, type: 2}
+  - {fileID: 11400000, guid: b7cc936bab8a68d49a3f8168e8fdb159, type: 2}
+  - {fileID: 11400000, guid: ee4737cdb4e08404b96e9b198923885e, type: 2}

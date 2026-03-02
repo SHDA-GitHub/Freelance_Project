@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Cultist Warrior
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Cultist Warrior
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 8670a8ed5664b9d45967bc6a0f872893, type: 2}
+  - {fileID: 11400000, guid: 5e19612518117f648b108073ba44cb23, type: 2}
+  - {fileID: 11400000, guid: aecf16b06ac87be47bd2fd8524e6599e, type: 2}
