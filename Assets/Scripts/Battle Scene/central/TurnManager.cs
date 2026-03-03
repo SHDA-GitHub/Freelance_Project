@@ -872,7 +872,7 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Prefab count: " + currentEnemyPreset.EnemyPrefabs.Count);
     }
 
-    public IEnumerator ReplaceEnemyPreset(EnemyPreset newPreset)
+    public IEnumerator ReplaceEnemyPreset(EnemyPreset newPreset, System.Action<CharacterStats> onBossSpawned)
     {
         if (newPreset == null)
             yield break;
@@ -881,29 +881,33 @@ public class TurnManager : MonoBehaviour
 
         List<GameObject> prefabs = newPreset.EnemyPrefabs;
 
+        CharacterStats middleBoss = null;
+
         if (prefabs.Count == 1)
         {
-            SpawnEnemy(prefabs[0], middleSlot);
+            middleBoss = SpawnEnemy(prefabs[0], middleSlot);
         }
         else if (prefabs.Count == 2)
         {
-            SpawnEnemy(prefabs[0], twoEnemyLeftSlot);
+            middleBoss = SpawnEnemy(prefabs[0], twoEnemyLeftSlot);
             SpawnEnemy(prefabs[1], twoEnemyRightSlot);
         }
         else if (prefabs.Count == 3)
         {
-            SpawnEnemy(prefabs[2], middleSlot);
+            middleBoss = SpawnEnemy(prefabs[2], middleSlot);
             SpawnEnemy(prefabs[1], leftSlot);
             SpawnEnemy(prefabs[0], rightSlot);
         }
 
+        onBossSpawned?.Invoke(middleBoss);
+
         yield return null;
     }
 
-    private void SpawnEnemy(GameObject prefab, Transform spawnPoint)
+    private CharacterStats SpawnEnemy(GameObject prefab, Transform spawnPoint)
     {
         if (prefab == null || spawnPoint == null)
-            return;
+            return null;
 
         GameObject enemyGO = Instantiate(prefab, spawnPoint);
 
@@ -915,12 +919,13 @@ public class TurnManager : MonoBehaviour
         if (stats != null)
         {
             enemyParty.Add(stats);
+            return stats;
         }
-        else
-        {
-            Debug.LogWarning($"Spawned enemy {prefab.name} has no CharacterStats!");
-        }
+
+        Debug.LogWarning($"Spawned enemy {prefab.name} has no CharacterStats!");
+        return null;
     }
+
     public void ShowDescription(string text)
     {
         if (!UIManager.Instance.attackMenu.activeSelf &&

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: King Maros
-  maxHealth: 20
+  maxHealth: 30
   currentHealth: 20
   maxPP: 1
   currentPP: 1
@@ -285,4 +285,5 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6
+  shareHPBetweenPhases: 1
   newBackground: 1

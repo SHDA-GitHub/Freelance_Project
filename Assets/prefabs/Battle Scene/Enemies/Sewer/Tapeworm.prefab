@@ -285,4 +285,5 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6
+  shareHPBetweenPhases: 0
   newBackground: 1

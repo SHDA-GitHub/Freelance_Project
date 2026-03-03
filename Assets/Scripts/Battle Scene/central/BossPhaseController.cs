@@ -9,6 +9,7 @@ public class BossPhaseController : MonoBehaviour
     private BackgroundManager backgroundManager;
     [SerializeField] private float flashSpeed = 0.05f;
     [SerializeField] private int flashCount = 6;
+    [SerializeField] private bool shareHPBetweenPhases = true;
 
     private CharacterStats stats;
     private int currentPhaseIndex = 0;
@@ -114,13 +115,27 @@ public class BossPhaseController : MonoBehaviour
                 Mathf.Max(TurnManager.Instance.currentCharacterIndex - 1, 0);
         }
 
+        int carriedHP = stats.currentHealth;
+        int carriedMaxHP = stats.maxHealth;
+
         TurnManager.Instance.enemyParty.Remove(stats);
 
         if (phase.newEnemyPreset != null)
         {
+            CharacterStats spawnedBoss = null;
+
             yield return StartCoroutine(
-            TurnManager.Instance.ReplaceEnemyPreset(phase.newEnemyPreset)
+                TurnManager.Instance.ReplaceEnemyPreset(
+                    phase.newEnemyPreset,
+                    (boss) => spawnedBoss = boss
+                )
             );
+
+            if (shareHPBetweenPhases && spawnedBoss != null)
+            {
+                spawnedBoss.maxHealth = carriedMaxHP;
+                spawnedBoss.currentHealth = Mathf.Clamp(carriedHP, 0, spawnedBoss.maxHealth);
+            }
         }
 
         string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
