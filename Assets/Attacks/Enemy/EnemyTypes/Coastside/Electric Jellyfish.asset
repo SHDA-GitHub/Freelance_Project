@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Electric Jellyfish
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Electric Jellyfish
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: ff125cc6f28d7054baa3b902d4e0cc42, type: 2}
+  - {fileID: 11400000, guid: b6f9ac18868f66b499ac52c43c909029, type: 2}
+  - {fileID: 11400000, guid: ce314caa29161e64984c549f2e106c25, type: 2}

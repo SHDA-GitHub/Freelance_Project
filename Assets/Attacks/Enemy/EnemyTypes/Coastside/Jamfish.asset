@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Jamfish
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Jamfish
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 690f1e367e3302641969779eb3f5ef7f, type: 2}
+  - {fileID: 11400000, guid: b5971235c82644a4283e2f79dbecdad6, type: 2}
+  - {fileID: 11400000, guid: ce314caa29161e64984c549f2e106c25, type: 2}

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Electric Wind
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Electric Wind
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 431dd6b24e0256e4691b5280275206c1, type: 2}
+  - {fileID: 11400000, guid: d3b3a698ea4c4d94ba3ced3dc1257bd1, type: 2}

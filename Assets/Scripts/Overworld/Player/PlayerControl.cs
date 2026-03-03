@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,12 +15,17 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
     [SerializeField] private LayerMask groundMask;
+    public bool isInteracting = false;
     private bool isGrounded;
     private float originalSpeed;
     private Controls controls;
     private Rigidbody rb;
     private Vector3 m_Movement;
 
+    private void Start()
+    {
+        isInteracting = false;
+    }
 
     private void Awake()
     {
@@ -30,6 +37,7 @@ public class PlayerControl : MonoBehaviour
         controls.Player.Sprint.performed += OnSprint;
         controls.Player.Sprint.canceled += OnSprintCancel;
         controls.Player.Jump.performed += OnJump;
+        controls.Player.Interact.performed += OnInteract;
 
         rb = GetComponent<Rigidbody>();
         originalSpeed = m_Speed;
@@ -55,14 +63,21 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void Start()
+    private void OnInteract(InputAction.CallbackContext context)
     {
+        StartCoroutine(interactRoutine());
+    }
 
+    IEnumerator interactRoutine()
+    {
+        isInteracting = true;
+        yield return new WaitForSeconds(0.1f);
+        isInteracting = false;
     }
 
     void FixedUpdate()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (m_Movement != Vector3.zero)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -50,6 +51,7 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < 50)
             {
+                yield return new WaitForSeconds(0.3f);
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
@@ -152,6 +154,7 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < 50)
             {
+                yield return new WaitForSeconds(0.3f);
                 yield return flavorTextUI.ShowTextCoroutine(
                     $"{attacker.characterName} missed their attack!"
                 );
@@ -316,31 +319,37 @@ public class CombatSystem : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
             }
         }
-        void Cleanse(CharacterStats character)
+        IEnumerator Cleanse(CharacterStats character)
         {
+
             if (item.removeAllStatusEffects)
             {
-                character.RemoveAllStatusEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName} was cleansed!");
-                return;
+                if (character.IsDOT() || character.IsStunned() || character.IsMissAttack())
+                {
+                    character.RemoveAllStatusEffects();
+                    flavorTextUI.ShowImmediateText($"{character.characterName} was cleansed!");
+                    yield return new WaitForSeconds(0.3f);
+                    yield break;
+                }
             }
 
-            if (item.removeDOT)
+            if (item.removeDOT && character.IsDOT())
             {
                 character.RemoveDOTEffects();
                 flavorTextUI.ShowImmediateText($"{character.characterName} was cured!");
+                yield return new WaitForSeconds(0.3f);
             }
-
-            if (item.removeStun)
+            if (item.removeStun && character.IsStunned())
             {
                 character.RemoveStunEffects();
                 flavorTextUI.ShowImmediateText($"{character.characterName} is no longer stunned!");
+                yield return new WaitForSeconds(0.3f);
             }
-
-            if (item.removeMiss)
+            if (item.removeMiss && character.IsMissAttack())
             {
                 character.RemoveMissEffects();
                 flavorTextUI.ShowImmediateText($"{character.characterName}'s accuracy was restored!");
+                yield return new WaitForSeconds(0.3f);
             }
         }
 
@@ -349,20 +358,18 @@ public class CombatSystem : MonoBehaviour
             foreach (var member in TurnManager.Instance.playerParty)
             {
                 if (member != null)
-                    Cleanse(member);
+                    yield return StartCoroutine(Cleanse(member));
             }
         }
         else
         {
-            Cleanse(target);
+            yield return StartCoroutine(Cleanse(target));
+            yield return new WaitForSeconds(0.3f);
         }
         yield return new WaitForSeconds(0.75f);
         TurnManager.Instance.battleHUD.UpdateHUD();
         if (item.consumable)
-            Inventory.Instance.items.Remove(invItem);
-
-        yield return new WaitForSeconds(0.3f);
-
+        Inventory.Instance.items.Remove(invItem);
         TurnManager.Instance.EndTurn();
     }
 

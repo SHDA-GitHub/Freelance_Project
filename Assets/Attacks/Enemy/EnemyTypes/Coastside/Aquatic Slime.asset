@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Aquatic Slime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Aquatic Slime
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 19f7bd23b46f4b64eac6705f3be18d79, type: 2}
+  - {fileID: 11400000, guid: 90e90f74f188b1e449303808880d19aa, type: 2}
+  - {fileID: 11400000, guid: 68a8fe98c1b49b54a9c985002232b702, type: 2}

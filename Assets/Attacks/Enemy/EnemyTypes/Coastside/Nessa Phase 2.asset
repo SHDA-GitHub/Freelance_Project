@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
-  m_Name: Nessa
+  m_Name: Nessa Phase 2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Nessa
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 461d4e3419f1f984ea8a053e07957408, type: 2}
+  - {fileID: 11400000, guid: 6c28c575151081a4d8290f96d1b561e4, type: 2}
+  - {fileID: 11400000, guid: 0c3b4216d638c4a40a9a06351c8f6079, type: 2}
+  - {fileID: 11400000, guid: 4443ed6fc10c7764f8304d585c23d3a8, type: 2}
+  - {fileID: 11400000, guid: 4e41521200693384a9d229b1c987484e, type: 2}

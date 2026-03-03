@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Lobster
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Lobster
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: af9e40f737b7ed94093e3d5866b9fc03, type: 2}
+  - {fileID: 11400000, guid: 574b8cee3cad64a4e925e31f3258ee8c, type: 2}
+  - {fileID: 11400000, guid: 33eb137e9f72a144cb6cbba9c106b756, type: 2}

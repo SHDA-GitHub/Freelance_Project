@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Coral
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Coral
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: a1979047c91902a489973148dad63f92, type: 2}
+  - {fileID: 11400000, guid: 48e18b367c9bd15469e392ae60856f35, type: 2}

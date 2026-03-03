@@ -18,6 +18,7 @@ MonoBehaviour:
   missStatusEffect: 0
   healOnHit: 1
   healAmount: 3
+  descriptionText: 
   statusChance: 35
   statusDuration: 2
   attackName: Lifeforce Absorption

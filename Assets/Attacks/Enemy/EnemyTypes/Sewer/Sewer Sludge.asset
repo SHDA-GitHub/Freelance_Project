@@ -16,3 +16,4 @@ MonoBehaviour:
   attackSlots:
   - {fileID: 11400000, guid: 87ed8202b8854e7418528c485b4940d9, type: 2}
   - {fileID: 11400000, guid: e4f13e4896d050349975cd0eabe60dd2, type: 2}
+  - {fileID: 11400000, guid: e8d1788972dcc384d966863d73e4e0cb, type: 2}

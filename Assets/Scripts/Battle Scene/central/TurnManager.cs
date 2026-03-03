@@ -222,7 +222,7 @@ public class TurnManager : MonoBehaviour
         if (player.IsMissAttack())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{player.characterName}'s accuracy is still disrupted"
+                $"{player.characterName}'s accuracy is disrupted"
             );
             player.ReduceMissEffects();
             yield return new WaitForSeconds(0.3f);
@@ -267,7 +267,7 @@ public class TurnManager : MonoBehaviour
         if (enemy.IsMissAttack())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{enemy.characterName}'s accuracy is still disrupted"
+                $"{enemy.characterName}'s accuracy is disrupted"
             );
             enemy.ReduceMissEffects();
             yield return new WaitForSeconds(0.3f);
@@ -434,10 +434,10 @@ public class TurnManager : MonoBehaviour
                 Vector2 input = controls.UI.Navigate.ReadValue<Vector2>();
 
                 if (input.x > 0)
-                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex - 1, includeDead);
 
                 if (input.x < 0)
-                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex - 1, includeDead);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
             }
 
             if (controls.UI.Submit.triggered)
@@ -723,7 +723,7 @@ public class TurnManager : MonoBehaviour
     {
         if (player.currentPP < attack.powerCost)
         {
-            StopCoroutine(targetFlickerCoroutine);
+            ResetTargetVisual();
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} does not have enough PP to use {attack.attackName}!"
             );
@@ -782,8 +782,7 @@ public class TurnManager : MonoBehaviour
             );
 
             AudioManager.Instance.PlaySFX(cancelSound);
-            StopCoroutine(targetFlickerCoroutine);
-
+            ResetTargetVisual();
             UIManager.Instance.ShowPlayerOptions(player);
             yield break;
         }

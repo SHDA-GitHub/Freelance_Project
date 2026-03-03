@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
+  m_Name: Jellyfish Jam 1
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
+  enemyPrefabs:
+  - {fileID: 9083730989675319848, guid: a7c36724d182e6f4ab17a06077e8e6b9, type: 3}
+  - {fileID: 5466696842851704038, guid: 2564e5fd00a1457478ad573cdb2d6efc, type: 3}
+  - {fileID: 4270414544184333079, guid: deba469f158f6c944b7a6fa39c7b42c0, type: 3}

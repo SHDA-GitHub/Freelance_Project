@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Gelafish
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Gelafish
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 97a895259c7f2f943b40c9ec93fbc731, type: 2}
+  - {fileID: 11400000, guid: b6f9ac18868f66b499ac52c43c909029, type: 2}
+  - {fileID: 11400000, guid: ce314caa29161e64984c549f2e106c25, type: 2}
