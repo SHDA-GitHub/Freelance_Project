@@ -3347,8 +3347,8 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
-  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
-  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
+  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
