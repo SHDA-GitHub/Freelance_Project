@@ -75,9 +75,21 @@ public class MenuController : MonoBehaviour
 
     public void ShowItemMenu(CharacterStats player)
     {
+        var groupedItems = new List<InventoryItem>();
+        var uniqueItems = new HashSet<Item>();
+
+        foreach (var invItem in Inventory.Instance.items)
+        {
+            if (!uniqueItems.Contains(invItem.itemData))
+            {
+                uniqueItems.Add(invItem.itemData);
+                groupedItems.Add(invItem);
+            }
+        }
+
         itemMenuController.ShowMenu<InventoryItem>(
-            Inventory.Instance.items,
-            player,
+            groupedItems,
+                    player,
             (character, invItem) =>
             {
                 UIManager.Instance.HideAllMenus();
@@ -104,9 +116,21 @@ public class MenuController : MonoBehaviour
 
     public void ShowSpecialAttackMenu(CharacterStats player)
     {
+        var groupedSpecAttacks = new List<InventorySpecialAttack>();
+        var uniqueSpecAttacks = new HashSet<SpecialAttack>();
+
+        foreach (var invSpec in Inventory.Instance.specAttacks)
+        {
+            if (!uniqueSpecAttacks.Contains(invSpec.attackData))
+            {
+                uniqueSpecAttacks.Add(invSpec.attackData);
+                groupedSpecAttacks.Add(invSpec);
+            }
+        }
+
         specAttackMenuController.ShowMenu<InventorySpecialAttack>(
-            Inventory.Instance.specAttacks,
-            player,
+            groupedSpecAttacks,
+                    player,
             (character, invSpecAttack) =>
             {
                 UIManager.Instance.HideAllMenus();

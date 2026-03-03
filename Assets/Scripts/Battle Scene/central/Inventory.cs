@@ -15,30 +15,15 @@ public class Inventory : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
+
     public void AddItem(Item item)
     {
-        InventoryItem existingItem =
-            items.Find(i => i.itemData == item);
-
-        if (existingItem != null)
-        {
-            InventoryItem newItem =
-                new InventoryItem(item);
-            items.Add(newItem);
-        }
+        items.Add(new InventoryItem(item));
     }
 
     public void AddSpecialAttack(SpecialAttack attack)
     {
-        InventorySpecialAttack existingAttack =
-            specAttacks.Find(a => a.attackData == attack);
-
-        if (existingAttack == null)
-        {
-            InventorySpecialAttack newAttack =
-                new InventorySpecialAttack(attack);
-            specAttacks.Add(newAttack);
-        }
+        specAttacks.Add(new InventorySpecialAttack(attack));
     }
 
     public void UseSpecialAttack(InventorySpecialAttack invSpecAttack)

@@ -32,10 +32,28 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             return attack.attackName;
 
         if (action is InventorySpecialAttack invSpec)
-            return invSpec.attackData.specAttackName;
+        {
+            int count = Inventory.Instance.specAttacks
+                .FindAll(a => a.attackData == invSpec.attackData)
+                .Count;
+
+            if (count > 1)
+                return $"{invSpec.attackData.specAttackName} x {count}";
+            else
+                return invSpec.attackData.specAttackName;
+        }
 
         if (action is InventoryItem invItem)
-            return invItem.itemData.itemName;
+        {
+            int count = Inventory.Instance.items
+                .FindAll(i => i.itemData == invItem.itemData)
+                .Count;
+
+            if (count > 1)
+                return $"{invItem.itemData.itemName} x {count}";
+            else
+                return invItem.itemData.itemName;
+        }
 
         if (action is ScriptableObject so)
             return so.name;

@@ -847,7 +847,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 00e31f3a1c841174d924654e54e07705, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8d6d4b0736338d54b9f5a71fb61e029b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: ecccb9e845304c745b3e4674b31b9a98, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -3317,33 +3317,19 @@ MonoBehaviour:
   flavorTextUI: {fileID: 506090852}
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
-    quantity: 0
   - itemData: {fileID: 11400000, guid: bfb8179dbbe23d444851e5454a292c96, type: 2}
-    quantity: 0
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
@@ -3361,6 +3347,8 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
+  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
