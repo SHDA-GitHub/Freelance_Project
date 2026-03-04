@@ -847,7 +847,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0bf21aa2fc2f6bb418a963cf7a0fb3a8, type: 3}
+  m_Resource: {fileID: 8300000, guid: e84b55f93a2ee33448d0a581627ad8aa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: 97772e09724f44f49b7665845bfecead, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: d3c3cd2111207e645a434887653e3149, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}

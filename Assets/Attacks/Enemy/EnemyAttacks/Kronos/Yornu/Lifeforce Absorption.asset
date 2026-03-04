@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
   m_Name: Lifeforce Absorption
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  targetAllEnemies: 1
+  targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 3
   missStatusEffect: 0
   healOnHit: 1
-  healAmount: 3
+  healAmount: 2
   descriptionText: 
   statusChance: 35
   statusDuration: 2
