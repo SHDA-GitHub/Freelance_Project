@@ -22,8 +22,8 @@ MonoBehaviour:
 
     Multi-Enemy attack
 
-    Chance
-    to inflict blindness onto enemies'
+    Small
+    chance to inflict blindness onto enemies'
   statusChance: 10
   statusDuration: 1
   specAttackName: Slingshot

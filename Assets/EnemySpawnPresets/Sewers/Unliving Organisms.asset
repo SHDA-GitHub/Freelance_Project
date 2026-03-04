@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Wild Dog Pack 1
+  m_Name: Unliving Organisms
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
-  - {fileID: 5613294174726454788, guid: 4816aab60373293499164e9c6b90ccb5, type: 3}
-  - {fileID: 647363458770126278, guid: 00498831ce7c5de4ab9ae8b330c5de9f, type: 3}
+  - {fileID: 4702313025386314203, guid: 15628ca395fa02549affc48bcfc0bdef, type: 3}
+  - {fileID: 5372161659416101926, guid: 790a19beb15c6a848ba3d247ab77801f, type: 3}

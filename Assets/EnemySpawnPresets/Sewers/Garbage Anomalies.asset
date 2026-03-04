@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Wild Dog Pack 1
+  m_Name: Garbage Anomalies
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
-  - {fileID: 5613294174726454788, guid: 4816aab60373293499164e9c6b90ccb5, type: 3}
-  - {fileID: 647363458770126278, guid: 00498831ce7c5de4ab9ae8b330c5de9f, type: 3}
+  - {fileID: 6579596772354303031, guid: bb1ef6c4d78aaf742b04a2f8ebde83cd, type: 3}
+  - {fileID: 5150646792333523378, guid: 4dfb0f04afbe60c4facae351ebf33eea, type: 3}

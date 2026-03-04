@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Wild Dog Pack 1
+  m_Name: Ravenous Storms
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
-  - {fileID: 5613294174726454788, guid: 4816aab60373293499164e9c6b90ccb5, type: 3}
-  - {fileID: 647363458770126278, guid: 00498831ce7c5de4ab9ae8b330c5de9f, type: 3}
+  - {fileID: 9098584721887124623, guid: e1276c04987abad49b0a1b353aaaf52a, type: 3}
+  - {fileID: 1149680815829670321, guid: 831a83133e8d903499c40fea7b0874cb, type: 3}

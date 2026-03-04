@@ -1365,7 +1365,7 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 863e18b054b67c649ae2352012233256, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}

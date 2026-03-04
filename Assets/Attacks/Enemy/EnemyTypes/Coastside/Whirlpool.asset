@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Whirlpool
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Whirlpool
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 4a79f91cba326c748a2a83e726864d1f, type: 2}
+  - {fileID: 11400000, guid: 4e41521200693384a9d229b1c987484e, type: 2}

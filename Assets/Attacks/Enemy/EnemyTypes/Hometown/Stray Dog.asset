@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
-  m_Name: Dog
+  m_Name: Stray Dog
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
-  enemyName: Wild Dog
+  enemyName: Stray Dog
   attackSlots:
   - {fileID: 11400000, guid: 5c43c5661390a2a4f87267c83b75a0dd, type: 2}
-  - {fileID: 11400000, guid: 19efe7cc7904a6940b13f49c08be798f, type: 2}
+  - {fileID: 11400000, guid: 724b5659c06b7b14f8de64d994479c3b, type: 2}
+  - {fileID: 11400000, guid: 733ed973ccd60a2429282a133e68ac04, type: 2}
