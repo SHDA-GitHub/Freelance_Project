@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private GameObject inventoryMenu;
+    private bool inventoryActive = false;
     public bool isInteracting = false;
     private bool isGrounded;
     private float originalSpeed;
@@ -38,6 +41,7 @@ public class PlayerControl : MonoBehaviour
         controls.Player.Sprint.canceled += OnSprintCancel;
         controls.Player.Jump.performed += OnJump;
         controls.Player.Interact.performed += OnInteract;
+        controls.Player.InventoryOpen.performed += OnInventoryOpen;
 
         rb = GetComponent<Rigidbody>();
         originalSpeed = m_Speed;
@@ -73,6 +77,18 @@ public class PlayerControl : MonoBehaviour
         isInteracting = true;
         yield return new WaitForSeconds(0.1f);
         isInteracting = false;
+    }
+
+    private void OnInventoryOpen(InputAction.CallbackContext context)
+    {
+        inventoryActive = !inventoryActive;
+        if (inventoryMenu != null)
+            inventoryMenu.SetActive(inventoryActive);
+
+        if (inventoryActive)
+            Time.timeScale = 0;
+        if (!inventoryActive)
+            Time.timeScale = 1;
     }
 
     void FixedUpdate()
