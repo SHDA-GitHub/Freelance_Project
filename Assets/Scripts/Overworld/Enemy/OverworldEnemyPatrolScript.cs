@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
+using static BattleDataBridge;
 
 public class OverworldEnemyPatrolScript : MonoBehaviour
 {
+
     private NavMeshAgent agent;
     private Transform player;
     private float timer;
     private bool playerInRange = false;
+
+    [Header("Battle Settings")]
     public EnemyPreset enemyType;
+    public AudioClip battleMusic;
+    public BattleBackgroundType backgroundType;
+
     [SerializeField] private float wanderRadius = 25f;
     [SerializeField] private float wanderTimer = 5f;
 

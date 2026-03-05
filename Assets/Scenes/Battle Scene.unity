@@ -1371,6 +1371,9 @@ MonoBehaviour:
   rightSlot: {fileID: 1079281201}
   twoEnemyLeftSlot: {fileID: 1342313075}
   twoEnemyRightSlot: {fileID: 1130058720}
+  musicManager: {fileID: 408731265}
+  backgroundManager: {fileID: 849644933}
+  defaultBattleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
 --- !u!114 &506090854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,7 +3305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0

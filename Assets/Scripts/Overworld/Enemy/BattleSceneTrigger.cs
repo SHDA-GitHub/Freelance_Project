@@ -11,6 +11,8 @@ public class BattleSceneTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             BattleDataBridge.UpcomingEnemyPreset = OEPS.enemyType;
+            BattleDataBridge.BackgroundSelection = OEPS.backgroundType;
+            BattleDataBridge.BattleMusic = OEPS.battleMusic;
             SceneManager.LoadScene(battleSceneName);
         }
     }

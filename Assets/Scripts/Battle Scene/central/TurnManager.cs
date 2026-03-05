@@ -47,6 +47,11 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private Transform twoEnemyLeftSlot;
     [SerializeField] private Transform twoEnemyRightSlot;
 
+    [Header("Predetermined Settings")]
+    [SerializeField] private AudioSource musicManager;
+    [SerializeField] private BackgroundManager backgroundManager;
+    [SerializeField] private AudioClip defaultBattleMusic;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -58,6 +63,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        ApplyBattleConditions();
         if (BattleDataBridge.UpcomingEnemyPreset != null)
         {
             currentEnemyPreset = BattleDataBridge.UpcomingEnemyPreset;
@@ -66,6 +72,28 @@ public class TurnManager : MonoBehaviour
 
         SpawnEnemiesFromPreset();
         StartCoroutine(StartBattle());
+    }
+    private void ApplyBattleConditions()
+    {
+        if (musicManager != null)
+        {
+            if (BattleDataBridge.BattleMusic != null)
+            {
+                musicManager.clip = BattleDataBridge.BattleMusic;
+            }
+            musicManager.Play();
+        }
+
+        if (backgroundManager != null)
+        {
+            BattleBackgroundType bg = BattleDataBridge.BackgroundSelection;
+
+            backgroundManager.isNormalEnemy = (bg == BattleBackgroundType.Normal);
+            backgroundManager.isMiniBoss = (bg == BattleBackgroundType.Miniboss);
+            backgroundManager.isBoss = (bg == BattleBackgroundType.Boss);
+            backgroundManager.isMoonSoldier = (bg == BattleBackgroundType.MoonSoldier);
+            backgroundManager.isFinalBossPhase = (bg == BattleBackgroundType.FinalBoss) ? 1 : 0;
+        }
     }
 
     private void Update()
