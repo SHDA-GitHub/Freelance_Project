@@ -58,6 +58,12 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        if (BattleDataBridge.UpcomingEnemyPreset != null)
+        {
+            currentEnemyPreset = BattleDataBridge.UpcomingEnemyPreset;
+            BattleDataBridge.UpcomingEnemyPreset = null;
+        }
+
         SpawnEnemiesFromPreset();
         StartCoroutine(StartBattle());
     }

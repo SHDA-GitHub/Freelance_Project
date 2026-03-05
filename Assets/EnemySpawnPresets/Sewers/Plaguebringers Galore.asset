@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Insects Galore
+  m_Name: Plaguebringers Galore
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
   - {fileID: 4766237772515735874, guid: b992868f4cacd03489ec67b4d5c2cda0, type: 3}

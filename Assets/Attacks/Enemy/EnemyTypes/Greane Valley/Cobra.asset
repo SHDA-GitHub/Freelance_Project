@@ -15,3 +15,5 @@ MonoBehaviour:
   enemyName: Cobra
   attackSlots:
   - {fileID: 11400000, guid: 4499eda08aacd7a4598fa873c42c0bfd, type: 2}
+  - {fileID: 11400000, guid: c0a838b902e3fa440917ba26f730e224, type: 2}
+  - {fileID: 11400000, guid: aa4a7efa5fc124648bd5d2edf2ecccb3, type: 2}
