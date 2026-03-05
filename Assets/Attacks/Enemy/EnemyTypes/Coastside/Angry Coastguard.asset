@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Angry Coastguard
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Angry Coastguard
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 5c82707a2df7ef34aa9812ec588d7796, type: 2}
+  - {fileID: 11400000, guid: 684e83f1c0b2df042ac0e7f38cc1e6f4, type: 2}
+  - {fileID: 11400000, guid: 9cafc1c869b987d4d80d0757e2cad865, type: 2}

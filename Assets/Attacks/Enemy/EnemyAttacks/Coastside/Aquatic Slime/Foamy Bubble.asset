@@ -17,7 +17,7 @@ MonoBehaviour:
   stunstatusEffect: 0
   missStatusEffect: 2
   healOnHit: 1
-  healAmount: 2
+  healAmount: 1
   descriptionText: 
   statusChance: 70
   statusDuration: 1

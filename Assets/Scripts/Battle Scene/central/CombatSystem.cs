@@ -53,7 +53,7 @@ public class CombatSystem : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.3f);
                 yield return flavorTextUI.ShowTextCoroutine(
-                    $"{attacker.characterName} missed their attack!"
+                    $"{attacker.characterName} missed!"
                 );
                 yield return new WaitForSeconds(0.3f);
                 yield break;
@@ -156,7 +156,7 @@ public class CombatSystem : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.3f);
                 yield return flavorTextUI.ShowTextCoroutine(
-                    $"{attacker.characterName} missed their attack!"
+                    $"{attacker.characterName} missed!"
                 );
                 yield return new WaitForSeconds(0.3f);
                 yield break;

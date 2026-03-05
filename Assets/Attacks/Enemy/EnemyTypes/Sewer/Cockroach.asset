@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Cockroach
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Cockroach
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 5db66793e88128d46beb3b600322521d, type: 2}
+  - {fileID: 11400000, guid: 592312be4376add408dd9d15fb034fb3, type: 2}

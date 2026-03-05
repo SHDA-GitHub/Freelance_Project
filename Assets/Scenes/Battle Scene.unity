@@ -847,7 +847,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  m_Resource: {fileID: 8300000, guid: dd545798843f0cd4eb376f6874a60757, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
-  currentEnemyPreset: {fileID: 11400000, guid: 863e18b054b67c649ae2352012233256, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: efc962615230fc84989d552df59bb9a0, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -1411,8 +1411,8 @@ MonoBehaviour:
   playerAttacks: {fileID: 879654192}
   battleCamera: {fileID: 1658588352}
   shakeAmount: 0.5
-  shakeDuration: 0.55
-  shakeSpeed: 0.015
+  shakeDuration: 0.4
+  shakeSpeed: 0.02
 --- !u!114 &506090856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1913,9 +1913,9 @@ MonoBehaviour:
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 1
+  isNormalEnemy: 0
   isMiniBoss: 0
-  isBoss: 0
+  isBoss: 1
   isFinalBossPhase: 0
   isMoonSoldier: 0
 --- !u!1 &855608624
@@ -2112,21 +2112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Billy
-  maxHealth: 10
-  currentHealth: 10
-  maxPP: 5
-  currentPP: 5
-  level: 1
+  characterName: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxPP: 0
+  currentPP: 0
+  level: 0
   currentEXP: 0
   enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
-  - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
+  playerStats: {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
   overtimeDamage: 2
+  isPlayer: 1
 --- !u!82 &879654193
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4588,21 +4589,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Cassie
-  maxHealth: 7
-  currentHealth: 7
-  maxPP: 5
-  currentPP: 5
-  level: 1
+  characterName: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxPP: 0
+  currentPP: 0
+  level: 0
   currentEXP: 0
   enemyLoadout: {fileID: 0}
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
-  - {fileID: 11400000, guid: 88933aaefbbfda042a29fd5cde28d1a9, type: 2}
+  playerStats: {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
   overtimeDamage: 2
+  isPlayer: 1
 --- !u!212 &2061152905
 SpriteRenderer:
   m_ObjectHideFlags: 0

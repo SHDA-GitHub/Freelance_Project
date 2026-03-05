@@ -19,7 +19,7 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 90
+  statusChance: 75
   statusDuration: 2
   attackName: Bark
   powerCost: 0

@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Angry Housemaid
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Angry Housemaid
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 316c7649f74481e4b9f39d8a10b80a7d, type: 2}
+  - {fileID: 11400000, guid: 0f00eda1cca63fe429f6395b3d4ed877, type: 2}
+  - {fileID: 11400000, guid: 37f830cb1f757ae44abf963c6d71febe, type: 2}
+  - {fileID: 11400000, guid: ad9a9c0154f964142b770f5a0d068c06, type: 2}

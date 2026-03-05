@@ -14,6 +14,7 @@ public enum StunStatusEffectType
     frozen,
     sleepy,
     paralyzed,
+    constricted,
 }
 
 public enum MissStatusEffectType

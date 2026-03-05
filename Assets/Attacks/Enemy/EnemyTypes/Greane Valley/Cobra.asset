@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Cobra
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Cobra
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 4499eda08aacd7a4598fa873c42c0bfd, type: 2}

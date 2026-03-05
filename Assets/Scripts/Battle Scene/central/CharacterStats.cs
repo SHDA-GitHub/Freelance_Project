@@ -16,11 +16,27 @@ public class CharacterStats : MonoBehaviour
     public EnemyLoadout enemyLoadout;
 
     public List<Attack> attacks;
+    public PlayerStatsSO playerStats;
     public List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
     public List<StunStatusEffect> activeStunEffects = new List<StunStatusEffect>();
     public List<MissStatusEffect> activeMissEffects = new List<MissStatusEffect>();
 
     public int overtimeDamage = 1;
+    public bool isPlayer = false;
+
+    void Start()
+    {
+        if (isPlayer && playerStats != null)
+        {
+            characterName = playerStats.characterName;
+            currentHealth = playerStats.currentHealth;
+            maxHealth = playerStats.maxHealth;
+            currentPP = playerStats.currentPP;
+            maxPP = playerStats.maxPP;
+            level = playerStats.level;
+            currentEXP = playerStats.currentEXP;
+        }
+    }
 
     public void ApplyStatus(DOTStatusEffectType type, int duration)
     {
@@ -83,12 +99,18 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
+
+        if (isPlayer)
+            playerStats.currentHealth = currentHealth;
     }
 
     public void ApplyOvertimeDamage(int damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
+
+        if (isPlayer)
+            playerStats.currentHealth = currentHealth;
     }
 
     public bool IsStunned()
@@ -175,5 +197,18 @@ public class CharacterStats : MonoBehaviour
 
         Color c = sr.color;
         sr.color = new Color(c.r, c.g, c.b, 0f);
+    }
+
+    public void GainEXP(int amount)
+    {
+        if (!isPlayer) return;
+
+        playerStats.GainEXP(amount);
+        currentEXP = playerStats.currentEXP;
+        level = playerStats.level;
+        maxHealth = playerStats.maxHealth;
+        maxPP = playerStats.maxPP;
+        currentHealth = playerStats.currentHealth;
+        currentPP = playerStats.currentPP;
     }
 }

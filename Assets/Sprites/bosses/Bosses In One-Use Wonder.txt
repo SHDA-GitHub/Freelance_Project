@@ -10,15 +10,16 @@ Hometown:
 
 Faithville:
 - Bully (Mini Boss)
-- King Maros Phase 1 (Big Boss)
-- King Maros Phase 2 (End-chapter Boss)
+- Cultist Prophet (Big Boss)
+- King Maros Phase (End-Chapter Boss)
 
 Coastside (Faithville Sub-Area):
 - Angry Coastguard (Mini Boss)
 - Nessa (End-chapter Boss)
 
 Greane Valley:
-- Assassin (Initial Boss)
+- Angry Housemaid (Initial Boss)
+- Assassin (Big Boss)
 - Minotaur (End-chapter Boss)
 
 WrestleWorld (Greane Valley Sub-Area):
@@ -26,6 +27,14 @@ WrestleWorld (Greane Valley Sub-Area):
 
 Abandoned Circus (Spooky Forest Sub-Area)
 - Depressed Clown and co. (End-chapter Boss)
+
+Desert Temple
+- Flaming Phoenix (Initial Boss)
+- Horned Tyrant (Big Boss)
+
+Catacombs (Desert Temple Sub-Area)
+- Skeleton Pharaoh Bakhmut (End Chapter Boss)
+- Segmented Pharaoh Bakhmut (End Chapter Boss)
 
 Bubin Village
 - Evil Bubin (Initial Boss)
@@ -37,17 +46,11 @@ Damp Cave (Bubin Village Sub-Area)
 
 Prehistoric Era
 - Enraged Mammoth (Initial Boss)
+- Ankylosaurus (Big Boss)
+- Decimator MK. II (End-Chapter Boss)
 
 Icy Mountaintops (Prehistoric Era Sub-Area)
 - Crystal Golem (End-Chapter Boss)
-
-Desert Temple
-- Flaming Phoenix (Initial Boss)
-- Horned Tyrant (Big Boss)
-
-Catacombs (Desert Temple Sub-Area)
-- Skeleton pharaoh bakhmut (Fake-Out End Chapter Boss)
-- Cursed Skull, Cursed Hand, Cursed Eye (End Chapter Boss)
 
 Deep Depths
 - True Moon Soldier (Big Boss)

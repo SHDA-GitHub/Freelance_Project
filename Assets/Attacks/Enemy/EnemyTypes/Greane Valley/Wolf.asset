@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Wolf
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: d0f64a9fd4cd8a445ada48137ee0ea35, type: 2}
+  - {fileID: 11400000, guid: 21aaa5dfdd1f3eb48809307eaf426210, type: 2}
+  - {fileID: 11400000, guid: 733ed973ccd60a2429282a133e68ac04, type: 2}

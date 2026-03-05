@@ -19,7 +19,7 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 55
+  statusChance: 45
   statusDuration: 1
   attackName: Sting
   powerCost: 0
