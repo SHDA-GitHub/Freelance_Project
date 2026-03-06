@@ -34,6 +34,13 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 1.5f;
     private CharacterStats lastTarget;
     private CharacterStats currentActingCharacter;
+    [SerializeField] private bool playerRevive = true;
+    private List <PlayerStatsSO> playerStats = new List<PlayerStatsSO>();
+
+    [Header("Game Over Settings")]
+    [SerializeField] private AudioClip gameOverClip;
+    [SerializeField] private SpriteRenderer fadeOverlay;
+    [SerializeField] private float gameOverFadeDuration = 2.0f;
 
     [Header("Enemy Preset")]
     [SerializeField] private EnemyPreset currentEnemyPreset;
@@ -63,18 +70,28 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
-        ApplyBattleConditions();
+        if (playerRevive == true)
+        {
+            foreach (PlayerStatsSO stats in playerStats)
+            {
+                if (stats != null)
+                {
+                    stats.currentHealth = 10;
+                }
+            }
+        }
+        StartCoroutine(ApplyBattleConditions());
+    }
+
+    private IEnumerator ApplyBattleConditions()
+    {
+        Debug.Log($"Starting battle - Player party count: {playerParty.Count}");
         if (BattleDataBridge.UpcomingEnemyPreset != null)
         {
             currentEnemyPreset = BattleDataBridge.UpcomingEnemyPreset;
             BattleDataBridge.UpcomingEnemyPreset = null;
         }
 
-        SpawnEnemiesFromPreset();
-        StartCoroutine(StartBattle());
-    }
-    private void ApplyBattleConditions()
-    {
         if (musicManager != null)
         {
             if (BattleDataBridge.BattleMusic != null)
@@ -94,6 +111,11 @@ public class TurnManager : MonoBehaviour
             backgroundManager.isMoonSoldier = (bg == BattleBackgroundType.MoonSoldier);
             backgroundManager.isFinalBossPhase = (bg == BattleBackgroundType.FinalBoss) ? 1 : 0;
         }
+
+        SpawnEnemiesFromPreset();
+
+        yield return new WaitForSeconds(0.05f);
+        StartCoroutine(StartBattle());
     }
 
     private void Update()
@@ -178,22 +200,18 @@ public class TurnManager : MonoBehaviour
     public void StartTurn()
     {
         if (!isBattleActive) return;
+
         if (currentTurn == TurnType.Player)
         {
             if (currentCharacterIndex >= playerParty.Count)
             {
-                currentCharacterIndex = 0;
                 currentTurn = TurnType.Enemy;
+                currentCharacterIndex = 0;
                 StartTurn();
                 return;
             }
 
             var character = playerParty[currentCharacterIndex];
-            if (character.currentHealth > 0)
-            {
-                character.currentPP = Mathf.Min(character.currentPP + 1, character.maxPP);
-                battleHUD.UpdateHUD();
-            }
 
             if (character.currentHealth <= 0)
             {
@@ -202,24 +220,30 @@ public class TurnManager : MonoBehaviour
                 return;
             }
 
+            character.currentPP = Mathf.Min(character.currentPP + 1, character.maxPP);
+            battleHUD.UpdateHUD();
             StartCoroutine(PlayerTurnCoroutine(character));
         }
         else
         {
             if (currentCharacterIndex >= enemyParty.Count)
             {
-                currentCharacterIndex = 0;
                 currentTurn = TurnType.Player;
+                currentCharacterIndex = 0;
                 StartTurn();
                 return;
             }
 
             var enemy = enemyParty[currentCharacterIndex];
-            if (enemy.currentHealth > 0)
+
+            if (enemy.currentHealth <= 0)
             {
-                enemy.currentPP = Mathf.Min(enemy.currentPP + 1, enemy.maxPP);
+                currentCharacterIndex++;
+                StartTurn();
+                return;
             }
 
+            enemy.currentPP = Mathf.Min(enemy.currentPP + 1, enemy.maxPP);
             StartCoroutine(EnemyTurnCoroutine(enemy));
         }
     }
@@ -332,7 +356,10 @@ public class TurnManager : MonoBehaviour
             .FindAll(p => p != null && p.currentHealth > 0);
 
         if (alivePlayers.Count == 0)
+        {
+            CheckWinLose();
             yield break;
+        }
 
         CharacterStats target =
             alivePlayers[Random.Range(0, alivePlayers.Count)];
@@ -372,8 +399,8 @@ public class TurnManager : MonoBehaviour
 
             CheckWinLose();
         }
-            yield return new WaitForSeconds(0.3f);
-            EndTurn();
+        yield return new WaitForSeconds(0.3f);
+        EndTurn();
     }
 
     public void EndTurn()
@@ -627,7 +654,7 @@ public class TurnManager : MonoBehaviour
         if (allEnemiesDead)
         {
             isBattleActive = false;
-            StartCoroutine(HandleVictory());
+            EndBattle(true);
             return;
         }
 
@@ -641,21 +668,20 @@ public class TurnManager : MonoBehaviour
             }
         }
 
-        if (allPlayersDead)
+        if (allPlayersDead && isBattleActive)
         {
-            Debug.Log("Players Lose!");
+            isBattleActive = false;
             EndBattle(false);
         }
     }
 
     private void EndBattle(bool playerWon)
     {
-        if (playerWon)
-            Debug.Log("Victory screen here!");
-        else
-            Debug.Log("Defeat screen here!");
-
         isBattleActive = false;
+        if (playerWon)
+            StartCoroutine(HandleVictory());
+        else
+            StartCoroutine(HandleDefeat());
     }
 
     private IEnumerator HandleVictory()
@@ -674,6 +700,38 @@ public class TurnManager : MonoBehaviour
             audioManager.Play();
         }
         yield return flavorTextUI.ShowTextCoroutine("You won!");
+    }
+
+    private IEnumerator HandleDefeat()
+    {
+        if (musicManager != null) musicManager.Stop();
+        if (musicSource != null) musicSource.Stop();
+
+        if (gameOverClip != null && audioManager != null)
+        {
+            audioManager.clip = gameOverClip;
+            audioManager.Play();
+        }
+
+        yield return flavorTextUI.ShowTextCoroutine("You were defeated...");
+
+        yield return new WaitForSeconds(1.0f);
+
+        if (fadeOverlay != null)
+        {
+            float elapsed = 0f;
+            Color fadeColor = fadeOverlay.color;
+
+            while (elapsed < gameOverFadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(0f, 1f, elapsed / gameOverFadeDuration);
+                fadeOverlay.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, alpha);
+                yield return null;
+            }
+            fadeOverlay.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 1f);
+        }
+        Debug.Log("Game Over Sequence Complete. Add SceneManager.LoadScene here.");
     }
 
     private IEnumerator FadeOutEnemy(CharacterStats enemy)

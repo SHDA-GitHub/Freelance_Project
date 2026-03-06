@@ -25,4 +25,4 @@ MonoBehaviour:
   powerCost: 0
   damage: 2
   attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  flavorText: '{attacker} told off {target} about wearing shoes inside'
+  flavorText: '{attacker} told off {target} about wearing dirty shoes indoors'

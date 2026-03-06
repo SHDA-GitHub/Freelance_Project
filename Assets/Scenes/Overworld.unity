@@ -269,11 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e7108772321e54f82bfb9f7da34802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyPatrolScript
-  enemyType: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
-  battleMusic: {fileID: 8300000, guid: 33195dd61c20e2d42b4c3d2daf2406c0, type: 3}
-  backgroundType: 3
-  wanderRadius: 5
-  wanderTimer: 2
+  enemyType: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
+  battleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  backgroundType: 0
+  wanderRadius: 8
+  wanderTimer: 1.5
 --- !u!195 &62968693
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -1350,7 +1350,6 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
-  - {fileID: 2061152904}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -1365,6 +1364,9 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
+  gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
+  fadeOverlay: {fileID: 1760178835}
+  gameOverFadeDuration: 2
   currentEnemyPreset: {fileID: 11400000, guid: efc962615230fc84989d552df59bb9a0, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
@@ -2115,12 +2117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: 0
-  maxHealth: 0
-  currentHealth: 0
-  maxPP: 0
-  currentPP: 0
-  level: 0
+  characterName: Billy
+  maxHealth: 10
+  currentHealth: 10
+  maxPP: 5
+  currentPP: 5
+  level: 1
   currentEXP: 0
   enemyLoadout: {fileID: 0}
   attacks:
@@ -4579,7 +4581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
