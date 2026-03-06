@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Big Maggot
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Big Maggot
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 5198c9da8e052b04499c697d239580d3, type: 2}
+  - {fileID: 11400000, guid: 612238caa17bb374bbf92a79b6165fb5, type: 2}
+  - {fileID: 11400000, guid: dd3cd2f3cbbfedd4997a6e966eaf69d6, type: 2}

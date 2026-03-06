@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Evil Painting
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Evil Painting
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: f1abf60c4abe7644487b5b3d92eb2974, type: 2}
+  - {fileID: 11400000, guid: 1ee97ff726224a5428671e55f50710bf, type: 2}
+  - {fileID: 11400000, guid: 8670a8ed5664b9d45967bc6a0f872893, type: 2}

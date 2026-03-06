@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Hunchback
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Hunchback
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: 1694ef1c77a13714dbedc283f96eb442, type: 2}

@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Angry Hunter
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Angry Hunter
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 2aa0db9d366d1b645a396e0066feaf5a, type: 2}
+  - {fileID: 11400000, guid: 621c8006e93a6334fafc2960d41b2d17, type: 2}
+  - {fileID: 11400000, guid: 78d2e672c1de08a46a05bf507acd776a, type: 2}
