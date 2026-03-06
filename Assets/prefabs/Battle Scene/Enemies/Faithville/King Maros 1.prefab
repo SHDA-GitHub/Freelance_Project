@@ -161,10 +161,12 @@ MonoBehaviour:
   currentEXP: 0
   enemyLoadout: {fileID: 11400000, guid: bc95a42cdbf65044694dfa72530b80b5, type: 2}
   attacks: []
+  playerStats: {fileID: 0}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
   overtimeDamage: 2
+  isPlayer: 0
 --- !u!82 &6843205714558726498
 AudioSource:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ MonoBehaviour:
   - hpThreshold: 20
     backgroundPrefab: {fileID: 0}
     phaseName: King Maros Phase 2
-    phaseMusic: {fileID: 8300000, guid: bccdd69a07dea7a49a5e3a4a58dbfe77, type: 3}
+    phaseMusic: {fileID: 8300000, guid: edc2ca1625c0f2c4987f47bca24ad884, type: 3}
     newEnemyPreset: {fileID: 11400000, guid: de7e62fae083d2048b44f638e37a093e, type: 2}
     introFlavorText: King Maros began to transform
     transformFlavorText: King Maros' powers grew stonger!

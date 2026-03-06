@@ -23,6 +23,6 @@ MonoBehaviour:
   statusDuration: 2
   attackName: Dummypunch
   powerCost: 0
-  damage: 10
+  damage: 0
   attackSound: {fileID: 8300000, guid: 7e54cf22e8890dc4bad2e92fcaad1e49, type: 3}
   flavorText: '{attacker} didn''t attack'

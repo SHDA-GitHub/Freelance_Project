@@ -27,7 +27,7 @@ MonoBehaviour:
   specAttackName: Buzz-Button Handshake
   powerCost: 2
   damage: 1
-  attackSound: {fileID: 8300000, guid: 89da5b1922abb0b4eb2c5d2dd30e5a88, type: 3}
+  attackSound: {fileID: 8300000, guid: 1fff1ae7a9ac15b41a1b634905622e81, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} shook hands with {target}, giving an electrifying surprise'

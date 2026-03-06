@@ -27,7 +27,7 @@ MonoBehaviour:
   specAttackName: Slush Cup Toss
   powerCost: 2
   damage: 1
-  attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
+  attackSound: {fileID: 8300000, guid: 32a607d077477a4468b8f749fd3f00ea, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} tossed a slush cup at {target}'

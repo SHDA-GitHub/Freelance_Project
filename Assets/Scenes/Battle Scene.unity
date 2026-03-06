@@ -1350,7 +1350,6 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
-  - {fileID: 2061152904}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -1890,6 +1889,7 @@ MonoBehaviour:
   - {fileID: 1084855042888253745, guid: 1f4f0835696d5804c8ec464903a75ed0, type: 3}
   - {fileID: 2092676706754308772, guid: 7fd1c3975ae3a21469e84182d8227e51, type: 3}
   - {fileID: 7668502924311082037, guid: 683ae233babe45d428ac6d676d7dffb2, type: 3}
+  - {fileID: 3942843387887549817, guid: 4acd37e01fa0c754dadc3f1e240421ec, type: 3}
   minibossBG:
   - {fileID: 5287798275954189025, guid: a80f7bf9a45aa5c4b986af16282d0f69, type: 3}
   - {fileID: 4623175695548337017, guid: 48e631ef3e06d454bbde2a533b41a7b7, type: 3}
@@ -3312,7 +3312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4586,7 +4586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
