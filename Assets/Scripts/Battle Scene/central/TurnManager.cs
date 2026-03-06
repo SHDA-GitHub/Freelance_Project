@@ -35,7 +35,7 @@ public class TurnManager : MonoBehaviour
     private CharacterStats lastTarget;
     private CharacterStats currentActingCharacter;
     [SerializeField] private bool playerRevive = true;
-    private List <PlayerStatsSO> playerStats = new List<PlayerStatsSO>();
+    [SerializeField] private List <PlayerStatsSO> playerStats = new List<PlayerStatsSO>();
 
     [Header("Game Over Settings")]
     [SerializeField] private AudioClip gameOverClip;
