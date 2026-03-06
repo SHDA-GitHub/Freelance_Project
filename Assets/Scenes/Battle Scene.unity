@@ -1350,6 +1350,7 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
+  - {fileID: 2061152904}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -1364,6 +1365,10 @@ MonoBehaviour:
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
   fadeDuration: 1.5
+  playerRevive: 1
+  playerStats:
+  - {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
+  - {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
@@ -3307,7 +3312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4581,7 +4586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
