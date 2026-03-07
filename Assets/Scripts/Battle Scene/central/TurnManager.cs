@@ -104,13 +104,16 @@ public class TurnManager : MonoBehaviour
 
         if (backgroundManager != null)
         {
-            BattleBackgroundType bg = BattleDataBridge.BackgroundSelection;
+            if (BattleDataBridge.UpcomingEnemyPreset != null)
+            {
+                BattleBackgroundType bg = BattleDataBridge.BackgroundSelection;
 
-            backgroundManager.isNormalEnemy = (bg == BattleBackgroundType.Normal);
-            backgroundManager.isMiniBoss = (bg == BattleBackgroundType.Miniboss);
-            backgroundManager.isBoss = (bg == BattleBackgroundType.Boss);
-            backgroundManager.isMoonSoldier = (bg == BattleBackgroundType.MoonSoldier);
-            backgroundManager.isFinalBossPhase = (bg == BattleBackgroundType.FinalBoss) ? 1 : 0;
+                backgroundManager.isNormalEnemy = (bg == BattleBackgroundType.Normal);
+                backgroundManager.isMiniBoss = (bg == BattleBackgroundType.Miniboss);
+                backgroundManager.isBoss = (bg == BattleBackgroundType.Boss);
+                backgroundManager.isMoonSoldier = (bg == BattleBackgroundType.MoonSoldier);
+                backgroundManager.isFinalBossPhase = (bg == BattleBackgroundType.FinalBoss) ? 1 : 0;
+            }
         }
 
         SpawnEnemiesFromPreset();
