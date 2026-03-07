@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
   statusEffect: 0
-  stunstatusEffect: 3
+  stunstatusEffect: 5
   missStatusEffect: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 
   statusChance: 85
   statusDuration: 1
   attackName: Grounded

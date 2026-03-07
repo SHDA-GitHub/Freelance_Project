@@ -269,7 +269,7 @@ public class TurnManager : MonoBehaviour
         if (player.IsStunned())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{player.characterName} is stunned and cannot move"
+                $"{player.characterName} is locked in place and cannot move"
             );
             player.ReduceStunEffects();
             yield return new WaitForSeconds(0.3f);
@@ -314,7 +314,7 @@ public class TurnManager : MonoBehaviour
         if (enemy.IsStunned())
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"{enemy.characterName} is stunned and cannot move!"
+                $"{enemy.characterName} is locked in place and cannot move"
             );
             enemy.ReduceStunEffects();
             yield return new WaitForSeconds(0.3f);

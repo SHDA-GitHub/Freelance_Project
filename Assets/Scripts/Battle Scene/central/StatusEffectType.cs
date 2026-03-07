@@ -3,7 +3,7 @@ public enum DOTStatusEffectType
     None,
     burning,
     poisoned,
-    sick,
+    sickened,
     shocked,
     bleeding,
 }
@@ -15,6 +15,7 @@ public enum StunStatusEffectType
     sleepy,
     paralyzed,
     constricted,
+    stunned,
 }
 
 public enum MissStatusEffectType
@@ -24,4 +25,5 @@ public enum MissStatusEffectType
     confused,
     dizzy,
     blinded,
+    distracted,
 }

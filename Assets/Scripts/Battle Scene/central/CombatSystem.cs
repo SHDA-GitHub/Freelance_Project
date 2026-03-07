@@ -93,13 +93,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < attack.statusChance)
             {
-                target.ApplyStatus(attack.statusEffect, attack.statusDuration);
+                if (target.IsImmune(attack.statusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {attack.statusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatus(attack.statusEffect, attack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is now {attack.statusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {attack.statusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -109,13 +120,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < attack.statusChance)
             {
-                target.ApplyStun(attack.stunstatusEffect, attack.statusDuration);
+                if (target.IsImmune(attack.stunstatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {attack.stunstatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStun(attack.stunstatusEffect, attack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {attack.stunstatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {attack.stunstatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -125,17 +147,27 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < attack.statusChance)
             {
-                target.ApplyMiss(attack.missStatusEffect, attack.statusDuration);
+                if (target.IsImmune(attack.missStatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {attack.missStatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyMiss(attack.missStatusEffect, attack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {attack.missStatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {attack.missStatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
-
         Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
     }
@@ -185,13 +217,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < specAttack.statusChance)
             {
-                target.ApplyStatus(specAttack.statusEffect, specAttack.statusDuration);
+                if (target.IsImmune(specAttack.statusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {specAttack.statusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatus(specAttack.statusEffect, specAttack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is now {specAttack.statusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {specAttack.statusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -201,13 +244,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < specAttack.statusChance)
             {
-                target.ApplyStun(specAttack.stunstatusEffect, specAttack.statusDuration);
+                if (target.IsImmune(specAttack.stunstatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {specAttack.stunstatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStun(specAttack.stunstatusEffect, specAttack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {specAttack.stunstatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {specAttack.stunstatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -217,13 +271,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < specAttack.statusChance)
             {
-                target.ApplyMiss(specAttack.missStatusEffect, specAttack.statusDuration);
+                if (target.IsImmune(specAttack.missStatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {specAttack.missStatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyMiss(specAttack.missStatusEffect, specAttack.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {specAttack.missStatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {specAttack.missStatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -258,13 +323,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < item.statusChance)
             {
-                target.ApplyStatus(item.statusEffect, item.statusDuration);
+                if (target.IsImmune(item.statusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {item.statusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatus(item.statusEffect, item.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is now {item.statusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {item.statusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -274,13 +350,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < item.statusChance)
             {
-                target.ApplyStun(item.stunstatusEffect, item.statusDuration);
+                if (target.IsImmune(item.stunstatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {item.stunstatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStun(item.stunstatusEffect, item.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {item.stunstatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {item.stunstatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -290,13 +377,24 @@ public class CombatSystem : MonoBehaviour
 
             if (roll < item.statusChance)
             {
-                target.ApplyMiss(item.missStatusEffect, item.statusDuration);
+                if (target.IsImmune(item.missStatusEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {item.missStatusEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyMiss(item.missStatusEffect, item.statusDuration);
 
-                yield return flavorTextUI.ShowTextCoroutine(
-                    $"{target.characterName} is {item.missStatusEffect}!"
-                );
-                audioManager.clip = statusEffectGain;
-                audioManager.Play();
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is now {item.missStatusEffect}!"
+                    );
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
                 yield return new WaitForSeconds(0.3f);
             }
         }

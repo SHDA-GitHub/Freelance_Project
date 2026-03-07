@@ -158,6 +158,9 @@ MonoBehaviour:
   currentPP: 1
   level: 1
   currentEXP: 0
+  immuneDOTEffects: 
+  immuneStunEffects: 
+  immuneMissEffects: 0200000005000000
   enemyLoadout: {fileID: 11400000, guid: d3f5d63a558146d4cbbaa0664bd0f2fc, type: 2}
   attacks: []
   playerStats: {fileID: 0}

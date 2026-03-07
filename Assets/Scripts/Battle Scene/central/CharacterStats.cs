@@ -12,6 +12,11 @@ public class CharacterStats : MonoBehaviour
     public int level;
     public int currentEXP;
 
+    [Header("Status Immunities")]
+    public List<DOTStatusEffectType> immuneDOTEffects = new List<DOTStatusEffectType>();
+    public List<StunStatusEffectType> immuneStunEffects = new List<StunStatusEffectType>();
+    public List<MissStatusEffectType> immuneMissEffects = new List<MissStatusEffectType>();
+
     [Header("Enemy Only")]
     public EnemyLoadout enemyLoadout;
 
@@ -188,6 +193,21 @@ public class CharacterStats : MonoBehaviour
     public void RemoveMissEffects()
     {
         activeMissEffects.Clear();
+    }
+
+    public bool IsImmune(DOTStatusEffectType type)
+    {
+        return immuneDOTEffects.Contains(type);
+    }
+
+    public bool IsImmune(StunStatusEffectType type)
+    {
+        return immuneStunEffects.Contains(type);
+    }
+
+    public bool IsImmune(MissStatusEffectType type)
+    {
+        return immuneMissEffects.Contains(type);
     }
 
     public void SetInvisible()
