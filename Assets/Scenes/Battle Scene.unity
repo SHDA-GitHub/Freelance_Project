@@ -847,7 +847,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: dd545798843f0cd4eb376f6874a60757, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5ef6d196cd1ec7c4dac0108503853152, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: efc962615230fc84989d552df59bb9a0, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 028331e0d6131a8479282de5d1277180, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2123,12 +2123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Billy
-  maxHealth: 10
-  currentHealth: 10
-  maxPP: 5
-  currentPP: 5
-  level: 1
+  characterName: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxPP: 0
+  currentPP: 0
+  level: 0
   currentEXP: 0
   enemyLoadout: {fileID: 0}
   attacks:
@@ -2547,9 +2547,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
