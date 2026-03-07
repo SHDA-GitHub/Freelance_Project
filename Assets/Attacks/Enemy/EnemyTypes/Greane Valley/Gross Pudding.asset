@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Gross Pudding
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Gross Pudding
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 55ffaa6e7306f9f4ebc3665c7eefbf67, type: 2}
+  - {fileID: 11400000, guid: 6b827003ef58e7e48b1b1e0db1e913fc, type: 2}
+  - {fileID: 11400000, guid: ba28b9461a4316146bc0db262283b557, type: 2}
+  - {fileID: 11400000, guid: 97bdb7306e52d624aa30035b2db850ac, type: 2}

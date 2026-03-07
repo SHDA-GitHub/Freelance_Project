@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Oil Spill
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Oil Spill
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 3676ca26586448f4a96151006ee4c065, type: 2}
+  - {fileID: 11400000, guid: 6a1f76be749559d4a971efd697ef95b6, type: 2}
+  - {fileID: 11400000, guid: 9dd02326ea5764142a3940cdc5718c19, type: 2}

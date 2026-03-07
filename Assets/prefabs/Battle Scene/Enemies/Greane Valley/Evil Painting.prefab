@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: Evil Painting
-  maxHealth: 24
-  currentHealth: 24
+  maxHealth: 30
+  currentHealth: 30
   maxPP: 1
   currentPP: 1
   level: 1

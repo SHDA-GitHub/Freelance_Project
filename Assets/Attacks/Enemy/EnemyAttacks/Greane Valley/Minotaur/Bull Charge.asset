@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Trip
+  m_Name: Bull Charge
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
   statusEffect: 0
-  stunstatusEffect: 3
+  stunstatusEffect: 0
   missStatusEffect: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 35
-  statusDuration: 1
-  attackName: Trip
+  statusChance: 0
+  statusDuration: 2
+  attackName: Bull Charge
   powerCost: 0
-  damage: 3
-  attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
-  flavorText: '{attacker} forcefully made {target} trip over'
+  damage: 6
+  attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
+  flavorText: '{attacker} rushed at {target} with a wild charge'

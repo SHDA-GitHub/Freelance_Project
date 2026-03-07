@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Assassin
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Assassin
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 2b99312e4891c1347b1291d99c8a65de, type: 2}
+  - {fileID: 11400000, guid: b2a982c70d4048e4b80980f45a56c818, type: 2}
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: 7689225353d10564ca501bca69ca780d, type: 2}

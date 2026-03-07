@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Wild Horse
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Wild Horse
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 10d43b568360766449a290339c6d9e81, type: 2}
+  - {fileID: 11400000, guid: 100d2aa3977237e439e28fd35cf456d9, type: 2}
+  - {fileID: 11400000, guid: 487ac5d14ff27d34e8361d2ed663ccd4, type: 2}

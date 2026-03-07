@@ -152,18 +152,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   characterName: Angry Housemaid
-  maxHealth: 38
-  currentHealth: 38
+  maxHealth: 35
+  currentHealth: 35
   maxPP: 1
   currentPP: 1
   level: 1
   currentEXP: 0
   enemyLoadout: {fileID: 11400000, guid: 9ab9735489c90054da662ab096bb7bdc, type: 2}
   attacks: []
+  playerStats: {fileID: 0}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
   overtimeDamage: 2
+  isPlayer: 0
 --- !u!82 &4118905424278063887
 AudioSource:
   m_ObjectHideFlags: 0

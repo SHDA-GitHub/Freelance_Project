@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Lizard
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Lizard
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 4ef467fd2a057604ca9afa95ff55774c, type: 2}
+  - {fileID: 11400000, guid: 20d0fc446f59e6740b759f572bb3e7bc, type: 2}
+  - {fileID: 11400000, guid: b1c1778b0a918ca4ea8c50a9d3d9e1ab, type: 2}
