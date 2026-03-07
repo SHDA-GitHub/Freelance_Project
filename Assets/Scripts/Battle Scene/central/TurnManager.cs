@@ -76,7 +76,7 @@ public class TurnManager : MonoBehaviour
             {
                 if (stats != null)
                 {
-                    stats.currentHealth = 10;
+                    stats.currentHealth = stats.maxHealth;
                 }
             }
         }

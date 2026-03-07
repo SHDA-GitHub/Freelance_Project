@@ -3341,12 +3341,13 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
-  - itemData: {fileID: 11400000, guid: bfb8179dbbe23d444851e5454a292c96, type: 2}
   - itemData: {fileID: 11400000, guid: d1b91cea75ad02d48bd17920e14d08d7, type: 2}
+  - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
   - itemData: {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
-  - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+  - itemData: {fileID: 11400000, guid: 20e8eb8d1352f674394c293150fd6470, type: 2}
+  - itemData: {fileID: 11400000, guid: ccf78ab03705f9344bf1ea475ff1f496, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
