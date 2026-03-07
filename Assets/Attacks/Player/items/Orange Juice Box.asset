@@ -26,9 +26,9 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  itemSound: {fileID: 0}
+  itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   descriptionText: 'PP: 4'
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{attacker} drank the {action}'
+  flavorText: '{attacker} drank the bitter {action}'

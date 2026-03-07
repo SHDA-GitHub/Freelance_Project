@@ -25,6 +25,9 @@ Greane Valley:
 WrestleWorld (Greane Valley Sub-Area):
 - Wrestling Champion (End-chapter Boss)
 
+Spooky Forest:
+- Killer Tree (End-chapter Boss)
+
 Abandoned Circus (Spooky Forest Sub-Area)
 - Depressed Clown and co. (End-chapter Boss)
 

@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Smart Mints
+  m_Name: Onion Rings
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Smart Mints
-  healAmount: 0
+  itemName: Onion Rings
+  healAmount: 6
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 5
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 1
+  removeDOT: 0
   removeStun: 0
   removeMiss: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
-  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
-  descriptionText: 'PP: 5
+  missStatusEffect: 3
+  itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
+  descriptionText: 'HP: 6
 
-    Removes Overtime Effects'
-  statusChance: 0
-  statusDuration: 2
+    Has chance to inflict dizziness upon consumption'
+  statusChance: 20
+  statusDuration: 1
   consumable: 1
-  flavorText: '{attacker} ate the refreshing {action}'
+  flavorText: '{attacker} ate a bag of some {action}'

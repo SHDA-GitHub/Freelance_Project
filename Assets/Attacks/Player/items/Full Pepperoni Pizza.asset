@@ -10,29 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Sandwich
+  m_Name: Full Pepperoni Pizza
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Sandwich
-  healAmount: 7
-  healAllParty: 0
-  splitHealAcrossParty: 0
-  ppAmount: 4
+  itemName: Full Pepperoni Pizza
+  healAmount: 18
+  healAllParty: 1
+  splitHealAcrossParty: 1
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 1
+  removeDOT: 0
   removeStun: 0
   removeMiss: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
-  descriptionText: 'HP: 7
+  descriptionText: 'HP: 18
 
-    PP: 4
-
-    Removes Overtime Effects'
+    If split: divided per party member'
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{attacker} ate a {action}'
+  flavorText: '{attacker} ate the {action}'

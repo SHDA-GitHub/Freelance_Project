@@ -33,7 +33,7 @@ MonoBehaviour:
 
     Has chance
     to inflict burning upon consumption'
-  statusChance: 25
+  statusChance: 40
   statusDuration: 1
   consumable: 1
-  flavorText: '{attacker} shared some {action}'
+  flavorText: '{attacker} shared some spicy {action}'

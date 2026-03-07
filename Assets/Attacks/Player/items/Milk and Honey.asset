@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Milk and Honey
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Milk and Honey
-  healAmount: 5
+  healAmount: 10
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 2
+  ppAmount: 5
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
@@ -27,15 +27,15 @@ MonoBehaviour:
   stunstatusEffect: 2
   missStatusEffect: 0
   itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
-  descriptionText: 'HP: 5
+  descriptionText: 'HP: 10
 
-    PP: 2
+    PP: 5
 
     Removes Inaccuracy
 
-    Has a chance to
+    Has chance to
     inflict sleepiness upon consumption'
-  statusChance: 30
-  statusDuration: 2
+  statusChance: 25
+  statusDuration: 1
   consumable: 1
   flavorText: '{attacker} drank the warm {action}'

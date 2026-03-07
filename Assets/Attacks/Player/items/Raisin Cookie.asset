@@ -33,6 +33,6 @@ MonoBehaviour:
 
     Has chance to inflict confusion upon consumption'
   statusChance: 45
-  statusDuration: 2
+  statusDuration: 1
   consumable: 1
   flavorText: '{attacker} ate a {action}'

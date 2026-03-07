@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Surf & Turf
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Surf & Turf
-  healAmount: 1
+  healAmount: 3
   healAllParty: 0
   splitHealAcrossParty: 0
   ppAmount: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
-  descriptionText: 'HP: 1
+  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
+  descriptionText: 'HP: 3
 
     Removes all status effects'
   statusChance: 0

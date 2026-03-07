@@ -31,4 +31,4 @@ MonoBehaviour:
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{attacker} drank the {action}'
+  flavorText: '{attacker} drank the sweet {action}'
