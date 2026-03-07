@@ -252,6 +252,54 @@ public class CombatSystem : MonoBehaviour
         if (item.itemSound != null)
             AudioManager.Instance.PlaySFX(item.itemSound);
             yield return new WaitForSeconds(0.3f);
+        if (item.statusEffect != DOTStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < item.statusChance)
+            {
+                target.ApplyStatus(item.statusEffect, item.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is now {item.statusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+        if (item.stunstatusEffect != StunStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < item.statusChance)
+            {
+                target.ApplyStun(item.stunstatusEffect, item.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {item.stunstatusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+        if (item.missStatusEffect != MissStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < item.statusChance)
+            {
+                target.ApplyMiss(item.missStatusEffect, item.statusDuration);
+
+                yield return flavorTextUI.ShowTextCoroutine(
+                    $"{target.characterName} is {item.missStatusEffect}!"
+                );
+                audioManager.clip = statusEffectGain;
+                audioManager.Play();
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
         if (item.healAllParty)
         {
             List<CharacterStats> party = TurnManager.Instance.playerParty

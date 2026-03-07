@@ -10,32 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Bitter Coffee
+  m_Name: Apple Juice Box
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Bitter Coffee
-  healAmount: 3
+  itemName: Apple Juice Box
+  healAmount: 4
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 1
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 0
-  removeStun: 1
+  removeStun: 0
   removeMiss: 0
-  statusEffect: 3
+  statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
-  descriptionText: 'HP: 3
-
-    PP: 1
-
-    Removes Stun
-
-    Has a chance to inflict
-    sickness upon consumption'
-  statusChance: 15
-  statusDuration: 1
+  itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
+  descriptionText: 'HP: 4'
+  statusChance: 0
+  statusDuration: 2
   consumable: 1
   flavorText: '{attacker} drank the {action}'

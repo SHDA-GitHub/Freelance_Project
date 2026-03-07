@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
   m_Name: Soda
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: soda
+  itemName: Soda
   healAmount: 4
   healAllParty: 0
   splitHealAcrossParty: 0
@@ -23,9 +23,14 @@ MonoBehaviour:
   removeDOT: 0
   removeStun: 0
   removeMiss: 0
+  statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 0
   itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   descriptionText: 'HP: 4
 
     PP: 1'
+  statusChance: 0
+  statusDuration: 2
   consumable: 1
   flavorText: '{attacker} drank a can of {action}'

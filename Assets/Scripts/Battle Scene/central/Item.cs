@@ -21,11 +21,21 @@ public class Item : ScriptableObject
     public bool removeStun = false;
     public bool removeMiss = false;
 
+    [Header("Status Effect")]
+    public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
+    public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
+    public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
+
     [Header("Audio")]
     public AudioClip itemSound;
 
     [TextArea(3, 6)]
     public string descriptionText;
+
+    [Range(0, 100)]
+    public int statusChance = 0;
+
+    public int statusDuration = 2;
 
     public bool consumable = true;
 

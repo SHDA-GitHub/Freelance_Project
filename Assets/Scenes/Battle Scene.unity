@@ -1350,6 +1350,7 @@ MonoBehaviour:
   currentTurn: 0
   playerParty:
   - {fileID: 879654192}
+  - {fileID: 2061152904}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -3312,7 +3313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3341,9 +3342,16 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
   - itemData: {fileID: 11400000, guid: bfb8179dbbe23d444851e5454a292c96, type: 2}
+  - itemData: {fileID: 11400000, guid: d1b91cea75ad02d48bd17920e14d08d7, type: 2}
+  - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+  - itemData: {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
+  - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
+  - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
   - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
+  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
+  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - attackData: {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
   - attackData: {fileID: 11400000, guid: 9a00123c322652b4692c3f4f73bb1e8e, type: 2}
@@ -3358,8 +3366,6 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
-  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
-  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0
@@ -4586,7 +4592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2061152904
 MonoBehaviour:
   m_ObjectHideFlags: 0
