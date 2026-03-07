@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
   m_Name: Boomerang
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  targetAllEnemies: 0
+  targetAllEnemies: 1
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 3
-  descriptionText: 'DMG: 2
+  descriptionText: 'DMG: 1
 
-    Required PP: 1
+    Req. PP: 1
 
-    Chance to inflict dizziness onto
-    enemy'
+    Multi-Enemy attack
+
+    Chance to
+    inflict dizziness onto enemy'
   statusChance: 40
   statusDuration: 1
   specAttackName: boomerang
   powerCost: 1
-  damage: 2
+  damage: 1
   attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
   specialAttackCamShake: 0
   oneUse: 1

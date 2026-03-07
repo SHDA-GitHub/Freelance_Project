@@ -18,12 +18,12 @@ MonoBehaviour:
   missStatusEffect: 3
   descriptionText: 'DMG: 2
 
-    Required PP: 3
+    Req. PP: 3
 
-    Multi-Enemy Attack
+    Multi-Enemy attack
 
-    Chance
-    to inflict dizziness onto enemies'
+    Chance to
+    inflict dizziness onto enemies'
   statusChance: 45
   statusDuration: 2
   specAttackName: Yo-Yo

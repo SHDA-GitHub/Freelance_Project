@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 1
-  descriptionText: 'Required PP: 1
+  descriptionText: 'Req. PP: 1
 
     Chance to inflict fear onto enemy'
   statusChance: 65

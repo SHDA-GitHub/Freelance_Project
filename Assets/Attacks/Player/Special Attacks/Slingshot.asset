@@ -18,12 +18,12 @@ MonoBehaviour:
   missStatusEffect: 4
   descriptionText: 'DMG: 2
 
-    Required PP: 2
+    Req. PP: 2
 
     Multi-Enemy attack
 
-    Small
-    chance to inflict blindness onto enemies'
+    Tiny chance
+    to inflict blindness onto enemies'
   statusChance: 10
   statusDuration: 1
   specAttackName: Slingshot

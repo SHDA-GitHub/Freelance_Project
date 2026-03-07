@@ -18,10 +18,9 @@ MonoBehaviour:
   missStatusEffect: 0
   descriptionText: 'DMG: 1
 
-    Required PP: 2
+    Req. PP: 2
 
-    Chance to inflict shock onto
-    enemy'
+    Chance to inflict shock onto enemy'
   statusChance: 60
   statusDuration: 1
   specAttackName: Buzz-Button Handshake

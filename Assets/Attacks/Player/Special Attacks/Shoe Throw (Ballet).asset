@@ -18,7 +18,7 @@ MonoBehaviour:
   missStatusEffect: 0
   descriptionText: 'DMG: 3
 
-    Required PP: 2'
+    Req. PP: 2'
   statusChance: 0
   statusDuration: 2
   specAttackName: Ballet Shoe

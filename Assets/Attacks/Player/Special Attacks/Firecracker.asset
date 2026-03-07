@@ -18,11 +18,11 @@ MonoBehaviour:
   missStatusEffect: 0
   descriptionText: 'DMG: 2
 
-    Required PP: 2
+    Req. PP: 2
 
-    Chance to inflict fire damage
-    onto enemy'
-  statusChance: 70
+    Chance to inflict fire damage onto
+    enemy'
+  statusChance: 65
   statusDuration: 1
   specAttackName: Firecracker
   powerCost: 2

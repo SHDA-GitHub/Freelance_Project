@@ -16,7 +16,7 @@ MonoBehaviour:
   statusEffect: 0
   stunstatusEffect: 2
   missStatusEffect: 0
-  descriptionText: 'Required PP: 1
+  descriptionText: 'Req. PP: 1
 
     Chance to inflict sleepiness onto enemy'
   statusChance: 85
