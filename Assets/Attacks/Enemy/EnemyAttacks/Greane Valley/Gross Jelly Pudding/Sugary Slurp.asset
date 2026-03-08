@@ -23,6 +23,6 @@ MonoBehaviour:
   statusDuration: 2
   attackName: Sugary Slurp
   powerCost: 0
-  damage: 1
+  damage: 0
   attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
   flavorText: '{attacker} absorbs some of its spilled syrup'
