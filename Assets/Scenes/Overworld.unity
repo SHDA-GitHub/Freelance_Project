@@ -379,8 +379,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee2d1f95da5ed5419ed88f05dd862ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  item: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
-  specialAttack: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
+  prePickupDialogue:
+  - You rummage through the lost backpack...
+  items:
+  - {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
+  - {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+  - {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+  specialAttacks:
+  - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
+  - {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
 --- !u!65 &103387145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1111,8 +1118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
   enemyType: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
-  battleMusic: {fileID: 8300000, guid: 9b0533286e649d54c8c0884cbd21a5e1, type: 3}
-  backgroundType: 1
+  battleMusic: {fileID: 8300000, guid: 33195dd61c20e2d42b4c3d2daf2406c0, type: 3}
+  backgroundType: 3
   battleSceneName: Battle Scene
   dialogue: {fileID: 337829193}
 --- !u!4 &337829192
