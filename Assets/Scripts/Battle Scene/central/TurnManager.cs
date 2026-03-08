@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum TurnType { Player, Enemy }
 
@@ -36,6 +37,11 @@ public class TurnManager : MonoBehaviour
     private CharacterStats currentActingCharacter;
     [SerializeField] private bool playerRevive = true;
     [SerializeField] private List <PlayerStatsSO> playerStats = new List<PlayerStatsSO>();
+
+    [Header("Victory Settings")]
+    [SerializeField] private SpriteRenderer victoryFade;
+    [SerializeField] private float victoryFadeDuration = 1f;
+    [SerializeField] private string overworldSceneName = "Overworld";
 
     [Header("Game Over Settings")]
     [SerializeField] private AudioClip gameOverClip;
@@ -691,19 +697,57 @@ public class TurnManager : MonoBehaviour
     private IEnumerator HandleVictory()
     {
         isBattleActive = false;
+
         foreach (var enemy in enemyParty)
         {
             if (enemy != null)
                 yield return StartCoroutine(FadeOutEnemy(enemy));
         }
+
         if (musicSource != null)
             musicSource.Stop();
+
         if (victoryClip != null && audioManager != null)
         {
             audioManager.clip = victoryClip;
             audioManager.Play();
         }
+
         yield return flavorTextUI.ShowTextCoroutine("You won!");
+
+        if (victoryFade != null)
+        {
+            float elapsed = 0f;
+            Color fadeColor = victoryFade.color;
+
+            float targetAlpha = 175f / 255f;
+
+            while (elapsed < victoryFadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(0f, targetAlpha, elapsed / victoryFadeDuration);
+
+                victoryFade.color = new Color(
+                    fadeColor.r,
+                    fadeColor.g,
+                    fadeColor.b,
+                    alpha
+                );
+
+                yield return null;
+            }
+
+            victoryFade.color = new Color(
+                fadeColor.r,
+                fadeColor.g,
+                fadeColor.b,
+                targetAlpha
+            );
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene(overworldSceneName);
     }
 
     private IEnumerator HandleDefeat()
