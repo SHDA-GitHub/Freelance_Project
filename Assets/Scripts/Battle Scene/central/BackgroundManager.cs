@@ -34,7 +34,40 @@ public class BackgroundManager : MonoBehaviour
 
     private void Start()
     {
+        ApplyBattleData();
         SpawnBackground();
+    }
+
+    private void ApplyBattleData()
+    {
+        isNormalEnemy = false;
+        isMiniBoss = false;
+        isBoss = false;
+        isMoonSoldier = false;
+        isFinalBossPhase = 0;
+
+        switch (BattleDataBridge.BackgroundSelection)
+        {
+            case BattleBackgroundType.Normal:
+                isNormalEnemy = true;
+                break;
+
+            case BattleBackgroundType.Miniboss:
+                isMiniBoss = true;
+                break;
+
+            case BattleBackgroundType.Boss:
+                isBoss = true;
+                break;
+
+            case BattleBackgroundType.MoonSoldier:
+                isMoonSoldier = true;
+                break;
+
+            case BattleBackgroundType.FinalBoss:
+                isFinalBossPhase = 1;
+                break;
+        }
     }
 
     public void SpawnBackground()
@@ -50,19 +83,19 @@ public class BackgroundManager : MonoBehaviour
         {
             bgToSpawn = finalBossBGPhase1;
         }
-        if (isFinalBossPhase == 2 && finalBossBGPhase2 != null)
+        else if (isFinalBossPhase == 2 && finalBossBGPhase2 != null)
         {
             bgToSpawn = finalBossBGPhase2;
         }
-        if (isFinalBossPhase == 3 && finalBossBGPhase3 != null)
+        else if (isFinalBossPhase == 3 && finalBossBGPhase3 != null)
         {
             bgToSpawn = finalBossBGPhase3;
         }
-        if (isFinalBossPhase == 4 && finalBossBGPhase4 != null)
+        else if (isFinalBossPhase == 4 && finalBossBGPhase4 != null)
         {
             bgToSpawn = finalBossBGPhase4;
         }
-        if (isMoonSoldier && MoonSoldierBG != null)
+        else if (isMoonSoldier && MoonSoldierBG != null)
         {
             bgToSpawn = MoonSoldierBG;
         }
