@@ -286,9 +286,9 @@ MonoBehaviour:
     phaseMusic: {fileID: 8300000, guid: 9bee100b7953ecd4d9a47f27944eec19, type: 3}
     newEnemyPreset: {fileID: 11400000, guid: e6a25f60b08c8d347ba19500ccbf54a4, type: 2}
     introDialogue:
-    - 
+    - Yornu is changing form...
     transformDialogue:
-    - 
+    - Yornu became inconceivable!
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 4

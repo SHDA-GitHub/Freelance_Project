@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7290628511258624298}
   - component: {fileID: 3078815820787256739}
   - component: {fileID: 4027348347170749116}
+  - component: {fileID: -61300145784794277}
   - component: {fileID: 1777416776584117255}
   m_Layer: 5
   m_Name: Gross Pudding
@@ -169,6 +170,33 @@ MonoBehaviour:
   activeMissEffects: []
   overtimeDamage: 2
   isPlayer: 0
+--- !u!114 &-61300145784794277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572255775606772867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e792a06f0ed60f541836ff298f10711e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPhaseController
+  phases:
+  - hpThreshold: 5
+    backgroundPrefab: {fileID: 0}
+    phaseName: Segment
+    phaseMusic: {fileID: 0}
+    newEnemyPreset: {fileID: 11400000, guid: f5640ee75aa64a64592abbe75be77d59, type: 2}
+    introDialogue:
+    - Gross Pudding began wobbling wildly...
+    transformDialogue:
+    - Gross Pudding split into 3 small portions!
+  flashOverlay: {fileID: 0}
+  flashSpeed: 0.05
+  flashCount: 6
+  shareHPBetweenPhases: 1
+  newBackground: 1
 --- !u!82 &1777416776584117255
 AudioSource:
   m_ObjectHideFlags: 0

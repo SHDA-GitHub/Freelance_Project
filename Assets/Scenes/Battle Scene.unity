@@ -1196,7 +1196,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 861aebe7a4e33ab44902c1499255300d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0bf21aa2fc2f6bb418a963cf7a0fb3a8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1721,7 +1721,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: 694f980affdb5f143b08a9dd890218a9, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: a466a684518d1654895656c9281b1db3, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2488,10 +2488,10 @@ MonoBehaviour:
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 0
+  isNormalEnemy: 1
   isMiniBoss: 0
   isBoss: 0
-  isFinalBossPhase: 1
+  isFinalBossPhase: 0
   isMoonSoldier: 0
 --- !u!1 &855608624
 GameObject:
