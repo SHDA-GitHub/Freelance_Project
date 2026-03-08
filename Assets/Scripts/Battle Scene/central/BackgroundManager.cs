@@ -5,6 +5,9 @@ public class BackgroundManager : MonoBehaviour
     [Header("Spawn Parent")]
     [SerializeField] private Transform backgroundParent;
 
+    [Header("Use Cross Scene Data")]
+    [SerializeField] private bool useBattleDataBridge = true;
+
     [Header("Normal Enemy Backgrounds")]
     [SerializeField] private GameObject[] enemyBG;
 
@@ -23,7 +26,7 @@ public class BackgroundManager : MonoBehaviour
     [Header("Moon Soldier Background")]
     [SerializeField] private GameObject MoonSoldierBG;
 
-    [Header("State Toggles")]
+    [Header("State Toggles (Manual Scene Control)")]
     public bool isNormalEnemy;
     public bool isMiniBoss;
     public bool isBoss;
@@ -34,7 +37,11 @@ public class BackgroundManager : MonoBehaviour
 
     private void Start()
     {
-        ApplyBattleData();
+        if (useBattleDataBridge)
+        {
+            ApplyBattleData();
+        }
+
         SpawnBackground();
     }
 
@@ -73,44 +80,33 @@ public class BackgroundManager : MonoBehaviour
     public void SpawnBackground()
     {
         if (currentBackground != null)
-        {
             Destroy(currentBackground);
-        }
 
         GameObject bgToSpawn = null;
 
         if (isFinalBossPhase == 1 && finalBossBGPhase1 != null)
-        {
             bgToSpawn = finalBossBGPhase1;
-        }
+
         else if (isFinalBossPhase == 2 && finalBossBGPhase2 != null)
-        {
             bgToSpawn = finalBossBGPhase2;
-        }
+
         else if (isFinalBossPhase == 3 && finalBossBGPhase3 != null)
-        {
             bgToSpawn = finalBossBGPhase3;
-        }
+
         else if (isFinalBossPhase == 4 && finalBossBGPhase4 != null)
-        {
             bgToSpawn = finalBossBGPhase4;
-        }
+
         else if (isMoonSoldier && MoonSoldierBG != null)
-        {
             bgToSpawn = MoonSoldierBG;
-        }
+
         else if (isBoss && bossBG.Length > 0)
-        {
             bgToSpawn = bossBG[Random.Range(0, bossBG.Length)];
-        }
+
         else if (isMiniBoss && minibossBG.Length > 0)
-        {
             bgToSpawn = minibossBG[Random.Range(0, minibossBG.Length)];
-        }
+
         else if (isNormalEnemy && enemyBG.Length > 0)
-        {
             bgToSpawn = enemyBG[Random.Range(0, enemyBG.Length)];
-        }
 
         if (bgToSpawn != null)
         {
