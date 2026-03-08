@@ -48,8 +48,6 @@ public class InventoryUIController : MonoBehaviour
 
         controls.Player.Disable();
         controls.UI.Enable();
-
-        Time.timeScale = 0;
     }
 
     void CloseInventory()
@@ -66,8 +64,6 @@ public class InventoryUIController : MonoBehaviour
 
         controls.UI.Disable();
         controls.Player.Enable();
-
-        Time.timeScale = 1;
     }
 
     public void OpenScreen(int index)

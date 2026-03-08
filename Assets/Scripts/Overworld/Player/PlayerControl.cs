@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
     IEnumerator interactRoutine()
     {
         isInteracting = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         isInteracting = false;
     }
 
