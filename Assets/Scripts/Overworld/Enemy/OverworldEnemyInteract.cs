@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using static BattleDataBridge;
 
@@ -11,7 +10,11 @@ public class OverworldEnemyInteract : MonoBehaviour
     public BattleBackgroundType backgroundType;
     [SerializeField] private string battleSceneName = "Battle Scene";
 
+    [Header("Optional Dialogue")]
+    [SerializeField] private NPCDialogue dialogue;
+
     private bool playerInRange = false;
+    private bool waitingForDialogue = false;
     private PlayerControl playerControl;
 
     private void Start()
@@ -33,8 +36,24 @@ public class OverworldEnemyInteract : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && playerControl != null && playerControl.isInteracting)
+        if (playerControl == null) return;
+
+        if (playerInRange && playerControl.isInteracting && !DialogueManager.Instance.IsDialogueActive())
         {
+            if (dialogue != null)
+            {
+                dialogue.TriggerDialogue();
+                waitingForDialogue = true;
+            }
+            else
+            {
+                StartBattle();
+            }
+        }
+
+        if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
+        {
+            waitingForDialogue = false;
             StartBattle();
         }
     }
@@ -44,6 +63,7 @@ public class OverworldEnemyInteract : MonoBehaviour
         BattleDataBridge.UpcomingEnemyPreset = enemyType;
         BattleDataBridge.BattleMusic = battleMusic;
         BattleDataBridge.BackgroundSelection = backgroundType;
+
         SceneManager.LoadScene(battleSceneName);
     }
 }

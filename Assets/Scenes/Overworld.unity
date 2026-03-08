@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &62968688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
   battleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
   backgroundType: 0
-  wanderRadius: 6
-  wanderTimer: 1.5
+  wanderRadius: 3
+  wanderTimer: 0.75
 --- !u!195 &62968693
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -284,10 +284,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 90
+  m_AngularSpeed: 65
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1042,6 +1042,7 @@ GameObject:
   - component: {fileID: 337829191}
   - component: {fileID: 337829190}
   - component: {fileID: 337829189}
+  - component: {fileID: 337829193}
   m_Layer: 0
   m_Name: Moon Soldier Boss
   m_TagString: Enemy
@@ -1110,9 +1111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
   enemyType: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
-  battleMusic: {fileID: 8300000, guid: 33195dd61c20e2d42b4c3d2daf2406c0, type: 3}
-  backgroundType: 3
+  battleMusic: {fileID: 8300000, guid: 9b0533286e649d54c8c0884cbd21a5e1, type: 3}
+  backgroundType: 1
   battleSceneName: Battle Scene
+  dialogue: {fileID: 337829193}
 --- !u!4 &337829192
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,6 +1133,25 @@ Transform:
   - {fileID: 1837121649}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337829193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337829188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogue:
+  - '"It''s been a long time, Buzz Buzz."'
+  - '"You''ve been successful at foiling Master Giygas'' plans."'
+  - '"But... Buzz Buzz, you must now surrender."'
+  - '"You''re no longer a hero, but just a useless insect."'
+  - '"I''ll stomp you hard!"'
+  dialogueMusic: {fileID: 8300000, guid: 352ee1acfa6a77a43a4c37db5a02834f, type: 3}
 --- !u!1 &341041646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,6 +3164,149 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &921197763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 921197764}
+  - component: {fileID: 921197765}
+  - component: {fileID: 921197766}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &921197764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921197763}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1363323053}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &921197765
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921197763}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: e7cd713b4de6d37459e32b5aecdbcf1a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.45
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &921197766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921197763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261ed45d90048dd47b4406ea31881335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  fadeDuration: 0.6
 --- !u!1 &942323451
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,6 +4311,7 @@ RectTransform:
   - {fileID: 2079088646}
   - {fileID: 9078148763857584861}
   - {fileID: 41502025}
+  - {fileID: 921197764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4589,6 +4754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   dialogueUI: {fileID: 8285068259769480362}
   flavorText: {fileID: 1711264370}
+  musicManager: {fileID: 921197766}
 --- !u!1 &1711423194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4760,13 +4926,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   dialogue:
-  - Why hello there, youngin!
-  - Are you looking for something?
-  - Wha? What's that, sonny?
-  - You're going on an adventure to stop an eldritch alien overlord from destroying
-    the earth?
-  - Heh! Kids these days with their wild imagination.
-  - Well, you have fun out there, kiddo!
+  - '"Why hello there, youngin!"'
+  - '"Are you looking for something?"'
+  - '"Wha? What''s that, sonny?"'
+  - '"You''re going on an adventure to stop an eldritch alien overlord from destroying
+    the earth?"'
+  - '"Heh! Kids these days with their wildest imaginations!"'
+  - '"Well, you have fun out there, kiddo!"'
+  dialogueMusic: {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
 --- !u!114 &1749889611
 MonoBehaviour:
   m_ObjectHideFlags: 0

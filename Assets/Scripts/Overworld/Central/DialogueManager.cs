@@ -8,6 +8,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueUI;
     [SerializeField] private FlavorTextUI flavorText;
 
+    [Header("Music")]
+    [SerializeField] private MusicManager musicManager;
+
+    private AudioClip previousTrack;
+
     private string[] currentDialogue;
     private int dialogueIndex;
 
@@ -24,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         player = FindFirstObjectByType<PlayerControl>();
     }
 
-    public void StartDialogue(string[] dialogueLines)
+    public void StartDialogue(string[] dialogueLines, AudioClip dialogueMusic = null)
     {
         if (dialogueActive || !canStartDialogue) return;
 
@@ -35,6 +40,11 @@ public class DialogueManager : MonoBehaviour
         dialogueIndex = 0;
 
         dialogueUI.SetActive(true);
+
+        if (dialogueMusic != null && musicManager != null)
+        {
+            MusicManager.Instance.PlayOverrideMusic(dialogueMusic);
+        }
 
         StartCoroutine(RunDialogue());
     }
@@ -60,6 +70,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueActive = false;
         dialogueUI.SetActive(false);
+
+        MusicManager.Instance.ClearOverrideMusic();
 
         StartCoroutine(DialogueCooldown());
     }
