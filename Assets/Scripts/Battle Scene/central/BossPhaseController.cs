@@ -93,12 +93,15 @@ public class BossPhaseController : MonoBehaviour
 
     private IEnumerator HandlePhaseTransition(BossPhase phase)
     {
-        string introText = !string.IsNullOrEmpty(phase.introFlavorText)
-            ? FormatPhaseText(phase.introFlavorText, phase)
-            : $"{stats.characterName} is changing form...";
-
-        yield return TurnManager.Instance.flavorTextUI
-            .ShowTextCoroutine(introText);
+        if (phase.introDialogue != null && phase.introDialogue.Count > 0)
+        {
+            yield return StartCoroutine(PlayDialogueSequence(phase.introDialogue, phase));
+        }
+        else
+        {
+            yield return TurnManager.Instance.flavorTextUI
+                .ShowTextCoroutine($"{stats.characterName} is changing form...");
+        }
 
         yield return new WaitForSeconds(0.3f);
 
@@ -138,12 +141,15 @@ public class BossPhaseController : MonoBehaviour
             }
         }
 
-        string transformText = !string.IsNullOrEmpty(phase.transformFlavorText)
-            ? FormatPhaseText(phase.transformFlavorText, phase)
-            : $"{stats.characterName} became {phase.phaseName}!";
-
-        yield return TurnManager.Instance.flavorTextUI
-            .ShowTextCoroutine(transformText);
+        if (phase.transformDialogue != null && phase.transformDialogue.Count > 0)
+        {
+            yield return StartCoroutine(PlayDialogueSequence(phase.transformDialogue, phase));
+        }
+        else
+        {
+            yield return TurnManager.Instance.flavorTextUI
+                .ShowTextCoroutine($"{stats.characterName} became {phase.phaseName}!");
+        }
 
         yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
@@ -183,5 +189,24 @@ public class BossPhaseController : MonoBehaviour
         return template
             .Replace("{attacker}", stats.characterName)
             .Replace("{phase}", phase.phaseName);
+    }
+
+    private IEnumerator PlayDialogueSequence(List<string> lines, BossPhase phase)
+    {
+        if (lines == null || lines.Count == 0)
+            yield break;
+
+        foreach (string line in lines)
+        {
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+            string formatted = FormatPhaseText(line, phase);
+
+            yield return TurnManager.Instance.flavorTextUI
+                .ShowTextCoroutine(formatted);
+
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

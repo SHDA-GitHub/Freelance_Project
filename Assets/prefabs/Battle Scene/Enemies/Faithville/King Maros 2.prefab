@@ -285,8 +285,13 @@ MonoBehaviour:
     phaseName: King Maros Summon
     phaseMusic: {fileID: 0}
     newEnemyPreset: {fileID: 11400000, guid: c0db790d2573a4b4e900cb1c5a9c1857, type: 2}
-    introFlavorText: King Maros summoned his disciples
-    transformFlavorText: King Maros' followers appeared!
+    introDialogue:
+    - '"My people of faith..."'
+    - '"Lend me a hand in the time of your lord''s aid!"'
+    - '"Destroy those filthy heretics!"'
+    - King Maros called for his disciples
+    transformDialogue:
+    - Some cult followers appeared!
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6

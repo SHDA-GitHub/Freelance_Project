@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class BossPhase
@@ -12,6 +13,10 @@ public class BossPhase
     public EnemyPreset newEnemyPreset;
 
     [Header("Phase Dialogue")]
-    [TextArea] public string introFlavorText;
-    [TextArea] public string transformFlavorText;
+
+    [TextArea(2, 4)]
+    public List<string> introDialogue = new List<string>();
+
+    [TextArea(2, 4)]
+    public List<string> transformDialogue = new List<string>();
 }

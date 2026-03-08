@@ -285,8 +285,17 @@ MonoBehaviour:
     phaseName: King Maros Phase 2
     phaseMusic: {fileID: 8300000, guid: edc2ca1625c0f2c4987f47bca24ad884, type: 3}
     newEnemyPreset: {fileID: 11400000, guid: de7e62fae083d2048b44f638e37a093e, type: 2}
-    introFlavorText: King Maros began to transform
-    transformFlavorText: King Maros' powers grew stonger!
+    introDialogue:
+    - '"You insolent children..."'
+    - '"You think you''re doing the world a favor?"'
+    - '"Killing me to try and foolishly weaken the omnipresent master Yornu?"'
+    - '"Well, you''re dead wrong!"'
+    - '"And I''d get to the dead part fast"'
+    - '"Because I''ll show you the true strength of my power!"'
+    - '"And believe me, it won''t be pretty..."'
+    - King Maros is transforming...
+    transformDialogue:
+    - King Maros has become even more powerful!
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6

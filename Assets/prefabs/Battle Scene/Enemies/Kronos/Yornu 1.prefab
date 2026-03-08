@@ -285,8 +285,10 @@ MonoBehaviour:
     phaseName: abstract
     phaseMusic: {fileID: 8300000, guid: 0fa2fcb5101bc434495cbb6db3581467, type: 3}
     newEnemyPreset: {fileID: 11400000, guid: 62a578cb53f941840ac1b0795bcb6776, type: 2}
-    introFlavorText: 
-    transformFlavorText: 
+    introDialogue:
+    - 
+    transformDialogue:
+    - 
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 4

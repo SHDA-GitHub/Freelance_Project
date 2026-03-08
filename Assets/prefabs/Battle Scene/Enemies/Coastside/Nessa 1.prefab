@@ -285,8 +285,10 @@ MonoBehaviour:
     phaseName: Nessa 2
     phaseMusic: {fileID: 0}
     newEnemyPreset: {fileID: 11400000, guid: 4420671aa40179a4992d842c776fdd73, type: 2}
-    introFlavorText: Nessa dove into the sea...
-    transformFlavorText: Nessa approached even closer!
+    introDialogue:
+    - Nessa took a dive into the cold water...
+    transformDialogue:
+    - Nessa got even closer!
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6

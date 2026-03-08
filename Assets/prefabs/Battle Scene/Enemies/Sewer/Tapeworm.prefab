@@ -285,8 +285,10 @@ MonoBehaviour:
     phaseName: 
     phaseMusic: {fileID: 0}
     newEnemyPreset: {fileID: 11400000, guid: 79b5d3ea6a87f0540a55764497d0e037, type: 2}
-    introFlavorText: Tapeworm started coiling around itself strangely...
-    transformFlavorText: Tapeworm split into two!
+    introDialogue:
+    - Tapeworm coiled around itself strangely...
+    transformDialogue:
+    - Tapeworm split into two!
   flashOverlay: {fileID: 0}
   flashSpeed: 0.05
   flashCount: 6
