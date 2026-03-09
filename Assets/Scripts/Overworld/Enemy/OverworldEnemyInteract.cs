@@ -13,6 +13,10 @@ public class OverworldEnemyInteract : MonoBehaviour
     [Header("Optional Dialogue")]
     [SerializeField] private NPCDialogue dialogue;
 
+    [Header("Battle Control")]
+    [SerializeField] private bool allowNoBattleChoice = false;
+    private bool playerChoseNo = false;
+
     private bool playerInRange = false;
     private bool waitingForDialogue = false;
     private PlayerControl playerControl;
@@ -42,6 +46,7 @@ public class OverworldEnemyInteract : MonoBehaviour
         {
             if (dialogue != null)
             {
+                dialogue.onChoiceMade = OnDialogueChoiceMade;
                 dialogue.TriggerDialogue();
                 waitingForDialogue = true;
             }
@@ -54,8 +59,26 @@ public class OverworldEnemyInteract : MonoBehaviour
         if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
         {
             waitingForDialogue = false;
-            StartBattle();
+
+            if (!playerChoseNo || !allowNoBattleChoice)
+            {
+                StartBattle();
+            }
         }
+    }
+
+    private void OnDialogueChoiceMade(bool yesChosen)
+    {
+        playerChoseNo = !yesChosen;
+
+        if (playerChoseNo && allowNoBattleChoice)
+        {
+            Debug.Log("Player chose No. Battle cancelled.");
+            waitingForDialogue = false;
+            return;
+        }
+
+        StartBattle();
     }
 
     private void StartBattle()

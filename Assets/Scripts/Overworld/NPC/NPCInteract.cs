@@ -12,7 +12,7 @@ public class NPCInteract : MonoBehaviour
 
             if (player.isInteracting && !DialogueManager.Instance.IsDialogueActive())
             {
-                dialogue.TriggerDialogue();
+                DialogueManager.Instance.StartDialogue(dialogue, dialogue.GetDialogueLines(), dialogue.GetDialogueMusic());
             }
         }
     }

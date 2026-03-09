@@ -85,7 +85,19 @@ public class ItemPickup : MonoBehaviour
                 dialogueLines.Add($"You found a {pair.Key}!");
         }
 
-        DialogueManager.Instance.StartDialogue(dialogueLines.ToArray());
+        if (dialogueLines.Count > 0)
+        {
+            if (DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
+            {
+                NPCDialogue tempDialogue = new NPCDialogue();
+                List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
+                foreach (string line in dialogueLines)
+                {
+                    dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
+                }
+                DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
+            }
+        }
 
         Destroy(gameObject);
     }

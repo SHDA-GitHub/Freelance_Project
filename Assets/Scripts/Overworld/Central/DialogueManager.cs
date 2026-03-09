@@ -1,5 +1,8 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static NPCDialogue;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -7,15 +10,17 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject dialogueUI;
     [SerializeField] private FlavorTextUI flavorText;
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
+    [SerializeField] private GameObject endDialogueIndicator;
 
     [Header("Music")]
     [SerializeField] private MusicManager musicManager;
 
-    [SerializeField] private GameObject endDialogueIndicator;
-
     private AudioClip previousTrack;
 
-    private string[] currentDialogue;
+    private NPCDialogue currentNPCDialogue;
+    private NPCDialogue.DialogueLine[] currentDialogueLines;
     private int dialogueIndex;
 
     private bool waitingForInput = false;
@@ -29,17 +34,21 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
         dialogueUI.SetActive(false);
         player = FindFirstObjectByType<PlayerControl>();
+
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
     }
 
-    public void StartDialogue(string[] dialogueLines, AudioClip dialogueMusic = null)
+    public void StartDialogue(NPCDialogue npcDialogue, NPCDialogue.DialogueLine[] dialogueLines, AudioClip dialogueMusic = null)
     {
         if (dialogueActive || !canStartDialogue) return;
 
+        currentNPCDialogue = npcDialogue;
+        currentDialogueLines = dialogueLines;
+        dialogueIndex = 0;
+
         dialogueActive = true;
         canStartDialogue = false;
-
-        currentDialogue = dialogueLines;
-        dialogueIndex = 0;
 
         dialogueUI.SetActive(true);
 
@@ -55,21 +64,76 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator RunDialogue()
     {
-        while (dialogueIndex < currentDialogue.Length)
+        while (dialogueIndex < currentDialogueLines.Length)
         {
-            yield return StartCoroutine(flavorText.ShowTextCoroutine(currentDialogue[dialogueIndex]));
+            DialogueLine currentLine = currentDialogueLines[dialogueIndex];
 
-            waitingForInput = true;
-            endDialogueIndicator.SetActive(true);
+            yield return StartCoroutine(flavorText.ShowTextCoroutine(currentLine.dialogueText));
 
-            yield return new WaitUntil(() => player.isInteracting);
+            if (currentLine.isChoiceActive)
+            {
+                bool choiceMade = false;
 
-            waitingForInput = false;
-            endDialogueIndicator.SetActive(false);
-            dialogueIndex++;
+                ShowChoiceButtons(currentLine, () => choiceMade = true);
+
+                yield return new WaitUntil(() => choiceMade);
+            }
+            else
+            {
+                endDialogueIndicator.SetActive(true);
+                yield return new WaitUntil(() => player.isInteracting);
+                endDialogueIndicator.SetActive(false);
+                dialogueIndex++;
+            }
         }
 
         EndDialogue();
+    }
+
+    private void ShowChoiceButtons(DialogueLine currentLine, System.Action onChoiceMadeCallback)
+    {
+        yesButton.gameObject.SetActive(true);
+        noButton.gameObject.SetActive(true);
+
+        yesButton.GetComponentInChildren<TextMeshProUGUI>().text = string.IsNullOrEmpty(currentLine.yesButtonText) ? "Yes" : currentLine.yesButtonText;
+        noButton.GetComponentInChildren<TextMeshProUGUI>().text = string.IsNullOrEmpty(currentLine.noButtonText) ? "No" : currentLine.noButtonText;
+
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(() => StartCoroutine(HandleChoice(currentLine, true, onChoiceMadeCallback)));
+        noButton.onClick.AddListener(() => StartCoroutine(HandleChoice(currentLine, false, onChoiceMadeCallback)));
+    }
+
+    private IEnumerator HandleChoice(DialogueLine currentLine, bool isYes, System.Action onChoiceMadeCallback)
+    {
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
+
+        DialogueLine[] chosenLines = isYes ? currentLine.yesDialogueLines : currentLine.noDialogueLines;
+
+        if (chosenLines != null && chosenLines.Length > 0)
+        {
+            DialogueLine[] remainingLines = new DialogueLine[currentDialogueLines.Length - dialogueIndex - 1];
+            for (int i = 0; i < remainingLines.Length; i++)
+                remainingLines[i] = currentDialogueLines[dialogueIndex + 1 + i];
+
+            currentDialogueLines = new DialogueLine[chosenLines.Length + remainingLines.Length];
+            chosenLines.CopyTo(currentDialogueLines, 0);
+            remainingLines.CopyTo(currentDialogueLines, chosenLines.Length);
+
+            dialogueIndex = 0;
+
+            yield return StartCoroutine(RunDialogue());
+        }
+        else
+        {
+            dialogueIndex++;
+        }
+        onChoiceMadeCallback?.Invoke();
+        currentNPCDialogue?.onChoiceMade?.Invoke(isYes);
+
+        yield return null;
     }
 
     void EndDialogue()
@@ -99,4 +163,5 @@ public class DialogueManager : MonoBehaviour
     {
         return dialogueActive;
     }
+
 }
