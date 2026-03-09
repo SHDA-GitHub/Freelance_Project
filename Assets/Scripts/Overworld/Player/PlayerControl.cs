@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float fallMultiplier = 3.5f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
+    private float lastZDirection = 1f;
     [SerializeField] private LayerMask groundMask;
     public bool isInteracting = false;
     private bool isGrounded;
@@ -92,17 +93,18 @@ public class PlayerControl : MonoBehaviour
             Vector3 moveDirection = (camForward * m_Movement.z) + (camRight * m_Movement.x);
             moveDirection.Normalize();
 
-            if (Mathf.Abs(m_Movement.z) > 0.01f)
-            {
-                float targetYRotation = (m_Movement.z > 0) ? 0f : 180f;
-
-                Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
-                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
-            }
-
             Vector3 moveOffset = moveDirection * m_Speed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveOffset);
         }
+
+        if (Mathf.Abs(m_Movement.z) > 0.01f)
+        {
+            lastZDirection = Mathf.Sign(m_Movement.z);
+        }
+
+        float targetYRotation = (lastZDirection > 0) ? 0f : 180f;
+        Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
 
         if (rb.linearVelocity.y < 0)
         {
@@ -112,5 +114,7 @@ public class PlayerControl : MonoBehaviour
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (gravityMultiplier - 1) * Time.fixedDeltaTime;
         }
+
+
     }
 }
