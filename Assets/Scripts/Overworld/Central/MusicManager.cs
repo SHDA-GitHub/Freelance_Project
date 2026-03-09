@@ -44,8 +44,11 @@ public class MusicManager : MonoBehaviour
 
     public void ClearOverrideMusic()
     {
-        overrideTrack = null;
-        PlayTrack(baseTrack);
+        if (audioSource.clip != baseTrack)
+        {
+            overrideTrack = null;
+            PlayTrack(baseTrack);
+        }
     }
 
     void PlayTrack(AudioClip clip)

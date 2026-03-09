@@ -43,8 +43,9 @@ public class DialogueManager : MonoBehaviour
 
         dialogueUI.SetActive(true);
 
-        if (dialogueMusic != null && musicManager != null)
+        if (dialogueMusic != null && musicManager != null && MusicManager.Instance.GetCurrentTrack() != dialogueMusic)
         {
+            previousTrack = MusicManager.Instance.GetCurrentTrack();
             MusicManager.Instance.PlayOverrideMusic(dialogueMusic);
         }
 
@@ -76,7 +77,14 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = false;
         dialogueUI.SetActive(false);
 
-        MusicManager.Instance.ClearOverrideMusic();
+        if (previousTrack != null && MusicManager.Instance.GetCurrentTrack() != previousTrack)
+        {
+            MusicManager.Instance.PlayOverrideMusic(previousTrack);
+        }
+        else
+        {
+            MusicManager.Instance.ClearOverrideMusic();
+        }
 
         StartCoroutine(DialogueCooldown());
     }
