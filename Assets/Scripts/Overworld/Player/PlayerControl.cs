@@ -15,6 +15,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float fallMultiplier = 3.5f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
+    [SerializeField] private Animator animatorFront;
+    [SerializeField] private Animator animatorBack;
     private float lastZDirection = 1f;
     [SerializeField] private LayerMask groundMask;
     public bool isInteracting = false;
@@ -79,7 +81,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-    isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (m_Movement != Vector3.zero)
         {
@@ -95,6 +97,20 @@ public class PlayerControl : MonoBehaviour
 
             Vector3 moveOffset = moveDirection * m_Speed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveOffset);
+
+            Vector3 localMove = transform.InverseTransformDirection(moveDirection);
+
+            animatorFront.SetFloat("BlendX", Mathf.Clamp(localMove.x, -1f, 1f));
+            animatorFront.SetFloat("BlendY", Mathf.Clamp(localMove.z, -1f, 1f));
+            animatorBack.SetFloat("BlendX", Mathf.Clamp(localMove.x, -1f, 1f));
+            animatorBack.SetFloat("BlendY", Mathf.Clamp(localMove.z, -1f, 1f));
+        }
+        else
+        {
+            animatorFront.SetFloat("BlendX", 0f);
+            animatorFront.SetFloat("BlendY", 0f);
+            animatorBack.SetFloat("BlendX", 0f);
+            animatorBack.SetFloat("BlendY", 0f);
         }
 
         if (Mathf.Abs(m_Movement.z) > 0.01f)
@@ -114,7 +130,5 @@ public class PlayerControl : MonoBehaviour
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (gravityMultiplier - 1) * Time.fixedDeltaTime;
         }
-
-
     }
 }
