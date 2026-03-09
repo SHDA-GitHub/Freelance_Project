@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] private MusicManager musicManager;
 
+    [SerializeField] private GameObject endDialogueIndicator;
+
     private AudioClip previousTrack;
 
     private string[] currentDialogue;
@@ -46,6 +48,7 @@ public class DialogueManager : MonoBehaviour
             MusicManager.Instance.PlayOverrideMusic(dialogueMusic);
         }
 
+        endDialogueIndicator.SetActive(false);
         StartCoroutine(RunDialogue());
     }
 
@@ -56,10 +59,12 @@ public class DialogueManager : MonoBehaviour
             yield return StartCoroutine(flavorText.ShowTextCoroutine(currentDialogue[dialogueIndex]));
 
             waitingForInput = true;
+            endDialogueIndicator.SetActive(true);
 
             yield return new WaitUntil(() => player.isInteracting);
 
             waitingForInput = false;
+            endDialogueIndicator.SetActive(false);
             dialogueIndex++;
         }
 

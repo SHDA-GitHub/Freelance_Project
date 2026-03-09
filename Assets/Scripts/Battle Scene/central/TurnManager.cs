@@ -30,6 +30,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private GameObject descriptionMenu;
     [SerializeField] private TextMeshProUGUI descriptionTextUI;
     private int currentTargetIndex = 0;
+    private int totalBattleEXP = 0;
     private bool isSelectingTarget = false;
     private Coroutine targetFlickerCoroutine;
     [SerializeField] private float fadeDuration = 1.5f;
@@ -92,6 +93,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator ApplyBattleConditions()
     {
+        totalBattleEXP = 0;
         Debug.Log($"Starting battle - Player party count: {playerParty.Count}");
         if (BattleDataBridge.UpcomingEnemyPreset != null)
         {
@@ -715,6 +717,23 @@ public class TurnManager : MonoBehaviour
 
         yield return flavorTextUI.ShowTextCoroutine("You won!");
 
+        yield return new WaitForSeconds(0.3f);
+
+        if (totalBattleEXP > 0)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"Your team earned {totalBattleEXP} EXP!"
+            );
+
+            foreach (CharacterStats player in playerParty)
+            {
+                if (player != null)
+                {
+                    player.GainEXP(totalBattleEXP);
+                }
+            }
+        }
+
         if (victoryFade != null)
         {
             float elapsed = 0f;
@@ -844,6 +863,8 @@ public class TurnManager : MonoBehaviour
     {
         if (enemyParty.Contains(enemy))
         {
+            totalBattleEXP += enemy.expReward;
+
             yield return StartCoroutine(FadeOutEnemy(enemy));
             enemyParty.Remove(enemy);
 

@@ -19,6 +19,7 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Enemy Only")]
     public EnemyLoadout enemyLoadout;
+    public int expReward = 5;
 
     public List<Attack> attacks;
     public PlayerStatsSO playerStats;

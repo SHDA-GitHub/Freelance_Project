@@ -1724,7 +1724,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2432,7 +2432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 0
+  useBattleDataBridge: 1
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -2458,6 +2458,7 @@ MonoBehaviour:
   - {fileID: 2092676706754308772, guid: 7fd1c3975ae3a21469e84182d8227e51, type: 3}
   - {fileID: 7668502924311082037, guid: 683ae233babe45d428ac6d676d7dffb2, type: 3}
   - {fileID: 3942843387887549817, guid: 4acd37e01fa0c754dadc3f1e240421ec, type: 3}
+  - {fileID: 7487059447172081155, guid: 50cb704906e63214bacf0e20c26eb45e, type: 3}
   minibossBG:
   - {fileID: 5287798275954189025, guid: a80f7bf9a45aa5c4b986af16282d0f69, type: 3}
   - {fileID: 4623175695548337017, guid: 48e631ef3e06d454bbde2a533b41a7b7, type: 3}
@@ -2486,6 +2487,7 @@ MonoBehaviour:
   - {fileID: 5626131982701153808, guid: b93b0358eecc96c498d8a5ce0ef82e4b, type: 3}
   - {fileID: 5712292818012293154, guid: 62bcb921126e3034b92a3a8b5c5a03c2, type: 3}
   - {fileID: 446823161134650585, guid: a1f5e9277e5d1834199407302036dd3f, type: 3}
+  - {fileID: 6437069287677522384, guid: ae6cb6cf33a4dd942a3579f0acdb5cb0, type: 3}
   finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
   finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
@@ -2701,6 +2703,7 @@ MonoBehaviour:
   immuneStunEffects: 
   immuneMissEffects: 
   enemyLoadout: {fileID: 0}
+  expReward: 5
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
   playerStats: {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
@@ -4019,7 +4022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,6 +5569,7 @@ MonoBehaviour:
   immuneStunEffects: 
   immuneMissEffects: 
   enemyLoadout: {fileID: 0}
+  expReward: 5
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
   playerStats: {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
