@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Decimator MK. II
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
   enemyName: Decimator MK. II
-  attackSlots: []
+  attackSlots:
+  - {fileID: 11400000, guid: 77f3deda8d307f24daea0cf81b7af133, type: 2}
+  - {fileID: 11400000, guid: 3240f22a0aa15e54b960dca37dbbb795, type: 2}
+  - {fileID: 11400000, guid: 9b7f4d52df2757643808dc8431d2393f, type: 2}
+  - {fileID: 11400000, guid: 65b1ccb4d6cd44f47a068aeea520bd4c, type: 2}
