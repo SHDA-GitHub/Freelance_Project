@@ -23,7 +23,6 @@ public class DialogueManager : MonoBehaviour
     private NPCDialogue.DialogueLine[] currentDialogueLines;
     private int dialogueIndex;
 
-    private bool waitingForInput = false;
     private bool dialogueActive = false;
     private bool canStartDialogue = true;
 

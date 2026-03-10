@@ -799,6 +799,9 @@ public class TurnManager : MonoBehaviour
             fadeOverlay.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 1f);
         }
         Debug.Log("Game Over Sequence Complete. Add SceneManager.LoadScene here.");
+        yield return new WaitForSeconds(2.5f);
+
+        SceneManager.LoadScene(overworldSceneName);
     }
 
     private IEnumerator FadeOutEnemy(CharacterStats enemy)
