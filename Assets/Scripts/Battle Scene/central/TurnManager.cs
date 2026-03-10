@@ -132,7 +132,7 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
-        if (controls.UI.Submit.IsPressed())
+        if (controls.UI.FasterDialogue.IsPressed())
         {
             flavorTextUI.SetFastMode(true);
         }
