@@ -5497,7 +5497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can use A to make dialogue appear faster.
+  m_text: You can use the X key to make dialogue appear faster.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -5524,7 +5524,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.2
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

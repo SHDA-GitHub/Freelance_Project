@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float groundDistance = 0.2f;
     [SerializeField] private Animator animatorFront;
     [SerializeField] private Animator animatorBack;
+    private bool controlsEnabled = true;
     private float lastZDirection = 1f;
     [SerializeField] private LayerMask groundMask;
     public bool isInteracting = false;
@@ -48,18 +49,34 @@ public class PlayerControl : MonoBehaviour
     }
     private void OnMove(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled) return;
+
         Vector2 input = context.ReadValue<Vector2>();
         m_Movement = new Vector3(input.x, 0, input.y);
     }
 
-    private void OnMoveCancel(InputAction.CallbackContext context) => m_Movement = Vector3.zero;
+    private void OnMoveCancel(InputAction.CallbackContext context)
+    {
+        if (!controlsEnabled) return;
+        m_Movement = Vector3.zero;
+    }
 
-    private void OnSprint(InputAction.CallbackContext context) => m_Speed = originalSpeed * 1.5f;
+    private void OnSprint(InputAction.CallbackContext context)
+    {
+        if (!controlsEnabled) return;
+        m_Speed = originalSpeed * 1.5f;
+    }
 
-    private void OnSprintCancel(InputAction.CallbackContext context) => m_Speed = originalSpeed;
+    private void OnSprintCancel(InputAction.CallbackContext context)
+    {
+        if (!controlsEnabled) return;
+        m_Speed = originalSpeed;
+    }
 
     private void OnJump(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled) return;
+
         if (isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
@@ -77,6 +94,17 @@ public class PlayerControl : MonoBehaviour
         isInteracting = true;
         yield return new WaitForSecondsRealtime(0.1f);
         isInteracting = false;
+    }
+
+    public void EnableControls()
+    {
+        controlsEnabled = true;
+    }
+
+    public void DisableControls()
+    {
+        controlsEnabled = false;
+        m_Movement = Vector3.zero;
     }
 
     void FixedUpdate()

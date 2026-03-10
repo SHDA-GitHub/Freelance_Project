@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueActive || !canStartDialogue) return;
 
+        player.DisableControls();
         currentNPCDialogue = npcDialogue;
         currentDialogueLines = dialogueLines;
         dialogueIndex = 0;
@@ -137,6 +138,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        player.EnableControls();
         dialogueActive = false;
         dialogueUI.SetActive(false);
 
