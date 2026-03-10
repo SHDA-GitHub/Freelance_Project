@@ -82,7 +82,7 @@ public class ItemPickup : MonoBehaviour
             if (pair.Value > 1)
                 dialogueLines.Add($"You found {pair.Key} x{pair.Value}!");
             else
-                dialogueLines.Add($"You found a {pair.Key}!");
+                dialogueLines.Add($"You found {pair.Key}!");
         }
 
         if (dialogueLines.Count > 0)
