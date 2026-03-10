@@ -1192,6 +1192,7 @@ MonoBehaviour:
   fade: {fileID: 1204363656}
   confirm: {fileID: 8300000, guid: 35aa967d0a76c2b4d8c8af842eb10eaf, type: 3}
   audioSource: {fileID: 305733621}
+  tutorialManager: {fileID: 0}
 --- !u!1 &1239239152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1368,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1204363657}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: StartTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,6 +10,8 @@ public class Buttons : MonoBehaviour
     [SerializeField] private AudioClip confirm;
     [SerializeField] private AudioSource audioSource;
 
+    [SerializeField] private TutorialManager tutorialManager;
+
     private void Awake()
     {
         fade = FindFirstObjectByType<FadeScript>();
@@ -18,6 +20,11 @@ public class Buttons : MonoBehaviour
     public void StartGame()
     {
         TryChangeScene(StartGameSequence());
+    }
+
+    public void StartTutorial()
+    {
+        TryChangeScene(StartTutorialSequence());
     }
 
     public void BackToMenu()
@@ -35,6 +42,15 @@ public class Buttons : MonoBehaviour
         StartCoroutine(sequence);
     }
 
+    public void nextTutorial()
+    {
+        tutorialManager.flipPageForward();
+    }
+
+    public void previousTutorial()
+    {
+        tutorialManager.flipPageBackward();
+    }
 
     private IEnumerator StartGameSequence()
     {
@@ -42,6 +58,14 @@ public class Buttons : MonoBehaviour
         yield return fade.SpriteFadeInFlash();
         yield return new WaitForSeconds(0.9f);
         SceneManager.LoadScene("Overworld");
+    }
+
+    private IEnumerator StartTutorialSequence()
+    {
+        PlayConfirmEffect();
+        yield return fade.SpriteFadeInFlash();
+        yield return new WaitForSeconds(0.9f);
+        SceneManager.LoadScene("Tutorial");
     }
 
     private IEnumerator BackToMenuSequence()
