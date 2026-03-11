@@ -177,7 +177,8 @@ public class InventoryUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
 
         controls.UI.Disable();
-        controls.Player.Enable();
+        player.EnableControls();
+        enemyPatrolSurface.enabled = true;
     }
 
     public void OpenScreen(int index)
