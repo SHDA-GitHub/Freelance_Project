@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1416126c1607c67429174c22c414e05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SmoothMove
-  moveDuration: 7
+  moveDuration: 5.5
   moveDistance: 102
 --- !u!1 &1790204663
 GameObject:
