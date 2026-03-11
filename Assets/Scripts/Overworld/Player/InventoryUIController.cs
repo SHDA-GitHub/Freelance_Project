@@ -177,7 +177,7 @@ public class InventoryUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
 
         controls.UI.Disable();
-        player.EnableControls();
+        controls.Player.Enable();
         enemyPatrolSurface.enabled = true;
     }
 
