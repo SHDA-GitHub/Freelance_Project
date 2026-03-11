@@ -15,11 +15,14 @@ MonoBehaviour:
   targetAllEnemies: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
+  missStatusEffect: 3
   descriptionText: 'DMG: 4
 
-    Req. PP: 3'
-  statusChance: 0
+    Req. PP: 3
+
+    Tiny chance to inflicy dizziness
+    onto enemy'
+  statusChance: 5
   statusDuration: 2
   specAttackName: Baseball Bat
   powerCost: 3
@@ -27,4 +30,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} hits {target} with a baseball bat!'
+  flavorText: '{attacker} hits {target} with a {action}!'

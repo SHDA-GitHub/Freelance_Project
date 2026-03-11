@@ -30,4 +30,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} threw a lit firecracker at {target}'
+  flavorText: '{attacker} threw a lit {action} at {target}'

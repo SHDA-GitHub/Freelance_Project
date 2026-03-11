@@ -27,4 +27,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 2e0e1036172ccec4c99933b13d9c8064, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw a brown boot at {target}!'
+  flavorText: '{attacker} threw a {action} at {target}!'

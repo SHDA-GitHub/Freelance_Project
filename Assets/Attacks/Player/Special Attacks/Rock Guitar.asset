@@ -10,21 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Annoying Whistle
+  m_Name: Rock Guitar
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
-  targetAllEnemies: 0
+  targetAllEnemies: 1
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 5
-  descriptionText: 'Req. PP: 1
+  descriptionText: 'DMG: 4
 
-    Chance to inflict deafness onto enemy'
+    Req. PP: 4
+
+    Multi-Enemy Attack
+
+    Chance to
+    inflict deafness onto enemy'
   statusChance: 65
   statusDuration: 2
-  specAttackName: Annoying Whistle
-  powerCost: 1
-  damage: 0
-  attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
-  specialAttackCamShake: 0
+  specAttackName: Rock Guitar
+  powerCost: 4
+  damage: 4
+  attackSound: {fileID: 8300000, guid: 1b7cd1056faaa6c4b9330dcca5a4e6c7, type: 3}
+  specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} blew on the {action}'
+  flavorText: '{attacker} played an incredibly loud riff with the {action}!'

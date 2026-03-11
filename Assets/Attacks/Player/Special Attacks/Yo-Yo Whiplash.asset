@@ -32,4 +32,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} swung a yo-yo at {target}'
+  flavorText: '{attacker} swung a {action} at {target}'

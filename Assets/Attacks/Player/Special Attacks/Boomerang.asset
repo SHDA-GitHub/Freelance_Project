@@ -26,7 +26,7 @@ MonoBehaviour:
     inflict dizziness onto enemy'
   statusChance: 40
   statusDuration: 1
-  specAttackName: boomerang
+  specAttackName: Boomerang
   powerCost: 1
   damage: 1
   attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}

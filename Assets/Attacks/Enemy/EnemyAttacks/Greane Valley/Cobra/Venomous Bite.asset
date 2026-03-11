@@ -19,7 +19,7 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 45
+  statusChance: 35
   statusDuration: 1
   attackName: Venomous Bite
   powerCost: 0

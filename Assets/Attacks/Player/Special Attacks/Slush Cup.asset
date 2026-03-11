@@ -29,4 +29,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 32a607d077477a4468b8f749fd3f00ea, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} tossed a slush cup at {target}'
+  flavorText: '{attacker} tossed a {action} at {target}'

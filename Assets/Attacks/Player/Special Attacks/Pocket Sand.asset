@@ -21,10 +21,10 @@ MonoBehaviour:
     Chance to inflict blindness onto enemy'
   statusChance: 65
   statusDuration: 2
-  specAttackName: pocket sand
+  specAttackName: Pocket Sand
   powerCost: 1
   damage: 0
   attackSound: {fileID: 8300000, guid: 11f049487d3833845bf9c621b9c81d0e, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw pocket sand into {target}''s eyes!'
+  flavorText: '{attacker} threw {action} into {target}''s eyes!'

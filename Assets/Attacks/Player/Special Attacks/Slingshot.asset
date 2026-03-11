@@ -24,7 +24,7 @@ MonoBehaviour:
 
     Tiny chance
     to inflict blindness onto enemies'
-  statusChance: 10
+  statusChance: 5
   statusDuration: 1
   specAttackName: Slingshot
   powerCost: 2
@@ -32,4 +32,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} fired a slingshot at {target}'
+  flavorText: '{attacker} fired a {action} at {target}'
