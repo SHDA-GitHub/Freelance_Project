@@ -44,6 +44,8 @@ public class OverworldEnemyInteract : MonoBehaviour
 
         if (playerInRange && playerControl.isInteracting && !DialogueManager.Instance.IsDialogueActive())
         {
+            playerChoseNo = false;
+
             if (dialogue != null)
             {
                 dialogue.onChoiceMade = OnDialogueChoiceMade;
@@ -64,21 +66,20 @@ public class OverworldEnemyInteract : MonoBehaviour
             {
                 StartBattle();
             }
+            else
+            {
+                Debug.Log("Battle cancelled due to No choice.");
+            }
         }
     }
 
     private void OnDialogueChoiceMade(bool yesChosen)
     {
-        playerChoseNo = !yesChosen;
-
-        if (playerChoseNo && allowNoBattleChoice)
+        if (!yesChosen)
         {
-            Debug.Log("Player chose No. Battle cancelled.");
-            waitingForDialogue = false;
-            return;
+            playerChoseNo = true;
+            Debug.Log("Player chose No somewhere in dialogue.");
         }
-
-        StartBattle();
     }
 
     private void StartBattle()
