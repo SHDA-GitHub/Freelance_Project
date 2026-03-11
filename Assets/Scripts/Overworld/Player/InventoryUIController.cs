@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ public class InventoryUIController : MonoBehaviour
 
     [Header("First Selected Buttons")]
     [SerializeField] private GameObject rootFirstButton;
+    [SerializeField] private NavMeshSurface enemyPatrolSurface;
 
     private Controls controls;
 
@@ -30,10 +32,13 @@ public class InventoryUIController : MonoBehaviour
     private bool screenLocked = false;
     private int currentScreen = -1;
 
+    private PlayerControl player;
+
     private void Awake()
     {
+        player = FindFirstObjectByType<PlayerControl>();
         if (uiTabController == null)
-            uiTabController = GetComponent<UITabController>();
+        uiTabController = GetComponent<UITabController>();
         controls = new Controls();
 
         controls.Player.InventoryOpen.started += OnInventoryToggle;
@@ -46,9 +51,17 @@ public class InventoryUIController : MonoBehaviour
     void OnInventoryToggle(InputAction.CallbackContext ctx)
     {
         if (!inventoryOpen)
+        {
             OpenInventory();
+            player.DisableControls();
+            enemyPatrolSurface.enabled = false;
+        }
         else
+        {
             CloseInventory();
+            player.EnableControls();
+            enemyPatrolSurface.enabled = true;
+        }
     }
 
     void OpenInventory()

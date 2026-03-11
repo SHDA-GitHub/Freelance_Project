@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using static NPCDialogue;
 
@@ -13,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button yesButton;
     [SerializeField] private Button noButton;
     [SerializeField] private GameObject endDialogueIndicator;
+    [SerializeField] private NavMeshSurface enemyPatrolSurface;
 
     [Header("Music")]
     [SerializeField] private MusicManager musicManager;
@@ -43,6 +46,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueActive || !canStartDialogue) return;
 
         player.DisableControls();
+        enemyPatrolSurface.enabled = false;
         currentNPCDialogue = npcDialogue;
         currentDialogueLines = dialogueLines;
         dialogueIndex = 0;
@@ -139,6 +143,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         player.EnableControls();
+        enemyPatrolSurface.enabled = true;
         dialogueActive = false;
         dialogueUI.SetActive(false);
 
