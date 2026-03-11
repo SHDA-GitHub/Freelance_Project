@@ -8916,7 +8916,7 @@ MonoBehaviour:
       noDialogueLines: []
       noButtonText: 
       isChoiceActive: 0
-    - dialogueText: '"Don''t take it to heart, you''re just very, veyr, VERY hideous-looking."'
+    - dialogueText: '"Don''t take it to heart, you''re just very, very, VERY hideous-looking."'
       yesDialogueLines: []
       yesButtonText: 
       noDialogueLines: []
