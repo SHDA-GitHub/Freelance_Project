@@ -53,14 +53,10 @@ public class InventoryUIController : MonoBehaviour
         if (!inventoryOpen)
         {
             OpenInventory();
-            player.DisableControls();
-            enemyPatrolSurface.enabled = false;
         }
         else
         {
             CloseInventory();
-            player.EnableControls();
-            enemyPatrolSurface.enabled = true;
         }
     }
 
@@ -74,10 +70,10 @@ public class InventoryUIController : MonoBehaviour
         RefreshItemUI();
         ShowGrid(0);
 
-        EventSystem.current.SetSelectedGameObject(rootFirstButton);
-
+        player.DisableControls();
         controls.Player.Disable();
-        controls.UI.Enable();
+        enemyPatrolSurface.enabled = false;
+        EventSystem.current.SetSelectedGameObject(rootFirstButton);
     }
 
     public void NextGrid()
@@ -175,8 +171,7 @@ public class InventoryUIController : MonoBehaviour
             screen.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(null);
-
-        controls.UI.Disable();
+        player.EnableControls();
         controls.Player.Enable();
         enemyPatrolSurface.enabled = true;
     }
