@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
-  m_Name: Angry Hunter
+  m_Name: Angry Zoo Ranger
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
-  enemyName: Angry Hunter
+  enemyName: Angry Zoo Ranger
   attackSlots:
   - {fileID: 11400000, guid: 2aa0db9d366d1b645a396e0066feaf5a, type: 2}
   - {fileID: 11400000, guid: 621c8006e93a6334fafc2960d41b2d17, type: 2}

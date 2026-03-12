@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5194232068223106494}
   - component: {fileID: 4383866551228059652}
   m_Layer: 5
-  m_Name: Angry Hunter
+  m_Name: Angry Zoo Ranger
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: Angry Hunter
+  characterName: Angry Zoo Ranger
   maxHealth: 26
   currentHealth: 26
   maxPP: 1
@@ -160,7 +160,8 @@ MonoBehaviour:
   currentEXP: 0
   immuneDOTEffects: 
   immuneStunEffects: 02000000
-  immuneMissEffects: 01000000
+  immuneMissEffects: 02000000
+  immuneOffDefEffects: 0100000003000000
   enemyLoadout: {fileID: 11400000, guid: 69383be5641463d42b62a1b7da3ee6c5, type: 2}
   expReward: 5
   attacks: []
@@ -168,6 +169,7 @@ MonoBehaviour:
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
+  activeOffDefEffects: []
   overtimeDamage: 1
   isPlayer: 0
 --- !u!82 &4383866551228059652

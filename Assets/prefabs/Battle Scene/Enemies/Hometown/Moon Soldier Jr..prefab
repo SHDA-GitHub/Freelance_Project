@@ -160,13 +160,16 @@ MonoBehaviour:
   currentEXP: 0
   immuneDOTEffects: 0300000002000000
   immuneStunEffects: 0300000005000000
-  immuneMissEffects: 0100000005000000
+  immuneMissEffects: 01000000
+  immuneOffDefEffects: 0100000003000000
   enemyLoadout: {fileID: 11400000, guid: 9b566574793a1a141a48b3881e03307f, type: 2}
+  expReward: 5
   attacks: []
   playerStats: {fileID: 0}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
+  activeOffDefEffects: []
   overtimeDamage: 2
   isPlayer: 0
 --- !u!82 &7823735455477406916

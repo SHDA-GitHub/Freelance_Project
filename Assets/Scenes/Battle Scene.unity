@@ -1684,6 +1684,7 @@ MonoBehaviour:
   text: {fileID: 1045033813}
   typeSound: {fileID: 485524771}
   letterDelay: 0.0425
+  speedMultiplier: 2
 --- !u!114 &506090853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2703,7 @@ MonoBehaviour:
   immuneDOTEffects: 
   immuneStunEffects: 
   immuneMissEffects: 
+  immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
   expReward: 5
   attacks:
@@ -2710,6 +2712,7 @@ MonoBehaviour:
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
+  activeOffDefEffects: []
   overtimeDamage: 2
   isPlayer: 1
 --- !u!82 &879654193
@@ -4022,7 +4025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5568,6 +5571,7 @@ MonoBehaviour:
   immuneDOTEffects: 
   immuneStunEffects: 
   immuneMissEffects: 
+  immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
   expReward: 5
   attacks:
@@ -5576,6 +5580,7 @@ MonoBehaviour:
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
+  activeOffDefEffects: []
   overtimeDamage: 2
   isPlayer: 1
 --- !u!212 &2061152905
