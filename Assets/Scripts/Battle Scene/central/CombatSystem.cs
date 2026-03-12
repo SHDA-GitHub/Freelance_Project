@@ -302,6 +302,12 @@ public class CombatSystem : MonoBehaviour
             yield break;
 
         Item item = invItem.itemData;
+
+        if (item.isKeyItem)
+        {
+            yield break;
+        }
+
         string message;
         if (user != target && TurnManager.Instance.playerParty.Contains(target))
         {

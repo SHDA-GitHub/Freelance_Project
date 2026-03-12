@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
+  m_Name: Relaxing Tea
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: Relaxing Tea
+  healAmount: 1
+  healAllParty: 0
+  splitHealAcrossParty: 0
+  ppAmount: 3
+  restorePPToAllParty: 0
+  splitPPAcrossParty: 0
+  removeAllStatusEffects: 0
+  removeDOT: 0
+  removeStun: 0
+  removeMiss: 1
+  statusEffect: 0
+  stunstatusEffect: 0
+  missStatusEffect: 0
+  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
+  isKeyItem: 0
+  consumableKey: 0
+  descriptionText: 'HP: 1
+
+    PP: 3
+
+    Removes Inaccuracy'
+  statusChance: 0
+  statusDuration: 2
+  consumable: 1
+  flavorText: '{attacker} drank the warm {action}'

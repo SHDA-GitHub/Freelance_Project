@@ -79,6 +79,9 @@ public class MenuController : MonoBehaviour
 
         foreach (var invItem in Inventory.Instance.items)
         {
+            if (invItem.itemData.isKeyItem)
+                continue;
+
             if (!uniqueItems.Contains(invItem.itemData))
             {
                 uniqueItems.Add(invItem.itemData);

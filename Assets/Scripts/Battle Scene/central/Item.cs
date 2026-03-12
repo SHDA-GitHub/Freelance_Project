@@ -29,6 +29,10 @@ public class Item : ScriptableObject
     [Header("Audio")]
     public AudioClip itemSound;
 
+    [Header("Item Type")]
+    public bool isKeyItem = false;
+    public bool consumableKey = false;
+
     [TextArea(3, 6)]
     public string descriptionText;
 
