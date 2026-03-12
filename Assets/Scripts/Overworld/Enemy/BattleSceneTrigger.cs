@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using static BattleDataBridge;
 
 public class BattleSceneTrigger : MonoBehaviour
 {
-    [SerializeField] private string battleSceneName = "Battle Scene";
     [SerializeField] private OverworldEnemyPatrolScript OEPS;
 
     [Header("Optional Dialogue")]
@@ -21,30 +21,35 @@ public class BattleSceneTrigger : MonoBehaviour
         if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
         {
             waitingForDialogue = false;
+
             if (!playerChoseNo || !allowNoBattleChoice)
             {
-                StartBattle();
+                OEPS.StartBattle();
             }
+            else
+            {
+                Debug.Log("Battle cancelled because player chose No.");
+            }
+
+            playerChoseNo = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !DialogueManager.Instance.IsDialogueActive())
-        {
-            if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
-            {
-                waitingForDialogue = false;
+        if (!other.CompareTag("Player")) return;
 
-                if (!DialogueManager.Instance.PlayerCancelledChoice() || !allowNoBattleChoice)
-                {
-                    StartBattle();
-                }
-                else
-                {
-                    Debug.Log("Battle cancelled because player chose No.");
-                }
-            }
+        if (DialogueManager.Instance.IsDialogueActive()) return;
+
+        if (dialogue != null)
+        {
+            dialogue.onChoiceMade = OnDialogueChoiceMade;
+            dialogue.TriggerDialogue();
+            waitingForDialogue = true;
+        }
+        else
+        {
+            OEPS.StartBattle();
         }
     }
 
@@ -54,14 +59,5 @@ public class BattleSceneTrigger : MonoBehaviour
         {
             playerChoseNo = true;
         }
-    }
-
-    private void StartBattle()
-    {
-        BattleDataBridge.UpcomingEnemyPreset = OEPS.enemyType;
-        BattleDataBridge.BattleMusic = OEPS.battleMusic;
-        BattleDataBridge.BackgroundSelection = OEPS.backgroundType;
-
-        SceneManager.LoadScene(battleSceneName);
     }
 }

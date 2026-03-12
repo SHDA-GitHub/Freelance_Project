@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using static BattleDataBridge;
 
 public class OverworldEnemyPatrolScript : MonoBehaviour
@@ -11,9 +13,10 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
     private bool playerInRange = false;
 
     [Header("Battle Settings")]
-    public EnemyPreset enemyType;
+    public List<WeightedEnemy> enemies = new List<WeightedEnemy>();
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
+    [SerializeField] private string battleSceneName = "Battle Scene";
 
     [SerializeField] private float wanderRadius = 25f;
     [SerializeField] private float wanderTimer = 5f;
@@ -88,5 +91,36 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
         }
 
         return origin;
+    }
+
+    public EnemyPreset GetRandomEnemy()
+    {
+        float totalWeight = 0f;
+
+        foreach (var e in enemies)
+            totalWeight += e.spawnChance;
+
+        float randomValue = Random.Range(0, totalWeight);
+
+        float current = 0f;
+
+        foreach (var e in enemies)
+        {
+            current += e.spawnChance;
+
+            if (randomValue <= current)
+                return e.enemy;
+        }
+
+        return enemies[0].enemy;
+    }
+
+    public void StartBattle()
+    {
+        BattleDataBridge.UpcomingEnemyPreset = GetRandomEnemy();
+        BattleDataBridge.BattleMusic = battleMusic;
+        BattleDataBridge.BackgroundSelection = backgroundType;
+
+        SceneManager.LoadScene(battleSceneName);
     }
 }

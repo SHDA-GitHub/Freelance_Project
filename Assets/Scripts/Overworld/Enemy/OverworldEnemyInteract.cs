@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static BattleDataBridge;
@@ -5,7 +6,7 @@ using static BattleDataBridge;
 public class OverworldEnemyInteract : MonoBehaviour
 {
     [Header("Battle Settings")]
-    public EnemyPreset enemyType;
+    public List<WeightedEnemy> enemies = new List<WeightedEnemy>();
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
     [SerializeField] private string battleSceneName = "Battle Scene";
@@ -80,9 +81,31 @@ public class OverworldEnemyInteract : MonoBehaviour
         }
     }
 
+    private EnemyPreset GetRandomEnemy()
+    {
+        float totalWeight = 0f;
+
+        foreach (var e in enemies)
+            totalWeight += e.spawnChance;
+
+        float randomValue = Random.Range(0, totalWeight);
+
+        float current = 0f;
+
+        foreach (var e in enemies)
+        {
+            current += e.spawnChance;
+
+            if (randomValue <= current)
+                return e.enemy;
+        }
+
+        return enemies[0].enemy;
+    }
+
     private void StartBattle()
     {
-        BattleDataBridge.UpcomingEnemyPreset = enemyType;
+        BattleDataBridge.UpcomingEnemyPreset = GetRandomEnemy();
         BattleDataBridge.BattleMusic = battleMusic;
         BattleDataBridge.BackgroundSelection = backgroundType;
 

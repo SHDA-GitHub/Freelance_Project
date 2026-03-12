@@ -641,7 +641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e7108772321e54f82bfb9f7da34802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyPatrolScript
-  enemyType: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
+  enemies:
+  - enemy: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
+    spawnChance: 0.6
+  - enemy: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
+    spawnChance: 0.4
   battleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
   backgroundType: 0
   wanderRadius: 3
@@ -3234,7 +3238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f94f6533932a44aa5a0287c65cb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
-  enemyType: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
+  enemies:
+  - enemy: {fileID: 11400000, guid: bc4dd805985b569499644591988310b1, type: 2}
+    spawnChance: 0
   battleMusic: {fileID: 8300000, guid: 33195dd61c20e2d42b4c3d2daf2406c0, type: 3}
   backgroundType: 3
   battleSceneName: Battle Scene
@@ -4973,7 +4979,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f94f6533932a44aa5a0287c65cb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
-  enemyType: {fileID: 11400000, guid: c4f2338bd49294942bf79524afb8686d, type: 2}
+  enemies:
+  - enemy: {fileID: 11400000, guid: c4f2338bd49294942bf79524afb8686d, type: 2}
+    spawnChance: 1
   battleMusic: {fileID: 8300000, guid: 8d6d4b0736338d54b9f5a71fb61e029b, type: 3}
   backgroundType: 2
   battleSceneName: Battle Scene
@@ -10244,7 +10252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f94f6533932a44aa5a0287c65cb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
-  enemyType: {fileID: 11400000, guid: 22baa533a12c70f45a033143bd66e9f0, type: 2}
+  enemies:
+  - enemy: {fileID: 11400000, guid: 22baa533a12c70f45a033143bd66e9f0, type: 2}
+    spawnChance: 1
   battleMusic: {fileID: 8300000, guid: d925a7e9f7a1e63418a50b793804570d, type: 3}
   backgroundType: 0
   battleSceneName: Battle Scene
@@ -13150,7 +13160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f94f6533932a44aa5a0287c65cb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
-  enemyType: {fileID: 11400000, guid: dee8732eafc1ba248a562c3ab61ffa1f, type: 2}
+  enemies: []
   battleMusic: {fileID: 8300000, guid: 6ae7de3a775594d43bea25b05592b8eb, type: 3}
   backgroundType: 2
   battleSceneName: Battle Scene
