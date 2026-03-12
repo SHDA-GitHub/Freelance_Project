@@ -191,59 +191,30 @@ public class CombatSystem : MonoBehaviour
                 {
                     target.ApplyStatChange(attack.statChangeEffect, attack.statusDuration, attack.offenseChange, attack.defenseChange);
 
-                    if (attack.offenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {attack.offenseChange}!"
-                        );
-                    }
-                    else if (attack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went up by {attack.defenseChange}!"
-                        );
-                    }
-                    else if (attack.offenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {attack.offenseChange}!"
-                        );
-                    }
-                    else if (attack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went down by {attack.defenseChange}!"
-                        );
-                    }
-                    else if (attack.offenseChange > 0 && attack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went up by {attack.defenseChange}!"
-                        );
-                    }
-                    else if (attack.offenseChange < 0 && attack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
-                        );
-                    }
-                    else if (attack.offenseChange > 0 && attack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
-                        );
-                    }
-                    else if (attack.offenseChange < 0 && attack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
-                        );
-                    }
-
+                    yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} is now {attack.statChangeEffect}!");
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
-                }
+                    yield return new WaitForSeconds(0.2f);
 
+                    List<string> changes = new List<string>();
+
+                    if (attack.offenseChange > 0)
+                        changes.Add($"offense went up by {attack.offenseChange}");
+                    else if (attack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(attack.offenseChange)}");
+
+                    if (attack.defenseChange > 0)
+                        changes.Add($"defense went up by {attack.defenseChange}");
+                    else if (attack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(attack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
+                }
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -274,7 +245,7 @@ public class CombatSystem : MonoBehaviour
             }
         }
         if (specAttack.attackSound != null)
-        AudioManager.Instance.PlaySFX(specAttack.attackSound);
+            AudioManager.Instance.PlaySFX(specAttack.attackSound);
         int offenseBonus = attacker.GetOffenseModifier();
         int defenseBonus = target.GetDefenseModifier();
 
@@ -295,7 +266,7 @@ public class CombatSystem : MonoBehaviour
         yield return StartCoroutine(FlashDamageEffect(target));
         yield return new WaitForSeconds(0.3f);
         if (finalDamage > 0)
-        {yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {finalDamage} damage!");}
+        { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {finalDamage} damage!"); }
         yield return new WaitForSeconds(0.3f);
         if (specAttack.statusEffect != DOTStatusEffectType.None)
         {
@@ -394,63 +365,35 @@ public class CombatSystem : MonoBehaviour
                 {
                     target.ApplyStatChange(specAttack.statChangeEffect, specAttack.statusDuration, specAttack.offenseChange, specAttack.defenseChange);
 
-                    if (specAttack.offenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}!"
-                        );
-                    }
-                    else if (specAttack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went up by {specAttack.defenseChange}!"
-                        );
-                    }
-                    else if (specAttack.offenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {specAttack.offenseChange}!"
-                        );
-                    }
-                    else if (specAttack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went down by {specAttack.defenseChange}!"
-                        );
-                    }
-                    else if (specAttack.offenseChange > 0 && specAttack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went up by {specAttack.defenseChange}!"
-                        );
-                    }
-                    else if (specAttack.offenseChange < 0 && specAttack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
-                        );
-                    }
-                    else if (specAttack.offenseChange > 0 && specAttack.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
-                        );
-                    }
-                    else if (specAttack.offenseChange < 0 && specAttack.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
-                        );
-                    }
-
+                    yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} is now {specAttack.statChangeEffect}!");
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (specAttack.offenseChange > 0)
+                        changes.Add($"offense went up by {specAttack.offenseChange}");
+                    else if (specAttack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(specAttack.offenseChange)}");
+
+                    if (specAttack.defenseChange > 0)
+                        changes.Add($"defense went up by {specAttack.defenseChange}");
+                    else if (specAttack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(specAttack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
                 yield return new WaitForSeconds(0.3f);
             }
+            Debug.Log("Attacking: " + target.characterName);
+            TurnManager.Instance.battleHUD.UpdateHUD();
         }
-        Debug.Log("Attacking: " + target.characterName);
-        TurnManager.Instance.battleHUD.UpdateHUD();
     }
 
     public IEnumerator ExecuteItem(CharacterStats user, CharacterStats target, InventoryItem invItem)
@@ -577,61 +520,34 @@ public class CombatSystem : MonoBehaviour
                 {
                     target.ApplyStatChange(item.statChangeEffect, item.statusDuration, item.offenseChange, item.defenseChange);
 
-                    if (item.offenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {item.offenseChange}!"
-                        );
-                    }
-                    else if (item.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went up by {item.defenseChange}!"
-                        );
-                    }
-                    else if (item.offenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {item.offenseChange}!"
-                        );
-                    }
-                    else if (item.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s defense went down by {item.defenseChange}!"
-                        );
-                    }
-                    else if (item.offenseChange > 0 && item.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went up by {item.defenseChange}!"
-                        );
-                    }
-                    else if (item.offenseChange < 0 && item.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went down by {item.offenseChange}, and defense went down by {item.defenseChange}!"
-                        );
-                    }
-                    else if (item.offenseChange > 0 && item.defenseChange < 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went down by {item.defenseChange}!"
-                        );
-                    }
-                    else if (item.offenseChange < 0 && item.defenseChange > 0)
-                    {
-                        yield return flavorTextUI.ShowTextCoroutine(
-                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went down by {item.defenseChange}!"
-                        );
-                    }
+                    yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} is now {item.statChangeEffect}!");
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (item.offenseChange > 0)
+                        changes.Add($"offense went up by {item.offenseChange}");
+                    else if (item.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(item.offenseChange)}");
+
+                    if (item.defenseChange > 0)
+                        changes.Add($"defense went up by {item.defenseChange}");
+                    else if (item.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(item.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
                 yield return new WaitForSeconds(0.3f);
             }
         }
-        if (item.healAllParty)
+            if (item.healAllParty)
         {
             List<CharacterStats> party = TurnManager.Instance.playerParty
                 .FindAll(p => p != null && p.currentHealth > 0);
