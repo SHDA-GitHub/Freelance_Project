@@ -80,7 +80,7 @@ public class ItemPickup : MonoBehaviour
         foreach (var pair in itemCounts)
         {
             if (pair.Value > 1)
-                dialogueLines.Add($"You found {pair.Key} x{pair.Value}!");
+                dialogueLines.Add($"You found {pair.Value} {pair.Key}s !");
             else
                 dialogueLines.Add($"You found {pair.Key}!");
         }
