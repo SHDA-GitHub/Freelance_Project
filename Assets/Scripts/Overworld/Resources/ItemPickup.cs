@@ -13,6 +13,10 @@ public class ItemPickup : MonoBehaviour
     [Header("Special Attack Pickups")]
     [SerializeField] private List<SpecialAttack> specialAttacks = new List<SpecialAttack>();
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip itemGetSound;
+    [SerializeField] private AudioSource audioSource;
+
     private bool playerInRange = false;
     private PlayerControl playerControl;
     private bool pickedUp = false;
@@ -77,10 +81,13 @@ public class ItemPickup : MonoBehaviour
             itemCounts[attack.specAttackName]++;
         }
 
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
+
         foreach (var pair in itemCounts)
         {
             if (pair.Value > 1)
-                dialogueLines.Add($"You found {pair.Value} {pair.Key}s !");
+                dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
             else
                 dialogueLines.Add($"You found {pair.Key}!");
         }

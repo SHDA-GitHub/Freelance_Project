@@ -1035,6 +1035,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
   - {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!65 &103387145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3624,6 +3626,8 @@ MonoBehaviour:
   specialAttacks:
   - {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!65 &341669785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10725,6 +10729,8 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 7a0326f21a60fa34994806c307a988e2, type: 2}
   specialAttacks: []
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!65 &1102148202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11711,6 +11717,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aac931be8f06e044d99220872af140bb, type: 2}
   - {fileID: 11400000, guid: aac931be8f06e044d99220872af140bb, type: 2}
   specialAttacks: []
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!65 &1278265644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14760,6 +14768,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
   specialAttacks:
   - {fileID: 11400000, guid: 576684b4470ad7a4e8621469a05475c7, type: 2}
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!65 &1684635475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15472,6 +15482,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
   - {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
   rewardSpecialAttacks: []
+  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  audioSource: {fileID: 362711672}
 --- !u!114 &1716731423
 MonoBehaviour:
   m_ObjectHideFlags: 0

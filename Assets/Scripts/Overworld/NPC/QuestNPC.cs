@@ -17,6 +17,10 @@ public class QuestNPC : MonoBehaviour
     [SerializeField] private List<Item> rewardItems = new List<Item>();
     [SerializeField] private List<SpecialAttack> rewardSpecialAttacks = new List<SpecialAttack>();
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip itemGetSound;
+    [SerializeField] private AudioSource audioSource;
+
     private bool questAccepted = false;
     private bool questCompleted = false;
 
@@ -96,6 +100,8 @@ public class QuestNPC : MonoBehaviour
     {
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
+        yield return new WaitForSeconds(0.20f);
+
         GiveRewards();
     }
 
@@ -128,10 +134,13 @@ public class QuestNPC : MonoBehaviour
             rewardCounts[attack.specAttackName]++;
         }
 
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
+
         foreach (var pair in rewardCounts)
         {
             if (pair.Value > 1)
-                dialogueLines.Add($"You received {pair.Value} {pair.Key}s!");
+                dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
             else
                 dialogueLines.Add($"You received {pair.Key}!");
         }
