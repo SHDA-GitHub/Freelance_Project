@@ -10300,14 +10300,7 @@ MonoBehaviour:
         isChoiceActive: 0
       yesButtonText: I said I'm gonna punch the veneers out your mouth.
       noDialogueLines:
-      - dialogueText: '"Nice try..."'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      - dialogueText: '"But you''re not getting away that easy after disrespecting
-          me!"'
+      - dialogueText: '"That''s what I thought"'
         yesDialogueLines: []
         yesButtonText: 
         noDialogueLines: []

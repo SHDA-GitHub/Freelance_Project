@@ -32,31 +32,28 @@ public class BattleSceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !DialogueManager.Instance.IsDialogueActive())
         {
-            if (dialogue != null)
+            if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
             {
-                dialogue.onChoiceMade = OnDialogueChoiceMade;
-                dialogue.TriggerDialogue();
-                waitingForDialogue = true;
-            }
-            else
-            {
-                StartBattle();
+                waitingForDialogue = false;
+
+                if (!DialogueManager.Instance.PlayerCancelledChoice() || !allowNoBattleChoice)
+                {
+                    StartBattle();
+                }
+                else
+                {
+                    Debug.Log("Battle cancelled because player chose No.");
+                }
             }
         }
     }
 
     private void OnDialogueChoiceMade(bool yesChosen)
     {
-        playerChoseNo = !yesChosen;
-
-        if (playerChoseNo && allowNoBattleChoice)
+        if (!yesChosen && allowNoBattleChoice)
         {
-            Debug.Log("Player chose No. Battle cancelled.");
-            waitingForDialogue = false;
-            return;
+            playerChoseNo = true;
         }
-
-        StartBattle();
     }
 
     private void StartBattle()

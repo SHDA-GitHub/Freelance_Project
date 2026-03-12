@@ -61,23 +61,23 @@ public class OverworldEnemyInteract : MonoBehaviour
         {
             waitingForDialogue = false;
 
-            if (!playerChoseNo || !allowNoBattleChoice)
+            if (!DialogueManager.Instance.PlayerCancelledChoice() || !allowNoBattleChoice)
             {
                 StartBattle();
+            }
+            else
+            {
+                Debug.Log("Battle cancelled because player chose No.");
             }
         }
     }
 
     private void OnDialogueChoiceMade(bool yesChosen)
     {
-        playerChoseNo = !yesChosen;
-
-        if (playerChoseNo && allowNoBattleChoice) {
-            Debug.Log("Player chose No. Battle cancelled.");
-        waitingForDialogue = false;
-        return;
-    }
-        StartBattle();
+        if (!yesChosen && allowNoBattleChoice)
+        {
+            playerChoseNo = true;
+        }
     }
 
     private void StartBattle()

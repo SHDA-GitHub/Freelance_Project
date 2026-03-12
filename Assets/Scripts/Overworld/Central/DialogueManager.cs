@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool dialogueActive = false;
     private bool canStartDialogue = true;
+    private bool playerCancelledChoice = false;
 
     private PlayerControl player;
 
@@ -45,6 +46,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueActive || !canStartDialogue) return;
 
+        playerCancelledChoice = false;
         player.DisableControls();
         enemyPatrolSurface.enabled = false;
         currentNPCDialogue = npcDialogue;
@@ -114,6 +116,9 @@ public class DialogueManager : MonoBehaviour
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
 
+        if (!isYes)
+            playerCancelledChoice = true;
+
         DialogueLine[] chosenLines = isYes ? currentLine.yesDialogueLines : currentLine.noDialogueLines;
 
         if (chosenLines != null && chosenLines.Length > 0)
@@ -138,6 +143,11 @@ public class DialogueManager : MonoBehaviour
         currentNPCDialogue?.onChoiceMade?.Invoke(isYes);
 
         yield return null;
+    }
+
+    public bool PlayerCancelledChoice()
+    {
+        return playerCancelledChoice;
     }
 
     void EndDialogue()
