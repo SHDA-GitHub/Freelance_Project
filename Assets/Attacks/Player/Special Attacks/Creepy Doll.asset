@@ -20,12 +20,12 @@ MonoBehaviour:
   stunstatusEffect: 0
   missStatusEffect: 0
   statChangeEffect: 1
-  offenseChange: -1
+  offenseChange: 0
   defenseChange: -1
   descriptionText: 'Req. PP: 1
 
     Chance to inflict fear onto enemy'
-  statusChance: 65
+  statusChance: 80
   statusDuration: 2
   specAttackName: Creepy Doll
   powerCost: 1

@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: Pocket Sand
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 4
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   descriptionText: 'Req. PP: 1
 
     Chance to inflict blindness onto enemy'
-  statusChance: 65
+  statusChance: 80
   statusDuration: 2
   specAttackName: Pocket Sand
   powerCost: 1

@@ -13,16 +13,22 @@ MonoBehaviour:
   m_Name: Firecracker
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   descriptionText: 'DMG: 2
 
     Req. PP: 2
 
     Chance to inflict fire damage onto
     enemy'
-  statusChance: 65
+  statusChance: 75
   statusDuration: 1
   specAttackName: Firecracker
   powerCost: 2

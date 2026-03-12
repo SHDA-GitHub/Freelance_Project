@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Fireworks
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 1
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   descriptionText: 'DMG: 3
 
     Req. PP: 3
@@ -24,7 +30,7 @@ MonoBehaviour:
 
     Chance to
     inflict fire damage onto enemies'
-  statusChance: 75
+  statusChance: 80
   statusDuration: 2
   specAttackName: Fireworks
   powerCost: 3
