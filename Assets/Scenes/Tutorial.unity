@@ -6085,7 +6085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can use the A key to make dialogue in the overworld and battle scene
+  m_text: You can use the X key to make dialogue in the overworld and during a battle
     appear faster.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -8505,7 +8505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1924690711
 RectTransform:
   m_ObjectHideFlags: 0
