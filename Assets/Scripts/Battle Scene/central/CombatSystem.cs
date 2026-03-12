@@ -101,7 +101,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStatus(attack.statusEffect, attack.statusDuration);
+                    target.ApplyStatus(attack.statusEffect, attack.statusDuration, attack.dotAmount, attack.dotDrainsPP);
 
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {attack.statusEffect}!"
@@ -225,7 +225,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStatus(specAttack.statusEffect, specAttack.statusDuration);
+                    target.ApplyStatus(specAttack.statusEffect, specAttack.statusDuration, specAttack.dotAmount, specAttack.dotDrainsPP);
 
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {specAttack.statusEffect}!"
@@ -337,7 +337,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStatus(item.statusEffect, item.statusDuration);
+                    target.ApplyStatus(item.statusEffect, item.statusDuration, item.dotAmount, item.dotDrainsPP);
 
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {item.statusEffect}!"

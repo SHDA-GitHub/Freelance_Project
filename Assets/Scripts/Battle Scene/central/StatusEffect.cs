@@ -4,10 +4,15 @@ public class StatusEffect
     public DOTStatusEffectType type;
     public int duration;
 
-    public StatusEffect(DOTStatusEffectType type, int duration)
+    public int amountPerTurn = 1;
+    public bool drainPP = false;
+
+    public StatusEffect(DOTStatusEffectType type, int duration, int amountPerTurn = 1, bool drainPP = false)
     {
         this.type = type;
         this.duration = duration;
+        this.amountPerTurn = amountPerTurn;
+        this.drainPP = drainPP;
     }
 }
 

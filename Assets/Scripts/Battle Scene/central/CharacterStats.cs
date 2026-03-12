@@ -44,18 +44,20 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void ApplyStatus(DOTStatusEffectType type, int duration)
+    public void ApplyStatus(DOTStatusEffectType type, int duration, int amountPerTurn = 1, bool drainPP = false)
     {
         if (type == DOTStatusEffectType.None)
             return;
+
         StatusEffect existing = activeStatusEffects.Find(s => s.type == type);
+
         if (existing != null)
         {
             existing.duration = Mathf.Max(existing.duration, duration);
         }
         else
         {
-            activeStatusEffects.Add(new StatusEffect(type, duration));
+            activeStatusEffects.Add(new StatusEffect(type, duration, amountPerTurn, drainPP));
         }
     }
 
@@ -81,13 +83,28 @@ public class CharacterStats : MonoBehaviour
         {
             StatusEffect effect = activeStatusEffects[i];
 
-            ApplyOvertimeDamage(overtimeDamage);
+            int amount = effect.amountPerTurn;
 
-            CombatSystem.Instance.StartCoroutine(
-                CombatSystem.Instance.flavorTextUI.ShowTextCoroutine(
-                    $"{characterName} is {effect.type} and took {overtimeDamage} damage!"
-                )
-            );
+            if (effect.drainPP)
+            {
+                ApplyOvertimePPReduction(amount);
+
+                CombatSystem.Instance.StartCoroutine(
+                    CombatSystem.Instance.flavorTextUI.ShowTextCoroutine(
+                        $"{characterName} is {effect.type} and lost {amount} PP!"
+                    )
+                );
+            }
+            else
+            {
+                ApplyOvertimeDamage(amount);
+
+                CombatSystem.Instance.StartCoroutine(
+                    CombatSystem.Instance.flavorTextUI.ShowTextCoroutine(
+                        $"{characterName} is {effect.type} and took {amount} damage!"
+                    )
+                );
+            }
 
             if (effect.duration <= 0)
             {
@@ -117,6 +134,15 @@ public class CharacterStats : MonoBehaviour
 
         if (isPlayer)
             playerStats.currentHealth = currentHealth;
+    }
+
+    public void ApplyOvertimePPReduction(int damage)
+    {
+        currentPP -= damage;
+        currentPP = Mathf.Max(currentPP, 0);
+
+        if (isPlayer)
+            playerStats.currentPP = currentPP;
     }
 
     public bool IsStunned()

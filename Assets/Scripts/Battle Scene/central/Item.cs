@@ -21,6 +21,13 @@ public class Item : ScriptableObject
     public bool removeStun = false;
     public bool removeMiss = false;
 
+    [Header("DOT Behavior")]
+    public bool drainPPInstead = false;
+
+    [Header("DOT Settings")]
+    public int dotAmount = 1;
+    public bool dotDrainsPP = false;
+
     [Header("Status Effect")]
     public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
