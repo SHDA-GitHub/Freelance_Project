@@ -18,6 +18,10 @@ public class SpecialAttack : ScriptableObject
     public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
     public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
+    public OffenseDefenseChangeStatusEffectType statChangeEffect = OffenseDefenseChangeStatusEffectType.None;
+
+    public int offenseChange = 0;
+    public int defenseChange = 0;
 
     [TextArea(3, 6)]
     public string descriptionText;

@@ -17,6 +17,10 @@ public class Attack : ScriptableObject
     public DOTStatusEffectType statusEffect = DOTStatusEffectType.None;
     public StunStatusEffectType stunstatusEffect = StunStatusEffectType.None;
     public MissStatusEffectType missStatusEffect = MissStatusEffectType.None;
+    public OffenseDefenseChangeStatusEffectType statChangeEffect = OffenseDefenseChangeStatusEffectType.None;
+
+    public int offenseChange = 0;
+    public int defenseChange = 0;
 
     [Header("Life Steal / Heal On Hit")]
     public bool healOnHit = false;

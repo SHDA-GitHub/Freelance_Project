@@ -61,15 +61,22 @@ public class CombatSystem : MonoBehaviour
         }
         if (attack.attackSound != null)
         AudioManager.Instance.PlaySFX(attack.attackSound);
-        target.ReceiveDamage(attack.damage);
-        if (TurnManager.Instance.playerParty.Contains(target) && attack.damage > 0)
+        int offenseBonus = attacker.GetOffenseModifier();
+        int defenseBonus = target.GetDefenseModifier();
+
+        int finalDamage = attack.damage + offenseBonus - defenseBonus;
+
+        finalDamage = Mathf.Max(0, finalDamage);
+
+        target.ReceiveDamage(finalDamage);
+        if (TurnManager.Instance.playerParty.Contains(target) && finalDamage > 0)
         {
             StartCoroutine(ShakeCamera());
         }
         yield return StartCoroutine(FlashDamageEffect(target));
         yield return new WaitForSeconds(0.3f);
-        if (attack.damage > 0)
-        { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {attack.damage} damage!"); }
+        if (finalDamage > 0)
+        {yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {finalDamage} damage!");}
         yield return new WaitForSeconds(0.3f);
         if (attack.healOnHit && TurnManager.Instance.playerParty.Contains(target))
         {
@@ -168,6 +175,78 @@ public class CombatSystem : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
             }
         }
+        if (attack.statChangeEffect != OffenseDefenseChangeStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < attack.statusChance)
+            {
+                if (target.IsImmune(attack.statChangeEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {attack.statChangeEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatChange(attack.statChangeEffect, attack.statusDuration, attack.offenseChange, attack.defenseChange);
+
+                    if (attack.offenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {attack.offenseChange}!"
+                        );
+                    }
+                    else if (attack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went up by {attack.defenseChange}!"
+                        );
+                    }
+                    else if (attack.offenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {attack.offenseChange}!"
+                        );
+                    }
+                    else if (attack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went down by {attack.defenseChange}!"
+                        );
+                    }
+                    else if (attack.offenseChange > 0 && attack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went up by {attack.defenseChange}!"
+                        );
+                    }
+                    else if (attack.offenseChange < 0 && attack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
+                        );
+                    }
+                    else if (attack.offenseChange > 0 && attack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
+                        );
+                    }
+                    else if (attack.offenseChange < 0 && attack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {attack.offenseChange}, and defense went down by {attack.defenseChange}!"
+                        );
+                    }
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
+
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
         Debug.Log("Attacking: " + target.characterName);
         TurnManager.Instance.battleHUD.UpdateHUD();
     }
@@ -196,7 +275,14 @@ public class CombatSystem : MonoBehaviour
         }
         if (specAttack.attackSound != null)
         AudioManager.Instance.PlaySFX(specAttack.attackSound);
-        target.ReceiveDamage(specAttack.damage);
+        int offenseBonus = attacker.GetOffenseModifier();
+        int defenseBonus = target.GetDefenseModifier();
+
+        int finalDamage = specAttack.damage + offenseBonus - defenseBonus;
+
+        finalDamage = Mathf.Max(0, finalDamage);
+
+        target.ReceiveDamage(finalDamage);
         if (specAttack.specialAttackCamShake)
         {
             StartCoroutine(ShakeCamera());
@@ -208,8 +294,8 @@ public class CombatSystem : MonoBehaviour
         TurnManager.Instance.battleHUD.UpdateHUD();
         yield return StartCoroutine(FlashDamageEffect(target));
         yield return new WaitForSeconds(0.3f);
-        if (specAttack.damage > 0)
-        { yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {specAttack.damage} damage!"); }
+        if (finalDamage > 0)
+        {yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} took {finalDamage} damage!");}
         yield return new WaitForSeconds(0.3f);
         if (specAttack.statusEffect != DOTStatusEffectType.None)
         {
@@ -289,6 +375,77 @@ public class CombatSystem : MonoBehaviour
                     audioManager.Play();
                 }
 
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+        if (specAttack.statChangeEffect != OffenseDefenseChangeStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < specAttack.statusChance)
+            {
+                if (target.IsImmune(specAttack.statChangeEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {specAttack.statChangeEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatChange(specAttack.statChangeEffect, specAttack.statusDuration, specAttack.offenseChange, specAttack.defenseChange);
+
+                    if (specAttack.offenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}!"
+                        );
+                    }
+                    else if (specAttack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went up by {specAttack.defenseChange}!"
+                        );
+                    }
+                    else if (specAttack.offenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {specAttack.offenseChange}!"
+                        );
+                    }
+                    else if (specAttack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went down by {specAttack.defenseChange}!"
+                        );
+                    }
+                    else if (specAttack.offenseChange > 0 && specAttack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went up by {specAttack.defenseChange}!"
+                        );
+                    }
+                    else if (specAttack.offenseChange < 0 && specAttack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
+                        );
+                    }
+                    else if (specAttack.offenseChange > 0 && specAttack.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
+                        );
+                    }
+                    else if (specAttack.offenseChange < 0 && specAttack.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {specAttack.offenseChange}, and defense went down by {specAttack.defenseChange}!"
+                        );
+                    }
+
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -401,6 +558,76 @@ public class CombatSystem : MonoBehaviour
                     audioManager.Play();
                 }
 
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+        if (item.statChangeEffect != OffenseDefenseChangeStatusEffectType.None)
+        {
+            int roll = Random.Range(0, 100);
+
+            if (roll < item.statusChance)
+            {
+                if (target.IsImmune(item.statChangeEffect))
+                {
+                    yield return flavorTextUI.ShowTextCoroutine(
+                        $"{target.characterName} is immune to being {item.statChangeEffect}!"
+                    );
+                }
+                else
+                {
+                    target.ApplyStatChange(item.statChangeEffect, item.statusDuration, item.offenseChange, item.defenseChange);
+
+                    if (item.offenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {item.offenseChange}!"
+                        );
+                    }
+                    else if (item.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went up by {item.defenseChange}!"
+                        );
+                    }
+                    else if (item.offenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {item.offenseChange}!"
+                        );
+                    }
+                    else if (item.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s defense went down by {item.defenseChange}!"
+                        );
+                    }
+                    else if (item.offenseChange > 0 && item.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went up by {item.defenseChange}!"
+                        );
+                    }
+                    else if (item.offenseChange < 0 && item.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went down by {item.offenseChange}, and defense went down by {item.defenseChange}!"
+                        );
+                    }
+                    else if (item.offenseChange > 0 && item.defenseChange < 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went down by {item.defenseChange}!"
+                        );
+                    }
+                    else if (item.offenseChange < 0 && item.defenseChange > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s offense went up by {item.offenseChange}, and defense went down by {item.defenseChange}!"
+                        );
+                    }
+                    audioManager.clip = statusEffectGain;
+                    audioManager.Play();
+                }
                 yield return new WaitForSeconds(0.3f);
             }
         }

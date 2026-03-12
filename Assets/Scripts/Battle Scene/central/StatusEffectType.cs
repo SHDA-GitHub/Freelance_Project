@@ -31,6 +31,7 @@ public enum MissStatusEffectType
 
 public enum OffenseDefenseChangeStatusEffectType
 {
+    None,
     Scared,
     Numb,
     discouraged,
@@ -39,5 +40,6 @@ public enum OffenseDefenseChangeStatusEffectType
 
 public enum IgnoreStatusEffectType
 {
+    None,
     Invisible,
 }

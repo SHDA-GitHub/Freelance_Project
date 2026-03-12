@@ -41,3 +41,25 @@ public class MissStatusEffect
         this.duration = duration;
     }
 }
+
+[System.Serializable]
+public class OffenseDefenseChangeStatusEffect
+{
+    public OffenseDefenseChangeStatusEffectType type;
+    public int duration;
+
+    public int offenseModifier;
+    public int defenseModifier;
+
+    public OffenseDefenseChangeStatusEffect(
+        OffenseDefenseChangeStatusEffectType type,
+        int duration,
+        int offenseModifier,
+        int defenseModifier)
+    {
+        this.type = type;
+        this.duration = duration;
+        this.offenseModifier = offenseModifier;
+        this.defenseModifier = defenseModifier;
+    }
+}

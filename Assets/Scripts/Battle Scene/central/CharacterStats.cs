@@ -16,6 +16,7 @@ public class CharacterStats : MonoBehaviour
     public List<DOTStatusEffectType> immuneDOTEffects = new List<DOTStatusEffectType>();
     public List<StunStatusEffectType> immuneStunEffects = new List<StunStatusEffectType>();
     public List<MissStatusEffectType> immuneMissEffects = new List<MissStatusEffectType>();
+    public List<OffenseDefenseChangeStatusEffectType> immuneOffDefEffects = new List<OffenseDefenseChangeStatusEffectType>();
 
     [Header("Enemy Only")]
     public EnemyLoadout enemyLoadout;
@@ -26,6 +27,7 @@ public class CharacterStats : MonoBehaviour
     public List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
     public List<StunStatusEffect> activeStunEffects = new List<StunStatusEffect>();
     public List<MissStatusEffect> activeMissEffects = new List<MissStatusEffect>();
+    public List<OffenseDefenseChangeStatusEffect> activeOffDefEffects = new List<OffenseDefenseChangeStatusEffect>();
 
     public int overtimeDamage = 1;
     public bool isPlayer = false;
@@ -75,6 +77,14 @@ public class CharacterStats : MonoBehaviour
             return;
 
         activeMissEffects.Add(new MissStatusEffect(type, duration));
+    }
+
+    public void ApplyStatChange(OffenseDefenseChangeStatusEffectType type, int duration, int offense, int defense)
+    {
+        if (type == OffenseDefenseChangeStatusEffectType.None)
+            return;
+
+        activeOffDefEffects.Add(new OffenseDefenseChangeStatusEffect(type, duration, offense, defense));
     }
 
     public void ApplyStatusEffects()
@@ -160,11 +170,37 @@ public class CharacterStats : MonoBehaviour
         return activeMissEffects.Count > 0;
     }
 
+    public bool IsStatChange()
+    {
+        return activeOffDefEffects.Count > 0;
+    }
+
+    public int GetOffenseModifier()
+    {
+        int total = 0;
+
+        foreach (var effect in activeOffDefEffects)
+            total += effect.offenseModifier;
+
+        return total;
+    }
+
+    public int GetDefenseModifier()
+    {
+        int total = 0;
+
+        foreach (var effect in activeOffDefEffects)
+            total += effect.defenseModifier;
+
+        return total;
+    }
+
     public void ReduceAllEffectsAfterTurn()
     {
         ReduceStunEffects();
         ReduceMissEffects();
         ReduceDOTDurations();
+        ReduceOffDefEffects();
     }
 
     public void ReduceDOTDurations()
@@ -200,11 +236,23 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public void ReduceOffDefEffects()
+    {
+        for (int i = activeOffDefEffects.Count - 1; i >= 0; i--)
+        {
+            activeOffDefEffects[i].duration--;
+
+            if (activeOffDefEffects[i].duration <= 0)
+                activeOffDefEffects.RemoveAt(i);
+        }
+    }
+
     public void RemoveAllStatusEffects()
     {
         activeStatusEffects.Clear();
         activeStunEffects.Clear();
         activeMissEffects.Clear();
+        activeOffDefEffects.Clear();
     }
 
     public void RemoveDOTEffects()
@@ -222,6 +270,11 @@ public class CharacterStats : MonoBehaviour
         activeMissEffects.Clear();
     }
 
+    public void RemoveOffDefEffects()
+    {
+        activeOffDefEffects.Clear();
+    }
+
     public bool IsImmune(DOTStatusEffectType type)
     {
         return immuneDOTEffects.Contains(type);
@@ -235,6 +288,11 @@ public class CharacterStats : MonoBehaviour
     public bool IsImmune(MissStatusEffectType type)
     {
         return immuneMissEffects.Contains(type);
+    }
+
+    public bool IsImmune(OffenseDefenseChangeStatusEffectType type)
+    {
+        return immuneOffDefEffects.Contains(type);
     }
 
     public void SetInvisible()
