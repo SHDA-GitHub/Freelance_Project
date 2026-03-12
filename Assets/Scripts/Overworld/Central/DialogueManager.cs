@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using Unity.AI.Navigation;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -16,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button noButton;
     [SerializeField] private GameObject endDialogueIndicator;
     [SerializeField] private NavMeshSurface enemyPatrolSurface;
+    public FlavorTextUI flavorTextUI;
+    private Controls controls;
 
     [Header("Music")]
     [SerializeField] private MusicManager musicManager;
@@ -34,6 +37,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        controls = new Controls();
+        controls.UI.Enable();
         Instance = this;
         dialogueUI.SetActive(false);
         player = FindFirstObjectByType<PlayerControl>();
@@ -148,6 +153,18 @@ public class DialogueManager : MonoBehaviour
     public bool PlayerCancelledChoice()
     {
         return playerCancelledChoice;
+    }
+
+    private void Update()
+    {
+        if (controls.UI.FasterDialogue.IsPressed())
+        {
+            flavorTextUI.SetFastMode(true);
+        }
+        else
+        {
+            flavorTextUI.SetFastMode(false);
+        }
     }
 
     void EndDialogue()

@@ -24,7 +24,7 @@ MonoBehaviour:
   specAttackName: Creepy Doll
   powerCost: 1
   damage: 0
-  attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
+  attackSound: {fileID: 8300000, guid: dc93aba0319d3e549ac9846aa5a13f0d, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} showed the spooky doll to {target}'

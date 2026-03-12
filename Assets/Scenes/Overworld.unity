@@ -1035,7 +1035,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
   - {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
   - {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
-  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  itemGetSound: {fileID: 8300000, guid: c906e92d2ba865448b0f53874a73f808, type: 3}
   audioSource: {fileID: 362711672}
 --- !u!65 &103387145
 BoxCollider:
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   specialAttacks:
   - {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
   - {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
-  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  itemGetSound: {fileID: 8300000, guid: c906e92d2ba865448b0f53874a73f808, type: 3}
   audioSource: {fileID: 362711672}
 --- !u!65 &341669785
 BoxCollider:
@@ -10729,7 +10729,7 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 7a0326f21a60fa34994806c307a988e2, type: 2}
   specialAttacks: []
-  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  itemGetSound: {fileID: 8300000, guid: c906e92d2ba865448b0f53874a73f808, type: 3}
   audioSource: {fileID: 362711672}
 --- !u!65 &1102148202
 BoxCollider:
@@ -11717,7 +11717,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aac931be8f06e044d99220872af140bb, type: 2}
   - {fileID: 11400000, guid: aac931be8f06e044d99220872af140bb, type: 2}
   specialAttacks: []
-  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  itemGetSound: {fileID: 8300000, guid: c906e92d2ba865448b0f53874a73f808, type: 3}
   audioSource: {fileID: 362711672}
 --- !u!65 &1278265644
 BoxCollider:
@@ -14768,7 +14768,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
   specialAttacks:
   - {fileID: 11400000, guid: 576684b4470ad7a4e8621469a05475c7, type: 2}
-  itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
+  itemGetSound: {fileID: 8300000, guid: c906e92d2ba865448b0f53874a73f808, type: 3}
   audioSource: {fileID: 362711672}
 --- !u!65 &1684635475
 BoxCollider:
@@ -15014,7 +15014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlavorTextUI
   text: {fileID: 8242164273722292114}
   typeSound: {fileID: 394899331}
-  letterDelay: 0.05
+  letterDelay: 0.0425
+  speedMultiplier: 2
 --- !u!114 &1711264371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15033,6 +15034,7 @@ MonoBehaviour:
   noButton: {fileID: 176254897}
   endDialogueIndicator: {fileID: 6099603967131775672}
   enemyPatrolSurface: {fileID: 551887789}
+  flavorTextUI: {fileID: 1711264370}
   musicManager: {fileID: 921197766}
 --- !u!114 &1711264372
 MonoBehaviour:
@@ -15309,7 +15311,7 @@ MonoBehaviour:
       isChoiceActive: 0
     yesButtonText: Sure thing!
     noDialogueLines:
-    - dialogueText: '"Oh... That''s a shame..."'
+    - dialogueText: '"How heartless and cruel..."'
       yesDialogueLines: []
       yesButtonText: 
       noDialogueLines: []
@@ -15425,7 +15427,7 @@ MonoBehaviour:
       isChoiceActive: 0
     yesButtonText: Of course, ma'am
     noDialogueLines:
-    - dialogueText: '"How heartless and cruel..."'
+    - dialogueText: '"Oh... That''s a shame..."'
       yesDialogueLines: []
       yesButtonText: 
       noDialogueLines: []

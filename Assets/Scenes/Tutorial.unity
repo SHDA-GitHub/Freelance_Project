@@ -6085,7 +6085,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can use the X key to make dialogue appear faster.
+  m_text: You can use the A key to make dialogue in the overworld and battle scene
+    appear faster.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}

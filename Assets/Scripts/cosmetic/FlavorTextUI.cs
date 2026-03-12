@@ -8,7 +8,7 @@ public class FlavorTextUI : MonoBehaviour
     [SerializeField] private AudioSource typeSound;
     [SerializeField] private float letterDelay = 0.05f;
 
-    private float speedMultiplier = 2f;
+    public float speedMultiplier = 2f;
     private Coroutine typingCoroutine;
 
     public void SetFastMode(bool fast)

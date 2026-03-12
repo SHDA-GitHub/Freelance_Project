@@ -1717,6 +1717,7 @@ GameObject:
   - component: {fileID: 1790204666}
   - component: {fileID: 1790204665}
   - component: {fileID: 1790204667}
+  - component: {fileID: 1790204668}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -1818,6 +1819,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000002, z: 0.001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1790204668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790204663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbc908b3c584824d8066857f4960057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuEffect
+  introSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
+  audioSource: {fileID: 305733621}
+  battleCamera: {fileID: 1393795275}
+  shakeAmount: 0.3
+  shakeDuration: 0.2
+  shakeSpeed: 0.02
+  stretchSprite: {fileID: 0}
+  stretchDuration: 0.25
+  targetXScale: 10
 --- !u!1 &1927071712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,7 +2203,7 @@ GameObject:
   - component: {fileID: 4625833111439955117}
   m_Layer: 0
   m_Name: Animated Background 10
-  m_TagString: Untagged
+  m_TagString: Boom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
