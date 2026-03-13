@@ -40,6 +40,10 @@ public class CombatSystem : MonoBehaviour
 
     public IEnumerator ExecuteAttack(CharacterStats attacker, CharacterStats target, Attack attack)
     {
+        if (attack.targetSelf)
+        {
+            target = attacker;
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(attack.flavorText)
             ? FormatFlavorText(attack.flavorText, attacker, target, attack.attackName, attack.damage)
@@ -225,6 +229,10 @@ public class CombatSystem : MonoBehaviour
     public IEnumerator ExecuteSpecialAttack(CharacterStats attacker, CharacterStats target, InventorySpecialAttack invSpecAttack)
     {
         SpecialAttack specAttack = invSpecAttack.attackData;
+        if (specAttack.targetSelf)
+        {
+            target = attacker;
+        }
         TurnManager.Instance.battleHUD.UpdateHUD();
         string message = !string.IsNullOrEmpty(specAttack.flavorText)
             ? FormatFlavorText(specAttack.flavorText, attacker, target, specAttack.specAttackName, specAttack.damage)
@@ -643,7 +651,13 @@ public class CombatSystem : MonoBehaviour
             if (item.removeMiss && character.IsMissAttack())
             {
                 character.RemoveMissEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName}'s accuracy was restored!");
+                flavorTextUI.ShowImmediateText($"{character.characterName}'s accuracy was recovered!");
+                yield return new WaitForSeconds(0.3f);
+            }
+            if (item.removeStat && character.IsStatChange())
+            {
+                character.RemoveOffDefEffects();
+                flavorTextUI.ShowImmediateText($"{character.characterName}'s resolve was restored!");
                 yield return new WaitForSeconds(0.3f);
             }
         }

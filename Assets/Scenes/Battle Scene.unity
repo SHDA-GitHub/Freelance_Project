@@ -1196,7 +1196,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0f0295d992c3eef40bf535a3da8606c8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 00e31f3a1c841174d924654e54e07705, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: dd93357667e39fc4992ac2d66a6c5263, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: ecccb9e845304c745b3e4674b31b9a98, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 1
+  useBattleDataBridge: 0
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -2494,9 +2494,9 @@ MonoBehaviour:
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
-  isNormalEnemy: 1
+  isNormalEnemy: 0
   isMiniBoss: 0
-  isBoss: 0
+  isBoss: 1
   isFinalBossPhase: 0
   isMoonSoldier: 0
 --- !u!1 &855608624
@@ -4053,12 +4053,12 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
-  - itemData: {fileID: 11400000, guid: d1b91cea75ad02d48bd17920e14d08d7, type: 2}
+  - itemData: {fileID: 11400000, guid: 6c30037ec97db3a4d814c86066af81a3, type: 2}
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
-  - itemData: {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
+  - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
-  - itemData: {fileID: 11400000, guid: 20e8eb8d1352f674394c293150fd6470, type: 2}
+  - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
   - itemData: {fileID: 11400000, guid: ccf78ab03705f9344bf1ea475ff1f496, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}

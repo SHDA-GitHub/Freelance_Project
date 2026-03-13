@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Music Box
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 2
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   descriptionText: 'Req. PP: 1
 
-    Chance to inflict sleepiness onto enemy'
+    Sleepiness Chance: 85'
   statusChance: 85
   statusDuration: 1
   specAttackName: Music Box

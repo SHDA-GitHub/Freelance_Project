@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: Buzz-Button Handshake
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 4
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   descriptionText: 'DMG: 1
 
     Req. PP: 2
 
-    Chance to inflict shock onto enemy'
-  statusChance: 60
+    Shock Chance: 65'
+  statusChance: 65
   statusDuration: 1
   specAttackName: Buzz-Button Handshake
   powerCost: 2

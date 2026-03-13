@@ -6,6 +6,7 @@ public class SpecialAttack : ScriptableObject
 {
     [Header("Targeting")]
     public bool targetAllEnemies = false;
+    public bool targetSelf = false;
 
     [Header("DOT Behavior")]
     public bool drainPPInstead = false;

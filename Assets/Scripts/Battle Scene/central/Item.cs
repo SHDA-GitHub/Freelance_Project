@@ -20,6 +20,7 @@ public class Item : ScriptableObject
     public bool removeDOT = false;
     public bool removeStun = false;
     public bool removeMiss = false;
+    public bool removeStat = false;
 
     [Header("DOT Behavior")]
     public bool drainPPInstead = false;

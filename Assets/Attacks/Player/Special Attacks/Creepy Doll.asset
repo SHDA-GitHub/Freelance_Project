@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Creepy Doll
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -24,7 +25,7 @@ MonoBehaviour:
   defenseChange: -1
   descriptionText: 'Req. PP: 1
 
-    Chance to inflict fear onto enemy'
+    Fear Chance: 80'
   statusChance: 80
   statusDuration: 2
   specAttackName: Creepy Doll

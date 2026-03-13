@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Writhe
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 4
+  offenseChange: 1
+  defenseChange: -1
   healOnHit: 1
   healAmount: 2
   descriptionText: 

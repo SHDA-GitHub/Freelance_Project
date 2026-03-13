@@ -20,19 +20,28 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 1
+  removeDOT: 0
   removeStun: 0
   removeMiss: 0
+  removeStat: 1
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 6
+  offenseChange: 0
+  defenseChange: 0
   itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
   isKeyItem: 0
   consumableKey: 0
   descriptionText: 'HP: 5
 
-    Removes Overtime Effects'
-  statusChance: 0
+    Strength Chance: 35
+
+    Cures Weakness'
+  statusChance: 35
   statusDuration: 2
   consumable: 1
   flavorText: '{attacker} ate a bag of {action}'

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Rock Guitar
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 1
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -28,9 +29,9 @@ MonoBehaviour:
 
     Multi-Enemy Attack
 
-    Chance to
-    inflict deafness onto enemy'
-  statusChance: 70
+    Deafness
+    Chance: 75'
+  statusChance: 75
   statusDuration: 2
   specAttackName: Rock Guitar
   powerCost: 4

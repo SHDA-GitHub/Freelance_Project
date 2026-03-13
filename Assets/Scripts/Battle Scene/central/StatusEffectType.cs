@@ -17,6 +17,7 @@ public enum StunStatusEffectType
     constricted,
     stunned,
     hypnotized,
+    Concussed,
 }
 
 public enum MissStatusEffectType
@@ -34,8 +35,10 @@ public enum OffenseDefenseChangeStatusEffectType
     None,
     Scared,
     Numb,
-    discouraged,
-    Hyperfocused,
+    weakened,
+    hyperfocused,
+    hardened,
+    strengthened,
 }
 
 public enum IgnoreStatusEffectType

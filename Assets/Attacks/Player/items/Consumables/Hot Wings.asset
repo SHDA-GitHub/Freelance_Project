@@ -23,9 +23,16 @@ MonoBehaviour:
   removeDOT: 0
   removeStun: 0
   removeMiss: 0
+  removeStat: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
   isKeyItem: 0
   consumableKey: 0
@@ -33,8 +40,8 @@ MonoBehaviour:
 
     If split: divided per party member
 
-    Has chance
-    to inflict burning upon consumption'
+    Burning Chance:
+    40'
   statusChance: 40
   statusDuration: 1
   consumable: 1
