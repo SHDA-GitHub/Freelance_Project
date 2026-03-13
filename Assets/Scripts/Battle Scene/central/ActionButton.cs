@@ -12,8 +12,13 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private object actionData;
     private Action<object> onClickCallback;
 
+    [Header("References")]
+    public DescriptionSceneChecker sceneChecker;
+    public InventoryUIController inventoryUIController;
+
     public void Setup(object action, Action<object> callback)
     {
+        inventoryUIController = FindFirstObjectByType<InventoryUIController>();
         actionData = action;
         onClickCallback = callback;
 
@@ -79,14 +84,31 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         string description = GetDescription(actionData);
 
-        if (!string.IsNullOrEmpty(description))
+        if (sceneChecker.isSceneOverworld)
         {
-            TurnManager.Instance.ShowDescription(description);
+            if (!string.IsNullOrEmpty(description))
+            {
+                inventoryUIController.ShowDescription(description);
+            }
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(description))
+            {
+                TurnManager.Instance.ShowDescription(description);
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TurnManager.Instance.HideDescription();
+        if (TurnManager.Instance != null)
+        {
+            TurnManager.Instance.HideDescription();
+        }
+        else if (sceneChecker.isSceneOverworld == true)
+        {
+            inventoryUIController.HideDescription();
+        }
     }
 }

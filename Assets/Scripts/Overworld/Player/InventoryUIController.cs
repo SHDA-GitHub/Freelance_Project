@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,9 @@ public class InventoryUIController : MonoBehaviour
 
     [SerializeField] private GameObject leftButton;
     [SerializeField] private GameObject rightButton;
+
+    [SerializeField] private GameObject descriptionMenu;
+    [SerializeField] private TextMeshProUGUI descriptionTextUI;
 
     private const int maxItemsPerGrid = 8;
     private int currentGrid = 0;
@@ -216,6 +220,23 @@ public class InventoryUIController : MonoBehaviour
 
         screenLocked = false;
         currentScreen = -1;
+    }
+
+    public void ShowDescription(string text)
+    {
+        if (descriptionMenu == null || descriptionTextUI == null)
+            return;
+
+        descriptionMenu.SetActive(true);
+        descriptionTextUI.text = text;
+    }
+
+    public void HideDescription()
+    {
+        if (descriptionMenu == null)
+            return;
+
+        descriptionMenu.SetActive(false);
     }
 
 }

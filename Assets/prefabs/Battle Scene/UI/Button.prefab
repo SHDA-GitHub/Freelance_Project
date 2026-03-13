@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActionButton
   button: {fileID: 2003300896134153853}
   buttonText: {fileID: 8487111801835505980}
+  sceneChecker: {fileID: 11400000, guid: 70e92e489e660ad4baea4feabb67ccc3, type: 2}
+  inventoryUIController: {fileID: 0}
 --- !u!1 &2718760334726702392
 GameObject:
   m_ObjectHideFlags: 0

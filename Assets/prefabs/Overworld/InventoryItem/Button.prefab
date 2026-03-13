@@ -253,3 +253,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActionButton
   button: {fileID: 6547361661746402559}
   buttonText: {fileID: 4887365941857220455}
+  sceneChecker: {fileID: 11400000, guid: 70e92e489e660ad4baea4feabb67ccc3, type: 2}
+  inventoryUIController: {fileID: 0}
