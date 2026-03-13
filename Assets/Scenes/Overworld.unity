@@ -1426,15 +1426,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152940197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00023394634}
-  m_LocalScale: {x: 0.2001302, y: 0.20027408, z: 0.9983514}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.18012944, z: 0.8979318}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 619361243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5, y: 22.500065}
+  m_AnchoredPosition: {x: 17.7, y: 27.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152940199
@@ -1457,7 +1457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Special Attacks
+  m_text: Spec. Attacks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -1484,12 +1484,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.75
+  m_fontSize: 35.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 50
+  m_fontSizeMax: 70
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 45.826855, y: -30.939173, z: -76.57764, w: 31.43124}
+  m_margin: {x: -12.160133, y: 0, z: -18.674202, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1579,7 +1579,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 152940199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711264372}
+        m_TargetAssemblyTypeName: InventoryUIController, Assembly-CSharp
+        m_MethodName: ShowSpecialsInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &175451472
 GameObject:
   m_ObjectHideFlags: 0
@@ -6490,15 +6502,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536058189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19999997, y: 0.20000015, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.7500001}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 619361243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39.8, y: 23}
+  m_AnchoredPosition: {x: -26.9, y: 27.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536058191
@@ -6548,7 +6560,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.15
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6586,7 +6598,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 45.826855, y: -21.830515, z: -76.57764, w: 36.65795}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6643,7 +6655,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536058191}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711264372}
+        m_TargetAssemblyTypeName: InventoryUIController, Assembly-CSharp
+        m_MethodName: ShowItemsInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &550516432
 GameObject:
   m_ObjectHideFlags: 0
@@ -11635,7 +11659,7 @@ GameObject:
   - component: {fileID: 1176923654}
   - component: {fileID: 1176923655}
   m_Layer: 0
-  m_Name: SpecItemGrid4
+  m_Name: SpecItemGrid2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11717,7 +11741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1186012063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11780,7 +11804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1186012065}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711264372}
+        m_TargetAssemblyTypeName: InventoryUIController, Assembly-CSharp
+        m_MethodName: PreviousGrid
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1186012065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12341,7 +12377,7 @@ GameObject:
   - component: {fileID: 1293847333}
   - component: {fileID: 1293847334}
   m_Layer: 0
-  m_Name: SpecItemGrid3
+  m_Name: SpecItemGrid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15499,13 +15535,18 @@ MonoBehaviour:
   - {fileID: 1618752805}
   - {fileID: 428036105}
   uiTabController: {fileID: 1711264369}
+  descriptionMenu: {fileID: 269098513}
+  descriptionTextUI: {fileID: 473518167}
   itemGrid1: {fileID: 1618752806}
   itemGrid2: {fileID: 428036106}
   itemButtonPrefab: {fileID: 5277018814131681285, guid: 6f06e55743c91c147816d7f98f094c94, type: 3}
-  leftButton: {fileID: 1795115651}
-  rightButton: {fileID: 1927585760}
-  descriptionMenu: {fileID: 269098513}
-  descriptionTextUI: {fileID: 473518167}
+  leftItemButton: {fileID: 1795115651}
+  rightItemButton: {fileID: 1927585760}
+  specialGrid1: {fileID: 1293847332}
+  specialGrid2: {fileID: 1176923653}
+  specAttackButtonPrefab: {fileID: 5277018814131681285, guid: 6f06e55743c91c147816d7f98f094c94, type: 3}
+  leftSpecButton: {fileID: 1186012062}
+  rightSpecButton: {fileID: 2086209811}
   rootFirstButton: {fileID: 1795115651}
   enemyPatrolSurface: {fileID: 551887789}
 --- !u!114 &1711264373
@@ -19304,7 +19345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2086209812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19367,7 +19408,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086209814}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711264372}
+        m_TargetAssemblyTypeName: InventoryUIController, Assembly-CSharp
+        m_MethodName: NextGrid
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2086209814
 MonoBehaviour:
   m_ObjectHideFlags: 0
