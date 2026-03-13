@@ -52,16 +52,30 @@ public class ItemPickup : MonoBehaviour
         Dictionary<string, int> itemCounts = new Dictionary<string, int>();
         List<string> dialogueLines = new List<string>();
 
+        bool itemInventoryFull = false;
+        bool specialAttackInventoryFull = false;
+        bool pickedUpSomething = false;
+
         if (prePickupDialogue != null && prePickupDialogue.Length > 0)
         {
             dialogueLines.AddRange(prePickupDialogue);
         }
 
+        List<Item> itemsToRemove = new List<Item>();
         foreach (Item item in items)
         {
             if (item == null) continue;
 
-            Inventory.Instance.AddItem(item);
+            bool added = Inventory.Instance.AddItem(item);
+
+            if (!added)
+            {
+                itemInventoryFull = true;
+                continue;
+            }
+
+            pickedUpSomething = true;
+            itemsToRemove.Add(item);
 
             if (!itemCounts.ContainsKey(item.itemName))
                 itemCounts[item.itemName] = 0;
@@ -69,11 +83,26 @@ public class ItemPickup : MonoBehaviour
             itemCounts[item.itemName]++;
         }
 
+        foreach (Item item in itemsToRemove)
+        {
+            items.Remove(item);
+        }
+
+        List<SpecialAttack> attacksToRemove = new List<SpecialAttack>();
         foreach (SpecialAttack attack in specialAttacks)
         {
             if (attack == null) continue;
 
-            Inventory.Instance.AddSpecialAttack(attack);
+            bool added = Inventory.Instance.AddSpecialAttack(attack);
+
+            if (!added)
+            {
+                specialAttackInventoryFull = true;
+                continue;
+            }
+
+            pickedUpSomething = true;
+            attacksToRemove.Add(attack);
 
             if (!itemCounts.ContainsKey(attack.specAttackName))
                 itemCounts[attack.specAttackName] = 0;
@@ -81,8 +110,16 @@ public class ItemPickup : MonoBehaviour
             itemCounts[attack.specAttackName]++;
         }
 
-        audioSource.clip = itemGetSound;
-        audioSource.Play();
+        foreach (SpecialAttack attack in attacksToRemove)
+        {
+            specialAttacks.Remove(attack);
+        }
+
+        if (pickedUpSomething && audioSource != null && itemGetSound != null)
+        {
+            audioSource.clip = itemGetSound;
+            audioSource.Play();
+        }
 
         foreach (var pair in itemCounts)
         {
@@ -92,20 +129,31 @@ public class ItemPickup : MonoBehaviour
                 dialogueLines.Add($"You found {pair.Key}!");
         }
 
-        if (dialogueLines.Count > 0)
-        {
-            if (DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
-            {
-                NPCDialogue tempDialogue = new NPCDialogue();
-                List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
-                foreach (string line in dialogueLines)
-                {
-                    dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
-                }
-                DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
-            }
-        }
+        if (itemInventoryFull)
+            dialogueLines.Add("Your item inventory is too full to carry any more items.");
 
-        Destroy(gameObject);
+        if (specialAttackInventoryFull)
+            dialogueLines.Add("Your special attack inventory is too full to carry any more special attacks.");
+        if (dialogueLines.Count > 0 && DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
+        {
+            NPCDialogue tempDialogue = new NPCDialogue();
+            List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
+
+            foreach (string line in dialogueLines)
+            {
+                dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
+            }
+
+            DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
+        }
+        if (items.Count == 0 && specialAttacks.Count == 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            pickedUp = false;
+        }
     }
+
 }
