@@ -82,6 +82,7 @@ public class InventoryUIController : MonoBehaviour
 
     public void NextGrid()
     {
+        Debug.Log("NextGrid called");
         if (currentGrid == 0)
         {
             currentGrid = 1;
@@ -91,6 +92,7 @@ public class InventoryUIController : MonoBehaviour
 
     public void PreviousGrid()
     {
+        Debug.Log("PreviousGrid called");
         if (currentGrid == 1)
         {
             currentGrid = 0;

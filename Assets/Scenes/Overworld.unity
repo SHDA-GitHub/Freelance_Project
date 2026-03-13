@@ -9223,7 +9223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &865489359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11717,7 +11717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1186012063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15506,7 +15506,7 @@ MonoBehaviour:
   rightButton: {fileID: 1927585760}
   descriptionMenu: {fileID: 269098513}
   descriptionTextUI: {fileID: 473518167}
-  rootFirstButton: {fileID: 1927585760}
+  rootFirstButton: {fileID: 1795115651}
   enemyPatrolSurface: {fileID: 551887789}
 --- !u!114 &1711264373
 MonoBehaviour:
@@ -19304,7 +19304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2086209812
 RectTransform:
   m_ObjectHideFlags: 0
