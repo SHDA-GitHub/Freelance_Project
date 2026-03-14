@@ -13,10 +13,23 @@ MonoBehaviour:
   m_Name: Internal Cramps
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
-  statusChance: 70
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 
+  dotStatusChance: 65
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Internal Cramps
   powerCost: 0

@@ -26,7 +26,10 @@ MonoBehaviour:
   healOnHit: 1
   healAmount: 1
   descriptionText: 
-  statusChance: 50
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 90
   statusDuration: 2
   attackName: Haunting Laughter
   powerCost: 0

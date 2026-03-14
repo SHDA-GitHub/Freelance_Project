@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Water Spout
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 3
+  missStatusEffect: 0
+  statChangeEffect: 2
+  offenseChange: -1
+  defenseChange: 1
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 15
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 45
   statusDuration: 2
   attackName: Water Spout
   powerCost: 0

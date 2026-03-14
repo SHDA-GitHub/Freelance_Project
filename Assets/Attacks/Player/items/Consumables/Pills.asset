@@ -41,7 +41,10 @@ MonoBehaviour:
     Cures Distraction
 
     Poison Chance: 40'
-  statusChance: 40
+  dotStatusChance: 40
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   consumable: 1
   flavorText: '{attacker} took some {action}'

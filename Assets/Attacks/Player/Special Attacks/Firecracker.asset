@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 2
 
     Burning Chance: 75'
-  statusChance: 75
+  dotStatusChance: 75
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Firecracker
   powerCost: 2

@@ -26,8 +26,11 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 35
-  statusDuration: 2
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 70
+  statusDuration: 1
   attackName: Hiss
   powerCost: 0
   damage: 4

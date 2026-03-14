@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Sleepiness Chance:
     90'
-  statusChance: 90
+  dotStatusChance: 0
+  stunStatusChance: 90
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Bear Tranq
   powerCost: 4

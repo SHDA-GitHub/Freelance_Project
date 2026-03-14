@@ -26,7 +26,10 @@ MonoBehaviour:
   descriptionText: 'Req. PP: 1
 
     Deafness Chance: 65'
-  statusChance: 65
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 65
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Annoying Whistle
   powerCost: 1

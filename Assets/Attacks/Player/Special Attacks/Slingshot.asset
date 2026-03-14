@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Blindness
     Chance: 5'
-  statusChance: 5
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 5
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Slingshot
   powerCost: 2

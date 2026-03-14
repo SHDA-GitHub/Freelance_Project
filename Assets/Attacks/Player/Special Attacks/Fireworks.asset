@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Burning Chance:
     80'
-  statusChance: 80
+  dotStatusChance: 80
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Fireworks
   powerCost: 3

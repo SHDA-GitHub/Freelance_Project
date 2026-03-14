@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -39,7 +39,10 @@ MonoBehaviour:
   descriptionText: 'PP: 5
 
     Numbness Chance: 35'
-  statusChance: 35
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 35
   statusDuration: 1
   consumable: 1
   flavorText: '{attacker} shared some {action}'

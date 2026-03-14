@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Grounded
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 5
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 85
+  dotStatusChance: 0
+  stunStatusChance: 95
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   attackName: Grounded
   powerCost: 0

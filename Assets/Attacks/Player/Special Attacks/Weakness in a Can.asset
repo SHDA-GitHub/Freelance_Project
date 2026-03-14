@@ -26,7 +26,10 @@ MonoBehaviour:
   descriptionText: 'Req. PP: 2
 
     Applies Weakness -2'
-  statusChance: 100
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 100
   statusDuration: 1
   specAttackName: Weakness in a Can
   powerCost: 2

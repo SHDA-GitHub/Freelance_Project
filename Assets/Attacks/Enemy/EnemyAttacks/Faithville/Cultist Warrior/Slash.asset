@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 5
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
-  statusChance: 55
+  descriptionText: 
+  dotStatusChance: 55
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Slash
   powerCost: 0

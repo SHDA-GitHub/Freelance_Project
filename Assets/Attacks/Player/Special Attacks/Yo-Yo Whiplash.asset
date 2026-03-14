@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Dizziness
     Chance: 45'
-  statusChance: 45
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 45
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Yo-Yo
   powerCost: 3

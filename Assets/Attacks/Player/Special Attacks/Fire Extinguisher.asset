@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Blindness
     Chance: 30'
-  statusChance: 30
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 30
+  statStatusChance: 0
   statusDuration: 3
   specAttackName: Fire Extinguisher
   powerCost: 3

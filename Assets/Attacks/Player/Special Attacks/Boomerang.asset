@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Dizziness
     Chance: 40'
-  statusChance: 40
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 40
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Boomerang
   powerCost: 1

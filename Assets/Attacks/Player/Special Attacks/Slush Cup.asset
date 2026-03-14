@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 1
 
     Freezing Chance: 65'
-  statusChance: 65
+  dotStatusChance: 0
+  stunStatusChance: 65
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Slush Cup
   powerCost: 2

@@ -28,7 +28,10 @@ MonoBehaviour:
     Lowers DEF -1
 
     Disctraction Chance: 65'
-  statusChance: 65
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 65
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Loose Change Pouch
   powerCost: 1

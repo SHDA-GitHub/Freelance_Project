@@ -26,7 +26,10 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 35
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 85
   statusDuration: 1
   attackName: Car Crossfire
   powerCost: 0

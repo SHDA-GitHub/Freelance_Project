@@ -28,7 +28,10 @@ MonoBehaviour:
     Lowers DEF -1
 
     Blindness Chance: 90'
-  statusChance: 90
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 90
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Pocket Sand
   powerCost: 1

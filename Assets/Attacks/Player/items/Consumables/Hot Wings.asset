@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -42,7 +42,10 @@ MonoBehaviour:
 
     Burning Chance:
     40'
-  statusChance: 40
+  dotStatusChance: 40
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   consumable: 1
   flavorText: '{attacker} shared some spicy {action}'

@@ -13,12 +13,25 @@ MonoBehaviour:
   m_Name: Toxic Splash
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 2
   stunstatusEffect: 0
   missStatusEffect: 0
-  statusChance: 75
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 
+  dotStatusChance: 55
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
-  attackName: 
+  attackName: Toxic Splash
   powerCost: 0
   damage: 2
   attackSound: {fileID: 8300000, guid: 3aa4e91896568fe4cbc07731889cd210, type: 3}

@@ -31,7 +31,10 @@ MonoBehaviour:
 
     Burning Chance:
     75'
-  statusChance: 75
+  dotStatusChance: 75
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: 4th of July Fireworks
   powerCost: 4

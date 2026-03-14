@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: Tail Coil
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 1
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 4
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 35
+  dotStatusChance: 0
+  stunStatusChance: 45
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   attackName: Tail Slam
   powerCost: 0
   damage: 3
   attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
-  flavorText: '{attacker} coiled its tail around {target} and constricted them'
+  flavorText: '{attacker} coiled its tail around {target}'

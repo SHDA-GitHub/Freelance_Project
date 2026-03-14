@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: EMP
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 4
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 45
+  dotStatusChance: 50
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 3
   attackName: EMP
   powerCost: 0

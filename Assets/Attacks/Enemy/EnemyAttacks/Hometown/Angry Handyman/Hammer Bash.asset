@@ -26,7 +26,10 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 50
+  dotStatusChance: 0
+  stunStatusChance: 75
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Hammer Bash
   powerCost: 0

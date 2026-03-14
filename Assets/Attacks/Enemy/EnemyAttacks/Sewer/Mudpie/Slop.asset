@@ -13,12 +13,25 @@ MonoBehaviour:
   m_Name: Slop
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 1
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
-  statusChance: 35
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
+  healOnHit: 0
+  healAmount: 0
+  descriptionText: 
+  dotStatusChance: 90
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
-  attackName: 
+  attackName: Slop
   powerCost: 0
   damage: 1
   attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}

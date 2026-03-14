@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 3
 
     Dizziness Chance: 20'
-  statusChance: 20
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 20
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Skateboard Tricks
   powerCost: 3

@@ -26,7 +26,10 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 45
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 95
   statusDuration: 2
   attackName: Roar
   powerCost: 0

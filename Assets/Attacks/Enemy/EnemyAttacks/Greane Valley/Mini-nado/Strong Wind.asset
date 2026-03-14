@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Strong Wind
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 3
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 25
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 35
+  statStatusChance: 0
   statusDuration: 2
   attackName: Strong Wind
   powerCost: 0

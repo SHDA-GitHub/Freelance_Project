@@ -26,7 +26,10 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 90
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 50
   statusDuration: 2
   attackName: Cry
   powerCost: 0

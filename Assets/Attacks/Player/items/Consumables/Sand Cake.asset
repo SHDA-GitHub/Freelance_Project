@@ -20,9 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -37,8 +38,11 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 7
 
-    Slowness Chance: 25%'
-  statusChance: 25
+    Slowness Chance: 25'
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 25
+  statStatusChance: 0
   statusDuration: 1
   consumable: 1
   flavorText: '{target} ate the incredibly dry {action}'

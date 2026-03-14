@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 2
 
     Blindness Chance: 70'
-  statusChance: 70
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 70
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Incredibly Shined Shoes
   powerCost: 2

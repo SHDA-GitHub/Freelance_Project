@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: Crown of Obedience
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 1
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 4
+  missStatusEffect: 6
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 1
-  statusChance: 0
+  descriptionText: 
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 45
+  statStatusChance: 0
   statusDuration: 2
   attackName: Crown of Obedience
   powerCost: 0

@@ -26,7 +26,10 @@ MonoBehaviour:
   descriptionText: 'Req. PP: 1
 
     Sleepiness Chance: 85'
-  statusChance: 85
+  dotStatusChance: 0
+  stunStatusChance: 85
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Music Box
   powerCost: 1

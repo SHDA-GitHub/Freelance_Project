@@ -26,7 +26,10 @@ MonoBehaviour:
   descriptionText: 'Req PP: 1
 
     Slowed Chance: 70'
-  statusChance: 70
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 70
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Banana Peel
   powerCost: 1

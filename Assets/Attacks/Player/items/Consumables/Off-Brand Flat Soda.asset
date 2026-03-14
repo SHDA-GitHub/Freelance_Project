@@ -20,14 +20,14 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
-  statusEffect: 0
+  statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
   statChangeEffect: 0
@@ -41,7 +41,10 @@ MonoBehaviour:
     PP: 3
 
     Sickness Chance: 40'
-  statusChance: 40
+  dotStatusChance: 40
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   consumable: 1
   flavorText: '{attacker} drank the {action}'

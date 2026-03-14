@@ -1725,7 +1725,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: 3cc57026d144879468c80f903cc0c067, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 5dc1749380a286e4b955c1f6319d8fdb, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}

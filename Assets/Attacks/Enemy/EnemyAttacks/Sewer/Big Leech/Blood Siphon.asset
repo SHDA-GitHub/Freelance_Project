@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: Blood Siphon
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 5
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 1
   healAmount: 1
-  statusChance: 60
+  descriptionText: 
+  dotStatusChance: 45
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   attackName: Blood Siphon
   powerCost: 0

@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 1
 
     Shock Chance: 65'
-  statusChance: 65
+  dotStatusChance: 65
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Static Socks
   powerCost: 2

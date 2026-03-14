@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dad Rage
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -21,11 +22,14 @@ MonoBehaviour:
   missStatusEffect: 0
   statChangeEffect: 1
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 70
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 55
   statusDuration: 1
   attackName: Dad Rage
   powerCost: 0

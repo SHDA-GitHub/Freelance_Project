@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: Ritual Sacrifice
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 5
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 1
   healAmount: 2
-  statusChance: 60
+  descriptionText: 
+  dotStatusChance: 60
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Ritual Sacrifice
   powerCost: 0

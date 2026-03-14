@@ -13,14 +13,24 @@ MonoBehaviour:
   m_Name: Tail Slam
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 3
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 25
-  statusDuration: 2
+  dotStatusChance: 0
+  stunStatusChance: 25
+  missStatusChance: 0
+  statStatusChance: 0
+  statusDuration: 1
   attackName: Tail Slam
   powerCost: 0
   damage: 4

@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: Crash and Burn
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 1
   stunstatusEffect: 0
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 65
+  dotStatusChance: 35
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Crash ad Burn
   powerCost: 0
-  damage: 5
+  damage: 6
   attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
   flavorText: '{attacker} caused a car to slip and crash into {target}'

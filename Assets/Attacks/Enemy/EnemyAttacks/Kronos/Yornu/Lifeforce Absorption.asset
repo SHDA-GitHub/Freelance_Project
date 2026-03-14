@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Lifeforce Absorption
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 3
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 1
   healAmount: 2
   descriptionText: 
-  statusChance: 35
+  dotStatusChance: 0
+  stunStatusChance: 40
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   attackName: Lifeforce Absorption
   powerCost: 0

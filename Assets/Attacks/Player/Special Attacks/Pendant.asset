@@ -28,7 +28,10 @@ MonoBehaviour:
     Lowers DEF -1
 
     Hypnosis Chance: 85'
-  statusChance: 85
+  dotStatusChance: 0
+  stunStatusChance: 85
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Pendant
   powerCost: 1

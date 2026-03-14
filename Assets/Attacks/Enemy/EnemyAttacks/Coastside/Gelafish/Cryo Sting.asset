@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Cryo Sting
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 1
   missStatusEffect: 0
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 45
+  dotStatusChance: 0
+  stunStatusChance: 50
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   attackName: Cryo Sting
   powerCost: 0

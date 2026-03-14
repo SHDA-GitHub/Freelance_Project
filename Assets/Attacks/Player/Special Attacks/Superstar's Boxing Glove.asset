@@ -30,7 +30,10 @@ MonoBehaviour:
     Lowers DEF -1
 
     Applies Concussion'
-  statusChance: 100
+  dotStatusChance: 0
+  stunStatusChance: 100
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Superstar's Boxing Glove
   powerCost: 0

@@ -28,7 +28,10 @@ MonoBehaviour:
     DMG: 1
 
     Applies Sickness'
-  statusChance: 100
+  dotStatusChance: 100
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   specAttackName: Doggy Bag
   powerCost: 2

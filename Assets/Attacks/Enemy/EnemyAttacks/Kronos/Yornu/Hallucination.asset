@@ -19,14 +19,17 @@ MonoBehaviour:
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
+  missStatusEffect: 2
   statChangeEffect: 1
   offenseChange: 0
   defenseChange: -1
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  statusChance: 80
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 35
+  statStatusChance: 35
   statusDuration: 2
   attackName: Hallucination
   powerCost: 0
