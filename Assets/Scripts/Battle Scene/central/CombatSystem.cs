@@ -120,6 +120,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (attack.offenseChange > 0)
+                        changes.Add($"offense went up by {attack.offenseChange}");
+                    else if (attack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(attack.offenseChange)}");
+
+                    if (attack.defenseChange > 0)
+                        changes.Add($"defense went up by {attack.defenseChange}");
+                    else if (attack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(attack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -147,6 +167,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (attack.offenseChange > 0)
+                        changes.Add($"offense went up by {attack.offenseChange}");
+                    else if (attack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(attack.offenseChange)}");
+
+                    if (attack.defenseChange > 0)
+                        changes.Add($"defense went up by {attack.defenseChange}");
+                    else if (attack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(attack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -174,6 +214,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (attack.offenseChange > 0)
+                        changes.Add($"offense went up by {attack.offenseChange}");
+                    else if (attack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(attack.offenseChange)}");
+
+                    if (attack.defenseChange > 0)
+                        changes.Add($"defense went up by {attack.defenseChange}");
+                    else if (attack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(attack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -298,6 +358,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (specAttack.offenseChange > 0)
+                        changes.Add($"offense went up by {specAttack.offenseChange}");
+                    else if (specAttack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(specAttack.offenseChange)}");
+
+                    if (specAttack.defenseChange > 0)
+                        changes.Add($"defense went up by {specAttack.defenseChange}");
+                    else if (specAttack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(specAttack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -325,6 +405,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (specAttack.offenseChange > 0)
+                        changes.Add($"offense went up by {specAttack.offenseChange}");
+                    else if (specAttack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(specAttack.offenseChange)}");
+
+                    if (specAttack.defenseChange > 0)
+                        changes.Add($"defense went up by {specAttack.defenseChange}");
+                    else if (specAttack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(specAttack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -352,6 +452,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (specAttack.offenseChange > 0)
+                        changes.Add($"offense went up by {specAttack.offenseChange}");
+                    else if (specAttack.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(specAttack.offenseChange)}");
+
+                    if (specAttack.defenseChange > 0)
+                        changes.Add($"defense went up by {specAttack.defenseChange}");
+                    else if (specAttack.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(specAttack.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -453,6 +573,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (item.offenseChange > 0)
+                        changes.Add($"offense went up by {item.offenseChange}");
+                    else if (item.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(item.offenseChange)}");
+
+                    if (item.defenseChange > 0)
+                        changes.Add($"defense went up by {item.defenseChange}");
+                    else if (item.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(item.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -507,6 +647,26 @@ public class CombatSystem : MonoBehaviour
 
                     audioManager.clip = statusEffectGain;
                     audioManager.Play();
+                    yield return new WaitForSeconds(0.2f);
+
+                    List<string> changes = new List<string>();
+
+                    if (item.offenseChange > 0)
+                        changes.Add($"offense went up by {item.offenseChange}");
+                    else if (item.offenseChange < 0)
+                        changes.Add($"offense went down by {Mathf.Abs(item.offenseChange)}");
+
+                    if (item.defenseChange > 0)
+                        changes.Add($"defense went up by {item.defenseChange}");
+                    else if (item.defenseChange < 0)
+                        changes.Add($"defense went down by {Mathf.Abs(item.defenseChange)}");
+
+                    if (changes.Count > 0)
+                    {
+                        yield return flavorTextUI.ShowTextCoroutine(
+                            $"{target.characterName}'s {string.Join(" and ", changes)}!"
+                        );
+                    }
                 }
 
                 yield return new WaitForSeconds(0.3f);

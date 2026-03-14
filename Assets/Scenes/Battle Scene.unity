@@ -1196,7 +1196,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0e3db790cb99a2641af384c3196a0534, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 3cc57026d144879468c80f903cc0c067, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -4025,7 +4025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4075,9 +4075,9 @@ MonoBehaviour:
   - attackData: {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
   - attackData: {fileID: 11400000, guid: 7b34989af7236c142910451a97a60202, type: 2}
   - attackData: {fileID: 11400000, guid: e3fc0ef567224e244be24b46da9cc126, type: 2}
-  - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
-  - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
-  - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}
+  - attackData: {fileID: 11400000, guid: 0929e325c7d5e3b43bc4fdfedac2cf7d, type: 2}
+  - attackData: {fileID: 11400000, guid: dace8e4c570e2ae4093fa46a8d9cf04c, type: 2}
+  - attackData: {fileID: 11400000, guid: d13295cab6f1c4145aa418e71a09c5b4, type: 2}
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
 --- !u!4 &1406268199
 Transform:

@@ -160,7 +160,7 @@ MonoBehaviour:
   currentEXP: 0
   immuneDOTEffects: 03000000
   immuneStunEffects: 02000000
-  immuneMissEffects: 02000000
+  immuneMissEffects: 010000000200000006000000
   immuneOffDefEffects: 0100000003000000
   enemyLoadout: {fileID: 11400000, guid: b03cbfa20c405764d9d3e21bd2ced0ac, type: 2}
   expReward: 5

@@ -13,22 +13,30 @@ MonoBehaviour:
   m_Name: Bear Tranq
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
-  stunstatusEffect: 0
+  stunstatusEffect: 2
   missStatusEffect: 0
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: 0
-  descriptionText: 
-  statusChance: 0
-  statusDuration: 2
+  defenseChange: -1
+  descriptionText: 'Req. PP: 4
+
+    DMG: 3
+
+    Lowers DEF -1
+
+    Sleepiness Chance:
+    90'
+  statusChance: 90
+  statusDuration: 1
   specAttackName: Bear Tranq
-  powerCost: 0
-  damage: 0
-  attackSound: {fileID: 0}
+  powerCost: 4
+  damage: 3
+  attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: 
+  flavorText: '{attacker} threw the {action} at {target}!'
