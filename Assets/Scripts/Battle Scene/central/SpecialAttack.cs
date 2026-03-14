@@ -27,8 +27,11 @@ public class SpecialAttack : ScriptableObject
     [TextArea(3, 6)]
     public string descriptionText;
 
-    [Range(0, 100)]
-    public int statusChance = 0;
+    [Header("Status Chances")]
+    [Range(0, 100)] public int dotStatusChance = 0;
+    [Range(0, 100)] public int stunStatusChance = 0;
+    [Range(0, 100)] public int missStatusChance = 0;
+    [Range(0, 100)] public int statStatusChance = 0;
 
     public int statusDuration = 2;
     public string specAttackName;

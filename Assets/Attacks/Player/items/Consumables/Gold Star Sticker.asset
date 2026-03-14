@@ -10,38 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Cosmic Star Fruit
+  m_Name: Gold Star Sticker
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Cosmic Star Fruit
-  healAmount: 12
+  itemName: Gold Star Sticker
+  healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 6
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 0100000003000000
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  statChangeEffect: 4
-  offenseChange: 1
-  defenseChange: -1
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
   itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 12
-
-    PP: 6
-
-    Applies Hyperfocus'
-  statusChance: 100
+  descriptionText: Cures Fear and Weakness
+  statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} courageously stuck the {action} onto themselves'

@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 1
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 0200000003000000
+  removeStatEffects: 01000000
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -40,8 +40,8 @@ MonoBehaviour:
 
     PP: 3
 
-    Cures Inaccuracy'
+    Cures Fear, Confusion, Dizziness'
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{attacker} drank the warm {action}'
+  flavorText: '{attacker} took a sip from the warm {action}'

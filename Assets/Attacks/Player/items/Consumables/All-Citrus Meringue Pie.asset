@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Grandma's Tough Candy
+  m_Name: All-Citrus Meringue Pie
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Grandma's Tough Candy
-  healAmount: 3
-  healAllParty: 0
-  splitHealAcrossParty: 0
-  ppAmount: 4
+  itemName: All-Citrus Meringue Pie
+  healAmount: 14
+  healAllParty: 1
+  splitHealAcrossParty: 1
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 1
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 01000000
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -32,15 +33,15 @@ MonoBehaviour:
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
+  itemSound: {fileID: 8300000, guid: f638f060f1b6b71459b4f79e434f3d74, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 3
+  descriptionText: 'HP: 14
 
-    PP: 4
+    If split: divide per party member
 
-    Cures Dizziness'
+    Cures Fear'
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{target} ate {action}'
+  flavorText: '{attacker} took a slice of {action} and ate it'

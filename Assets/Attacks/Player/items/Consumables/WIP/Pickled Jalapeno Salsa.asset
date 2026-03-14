@@ -44,4 +44,4 @@ MonoBehaviour:
   statusChance: 75
   statusDuration: 2
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} '

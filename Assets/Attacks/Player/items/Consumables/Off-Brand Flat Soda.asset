@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Ghoul Pepper
+  m_Name: Off-Brand Flat Soda
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Ghoul Pepper
-  healAmount: 10
+  itemName: Off-Brand Flat Soda
+  healAmount: 3
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 0
+  ppAmount: 3
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
-  statusEffect: 1
+  statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
   statChangeEffect: 0
@@ -36,10 +36,12 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 10
+  descriptionText: 'HP: 3
 
-    Applies Burning'
-  statusChance: 100
-  statusDuration: 2
+    PP: 3
+
+    Sickness Chance: 40'
+  statusChance: 40
+  statusDuration: 1
   consumable: 1
-  flavorText: '{target} reluctantly ate the devilish {action}'
+  flavorText: '{attacker} drank the {action}'

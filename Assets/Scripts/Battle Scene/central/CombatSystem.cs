@@ -102,7 +102,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < attack.statusChance)
+            if (roll < attack.dotStatusChance)
             {
                 if (target.IsImmune(attack.statusEffect))
                 {
@@ -149,7 +149,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < attack.statusChance)
+            if (roll < attack.stunStatusChance)
             {
                 if (target.IsImmune(attack.stunstatusEffect))
                 {
@@ -196,7 +196,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < attack.statusChance)
+            if (roll < attack.missStatusChance)
             {
                 if (target.IsImmune(attack.missStatusEffect))
                 {
@@ -243,7 +243,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < attack.statusChance)
+            if (roll < attack.statStatusChance)
             {
                 if (target.IsImmune(attack.statChangeEffect))
                 {
@@ -340,7 +340,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < specAttack.statusChance)
+            if (roll < specAttack.dotStatusChance)
             {
                 if (target.IsImmune(specAttack.statusEffect))
                 {
@@ -387,7 +387,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < specAttack.statusChance)
+            if (roll < specAttack.stunStatusChance)
             {
                 if (target.IsImmune(specAttack.stunstatusEffect))
                 {
@@ -434,7 +434,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < specAttack.statusChance)
+            if (roll < specAttack.missStatusChance)
             {
                 if (target.IsImmune(specAttack.missStatusEffect))
                 {
@@ -481,7 +481,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < specAttack.statusChance)
+            if (roll < specAttack.statStatusChance)
             {
                 if (target.IsImmune(specAttack.statChangeEffect))
                 {
@@ -555,7 +555,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < item.statusChance)
+            if (roll < item.dotStatusChance)
             {
                 if (target.IsImmune(item.statusEffect))
                 {
@@ -602,7 +602,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < item.statusChance)
+            if (roll < item.stunStatusChance)
             {
                 if (target.IsImmune(item.stunstatusEffect))
                 {
@@ -629,7 +629,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < item.statusChance)
+            if (roll < item.missStatusChance)
             {
                 if (target.IsImmune(item.missStatusEffect))
                 {
@@ -676,7 +676,7 @@ public class CombatSystem : MonoBehaviour
         {
             int roll = Random.Range(0, 100);
 
-            if (roll < item.statusChance)
+            if (roll < item.statStatusChance)
             {
                 if (target.IsImmune(item.statChangeEffect))
                 {
@@ -784,40 +784,42 @@ public class CombatSystem : MonoBehaviour
         }
         IEnumerator Cleanse(CharacterStats character)
         {
-
             if (item.removeAllStatusEffects)
             {
-                if (character.IsDOT() || character.IsStunned() || character.IsMissAttack())
+                if (character.IsDOT() || character.IsStunned() || character.IsMissAttack() || character.IsStatChange())
                 {
                     character.RemoveAllStatusEffects();
                     flavorTextUI.ShowImmediateText($"{character.characterName} was cleansed!");
                     yield return new WaitForSeconds(0.3f);
-                    yield break;
                 }
+                yield break;
             }
 
-            if (item.removeDOT && character.IsDOT())
+            foreach (var effect in item.removeDOTEffects)
             {
-                character.RemoveDOTEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName} was cured!");
+                character.RemoveDOTEffect(effect);
+                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer {effect}!");
                 yield return new WaitForSeconds(0.3f);
             }
-            if (item.removeStun && character.IsStunned())
+
+            foreach (var effect in item.removeStunEffects)
             {
-                character.RemoveStunEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer stunned!");
+                character.RemoveStunEffect(effect);
+                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer {effect}!");
                 yield return new WaitForSeconds(0.3f);
             }
-            if (item.removeMiss && character.IsMissAttack())
+
+            foreach (var effect in item.removeMissEffects)
             {
-                character.RemoveMissEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName}'s accuracy was recovered!");
+                character.RemoveMissEffect(effect);
+                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer {effect}!");
                 yield return new WaitForSeconds(0.3f);
             }
-            if (item.removeStat && character.IsStatChange())
+
+            foreach (var effect in item.removeStatEffects)
             {
-                character.RemoveOffDefEffects();
-                flavorTextUI.ShowImmediateText($"{character.characterName}'s resolve was restored!");
+                character.RemoveStatEffect(effect);
+                flavorTextUI.ShowImmediateText($"{character.characterName} is no longer {effect}!");
                 yield return new WaitForSeconds(0.3f);
             }
         }

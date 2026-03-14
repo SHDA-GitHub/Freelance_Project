@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 06000000
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -38,9 +38,9 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 7
 
-    Poison Chance: 40
+    Cures Distraction
 
-'
+    Poison Chance: 40'
   statusChance: 40
   statusDuration: 2
   consumable: 1

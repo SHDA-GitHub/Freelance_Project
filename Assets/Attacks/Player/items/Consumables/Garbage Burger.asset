@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -39,7 +39,10 @@ MonoBehaviour:
   descriptionText: 'HP: 7
 
     Sickness Chance: 65'
-  statusChance: 65
+  dotStatusChance: 65
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   consumable: 1
   flavorText: '{attacker} reluctantly ate the {action}'

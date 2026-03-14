@@ -1324,16 +1324,16 @@ RectTransform:
   m_GameObject: {fileID: 462310167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 3.5, z: 3.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 488510841}
   m_Father: {fileID: 1273724935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 577.9951, y: 304.0005}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 662, y: 353}
+  m_SizeDelta: {x: 28.6, y: 20.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462310169
 MonoBehaviour:
@@ -1535,8 +1535,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.18}
-  m_SizeDelta: {x: 100, y: 91.19}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 28.6, y: 20.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488510842
 MonoBehaviour:
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 75, y: 25}
+  m_CellSize: {x: 75, y: 21}
   m_Spacing: {x: -53, y: -3}
   m_Constraint: 1
   m_ConstraintCount: 4
@@ -4059,7 +4059,7 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
-  - itemData: {fileID: 11400000, guid: ccf78ab03705f9344bf1ea475ff1f496, type: 2}
+  - itemData: {fileID: 11400000, guid: 72ace85841430034c980dd64eedb2bbf, type: 2}
   specAttacks:
   - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}
   - attackData: {fileID: 11400000, guid: 5ade50f98609f3e40bd29b3b99d21132, type: 2}

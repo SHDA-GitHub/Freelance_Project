@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Frozen Crystal Sugar
+  m_Name: Milky Way Shake
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Frozen Crystal Sugar
-  healAmount: 3
+  itemName: Milky Way Shake
+  healAmount: 8
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 5
+  ppAmount: 4
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
@@ -36,12 +36,12 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 3
+  descriptionText: 'HP: 8
 
-    PP: 5
+    PP: 4
 
-    Freezing Chance: 25'
-  statusChance: 25
+    Stuffed Chance: 15'
+  statusChance: 15
   statusDuration: 1
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} drank the otherworldly {action}'

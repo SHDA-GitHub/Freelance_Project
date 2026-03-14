@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Tough Punch
+  m_Name: TKO Punch
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
   targetSelf: 0
@@ -27,12 +27,10 @@ MonoBehaviour:
   healAmount: 0
   descriptionText: 'DMG: 2
 
-    Tiny chance to inflict concussion upon enemy
-
-'
-  statusChance: 10
+    Concussion Chance: 5'
+  statusChance: 5
   statusDuration: 1
-  attackName: Punch
+  attackName: TKO Punch
   powerCost: 0
   damage: 2
   attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}

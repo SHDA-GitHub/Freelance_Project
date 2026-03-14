@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 1
-  removeStun: 1
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 04000000
+  removeStunEffects: 06000000
+  removeMissEffects: 06000000
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -38,9 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 3
 
-    Cures Overtime Effects
-
-    Cures Stun'
+    Cures Shock, Hypnosis, Distraction'
   statusChance: 0
   statusDuration: 2
   consumable: 1

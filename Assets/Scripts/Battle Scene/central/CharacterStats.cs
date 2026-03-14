@@ -255,24 +255,24 @@ public class CharacterStats : MonoBehaviour
         activeOffDefEffects.Clear();
     }
 
-    public void RemoveDOTEffects()
+    public void RemoveDOTEffect(DOTStatusEffectType type)
     {
-        activeStatusEffects.Clear();
+        activeStatusEffects.RemoveAll(e => e.type == type);
     }
 
-    public void RemoveStunEffects()
+    public void RemoveStunEffect(StunStatusEffectType type)
     {
-        activeStunEffects.Clear();
+        activeStunEffects.RemoveAll(e => e.type == type);
     }
 
-    public void RemoveMissEffects()
+    public void RemoveMissEffect(MissStatusEffectType type)
     {
-        activeMissEffects.Clear();
+        activeMissEffects.RemoveAll(e => e.type == type);
     }
 
-    public void RemoveOffDefEffects()
+    public void RemoveStatEffect(OffenseDefenseChangeStatusEffectType type)
     {
-        activeOffDefEffects.Clear();
+        activeOffDefEffects.RemoveAll(e => e.type == type);
     }
 
     public bool IsImmune(DOTStatusEffectType type)

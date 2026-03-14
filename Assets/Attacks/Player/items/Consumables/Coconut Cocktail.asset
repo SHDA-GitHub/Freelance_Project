@@ -10,34 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Herbal Infusion
+  m_Name: Coconut Cocktail
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Herbal Infusion
-  healAmount: 0
+  itemName: Coconut Cocktail
+  healAmount: 6
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 0
+  ppAmount: 3
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
+  missStatusEffect: 3
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
+  itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: Cures Poison, Sickness and Stress
-  statusChance: 0
+  descriptionText: 'HP: 6
+
+    PP: 3
+
+    Dizziness Chance: 20'
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 20
+  statStatusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} took a swig from the {action}'

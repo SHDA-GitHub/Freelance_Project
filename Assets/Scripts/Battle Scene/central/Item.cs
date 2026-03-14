@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Battle/Item")]
@@ -16,11 +17,14 @@ public class Item : ScriptableObject
     public bool splitPPAcrossParty = false;
 
     [Header("Status Removal")]
+
     public bool removeAllStatusEffects = false;
-    public bool removeDOT = false;
-    public bool removeStun = false;
-    public bool removeMiss = false;
-    public bool removeStat = false;
+
+    public List<DOTStatusEffectType> removeDOTEffects = new List<DOTStatusEffectType>();
+    public List<StunStatusEffectType> removeStunEffects = new List<StunStatusEffectType>();
+    public List<MissStatusEffectType> removeMissEffects = new List<MissStatusEffectType>();
+    public List<OffenseDefenseChangeStatusEffectType> removeStatEffects = new List<OffenseDefenseChangeStatusEffectType>();
+
 
     [Header("DOT Behavior")]
     public bool drainPPInstead = false;
@@ -48,8 +52,11 @@ public class Item : ScriptableObject
     [TextArea(3, 6)]
     public string descriptionText;
 
-    [Range(0, 100)]
-    public int statusChance = 0;
+    [Header("Status Chances")]
+    [Range(0, 100)] public int dotStatusChance = 0;
+    [Range(0, 100)] public int stunStatusChance = 0;
+    [Range(0, 100)] public int missStatusChance = 0;
+    [Range(0, 100)] public int statStatusChance = 0;
 
     public int statusDuration = 2;
 

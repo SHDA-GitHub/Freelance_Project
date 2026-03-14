@@ -20,9 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 1
-  removeStun: 0
-  removeMiss: 0
+  removeDOTEffects: 01000000
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -41,4 +42,4 @@ MonoBehaviour:
   statusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: '{target} drank the pack of {action}'
+  flavorText: '{target} drank the entire pack of {action}'

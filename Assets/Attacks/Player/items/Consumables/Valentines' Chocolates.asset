@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 1
   splitPPAcrossParty: 1
   removeAllStatusEffects: 0
-  removeDOT: 1
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 03000000
+  removeStunEffects: 
+  removeMissEffects: 06000000
+  removeStatEffects: 03000000
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     If split: divide per party member
 
     Cures
-    Overtime Effects'
+    Sickness, Distraction & Weakness'
   statusChance: 0
   statusDuration: 2
   consumable: 1

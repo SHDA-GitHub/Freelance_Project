@@ -20,9 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 1
-  removeDOT: 1
-  removeStun: 1
-  removeMiss: 1
+  removeDOTEffects: 0100000002000000030000000400000005000000
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -35,7 +36,7 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: Cures all Status Effects
+  descriptionText: Cures all Overtime Status Effects
   statusChance: 0
   statusDuration: 2
   consumable: 1

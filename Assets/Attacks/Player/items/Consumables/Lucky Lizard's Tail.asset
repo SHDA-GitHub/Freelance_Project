@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Off-Brand Flat Soda
+  m_Name: Lucky Lizard's Tail
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Off-Brand Flat Soda
-  healAmount: 3
+  itemName: Lucky Lizard's Tail
+  healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 3
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 02000000040000000500000003000000
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -33,15 +33,11 @@ MonoBehaviour:
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
+  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 3
-
-    PP: 3
-
-    Sickness Chance: 40'
-  statusChance: 40
-  statusDuration: 1
+  descriptionText: Cures Dizziness, Blindness, Deafness, Confusion
+  statusChance: 0
+  statusDuration: 2
   consumable: 1
-  flavorText: 
+  flavorText: '{target} held the wriggling {action} with hope'

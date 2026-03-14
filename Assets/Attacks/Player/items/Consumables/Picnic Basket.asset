@@ -20,10 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 1
   splitPPAcrossParty: 1
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 1
-  removeStat: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -42,9 +42,9 @@ MonoBehaviour:
 
     If split: divided per party member
 
-    Cures
-    Inaccuracy'
-  statusChance: 0
+    Stuffed
+    Chance: 45'
+  statusChance: 45
   statusDuration: 2
   consumable: 1
   flavorText: '{attacker} shared some of the {action}'
