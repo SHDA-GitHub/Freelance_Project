@@ -22,8 +22,10 @@ MonoBehaviour:
   missStatusEffect: 4
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: 0
+  defenseChange: -1
   descriptionText: 'Req. PP: 1
+
+    Lowers DEF -1
 
     Blindness Chance: 90'
   statusChance: 90

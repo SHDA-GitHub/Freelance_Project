@@ -23,9 +23,9 @@ MonoBehaviour:
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  descriptionText: 'DMG: 1
+  descriptionText: 'Req. PP: 2
 
-    Req. PP: 2
+    DMG: 1
 
     Shock Chance: 65'
   statusChance: 65

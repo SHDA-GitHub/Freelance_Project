@@ -28,6 +28,7 @@ public enum MissStatusEffectType
     dizzy,
     blinded,
     deafened,
+    distracted,
 }
 
 public enum OffenseDefenseChangeStatusEffectType

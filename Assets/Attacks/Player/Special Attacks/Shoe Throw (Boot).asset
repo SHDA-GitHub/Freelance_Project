@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Shoe Throw (Boot)
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
+  drainPPInstead: 0
+  dotAmount: 1
+  dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  descriptionText: 'DMG: 3
+  statChangeEffect: 0
+  offenseChange: 0
+  defenseChange: 0
+  descriptionText: 'Req. PP: 2
 
-    Req. PP: 2'
+    DMG: 3'
   statusChance: 0
   statusDuration: 2
   specAttackName: Brown Boot

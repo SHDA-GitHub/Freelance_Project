@@ -4061,20 +4061,20 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
   - itemData: {fileID: 11400000, guid: ccf78ab03705f9344bf1ea475ff1f496, type: 2}
   specAttacks:
-  - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}
-  - attackData: {fileID: 11400000, guid: 2a6a9854dbb9dba4eb2a367f31e6cda6, type: 2}
-  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
-  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
-  - attackData: {fileID: 11400000, guid: 58e0e2ac32509594286abd41ff56571f, type: 2}
-  - attackData: {fileID: 11400000, guid: c05a221738f92544489599db9efde1e4, type: 2}
-  - attackData: {fileID: 11400000, guid: 9a00123c322652b4692c3f4f73bb1e8e, type: 2}
-  - attackData: {fileID: 11400000, guid: 41774ff19d4458248ac6c270b23678ea, type: 2}
-  - attackData: {fileID: 11400000, guid: 19c3a8a096585c641ac026d29bc492f7, type: 2}
-  - attackData: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
-  - attackData: {fileID: 11400000, guid: ceff89ea1a2cb3745956d6dd0fd30660, type: 2}
-  - attackData: {fileID: 11400000, guid: 753abb07883443a459d0f7f263e9c06d, type: 2}
-  - attackData: {fileID: 11400000, guid: 0e3613b1c6a23f24c925460027cd4aab, type: 2}
-  - attackData: {fileID: 11400000, guid: 80e29d2909145124c9b74f7f9f3c7710, type: 2}
+  - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}
+  - attackData: {fileID: 11400000, guid: 5ade50f98609f3e40bd29b3b99d21132, type: 2}
+  - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+  - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+  - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+  - attackData: {fileID: 11400000, guid: 4cabca689f038054587e4cdd21f42e1e, type: 2}
+  - attackData: {fileID: 11400000, guid: 0c71b9e2f8f97f24bb910e8985bf26e0, type: 2}
+  - attackData: {fileID: 11400000, guid: c971f89a9d9e8584a9571df4b0fe20db, type: 2}
+  - attackData: {fileID: 11400000, guid: 98595b117053c7248abbbeb093352d32, type: 2}
+  - attackData: {fileID: 11400000, guid: aba6dcbbb93ef9348a9ac61e3efb846d, type: 2}
+  - attackData: {fileID: 11400000, guid: aba6dcbbb93ef9348a9ac61e3efb846d, type: 2}
+  - attackData: {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
+  - attackData: {fileID: 11400000, guid: 7b34989af7236c142910451a97a60202, type: 2}
+  - attackData: {fileID: 11400000, guid: e3fc0ef567224e244be24b46da9cc126, type: 2}
   - attackData: {fileID: 11400000, guid: 41c5d364cd148f441ab60db4ca1548af, type: 2}
   - attackData: {fileID: 11400000, guid: da7f1825b19813145ac4950f5ed263b9, type: 2}
   - attackData: {fileID: 11400000, guid: ba8f739fa8cc0f246aa747aa2ebfa75f, type: 2}

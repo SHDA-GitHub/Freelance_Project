@@ -10,25 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Static Socks
+  m_Name: Cracked Snowglobe
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
-  stunstatusEffect: 0
+  stunstatusEffect: 1
   missStatusEffect: 0
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: 0
-  descriptionText: 
-  statusChance: 0
+  defenseChange: -1
+  descriptionText: 'Req. PP: 4
+
+    DMG: 3
+
+    Lowers DEF -1
+
+    Applies Freezing'
+  statusChance: 100
   statusDuration: 2
-  specAttackName: Static Socks
-  powerCost: 0
-  damage: 0
-  attackSound: {fileID: 0}
+  specAttackName: Cracked Snowglobe
+  powerCost: 4
+  damage: 3
+  attackSound: {fileID: 8300000, guid: 32a607d077477a4468b8f749fd3f00ea, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: 

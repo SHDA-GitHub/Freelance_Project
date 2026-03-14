@@ -23,9 +23,9 @@ MonoBehaviour:
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  descriptionText: 'DMG: 4
+  descriptionText: 'Req. PP: 4
 
-    Req. PP: 4
+    DMG: 4
 
     Multi-Enemy Attack
 

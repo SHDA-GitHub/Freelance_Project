@@ -10,25 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Superstar's Boxing Glove
+  m_Name: Pendant
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
-  stunstatusEffect: 0
+  stunstatusEffect: 6
   missStatusEffect: 0
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: 0
-  descriptionText: 
-  statusChance: 0
-  statusDuration: 2
-  specAttackName: Superstar's Boxing Glove
-  powerCost: 0
+  defenseChange: -1
+  descriptionText: 'Req. PP: 1
+
+    Lowers DEF -1
+
+    Hypnosis Chance: 85'
+  statusChance: 85
+  statusDuration: 1
+  specAttackName: Pendant
+  powerCost: 1
   damage: 0
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: 
+  flavorText: '{attacker} swung the {action} in front of {target}'

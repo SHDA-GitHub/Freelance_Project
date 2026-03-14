@@ -25,6 +25,8 @@ MonoBehaviour:
   defenseChange: -1
   descriptionText: 'Req. PP: 1
 
+    Lowers DEF -1
+
     Fear Chance: 80'
   statusChance: 80
   statusDuration: 2

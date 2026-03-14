@@ -38,6 +38,6 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: Applies Strength +2
   statusChance: 100
-  statusDuration: 2
+  statusDuration: 1
   consumable: 1
-  flavorText: '{target} opened the {action}'
+  flavorText: '{attacker} sprayed the {action} onto themselves'
