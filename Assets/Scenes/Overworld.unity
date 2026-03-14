@@ -3437,31 +3437,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   dialogueLines:
-  - dialogueText: '"It''s been a long time, Buzz Buzz."'
+  - dialogueText: '"I know who you are."'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"You''ve been successful at foiling Master Giygas'' plans."'
+  - dialogueText: '"The child of legend..."'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"But... Buzz Buzz, you must now surrender."'
+  - dialogueText: '"With his gifted powers and strong emotional resolve."'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"You''re no longer a hero, but just a useless insect."'
+  - dialogueText: '"But you won''t stop the Moon Soldiers from taking over your planet."'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"I''ll stomp you hard!"'
+  - dialogueText: '"For the glory of the Chorus Beyond!"'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []
