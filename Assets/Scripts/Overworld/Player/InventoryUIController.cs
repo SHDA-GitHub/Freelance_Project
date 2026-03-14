@@ -48,9 +48,11 @@ public class InventoryUIController : MonoBehaviour
     private int currentScreen = -1;
 
     private PlayerControl player;
+    private DialogueManager dialogueManager;
 
     private void Awake()
     {
+        dialogueManager = GetComponent<DialogueManager>();
         player = FindFirstObjectByType<PlayerControl>();
         if (uiTabController == null)
         uiTabController = GetComponent<UITabController>();
@@ -65,6 +67,9 @@ public class InventoryUIController : MonoBehaviour
 
     void OnInventoryToggle(InputAction.CallbackContext ctx)
     {
+        if (dialogueManager != null && dialogueManager.IsDialogueActive())
+            return;
+
         if (!inventoryOpen)
         {
             OpenInventory();
