@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Laser Pointer
+  m_Name: Goat Blowing Horn
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
+  targetSelf: 0
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -23,9 +24,12 @@ MonoBehaviour:
   offenseChange: 0
   defenseChange: 0
   descriptionText: 
-  statusChance: 0
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
-  specAttackName: Laser Pointer
+  specAttackName: Goat Blowing Horn
   powerCost: 0
   damage: 0
   attackSound: {fileID: 0}

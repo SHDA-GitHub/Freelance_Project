@@ -10,38 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Pickled Jalapeno Salsa
+  m_Name: Big Backpack
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Pickled Jalapeno Salsa
-  healAmount: 9
+  itemName: Stolen Mirror
+  healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0
-  ppAmount: 1
+  ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
   removeDOT: 0
   removeStun: 0
   removeMiss: 0
-  removeStat: 0
-  drainPPInstead: 0
-  dotAmount: 1
-  dotDrainsPP: 0
-  statusEffect: 1
+  statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  statChangeEffect: 0
-  offenseChange: 0
-  defenseChange: 0
-  itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
-  isKeyItem: 0
-  consumableKey: 0
-  descriptionText: 'HP: 9
-
-    PP: 1
-
-    Burning Chance: 75'
-  statusChance: 75
+  itemSound: {fileID: 0}
+  isKeyItem: 1
+  consumableKey: 1
+  descriptionText: 
+  statusChance: 0
   statusDuration: 2
-  consumable: 1
-  flavorText: '{attacker} '
+  consumable: 0
+  flavorText: 
