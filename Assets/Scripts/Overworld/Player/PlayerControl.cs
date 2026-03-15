@@ -8,23 +8,35 @@ using UnityEngine.SocialPlatforms;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header("Playerfollow")]
+    public List<PlayerSnapshot> history = new List<PlayerSnapshot>();
+    [SerializeField] private float historyDuration = 5f;
+
     [SerializeField] private Transform playerCamera;
+
+    [Header("Player movement settings")]
     [SerializeField] private float m_Speed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravityMultiplier = 2.5f;
     [SerializeField] private float fallMultiplier = 3.5f;
+
+
+    [Header("Player groundcheck")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.2f;
+    [SerializeField] private LayerMask groundMask;
+
+    [Header("Player Animation")]
     [SerializeField] private Animator animatorFront;
     [SerializeField] private Animator animatorBack;
-    private bool controlsEnabled = true;
+
+    public bool controlsEnabled = true;
     private float lastZDirection = 1f;
-    [SerializeField] private LayerMask groundMask;
     public bool isInteracting = false;
-    private bool isGrounded;
-    private float originalSpeed;
     private Controls controls;
+    private bool isGrounded;
     private Rigidbody rb;
+    private float originalSpeed;
     private Vector3 m_Movement;
 
     private void Start()
@@ -157,6 +169,25 @@ public class PlayerControl : MonoBehaviour
         else if (rb.linearVelocity.y > 0)
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (gravityMultiplier - 1) * Time.fixedDeltaTime;
+        }
+
+        float bx = animatorFront.GetFloat("BlendX");
+        float by = animatorFront.GetFloat("BlendY");
+
+        history.Add(new PlayerSnapshot(
+            transform.position,
+            transform.rotation,
+            bx,
+            by,
+            !isGrounded,
+            m_Speed > originalSpeed
+        ));
+
+        float maxTime = historyDuration / Time.fixedDeltaTime;
+
+        if (history.Count > maxTime)
+        {
+            history.RemoveAt(0);
         }
     }
 }
