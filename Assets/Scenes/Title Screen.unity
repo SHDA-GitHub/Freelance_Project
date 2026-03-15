@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 458440716}
   - component: {fileID: 458440715}
   - component: {fileID: 458440714}
+  - component: {fileID: 458440717}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -431,6 +432,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458440712}
   m_CullTransparentMesh: 1
+--- !u!114 &458440717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458440712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab304c2caa6ea204e91a246b3de7191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OneTimeButton
+  useCooldown: 1
+  cooldown: 6
 --- !u!1 &596276154
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +906,7 @@ GameObject:
   - component: {fileID: 1108561933}
   - component: {fileID: 1108561932}
   - component: {fileID: 1108561931}
+  - component: {fileID: 1108561934}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1066,6 +1082,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1108561934}
+        m_TargetAssemblyTypeName: OneTimeButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1108561933
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1074,6 +1102,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108561929}
   m_CullTransparentMesh: 1
+--- !u!114 &1108561934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108561929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab304c2caa6ea204e91a246b3de7191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OneTimeButton
+  useCooldown: 1
+  cooldown: 6
 --- !u!1 &1204363652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1247,7 @@ GameObject:
   - component: {fileID: 1239239156}
   - component: {fileID: 1239239155}
   - component: {fileID: 1239239154}
+  - component: {fileID: 1239239157}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1378,6 +1421,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1239239157}
+        m_TargetAssemblyTypeName: OneTimeButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1239239156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1386,6 +1441,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239239152}
   m_CullTransparentMesh: 1
+--- !u!114 &1239239157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239239152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab304c2caa6ea204e91a246b3de7191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OneTimeButton
+  useCooldown: 1
+  cooldown: 6
 --- !u!1 &1393795272
 GameObject:
   m_ObjectHideFlags: 0
