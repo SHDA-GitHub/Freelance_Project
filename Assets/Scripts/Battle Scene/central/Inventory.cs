@@ -23,19 +23,35 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
+        var existing = items.Find(i => i.itemData.itemName == item.itemName);
+
+        if (existing != null)
+        {
+            existing.quantity++;
+            return true;
+        }
+
         if (items.Count >= MAX_ITEMS)
             return false;
 
-        items.Add(new InventoryItem(item));
+        items.Add(new InventoryItem(item, 1));
         return true;
     }
 
     public bool AddSpecialAttack(SpecialAttack attack)
     {
+        var existing = specAttacks.Find(a => a.attackData == attack);
+
+        if (existing != null)
+        {
+            existing.quantity++;
+            return true;
+        }
+
         if (specAttacks.Count >= MAX_SPECIAL_ATTACKS)
             return false;
 
-        specAttacks.Add(new InventorySpecialAttack(attack));
+        specAttacks.Add(new InventorySpecialAttack(attack, 1));
         return true;
     }
 

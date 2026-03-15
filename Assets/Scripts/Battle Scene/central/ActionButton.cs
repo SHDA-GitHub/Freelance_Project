@@ -38,9 +38,7 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (action is InventorySpecialAttack invSpec)
         {
-            int count = Inventory.Instance.specAttacks
-                .FindAll(a => a.attackData == invSpec.attackData)
-                .Count;
+            int count = invSpec.quantity;
 
             if (count > 1)
                 return $"{invSpec.attackData.specAttackName} x {count}";
@@ -50,9 +48,7 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (action is InventoryItem invItem)
         {
-            int count = Inventory.Instance.items
-                .FindAll(i => i.itemData == invItem.itemData)
-                .Count;
+            int count = invItem.quantity;
 
             if (count > 1)
                 return $"{invItem.itemData.itemName} x {count}";
@@ -82,6 +78,9 @@ public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (inventoryUIController != null && inventoryUIController.IsItemMenuOpen())
+            return;
+
         string description = GetDescription(actionData);
 
         if (sceneChecker.isSceneOverworld)

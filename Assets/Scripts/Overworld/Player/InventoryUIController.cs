@@ -26,6 +26,14 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private GameObject leftItemButton;
     [SerializeField] private GameObject rightItemButton;
 
+    [Header("Item Action Menu")]
+    [SerializeField] private GameObject itemActionMenu;
+    [SerializeField] private GameObject useButton;
+    [SerializeField] private GameObject dropButton;
+
+    private object lockedActionData = null;
+    private bool itemMenuOpen = false;
+
     [Header("SpecialAttack UI")]
     [SerializeField] private Transform specialGrid1;
     [SerializeField] private Transform specialGrid2;
@@ -142,65 +150,138 @@ public class InventoryUIController : MonoBehaviour
         rightSpecButton.SetActive(index == 0 && Inventory.Instance.specAttacks.Count > maxItemsPerGrid);
     }
 
-    void RefreshItemUI()
+    public void RefreshItemUI()
     {
         ClearGrid(itemGrid1);
         ClearGrid(itemGrid2);
         ClearGrid(specialGrid1);
         ClearGrid(specialGrid2);
 
-        var itemGroups = new Dictionary<Item, int>();
+        int index = 0;
         foreach (var invItem in Inventory.Instance.items)
         {
-            if (itemGroups.ContainsKey(invItem.itemData))
-                itemGroups[invItem.itemData]++;
-            else
-                itemGroups[invItem.itemData] = 1;
-        }
-
-        int index = 0;
-        foreach (var kvp in itemGroups)
-        {
-            var newItem = new InventoryItem(kvp.Key);
             Transform targetGrid = (index < maxItemsPerGrid) ? itemGrid1 : itemGrid2;
+
             var button = Instantiate(itemButtonPrefab, targetGrid);
-            button.GetComponent<ActionButton>().Setup(newItem, OnItemClicked);
+            button.GetComponent<ActionButton>().Setup(invItem, OnItemClicked);
+
             index++;
         }
 
-        var specGroups = new Dictionary<SpecialAttack, int>();
-        foreach (var invSpec in Inventory.Instance.specAttacks)
-        {
-            if (specGroups.ContainsKey(invSpec.attackData))
-                specGroups[invSpec.attackData]++;
-            else
-                specGroups[invSpec.attackData] = 1;
-        }
-
         index = 0;
-        foreach (var kvp in specGroups)
+        foreach (var invSpecials in Inventory.Instance.specAttacks)
         {
-            var newSpec = new InventorySpecialAttack(kvp.Key);
             Transform targetGrid = (index < maxItemsPerGrid) ? specialGrid1 : specialGrid2;
+
             var button = Instantiate(specAttackButtonPrefab, targetGrid);
-            button.GetComponent<ActionButton>().Setup(newSpec, OnItemClicked);
+            button.GetComponent<ActionButton>().Setup(invSpecials, OnItemClicked);
+
             index++;
         }
 
         leftItemButton.SetActive(false);
-        rightItemButton.SetActive(itemGroups.Count > maxItemsPerGrid);
+        rightItemButton.SetActive(Inventory.Instance.items.Count > maxItemsPerGrid);
         leftSpecButton.SetActive(false);
-        rightSpecButton.SetActive(specGroups.Count > maxItemsPerGrid);
+        rightSpecButton.SetActive(Inventory.Instance.specAttacks.Count > maxItemsPerGrid);
     }
 
     void OnItemClicked(object action)
     {
-        if (action is InventoryItem item)
-        {
-            Debug.Log("Clicked item: " + item.itemData.itemName);
+        if (itemMenuOpen)
+            return;
 
-            Inventory.Instance.flavorTextUI.ShowImmediateText(item.itemData.flavorText);
+        lockedActionData = action;
+        itemMenuOpen = true;
+
+        itemActionMenu.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(useButton);
+    }
+
+    public bool IsItemMenuOpen()
+    {
+        return itemMenuOpen;
+    }
+
+    public void CloseItemMenu()
+    {
+        itemMenuOpen = false;
+        lockedActionData = null;
+
+        itemActionMenu.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(rootFirstButton);
+    }
+
+    public void DropItem()
+    {
+        if (!(lockedActionData is InventoryItem invItem))
+            return;
+
+        if (DialogueManager.Instance == null)
+            return;
+
+        NPCDialogue tempDialogue = new NPCDialogue();
+
+        string itemName = invItem.itemData.itemName;
+
+        NPCDialogue.DialogueLine confirmLine = new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"Are you sure you want to throw away the {itemName}?",
+            isChoiceActive = true,
+            yesButtonText = "Yes",
+            noButtonText = "No"
+        };
+
+        confirmLine.yesDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You threw away the {itemName}."
         }
+        };
+
+        confirmLine.noDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You decided to keep the {itemName}."
+        }
+        };
+
+        tempDialogue.onChoiceMade += (bool yes) =>
+        {
+            if (yes)
+            {
+                RemoveItem(invItem);
+            }
+        };
+
+        CloseItemMenu();
+
+        DialogueManager.Instance.StartDialogue(
+            tempDialogue,
+            new NPCDialogue.DialogueLine[] { confirmLine },
+            null
+        );
+    }
+
+    void RemoveItem(InventoryItem invItem)
+    {
+        var foundItem = Inventory.Instance.items
+            .Find(i => i.itemData == invItem.itemData);
+
+        if (foundItem == null)
+            return;
+
+        foundItem.quantity--;
+
+        if (foundItem.quantity <= 0)
+            Inventory.Instance.items.Remove(foundItem);
+
+        currentGrid = 0;
+        RefreshItemUI();
+        ShowItemGrid(0);
     }
 
     void ClearGrid(Transform grid)
@@ -247,6 +328,12 @@ public class InventoryUIController : MonoBehaviour
     {
         if (!inventoryOpen)
             return;
+
+        if (itemMenuOpen)
+        {
+            CloseItemMenu();
+            return;
+        }
 
         if (screenLocked)
         {

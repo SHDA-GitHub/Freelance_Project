@@ -146,6 +146,12 @@ public class ItemPickup : MonoBehaviour
 
             DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
         }
+        InventoryUIController ui = FindFirstObjectByType<InventoryUIController>();
+
+        if (ui != null)
+        {
+            ui.RefreshItemUI();
+        }
         if (items.Count == 0 && specialAttacks.Count == 0)
         {
             Destroy(gameObject);

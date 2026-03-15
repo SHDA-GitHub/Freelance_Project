@@ -15,12 +15,12 @@ public class PlayerStatsSO : ScriptableObject
     public void GainEXP(int amount)
     {
         currentEXP += amount;
-        int expToNext = level * 10;
+        int expToNext = level * 100;
         while (currentEXP >= expToNext)
         {
             currentEXP -= expToNext;
             LevelUp();
-            expToNext = level * 10;
+            expToNext = level * 100;
         }
     }
 
