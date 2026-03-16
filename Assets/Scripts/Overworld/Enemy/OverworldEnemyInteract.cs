@@ -9,6 +9,7 @@ public class OverworldEnemyInteract : MonoBehaviour
     public List<WeightedEnemy> enemies = new List<WeightedEnemy>();
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
+    public BattleTransitionType transitionType = BattleTransitionType.Normal;
     [SerializeField] private string battleSceneName = "Battle Scene";
 
     [Header("Optional Dialogue")]
@@ -109,6 +110,7 @@ public class OverworldEnemyInteract : MonoBehaviour
         BattleDataBridge.BattleMusic = battleMusic;
         BattleDataBridge.BackgroundSelection = backgroundType;
 
-        SceneManager.LoadScene(battleSceneName);
+        FindFirstObjectByType<BattleTransitionManager>()
+            .StartBattleTransition(transitionType);
     }
 }

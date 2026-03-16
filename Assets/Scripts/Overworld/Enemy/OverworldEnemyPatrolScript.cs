@@ -16,6 +16,7 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
     public List<WeightedEnemy> enemies = new List<WeightedEnemy>();
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
+    public BattleTransitionType transitionType = BattleTransitionType.Normal;
     [SerializeField] private string battleSceneName = "Battle Scene";
 
     [SerializeField] private float wanderRadius = 25f;
@@ -121,6 +122,7 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
         BattleDataBridge.BattleMusic = battleMusic;
         BattleDataBridge.BackgroundSelection = backgroundType;
 
-        SceneManager.LoadScene(battleSceneName);
+        FindFirstObjectByType<BattleTransitionManager>()
+            .StartBattleTransition(transitionType);
     }
 }

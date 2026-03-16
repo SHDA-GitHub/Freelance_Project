@@ -93,4 +93,27 @@ public class MusicManager : MonoBehaviour
     {
         return audioSource.clip;
     }
+
+    public void FadeOutMusic()
+    {
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        fadeCoroutine = StartCoroutine(FadeOutOnly());
+    }
+
+    IEnumerator FadeOutOnly()
+    {
+        float startVolume = audioSource.volume;
+        float t = 0;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = 0;
+    }
 }
