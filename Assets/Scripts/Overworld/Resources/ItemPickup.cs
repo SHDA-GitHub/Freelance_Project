@@ -136,7 +136,9 @@ public class ItemPickup : MonoBehaviour
             dialogueLines.Add("Your special attack inventory is too full to carry any more special attacks.");
         if (dialogueLines.Count > 0 && DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
         {
-            NPCDialogue tempDialogue = new NPCDialogue();
+            GameObject tempObj = new GameObject("TempDialogue");
+            NPCDialogue tempDialogue = tempObj.AddComponent<NPCDialogue>();
+
             List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
 
             foreach (string line in dialogueLines)

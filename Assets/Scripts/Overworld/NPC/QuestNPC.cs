@@ -21,6 +21,12 @@ public class QuestNPC : MonoBehaviour
     [SerializeField] private AudioClip itemGetSound;
     [SerializeField] private AudioSource audioSource;
 
+    [Header("Inventory Full Dialogue")]
+    [SerializeField] private NPCDialogue inventoryFullDialogue;
+    [SerializeField] private NPCDialogue rewardPendingDialogue;
+    private bool rewardPending = false;
+    private bool rewardProcessing = false;
+
     private bool questAccepted = false;
     private bool questCompleted = false;
 
@@ -31,6 +37,9 @@ public class QuestNPC : MonoBehaviour
 
         if (questTurnInDialogue != null)
             questTurnInDialogue.onChoiceMade += HandleTurnInChoice;
+
+        if (rewardPendingDialogue != null)
+            rewardPendingDialogue.onChoiceMade += HandlePendingRewardChoice;
     }
 
     private void OnTriggerStay(Collider other)
@@ -40,12 +49,25 @@ public class QuestNPC : MonoBehaviour
 
         PlayerControl player = other.GetComponent<PlayerControl>();
 
-        if (!player.isInteracting || DialogueManager.Instance.IsDialogueActive())
+        if (player == null)
+            return;
+
+        if (!player.isInteracting || DialogueManager.Instance == null || DialogueManager.Instance.IsDialogueActive())
+            return;
+
+        if (rewardProcessing)
             return;
 
         if (questCompleted)
         {
-            questCompleteDialogue.TriggerDialogue();
+            if (rewardPending)
+            {
+                rewardPendingDialogue.TriggerDialogue();
+            }
+            else
+            {
+                questCompleteDialogue.TriggerDialogue();
+            }
             return;
         }
 
@@ -78,7 +100,7 @@ public class QuestNPC : MonoBehaviour
 
     void HandleTurnInChoice(bool gaveItem)
     {
-        if (!gaveItem)
+        if (!gaveItem || rewardProcessing)
             return;
 
         InventoryItem foundItem = Inventory.Instance.items
@@ -86,9 +108,9 @@ public class QuestNPC : MonoBehaviour
 
         if (foundItem != null)
         {
-            Inventory.Instance.items.Remove(foundItem);
+            rewardProcessing = true;
 
-            questCompleted = true;
+            Inventory.Instance.items.Remove(foundItem);
 
             questCompleteDialogue.TriggerDialogue();
 
@@ -96,13 +118,51 @@ public class QuestNPC : MonoBehaviour
         }
     }
 
+    void HandlePendingRewardChoice(bool accept)
+    {
+        if (!accept)
+            return;
+
+        if (!CanReceiveRewards())
+        {
+            inventoryFullDialogue.TriggerDialogue();
+            return;
+        }
+
+        rewardPending = false;
+        GiveRewards();
+    }
+
     IEnumerator GiveRewardsAfterDialogue()
     {
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
-
         yield return new WaitForSeconds(0.20f);
 
+        if (!CanReceiveRewards())
+        {
+            rewardPending = true;
+            inventoryFullDialogue.TriggerDialogue();
+            yield break;
+        }
+
         GiveRewards();
+    }
+
+    bool CanReceiveRewards()
+    {
+        int freeItemSlots = 16 - Inventory.Instance.items.Count;
+        int freeAttackSlots = 16 - Inventory.Instance.specAttacks.Count;
+
+        int neededItems = rewardItems.Count;
+        int neededAttacks = rewardSpecialAttacks.Count;
+
+        if (neededItems > freeItemSlots)
+            return false;
+
+        if (neededAttacks > freeAttackSlots)
+            return false;
+
+        return true;
     }
 
     void GiveRewards()
@@ -149,14 +209,15 @@ public class QuestNPC : MonoBehaviour
         {
             if (DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
             {
-                NPCDialogue tempDialogue = new NPCDialogue();
                 List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
                 foreach (string line in dialogueLines)
                 {
                     dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
                 }
-                DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
+                DialogueManager.Instance.StartDialogue(null, dialogueList.ToArray(), null);
             }
         }
+        questCompleted = true;
+        rewardProcessing = false;
     }
 }

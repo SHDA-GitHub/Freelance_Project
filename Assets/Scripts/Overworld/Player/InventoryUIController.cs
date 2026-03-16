@@ -221,7 +221,8 @@ public class InventoryUIController : MonoBehaviour
         if (DialogueManager.Instance == null)
             return;
 
-        NPCDialogue tempDialogue = new NPCDialogue();
+        GameObject tempObj = new GameObject("TempDropDialogue");
+        NPCDialogue tempDialogue = tempObj.AddComponent<NPCDialogue>();
 
         string itemName = invItem.itemData.itemName;
 
