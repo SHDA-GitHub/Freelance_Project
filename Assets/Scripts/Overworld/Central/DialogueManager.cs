@@ -187,7 +187,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator DialogueCooldown()
     {
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(1f);
         canStartDialogue = true;
     }
 
