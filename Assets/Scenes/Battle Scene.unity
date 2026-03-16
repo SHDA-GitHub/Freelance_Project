@@ -1725,7 +1725,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: 5dc1749380a286e4b955c1f6319d8fdb, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: c3ab50b573c68654588bf4f3b20e3dd5, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -4041,44 +4041,82 @@ MonoBehaviour:
   flavorTextUI: {fileID: 506090852}
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 6c30037ec97db3a4d814c86066af81a3, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
+    quantity: 0
   - itemData: {fileID: 11400000, guid: 72ace85841430034c980dd64eedb2bbf, type: 2}
+    quantity: 0
   specAttacks:
   - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 5ade50f98609f3e40bd29b3b99d21132, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 4cabca689f038054587e4cdd21f42e1e, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 0c71b9e2f8f97f24bb910e8985bf26e0, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: c971f89a9d9e8584a9571df4b0fe20db, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 98595b117053c7248abbbeb093352d32, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: aba6dcbbb93ef9348a9ac61e3efb846d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: aba6dcbbb93ef9348a9ac61e3efb846d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 7b34989af7236c142910451a97a60202, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: e3fc0ef567224e244be24b46da9cc126, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 0929e325c7d5e3b43bc4fdfedac2cf7d, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: dace8e4c570e2ae4093fa46a8d9cf04c, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: d13295cab6f1c4145aa418e71a09c5b4, type: 2}
+    quantity: 0
   - attackData: {fileID: 11400000, guid: 66bfb1a939b482448a19e9aca136b1fd, type: 2}
+    quantity: 0
 --- !u!4 &1406268199
 Transform:
   m_ObjectHideFlags: 0

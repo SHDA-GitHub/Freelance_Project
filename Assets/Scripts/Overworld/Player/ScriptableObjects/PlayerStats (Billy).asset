@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: PlayerStats (Billy)
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   characterName: Billy
-  maxHealth: 10
+  maxHealth: 15
   currentHealth: 10
   maxPP: 5
   currentPP: 5
   level: 1
   currentEXP: 0
+  baseHealth: 10
+  basePP: 5
+  baseLevel: 1
+  baseEXP: 0
+  startWithBaseStats: 1

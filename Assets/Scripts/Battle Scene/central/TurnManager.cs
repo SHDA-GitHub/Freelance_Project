@@ -700,6 +700,8 @@ public class TurnManager : MonoBehaviour
     {
         isBattleActive = false;
 
+        StartCoroutine(VictoryScreenFade());
+
         foreach (var enemy in enemyParty)
         {
             if (enemy != null)
@@ -734,6 +736,13 @@ public class TurnManager : MonoBehaviour
             }
         }
 
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene(overworldSceneName);
+    }
+
+    private IEnumerator VictoryScreenFade()
+    {
         if (victoryFade != null)
         {
             float elapsed = 0f;
@@ -763,10 +772,6 @@ public class TurnManager : MonoBehaviour
                 targetAlpha
             );
         }
-
-        yield return new WaitForSeconds(1.5f);
-
-        SceneManager.LoadScene(overworldSceneName);
     }
 
     private IEnumerator HandleDefeat()

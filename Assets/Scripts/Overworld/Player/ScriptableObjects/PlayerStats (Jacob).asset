@@ -19,3 +19,8 @@ MonoBehaviour:
   currentPP: 6
   level: 1
   currentEXP: 0
+  baseHealth: 9
+  basePP: 6
+  baseLevel: 1
+  baseEXP: 0
+  startWithBaseStats: 1

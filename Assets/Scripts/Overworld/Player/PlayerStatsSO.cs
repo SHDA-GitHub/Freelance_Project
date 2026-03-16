@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerStatsSO", menuName = "RPG/PlayerStats")]
 public class PlayerStatsSO : ScriptableObject
 {
+    [Header("Stats")]
     public string characterName;
     public int maxHealth;
     public int currentHealth;
@@ -11,6 +12,25 @@ public class PlayerStatsSO : ScriptableObject
     public int currentPP;
     public int level;
     public int currentEXP;
+    [Header("Base Stats")]
+    public int baseHealth;
+    public int basePP;
+    public int baseLevel;
+    public int baseEXP;
+    [SerializeField] private bool startWithBaseStats;
+
+    public void Awake()
+    {
+        if (startWithBaseStats == true)
+        {
+            currentHealth = baseHealth;
+            maxHealth = baseHealth;
+            currentPP = basePP;
+            maxPP = basePP;
+            level = baseLevel;
+            currentEXP = baseEXP;
+        }
+    }
 
     public void GainEXP(int amount)
     {
