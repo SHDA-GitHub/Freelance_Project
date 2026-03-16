@@ -18701,13 +18701,11 @@ GameObject:
   - component: {fileID: 1716731419}
   - component: {fileID: 1716731418}
   - component: {fileID: 1716731417}
-  - component: {fileID: 1716731422}
   - component: {fileID: 1716731415}
+  - component: {fileID: 1716731422}
   - component: {fileID: 1716731421}
   - component: {fileID: 1716731420}
-  - component: {fileID: 1716731425}
   - component: {fileID: 1716731423}
-  - component: {fileID: 1716731424}
   m_Layer: 0
   m_Name: Quest NPC
   m_TagString: Enemy
@@ -18944,47 +18942,7 @@ MonoBehaviour:
   rewardSpecialAttacks: []
   itemGetSound: {fileID: 8300000, guid: 181ab7b14d60b1845a9673a96526fb0f, type: 3}
   audioSource: {fileID: 362711672}
-  inventoryFullDialogue: {fileID: 1716731425}
-  rewardPendingDialogue: {fileID: 1716731423}
 --- !u!114 &1716731423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716731414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogueLines:
-  - dialogueText: '"Are you sure you want to accept my gift, kind stranger?"'
-    yesDialogueLines:
-    - dialogueText: '"Very well. Here you go!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    yesButtonText: I'm ready!
-    noDialogueLines:
-    - dialogueText: '"Oh, well that''s alright..."'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    - dialogueText: '"If you ever need it, feel free to come ask anytime!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    noButtonText: I've changed my mind
-    isChoiceActive: 1
-  dialogueMusic: {fileID: 0}
---- !u!114 &1716731424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19004,32 +18962,6 @@ MonoBehaviour:
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
---- !u!114 &1716731425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716731414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogueLines:
-  - dialogueText: '"Oh! It seems you''re carrying too much with you, dear."'
-    yesDialogueLines: []
-    yesButtonText: 
-    noDialogueLines: []
-    noButtonText: 
-    isChoiceActive: 0
-  - dialogueText: '"Perhaps you should come back when you''ve made more room..."'
-    yesDialogueLines: []
-    yesButtonText: 
-    noDialogueLines: []
-    noButtonText: 
-    isChoiceActive: 0
-  dialogueMusic: {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
 --- !u!1 &1719565008
 GameObject:
   m_ObjectHideFlags: 0
@@ -20891,7 +20823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0

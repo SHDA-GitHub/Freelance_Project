@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
     IEnumerator interactRoutine()
     {
         isInteracting = true;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return new WaitForSecondsRealtime(0.35f);
         isInteracting = false;
     }
 

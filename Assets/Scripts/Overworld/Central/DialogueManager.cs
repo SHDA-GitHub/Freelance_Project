@@ -128,22 +128,21 @@ public class DialogueManager : MonoBehaviour
         if (chosenLines != null && chosenLines.Length > 0)
         {
             DialogueLine[] remainingLines = new DialogueLine[currentDialogueLines.Length - dialogueIndex - 1];
-
             for (int i = 0; i < remainingLines.Length; i++)
                 remainingLines[i] = currentDialogueLines[dialogueIndex + 1 + i];
 
             currentDialogueLines = new DialogueLine[chosenLines.Length + remainingLines.Length];
-
             chosenLines.CopyTo(currentDialogueLines, 0);
             remainingLines.CopyTo(currentDialogueLines, chosenLines.Length);
 
             dialogueIndex = 0;
+
+            yield return StartCoroutine(RunDialogue());
         }
         else
         {
             dialogueIndex++;
         }
-
         onChoiceMadeCallback?.Invoke();
         currentNPCDialogue?.onChoiceMade?.Invoke(isYes);
 
@@ -188,7 +187,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator DialogueCooldown()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.2f);
         canStartDialogue = true;
     }
 
