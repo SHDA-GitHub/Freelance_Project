@@ -42,6 +42,14 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private GameObject leftSpecButton;
     [SerializeField] private GameObject rightSpecButton;
 
+    [Header("Key Item UI")]
+    [SerializeField] private Transform keyItemGrid1;
+    [SerializeField] private Transform keyItemGrid2;
+    [SerializeField] private GameObject keyItemButtonPrefab;
+
+    [SerializeField] private GameObject leftKeyItemButton;
+    [SerializeField] private GameObject rightKeyItemButton;
+
     private const int maxItemsPerGrid = 8;
     private int currentGrid = 0;
 
@@ -98,6 +106,9 @@ public class InventoryUIController : MonoBehaviour
         RefreshItemUI();
         ShowItemGrid(0);
 
+        specialGrid1.parent.gameObject.SetActive(false);
+        keyItemGrid1.parent.gameObject.SetActive(false);
+
         player.DisableControls();
         controls.Player.Disable();
         enemyPatrolSurface.enabled = false;
@@ -150,37 +161,59 @@ public class InventoryUIController : MonoBehaviour
         rightSpecButton.SetActive(index == 0 && Inventory.Instance.specAttacks.Count > maxItemsPerGrid);
     }
 
+    void ShowKeyItemGrid(int index)
+    {
+        keyItemGrid1.gameObject.SetActive(index == 0);
+        keyItemGrid2.gameObject.SetActive(index == 1);
+
+        leftKeyItemButton.SetActive(index == 1);
+        rightKeyItemButton.SetActive(index == 0 && Inventory.Instance.items.FindAll(i => i.itemData.isKeyItem).Count > maxItemsPerGrid);
+    }
+
     public void RefreshItemUI()
     {
         ClearGrid(itemGrid1);
         ClearGrid(itemGrid2);
         ClearGrid(specialGrid1);
         ClearGrid(specialGrid2);
+        ClearGrid(keyItemGrid1);
+        ClearGrid(keyItemGrid2);
 
         int index = 0;
         foreach (var invItem in Inventory.Instance.items)
         {
-            Transform targetGrid = (index < maxItemsPerGrid) ? itemGrid1 : itemGrid2;
+            if (invItem.itemData.isKeyItem) continue;
 
+            Transform targetGrid = (index < maxItemsPerGrid) ? itemGrid1 : itemGrid2;
             var button = Instantiate(itemButtonPrefab, targetGrid);
             button.GetComponent<ActionButton>().Setup(invItem, OnItemClicked);
-
             index++;
+        }
+
+        int keyIndex = 0;
+        foreach (var keyItem in Inventory.Instance.keyItems)
+        {
+            Transform targetGrid = (keyIndex < maxItemsPerGrid) ? keyItemGrid1 : keyItemGrid2;
+            var button = Instantiate(keyItemButtonPrefab, targetGrid);
+            button.GetComponent<ActionButton>().Setup(keyItem, OnItemClicked);
+            keyIndex++;
         }
 
         index = 0;
         foreach (var invSpecials in Inventory.Instance.specAttacks)
         {
             Transform targetGrid = (index < maxItemsPerGrid) ? specialGrid1 : specialGrid2;
-
             var button = Instantiate(specAttackButtonPrefab, targetGrid);
             button.GetComponent<ActionButton>().Setup(invSpecials, OnItemClicked);
-
             index++;
         }
 
         leftItemButton.SetActive(false);
-        rightItemButton.SetActive(Inventory.Instance.items.Count > maxItemsPerGrid);
+        rightItemButton.SetActive(Inventory.Instance.items.FindAll(i => !i.itemData.isKeyItem).Count > maxItemsPerGrid);
+
+        leftKeyItemButton.SetActive(false);
+        rightKeyItemButton.SetActive(Inventory.Instance.items.FindAll(i => i.itemData.isKeyItem).Count > maxItemsPerGrid);
+
         leftSpecButton.SetActive(false);
         rightSpecButton.SetActive(Inventory.Instance.specAttacks.Count > maxItemsPerGrid);
     }
@@ -360,8 +393,11 @@ public class InventoryUIController : MonoBehaviour
     {
         currentInventoryType = InventoryType.Items;
         ShowItemGrid(0);
+
         itemGrid1.parent.gameObject.SetActive(true);
         specialGrid1.parent.gameObject.SetActive(false);
+        keyItemGrid1.parent.gameObject.SetActive(false);
+
         EventSystem.current.SetSelectedGameObject(leftItemButton);
     }
 
@@ -369,9 +405,24 @@ public class InventoryUIController : MonoBehaviour
     {
         currentInventoryType = InventoryType.Specials;
         ShowSpecialAttackGrid(0);
+
         specialGrid1.parent.gameObject.SetActive(true);
         itemGrid1.parent.gameObject.SetActive(false);
+        keyItemGrid1.parent.gameObject.SetActive (false);
+
         EventSystem.current.SetSelectedGameObject(leftSpecButton);
+    }
+
+    public void ShowKeyItemsInventory()
+    {
+        currentInventoryType = InventoryType.Items;
+        ShowKeyItemGrid(0);
+
+        keyItemGrid1.parent.gameObject.SetActive(true);
+        itemGrid1.parent.gameObject.SetActive(false);
+        specialGrid1.parent.gameObject.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(leftKeyItemButton);
     }
 
     public void ShowDescription(string text)

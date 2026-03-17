@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public FlavorTextUI flavorTextUI;
 
     public List<InventoryItem> items = new List<InventoryItem>();
+    public List<InventoryItem> keyItems = new List<InventoryItem>();
     public List<InventorySpecialAttack> specAttacks = new List<InventorySpecialAttack>();
 
     private const int MAX_ITEMS = 16;
@@ -23,6 +24,13 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
+        if (item == null) return false;
+
+        if (item.isKeyItem)
+        {
+            return AddKeyItem(item);
+        }
+
         var existing = items.Find(i => i.itemData.itemName == item.itemName);
 
         if (existing != null)
@@ -55,6 +63,23 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    public bool AddKeyItem(Item item)
+    {
+        if (item == null) return false;
+
+        var existing = keyItems.Find(i => i.itemData == item);
+
+        if (existing != null)
+        {
+            existing.quantity++;
+        }
+        else
+        {
+            keyItems.Add(new InventoryItem(item, 1));
+        }
+
+        return true;
+    }
 
     public void UseSpecialAttack(InventorySpecialAttack invSpecAttack)
     {

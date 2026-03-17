@@ -20,9 +20,10 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -35,8 +36,13 @@ MonoBehaviour:
   itemSound: {fileID: 0}
   isKeyItem: 1
   consumableKey: 1
-  descriptionText: 
-  statusChance: 0
+  descriptionText: 'A cutesy doll with a bow and dress
+
+    Give to NPC'
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   consumable: 0
   flavorText: 

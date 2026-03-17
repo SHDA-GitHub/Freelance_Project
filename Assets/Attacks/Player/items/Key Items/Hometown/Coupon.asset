@@ -36,7 +36,10 @@ MonoBehaviour:
   itemSound: {fileID: 0}
   isKeyItem: 1
   consumableKey: 1
-  descriptionText: 
+  descriptionText: 'The kryptonite to every stingy and greedy shopkeep
+
+    Use to
+    get a heavy discount on Dolly'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 0

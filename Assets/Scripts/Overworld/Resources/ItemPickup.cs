@@ -66,9 +66,18 @@ public class ItemPickup : MonoBehaviour
         {
             if (item == null) continue;
 
-            bool added = Inventory.Instance.AddItem(item);
+            bool added = false;
 
-            if (!added)
+            if (item.isKeyItem)
+            {
+                added = Inventory.Instance.AddKeyItem(item);
+            }
+            else
+            {
+                added = Inventory.Instance.AddItem(item);
+            }
+
+            if (!added && !item.isKeyItem)
             {
                 itemInventoryFull = true;
                 continue;
@@ -134,6 +143,7 @@ public class ItemPickup : MonoBehaviour
 
         if (specialAttackInventoryFull)
             dialogueLines.Add("Your special attack inventory is too full to carry any more special attacks.");
+
         if (dialogueLines.Count > 0 && DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
         {
             NPCDialogue tempDialogue = new NPCDialogue();
@@ -146,12 +156,14 @@ public class ItemPickup : MonoBehaviour
 
             DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
         }
+
         InventoryUIController ui = FindFirstObjectByType<InventoryUIController>();
 
         if (ui != null)
         {
             ui.RefreshItemUI();
         }
+
         if (items.Count == 0 && specialAttacks.Count == 0)
         {
             Destroy(gameObject);

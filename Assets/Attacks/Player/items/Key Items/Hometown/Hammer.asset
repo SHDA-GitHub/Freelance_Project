@@ -35,8 +35,9 @@ MonoBehaviour:
   defenseChange: 0
   itemSound: {fileID: 0}
   isKeyItem: 1
-  consumableKey: 1
-  descriptionText: 
+  consumableKey: 0
+  descriptionText: Strong hammer built to slam nails into any surface. Or just to
+    destroy anything in your path
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 0
