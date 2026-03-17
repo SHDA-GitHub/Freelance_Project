@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1d2578a14bd3942a1d90f42b16ac7a, type: 3}
-  m_Name: Seafood Dish
+  m_Name: Seafood Platter
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPreset
   enemyPrefabs:
   - {fileID: 6189461038886246776, guid: 0ac120df74930714a9acd32357ea7e42, type: 3}

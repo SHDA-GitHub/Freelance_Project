@@ -23,6 +23,7 @@ public class TurnManager : MonoBehaviour
     public int currentCharacterIndex = 0;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource audioManager;
+    [SerializeField] private FadeScript fadeManager;
     [SerializeField] private AudioClip victoryClip;
     [SerializeField] private AudioClip cancelSound;
     [SerializeField] private AudioClip enemyDeath;
@@ -77,6 +78,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        fadeManager = GetComponent<FadeScript>();
         if (playerRevive == true)
         {
             foreach (PlayerStatsSO stats in playerStats)
@@ -88,7 +90,13 @@ public class TurnManager : MonoBehaviour
                 }
             }
         }
+        StartCoroutine(introfade());
         StartCoroutine(ApplyBattleConditions());
+    }
+
+    private IEnumerator introfade()
+    {
+        yield return fadeManager.SpriteFadeOutFlash();
     }
 
     private IEnumerator ApplyBattleConditions()

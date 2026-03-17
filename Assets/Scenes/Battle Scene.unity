@@ -997,7 +997,6 @@ RectTransform:
   - {fileID: 1910488869}
   - {fileID: 1482134742}
   - {fileID: 513817628}
-  - {fileID: 788278487}
   - {fileID: 1273724935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1659,13 +1658,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2835b73cca73f4092cd5fb08b6f0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FadeScript
-  screenOverlay: {fileID: 788278487}
-  flashDuration: 1
+  screenOverlay: {fileID: 1760178836}
+  flashDuration: 0.85
   isDropshadow: 0
-  startFade: 1
+  startFade: 0
   isImage: 0
   isText: 0
-  isSprite: 0
+  isSprite: 1
   rColor: 0
   gColor: 0
   bColor: 0
@@ -1708,6 +1707,7 @@ MonoBehaviour:
   currentCharacterIndex: 0
   musicSource: {fileID: 408731265}
   audioManager: {fileID: 882039389}
+  fadeManager: {fileID: 506090849}
   victoryClip: {fileID: 8300000, guid: 8ad88572a54006647905321aee00450c, type: 3}
   cancelSound: {fileID: 8300000, guid: 9d448dc3ef59911478311e47cd32a29b, type: 3}
   enemyDeath: {fileID: 8300000, guid: 3f95f789bf76aa346abf638f0eedfc40, type: 3}
@@ -2313,81 +2313,6 @@ Transform:
   - {fileID: 1130058720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &788278486
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 788278487}
-  - component: {fileID: 788278489}
-  - component: {fileID: 788278488}
-  m_Layer: 5
-  m_Name: BlackFade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &788278487
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788278486}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 11, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 246392022}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &788278488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788278486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &788278489
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788278486}
-  m_CullTransparentMesh: 1
 --- !u!1 &849644931
 GameObject:
   m_ObjectHideFlags: 0
