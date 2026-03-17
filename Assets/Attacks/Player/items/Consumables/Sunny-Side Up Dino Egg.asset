@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: Soothing Ramen Cup
+  m_Name: Sunny-Side Up Dino Egg
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Soothing Ramen Cup
-  healAmount: 10
+  itemName: Sunny-Side Up Dino Egg
+  healAmount: 12
   healAllParty: 0
   splitHealAcrossParty: 0
   ppAmount: 0
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
-  removeStat: 1
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 03000000
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
@@ -36,10 +36,13 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
   isKeyItem: 0
   consumableKey: 0
-  descriptionText: 'HP: 10
+  descriptionText: 'HP: 12
 
-    Cures Stress'
-  statusChance: 0
+    Cures Weakness'
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} ate the {action}'

@@ -6,6 +6,7 @@ public enum DOTStatusEffectType
     sickened,
     shocked,
     bleeding,
+    stressed,
 }
 
 public enum StunStatusEffectType
