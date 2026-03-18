@@ -55,7 +55,7 @@ public class QuestNPC : MonoBehaviour
             return;
         }
 
-        InventoryItem foundItem = Inventory.Instance.items
+        InventoryItem foundItem = Inventory.Instance.keyItems
             .Find(i => i.itemData == requiredItem);
 
         if (foundItem != null)
@@ -81,7 +81,7 @@ public class QuestNPC : MonoBehaviour
         if (!gaveItem)
             return;
 
-        InventoryItem foundItem = Inventory.Instance.items
+        InventoryItem foundItem = Inventory.Instance.keyItems
             .Find(i => i.itemData == requiredItem);
 
         if (foundItem != null)
