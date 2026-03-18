@@ -16,6 +16,8 @@ public class QuestNPC : MonoBehaviour
     [Header("Quest Rewards")]
     [SerializeField] private List<Item> rewardItems = new List<Item>();
     [SerializeField] private List<SpecialAttack> rewardSpecialAttacks = new List<SpecialAttack>();
+    private List<Item> pendingItems = new List<Item>();
+    private List<SpecialAttack> pendingAttacks = new List<SpecialAttack>();
 
     [Header("Sound")]
     [SerializeField] private AudioClip itemGetSound;
@@ -45,7 +47,14 @@ public class QuestNPC : MonoBehaviour
 
         if (questCompleted)
         {
-            questCompleteDialogue.TriggerDialogue();
+            if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
+            {
+                TryGivePendingRewards();
+            }
+            else
+            {
+                questCompleteDialogue.TriggerDialogue();
+            }
             return;
         }
 
@@ -100,7 +109,7 @@ public class QuestNPC : MonoBehaviour
     {
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
-        yield return new WaitForSeconds(0.20f);
+        yield return new WaitForSeconds(1f);
 
         GiveRewards();
     }
@@ -114,7 +123,13 @@ public class QuestNPC : MonoBehaviour
         {
             if (item == null) continue;
 
-            Inventory.Instance.AddItem(item);
+            bool added = Inventory.Instance.AddItem(item);
+
+            if (!added)
+            {
+                pendingItems.Add(item);
+                continue;
+            }
 
             if (!rewardCounts.ContainsKey(item.itemName))
                 rewardCounts[item.itemName] = 0;
@@ -126,7 +141,13 @@ public class QuestNPC : MonoBehaviour
         {
             if (attack == null) continue;
 
-            Inventory.Instance.AddSpecialAttack(attack);
+            bool added = Inventory.Instance.AddSpecialAttack(attack);
+
+            if (!added)
+            {
+                pendingAttacks.Add(attack);
+                continue;
+            }
 
             if (!rewardCounts.ContainsKey(attack.specAttackName))
                 rewardCounts[attack.specAttackName] = 0;
@@ -145,18 +166,77 @@ public class QuestNPC : MonoBehaviour
                 dialogueLines.Add($"You received {pair.Key}!");
         }
 
-        if (dialogueLines.Count > 0)
+        if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
         {
-            if (DialogueManager.Instance != null && !DialogueManager.Instance.IsDialogueActive())
+            dialogueLines.Add("Your inventory is full.");
+            dialogueLines.Add("Come back after making space to receive the rest.");
+        }
+
+        ShowDialogue(dialogueLines);
+    }
+
+    void TryGivePendingRewards()
+    {
+        List<string> dialogueLines = new List<string>();
+        Dictionary<string, int> rewardCounts = new Dictionary<string, int>();
+
+        for (int i = pendingItems.Count - 1; i >= 0; i--)
+        {
+            var item = pendingItems[i];
+
+            if (Inventory.Instance.AddItem(item))
             {
-                NPCDialogue tempDialogue = new NPCDialogue();
-                List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
-                foreach (string line in dialogueLines)
-                {
-                    dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
-                }
-                DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
+                if (!rewardCounts.ContainsKey(item.itemName))
+                    rewardCounts[item.itemName] = 0;
+
+                rewardCounts[item.itemName]++;
+                pendingItems.RemoveAt(i);
             }
         }
+
+        for (int i = pendingAttacks.Count - 1; i >= 0; i--)
+        {
+            var atk = pendingAttacks[i];
+
+            if (Inventory.Instance.AddSpecialAttack(atk))
+            {
+                if (!rewardCounts.ContainsKey(atk.specAttackName))
+                    rewardCounts[atk.specAttackName] = 0;
+
+                rewardCounts[atk.specAttackName]++;
+                pendingAttacks.RemoveAt(i);
+            }
+        }
+
+        foreach (var pair in rewardCounts)
+        {
+            dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
+        }
+
+        if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
+        {
+            dialogueLines.Add("You still don't have enough space.");
+        }
+        else
+        {
+            dialogueLines.Add("You received all remaining rewards!");
+        }
+
+        ShowDialogue(dialogueLines);
+    }
+
+    void ShowDialogue(List<string> lines)
+    {
+        if (lines.Count == 0) return;
+
+        NPCDialogue tempDialogue = new NPCDialogue();
+        List<NPCDialogue.DialogueLine> dialogueList = new List<NPCDialogue.DialogueLine>();
+
+        foreach (string line in lines)
+        {
+            dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
+        }
+
+        DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
     }
 }
