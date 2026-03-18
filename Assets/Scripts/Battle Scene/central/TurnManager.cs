@@ -968,7 +968,7 @@ public class TurnManager : MonoBehaviour
         battleHUD.UpdateHUD();
 
         if (specAttack.oneUse)
-            Inventory.Instance.specAttacks.Remove(invSpecAttack);
+            Inventory.Instance.UseSpecialAttack(invSpecAttack);
 
         if (target == null)
         {

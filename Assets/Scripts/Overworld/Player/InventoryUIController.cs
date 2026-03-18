@@ -299,6 +299,59 @@ public class InventoryUIController : MonoBehaviour
         );
     }
 
+    public void DropSpecialAttack()
+    {
+        if (!(lockedActionData is InventorySpecialAttack invSpecial))
+            return;
+
+        if (DialogueManager.Instance == null)
+            return;
+
+        NPCDialogue tempDialogue = new NPCDialogue();
+
+        string specialName = invSpecial.attackData.specAttackName;
+
+        NPCDialogue.DialogueLine confirmLine = new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"Are you sure you want to throw away the {specialName}?",
+            isChoiceActive = true,
+            yesButtonText = "Yes",
+            noButtonText = "No"
+        };
+
+        confirmLine.yesDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You threw away the {specialName}."
+        }
+        };
+
+        confirmLine.noDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You decided to keep the {specialName}."
+        }
+        };
+
+        tempDialogue.onChoiceMade += (bool yes) =>
+        {
+            if (yes)
+            {
+                RemoveSpecial(invSpecial);
+            }
+        };
+
+        CloseItemMenu();
+
+        DialogueManager.Instance.StartDialogue(
+            tempDialogue,
+            new NPCDialogue.DialogueLine[] { confirmLine },
+            null
+        );
+    }
+
     void RemoveItem(InventoryItem invItem)
     {
         var foundItem = Inventory.Instance.items
@@ -311,6 +364,24 @@ public class InventoryUIController : MonoBehaviour
 
         if (foundItem.quantity <= 0)
             Inventory.Instance.items.Remove(foundItem);
+
+        currentGrid = 0;
+        RefreshItemUI();
+        ShowItemGrid(0);
+    }
+
+    void RemoveSpecial(InventorySpecialAttack invSpecial)
+    {
+        var foundSpecial = Inventory.Instance.specAttacks
+            .Find(i => i.attackData == invSpecial.attackData);
+
+        if (foundSpecial == null)
+            return;
+
+        foundSpecial.quantity--;
+
+        if (foundSpecial.quantity <= 0)
+            Inventory.Instance.specAttacks.Remove(foundSpecial);
 
         currentGrid = 0;
         RefreshItemUI();

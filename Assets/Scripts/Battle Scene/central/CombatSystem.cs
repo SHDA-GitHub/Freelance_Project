@@ -840,7 +840,7 @@ public class CombatSystem : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         TurnManager.Instance.battleHUD.UpdateHUD();
         if (item.consumable)
-        Inventory.Instance.items.Remove(invItem);
+        Inventory.Instance.UseItem(invItem);
         TurnManager.Instance.EndTurn();
     }
 

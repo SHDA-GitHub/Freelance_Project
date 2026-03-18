@@ -86,7 +86,28 @@ public class Inventory : MonoBehaviour
         if (!specAttacks.Contains(invSpecAttack))
             return;
 
-        if (invSpecAttack.attackData.oneUse)
+        invSpecAttack.quantity--;
+
+        if (invSpecAttack.quantity <= 0 && invSpecAttack.attackData.oneUse)
             specAttacks.Remove(invSpecAttack);
+        else
+        {
+            return;
+        }
+    }
+
+    public void UseItem(InventoryItem invItem)
+    {
+        if (!items.Contains(invItem))
+            return;
+
+        invItem.quantity--;
+
+        if (invItem.quantity <= 0 && invItem.itemData.consumable)
+            items.Remove(invItem);
+        else
+        {
+            return;
+        }
     }
 }
