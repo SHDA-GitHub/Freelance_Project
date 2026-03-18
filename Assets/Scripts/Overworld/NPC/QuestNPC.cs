@@ -109,12 +109,12 @@ public class QuestNPC : MonoBehaviour
 
     IEnumerator GiveRewardsAfterDialogue()
     {
-        audioSource.clip = itemGetSound;
-        audioSource.Play();
-
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.51f);
+
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
 
         GiveRewards();
     }
@@ -168,18 +168,19 @@ public class QuestNPC : MonoBehaviour
                 dialogueLines.Add($"You received {pair.Key}!");
         }
 
-        if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
-        {
-            ShowDialogue(dialogueLines);
+            if (dialogueLines.Count > 0)
+            {
+                ShowDialogue(dialogueLines);
+            }
 
-            if (questInvFullDialogue != null)
-                questInvFullDialogue.TriggerDialogue();
-
-            return;
+            if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
+            {
+                if (questInvFullDialogue != null)
+                    questInvFullDialogue.TriggerDialogue();
+            }
         }
-    }
 
-    void TryGivePendingRewards()
+        void TryGivePendingRewards()
     {
         List<string> dialogueLines = new List<string>();
         Dictionary<string, int> rewardCounts = new Dictionary<string, int>();
