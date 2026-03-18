@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PartyManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class PartyManager : MonoBehaviour
     private int currentIndex = 0;
 
     public PlayerDataOverworld uiDisplay;
+    [SerializeField] private TextMeshProUGUI coinText;
 
     void Start()
     {
@@ -14,6 +16,7 @@ public class PartyManager : MonoBehaviour
         {
             UpdateUI();
         }
+        UpdateCoinUI();
     }
 
     public void NextMember()
@@ -25,6 +28,7 @@ public class PartyManager : MonoBehaviour
             currentIndex = 0;
 
         UpdateUI();
+        UpdateCoinUI();
     }
 
     public void PreviousMember()
@@ -36,6 +40,7 @@ public class PartyManager : MonoBehaviour
             currentIndex = partyMembers.Count - 1;
 
         UpdateUI();
+        UpdateCoinUI();
     }
 
     private void UpdateUI()
@@ -44,6 +49,12 @@ public class PartyManager : MonoBehaviour
         {
             uiDisplay.playerStats = partyMembers[currentIndex];
         }
+    }
+
+    private void UpdateCoinUI()
+    {
+        if (coinText != null)
+            coinText.text = $"Balance: {CurrencyManager.Instance.GetCoinCount()} Dollars";
     }
 
     public PlayerStatsSO GetCurrentMember()

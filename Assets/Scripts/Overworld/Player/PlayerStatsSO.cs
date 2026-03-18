@@ -19,7 +19,7 @@ public class PlayerStatsSO : ScriptableObject
     public int baseEXP;
     [SerializeField] private bool startWithBaseStats;
 
-    public void Awake()
+    public void Start()
     {
         if (startWithBaseStats == true)
         {

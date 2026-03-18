@@ -67,6 +67,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private BackgroundManager backgroundManager;
     [SerializeField] private AudioClip defaultBattleMusic;
 
+    private HashSet<CharacterStats> processedEnemies = new HashSet<CharacterStats>();
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -136,6 +138,7 @@ public class TurnManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.05f);
         StartCoroutine(StartBattle());
+        isBattleActive = true;
     }
 
     private void Update()
@@ -732,7 +735,7 @@ public class TurnManager : MonoBehaviour
         if (totalBattleEXP > 0)
         {
             yield return flavorTextUI.ShowTextCoroutine(
-                $"Your team earned {totalBattleEXP} EXP!"
+                $"Your team earned {totalBattleEXP} EXP each!"
             );
 
             foreach (CharacterStats player in playerParty)
@@ -877,10 +880,13 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator HandleEnemyDeath(CharacterStats enemy)
     {
+        if (processedEnemies.Contains(enemy)) yield break;
+
+        processedEnemies.Add(enemy);
+
         if (enemyParty.Contains(enemy))
         {
             totalBattleEXP += enemy.expReward;
-
             yield return StartCoroutine(FadeOutEnemy(enemy));
             enemyParty.Remove(enemy);
 

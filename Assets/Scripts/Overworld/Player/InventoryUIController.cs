@@ -50,6 +50,7 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private GameObject leftKeyItemButton;
     [SerializeField] private GameObject rightKeyItemButton;
 
+
     private const int maxItemsPerGrid = 8;
     private int currentGrid = 0;
 
@@ -81,7 +82,7 @@ public class InventoryUIController : MonoBehaviour
         controls.UI.Enable();
     }
 
-    void OnInventoryToggle(InputAction.CallbackContext ctx)
+    public void OnInventoryToggle(InputAction.CallbackContext ctx)
     {
         if (dialogueManager != null && dialogueManager.IsDialogueActive())
             return;
@@ -96,8 +97,9 @@ public class InventoryUIController : MonoBehaviour
         }
     }
 
-    void OpenInventory()
+    public void OpenInventory()
     {
+        DialogueManager.Instance.isExternalUILocked = true;
         uiTabController.ResetTabs();
         inventoryOpen = true;
 
@@ -398,6 +400,7 @@ public class InventoryUIController : MonoBehaviour
 
     void CloseInventory()
     {
+        DialogueManager.Instance.isExternalUILocked = false;
         inventoryOpen = false;
         screenLocked = false;
 

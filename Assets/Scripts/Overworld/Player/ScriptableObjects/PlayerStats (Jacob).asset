@@ -23,4 +23,4 @@ MonoBehaviour:
   basePP: 6
   baseLevel: 1
   baseEXP: 0
-  startWithBaseStats: 1
+  startWithBaseStats: 0

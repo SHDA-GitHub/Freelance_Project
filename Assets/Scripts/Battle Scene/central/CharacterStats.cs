@@ -20,7 +20,9 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Enemy Only")]
     public EnemyLoadout enemyLoadout;
+    public Item dropReward;
     public int expReward = 5;
+    public int currencyReward = 5;
 
     public List<Attack> attacks;
     public PlayerStatsSO playerStats;
@@ -309,11 +311,5 @@ public class CharacterStats : MonoBehaviour
         if (!isPlayer) return;
 
         playerStats.GainEXP(amount);
-        currentEXP = playerStats.currentEXP;
-        level = playerStats.level;
-        maxHealth = playerStats.maxHealth;
-        maxPP = playerStats.maxPP;
-        currentHealth = playerStats.currentHealth;
-        currentPP = playerStats.currentPP;
     }
 }

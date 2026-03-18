@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueActive = false;
     private bool canStartDialogue = true;
     private bool playerCancelledChoice = false;
+    public bool isExternalUILocked = false;
 
     private PlayerControl player;
 
@@ -168,10 +169,14 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        player.EnableControls();
-        enemyPatrolSurface.enabled = true;
         dialogueActive = false;
         dialogueUI.SetActive(false);
+
+        if (!isExternalUILocked)
+        {
+            player.EnableControls();
+            enemyPatrolSurface.enabled = true;
+        }
 
         if (previousTrack != null && MusicManager.Instance.GetCurrentTrack() != previousTrack)
         {
