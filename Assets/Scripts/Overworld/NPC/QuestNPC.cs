@@ -9,6 +9,8 @@ public class QuestNPC : MonoBehaviour
     [SerializeField] private NPCDialogue questActiveDialogue;
     [SerializeField] private NPCDialogue questTurnInDialogue;
     [SerializeField] private NPCDialogue questCompleteDialogue;
+    [SerializeField] private NPCDialogue questInvFullDialogue;
+    [SerializeField] private NPCDialogue questInvStillFullDialogue;
 
     [Header("Quest Requirement")]
     [SerializeField] private Item requiredItem;
@@ -107,6 +109,9 @@ public class QuestNPC : MonoBehaviour
 
     IEnumerator GiveRewardsAfterDialogue()
     {
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
+
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
         yield return new WaitForSeconds(1f);
@@ -155,9 +160,6 @@ public class QuestNPC : MonoBehaviour
             rewardCounts[attack.specAttackName]++;
         }
 
-        audioSource.clip = itemGetSound;
-        audioSource.Play();
-
         foreach (var pair in rewardCounts)
         {
             if (pair.Value > 1)
@@ -168,11 +170,13 @@ public class QuestNPC : MonoBehaviour
 
         if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
         {
-            dialogueLines.Add("Your inventory is full.");
-            dialogueLines.Add("Come back after making space to receive the rest.");
-        }
+            ShowDialogue(dialogueLines);
 
-        ShowDialogue(dialogueLines);
+            if (questInvFullDialogue != null)
+                questInvFullDialogue.TriggerDialogue();
+
+            return;
+        }
     }
 
     void TryGivePendingRewards()
@@ -208,21 +212,28 @@ public class QuestNPC : MonoBehaviour
             }
         }
 
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
+
         foreach (var pair in rewardCounts)
         {
             dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
         }
 
+        ShowDialogue(dialogueLines);
+
         if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
         {
-            dialogueLines.Add("You still don't have enough space.");
+            if (questInvStillFullDialogue != null)
+                questInvStillFullDialogue.TriggerDialogue();
         }
         else
         {
-            dialogueLines.Add("You received all remaining rewards!");
+            if (questCompleteDialogue != null)
+                questCompleteDialogue.TriggerDialogue();
         }
 
-        ShowDialogue(dialogueLines);
+        return;
     }
 
     void ShowDialogue(List<string> lines)

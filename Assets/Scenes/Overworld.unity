@@ -7892,7 +7892,7 @@ GameObject:
   - component: {fileID: 596226014}
   m_Layer: 0
   m_Name: Player Buddy
-  m_TagString: Player
+  m_TagString: PlayerBuddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19854,6 +19854,8 @@ GameObject:
   - component: {fileID: 1716731421}
   - component: {fileID: 1716731420}
   - component: {fileID: 1716731423}
+  - component: {fileID: 1716731425}
+  - component: {fileID: 1716731424}
   m_Layer: 0
   m_Name: Quest NPC
   m_TagString: Enemy
@@ -20082,6 +20084,8 @@ MonoBehaviour:
   questActiveDialogue: {fileID: 1716731421}
   questTurnInDialogue: {fileID: 1716731420}
   questCompleteDialogue: {fileID: 1716731423}
+  questInvFullDialogue: {fileID: 1716731425}
+  questInvStillFullDialogue: {fileID: 1716731424}
   requiredItem: {fileID: 11400000, guid: 7a0326f21a60fa34994806c307a988e2, type: 2}
   rewardItems:
   - {fileID: 11400000, guid: 257f19f4bb1e52643a980959e5afe655, type: 2}
@@ -20103,7 +20107,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   dialogueLines:
-  - dialogueText: '"If only the world had as much good people as you..."'
+  - dialogueText: '"If only the world had more good people like you..."'
+    yesDialogueLines: []
+    yesButtonText: 
+    noDialogueLines: []
+    noButtonText: 
+    isChoiceActive: 0
+  dialogueMusic: {fileID: 0}
+--- !u!114 &1716731424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716731414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogueLines:
+  - dialogueText: '"You''re still carrying too much right now."'
+    yesDialogueLines: []
+    yesButtonText: 
+    noDialogueLines: []
+    noButtonText: 
+    isChoiceActive: 0
+  - dialogueText: '"Come back when you''ve made some space, dear."
+
+'
+    yesDialogueLines: []
+    yesButtonText: 
+    noDialogueLines: []
+    noButtonText: 
+    isChoiceActive: 0
+  dialogueMusic: {fileID: 0}
+--- !u!114 &1716731425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716731414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogueLines:
+  - dialogueText: '"Oh! It seems you''re carrying too much right now."'
+    yesDialogueLines: []
+    yesButtonText: 
+    noDialogueLines: []
+    noButtonText: 
+    isChoiceActive: 0
+  - dialogueText: '"Come back when you''ve made some space, dear."'
     yesDialogueLines: []
     yesButtonText: 
     noDialogueLines: []

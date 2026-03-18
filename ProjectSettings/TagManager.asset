@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Boom
+  - PlayerBuddy
   layers:
   - Default
   - TransparentFX
