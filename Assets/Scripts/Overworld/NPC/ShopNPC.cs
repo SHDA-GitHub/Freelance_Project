@@ -154,7 +154,17 @@ public class ShopNPC : MonoBehaviour
         if (currentState == ShopState.Finished)
         {
             currentState = ShopState.Decision;
-            buySellDialogue.TriggerDialogue();
+
+            var lines = buySellDialogue.GetDialogueLines();
+
+            if (lines != null && lines.Length > 1)
+            {
+                DialogueManager.Instance.StartDialogue(buySellDialogue, new NPCDialogue.DialogueLine[] { lines[1] }, buySellDialogue.GetDialogueMusic());
+            }
+            else
+            {
+                buySellDialogue.TriggerDialogue();
+            }
         }
     }
 }

@@ -18986,8 +18986,9 @@ GameObject:
   - component: {fileID: 1545824643}
   - component: {fileID: 1545824642}
   - component: {fileID: 1545824641}
-  - component: {fileID: 1545824645}
   - component: {fileID: 1545824646}
+  - component: {fileID: 1545824645}
+  - component: {fileID: 1545824647}
   m_Layer: 0
   m_Name: Shop NPC
   m_TagString: Enemy
@@ -19008,7 +19009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopNPC
   greetingDialogue: {fileID: 1545824645}
-  buySellDialogue: {fileID: 1545824645}
+  buySellDialogue: {fileID: 1545824647}
   shopUIRoot: {fileID: 1012722165}
   shopUIController: {fileID: 1545824646}
   shopFirstSelectedButton: {fileID: 712993753}
@@ -19164,6 +19165,66 @@ MonoBehaviour:
   itemButtonPrefab: {fileID: 5277018814131681285, guid: 70cf6ee9ee0aa624ab27aa53fdbe8d1b, type: 3}
   leftButton: {fileID: 712993753}
   rightButton: {fileID: 2055290091}
+--- !u!114 &1545824647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545824640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogueLines:
+  - dialogueText: '"Whaddaya want?"'
+    yesDialogueLines:
+    - dialogueText: '"And what exactly are we looking for?"'
+      yesDialogueLines:
+      - dialogueText: '"Well, take a gander at some of my wares, then!"'
+        yesDialogueLines: []
+        yesButtonText: 
+        noDialogueLines: []
+        noButtonText: 
+        isChoiceActive: 0
+      yesButtonText: To buy
+      noDialogueLines:
+      - dialogueText: '"Do I look like a damn thrift shop owner to you?"'
+        yesDialogueLines: []
+        yesButtonText: 
+        noDialogueLines: []
+        noButtonText: 
+        isChoiceActive: 0
+      - dialogueText: '"Take your garbage somewhere else!"
+
+'
+        yesDialogueLines: []
+        yesButtonText: 
+        noDialogueLines: []
+        noButtonText: 
+        isChoiceActive: 0
+      noButtonText: To sell
+      isChoiceActive: 1
+    yesButtonText: 'I''m looking for something
+
+'
+    noDialogueLines:
+    - dialogueText: '"Well then get the hell outta my store!"'
+      yesDialogueLines: []
+      yesButtonText: 
+      noDialogueLines: []
+      noButtonText: 
+      isChoiceActive: 0
+    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
+      yesDialogueLines: []
+      yesButtonText: 
+      noDialogueLines: []
+      noButtonText: 
+      isChoiceActive: 0
+    noButtonText: Nothing
+    isChoiceActive: 1
+  dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!1 &1547858069
 GameObject:
   m_ObjectHideFlags: 0
