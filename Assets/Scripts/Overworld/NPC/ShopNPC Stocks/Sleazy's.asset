@@ -31,6 +31,14 @@ MonoBehaviour:
     price: 3.5
   - type: 1
     item: {fileID: 0}
+    specialAttack: {fileID: 11400000, guid: 19c3a8a096585c641ac026d29bc492f7, type: 2}
+    price: 7.5
+  - type: 1
+    item: {fileID: 0}
+    specialAttack: {fileID: 11400000, guid: c9504d93836066c4ea4394c6d3768edd, type: 2}
+    price: 8.99
+  - type: 1
+    item: {fileID: 0}
     specialAttack: {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
     price: 9.99
   - type: 0

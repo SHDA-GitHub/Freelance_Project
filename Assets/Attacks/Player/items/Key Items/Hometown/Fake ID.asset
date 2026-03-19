@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
   m_Name: Fake ID
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Stolen Mirror
+  itemName: Fake ID
   healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0

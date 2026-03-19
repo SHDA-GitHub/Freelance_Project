@@ -1,6 +1,7 @@
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class ShopNPC : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class ShopNPC : MonoBehaviour
     {
         player = FindFirstObjectByType<PlayerControl>();
         controls = new Controls();
+
+        controls.UI.Cancel.performed += OnBackspacePressed;
     }
 
     private void OnEnable()
@@ -37,6 +40,8 @@ public class ShopNPC : MonoBehaviour
 
         if (buySellDialogue != null)
             buySellDialogue.onChoiceMade += HandleBuySellChoice;
+
+        controls.UI.Enable();
     }
 
     private void OnDisable()
@@ -46,6 +51,16 @@ public class ShopNPC : MonoBehaviour
 
         if (buySellDialogue != null)
             buySellDialogue.onChoiceMade -= HandleBuySellChoice;
+
+        controls.UI.Disable();
+    }
+
+    private void OnBackspacePressed(InputAction.CallbackContext context)
+    {
+        if (shopUIRoot.activeSelf)
+        {
+            CloseShopUI();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -104,7 +119,6 @@ public class ShopNPC : MonoBehaviour
             shopUIRoot.SetActive(true);
 
             player.DisableControls();
-            controls.Player.Disable();
             enemyPatrolSurface.enabled = false;
 
             shopUIController.OpenShop(shopStock);
@@ -134,8 +148,13 @@ public class ShopNPC : MonoBehaviour
         DialogueManager.Instance.isExternalUILocked = false;
         shopUIRoot.SetActive(false);
         player.EnableControls();
-        controls.Player.Enable();
         enemyPatrolSurface.enabled = true;
         isDialogueActive = false;
+
+        if (currentState == ShopState.Finished)
+        {
+            currentState = ShopState.Decision;
+            buySellDialogue.TriggerDialogue();
+        }
     }
 }
