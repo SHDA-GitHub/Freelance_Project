@@ -3,9 +3,9 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager Instance;
-    public delegate void CurrencyChanged(int newAmount);
+    public delegate void CurrencyChanged(float newAmount);
     public event CurrencyChanged OnCurrencyChanged;
-    public int dollars = 0;
+    public float dollars = 0;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class CurrencyManager : MonoBehaviour
         }
     }
 
-    public void AddCoins(int amount)
+    public void AddCoins(float amount)
     {
         if (amount < 0) return;
         dollars += amount;
@@ -28,7 +28,7 @@ public class CurrencyManager : MonoBehaviour
         Debug.Log($"Added {amount} coins. Total: {dollars}");
     }
 
-    public bool SpendCoins(int amount)
+    public bool SpendCoins(float amount)
     {
         if (amount > dollars) return false;
 
@@ -38,7 +38,7 @@ public class CurrencyManager : MonoBehaviour
         return true;
     }
 
-    public int GetCoinCount()
+    public float GetCoinCount()
     {
         return dollars;
     }

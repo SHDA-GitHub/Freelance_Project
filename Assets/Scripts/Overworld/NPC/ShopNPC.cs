@@ -13,7 +13,11 @@ public class ShopNPC : MonoBehaviour
 
     [Header("Shop UI Elements")]
     [SerializeField] private GameObject shopUIRoot;
+    [SerializeField] private ShopUIController shopUIController;
     [SerializeField] private GameObject shopFirstSelectedButton;
+
+    [Header("Shop Stock")]
+    [SerializeField] private ShopStock shopStock;
 
     private PlayerControl player;
     private Controls controls;
@@ -98,9 +102,12 @@ public class ShopNPC : MonoBehaviour
         {
             DialogueManager.Instance.isExternalUILocked = true;
             shopUIRoot.SetActive(true);
+
             player.DisableControls();
             controls.Player.Disable();
             enemyPatrolSurface.enabled = false;
+
+            shopUIController.OpenShop(shopStock);
 
             if (shopFirstSelectedButton != null)
             {

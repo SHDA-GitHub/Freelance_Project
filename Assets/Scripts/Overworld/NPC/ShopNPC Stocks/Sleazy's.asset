@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff6ffc4e7b6e7c45957ba43e6f893ab, type: 3}
+  m_Name: Sleazy's
+  m_EditorClassIdentifier: Assembly-CSharp::ShopStock
+  items:
+  - type: 0
+    item: {fileID: 11400000, guid: 1338805dff161874abae9186788c3d4c, type: 2}
+    specialAttack: {fileID: 0}
+    price: 3.99
+  - type: 0
+    item: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
+    specialAttack: {fileID: 0}
+    price: 2.5
+  - type: 0
+    item: {fileID: 11400000, guid: 7fa592853cce3434ea0a2f1ec4113cbf, type: 2}
+    specialAttack: {fileID: 0}
+    price: 4.75
+  - type: 1
+    item: {fileID: 0}
+    specialAttack: {fileID: 11400000, guid: d13295cab6f1c4145aa418e71a09c5b4, type: 2}
+    price: 3.5
+  - type: 1
+    item: {fileID: 0}
+    specialAttack: {fileID: 11400000, guid: ee112bc5a9e24db46be6820dfe42ff11, type: 2}
+    price: 9.99
+  - type: 0
+    item: {fileID: 11400000, guid: f6fd18116c20c9744b222c5b15dcadf8, type: 2}
+    specialAttack: {fileID: 0}
+    price: 999

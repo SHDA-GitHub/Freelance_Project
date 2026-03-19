@@ -34,7 +34,7 @@ public class PlayerStatsSO : ScriptableObject
 
     public void GainEXP(int amount)
     {
-        currentEXP += amount;
+        currentEXP = currentEXP + amount;
         int expToNext = level * 50;
         while (currentEXP >= expToNext)
         {
