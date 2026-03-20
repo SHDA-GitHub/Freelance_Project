@@ -18,13 +18,13 @@ public enum StunStatusEffectType
     constricted,
     stunned,
     hypnotized,
-    Concussed,
+    concussed,
 }
 
 public enum MissStatusEffectType
 {
     None,
-    Slowed,
+    slowed,
     confused,
     dizzy,
     blinded,
@@ -35,8 +35,8 @@ public enum MissStatusEffectType
 public enum OffenseDefenseChangeStatusEffectType
 {
     None,
-    Scared,
-    Numb,
+    scared,
+    numb,
     weakened,
     hyperfocused,
     hardened,
@@ -46,5 +46,5 @@ public enum OffenseDefenseChangeStatusEffectType
 public enum IgnoreStatusEffectType
 {
     None,
-    Invisible,
+    invisible,
 }

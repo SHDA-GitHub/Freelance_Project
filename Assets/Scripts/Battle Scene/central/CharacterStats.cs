@@ -207,6 +207,7 @@ public class CharacterStats : MonoBehaviour
 
     public void ReduceDOTDurations()
     {
+        bool removedAny = false;
         for (int i = activeStatusEffects.Count - 1; i >= 0; i--)
         {
             activeStatusEffects[i].duration--;
@@ -214,39 +215,61 @@ public class CharacterStats : MonoBehaviour
             if (activeStatusEffects[i].duration <= 0)
             {
                 activeStatusEffects.RemoveAt(i);
+                removedAny = true;
             }
         }
+
+        if (removedAny)
+            StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void ReduceStunEffects()
     {
+        bool removedAny = false;
         for (int i = activeStunEffects.Count - 1; i >= 0; i--)
         {
             activeStunEffects[i].duration--;
             if (activeStunEffects[i].duration <= 0)
+            {
                 activeStunEffects.RemoveAt(i);
+                removedAny = true;
+            }
         }
+        if (removedAny)
+            StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void ReduceMissEffects()
     {
+        bool removedAny = false;
         for (int i = activeMissEffects.Count - 1; i >= 0; i--)
         {
             activeMissEffects[i].duration--;
             if (activeMissEffects[i].duration <= 0)
+            {
                 activeMissEffects.RemoveAt(i);
+                removedAny = true;
+            }
         }
+        if (removedAny)
+            StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void ReduceOffDefEffects()
     {
+        bool removedAny = false;
         for (int i = activeOffDefEffects.Count - 1; i >= 0; i--)
         {
             activeOffDefEffects[i].duration--;
 
             if (activeOffDefEffects[i].duration <= 0)
+            {
                 activeOffDefEffects.RemoveAt(i);
+                removedAny = true;
+            }
         }
+        if (removedAny)
+            StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void RemoveAllStatusEffects()
@@ -255,26 +278,37 @@ public class CharacterStats : MonoBehaviour
         activeStunEffects.Clear();
         activeMissEffects.Clear();
         activeOffDefEffects.Clear();
+        RefreshStatusEffectUI();
+    }
+
+    private void RefreshStatusEffectUI()
+    {
+        if (StatusEffectManager.Instance != null)
+            StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void RemoveDOTEffect(DOTStatusEffectType type)
     {
         activeStatusEffects.RemoveAll(e => e.type == type);
+        StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void RemoveStunEffect(StunStatusEffectType type)
     {
         activeStunEffects.RemoveAll(e => e.type == type);
+        StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void RemoveMissEffect(MissStatusEffectType type)
     {
         activeMissEffects.RemoveAll(e => e.type == type);
+        StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public void RemoveStatEffect(OffenseDefenseChangeStatusEffectType type)
     {
         activeOffDefEffects.RemoveAll(e => e.type == type);
+        StatusEffectManager.Instance.ShowStatusEffect(this);
     }
 
     public bool IsImmune(DOTStatusEffectType type)

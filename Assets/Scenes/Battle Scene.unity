@@ -146,14 +146,14 @@ RectTransform:
   m_GameObject: {fileID: 11025631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.4, y: 0.48000002, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 513817628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12.4}
+  m_AnchoredPosition: {x: 0, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11025633
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 44d2beedc3c83ac4481d26d56c25853d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f73bc1995afd9264fb6f72663047c94d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -364,7 +364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.2000732, y: -35.8}
+  m_AnchoredPosition: {x: -1.2000732, y: -33}
   m_SizeDelta: {x: 200.5363, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87155480
@@ -1195,7 +1195,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0e3db790cb99a2641af384c3196a0534, type: 3}
+  m_Resource: {fileID: 8300000, guid: d13c4f7c4f5abdb449554980c6bb016d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: c3ab50b573c68654588bf4f3b20e3dd5, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 2d6c072de85355c4ba125599fa5d0934, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -1802,6 +1802,8 @@ GameObject:
   - component: {fileID: 513817628}
   - component: {fileID: 513817630}
   - component: {fileID: 513817629}
+  - component: {fileID: 513817632}
+  - component: {fileID: 513817631}
   m_Layer: 5
   m_Name: StatusEffectsBuddy
   m_TagString: Untagged
@@ -1828,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 805, y: -17}
+  m_AnchoredPosition: {x: 805, y: -56.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513817629
@@ -1869,6 +1871,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513817627}
   m_CullTransparentMesh: 1
+--- !u!114 &513817631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513817627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d281fd3b1ef11478a7ee09cce3754f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectUI
+  iconImage: {fileID: 11025633}
+  effectNameText: {fileID: 87155480}
+  playerNameText: {fileID: 1031427861}
+--- !u!114 &513817632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513817627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53c94cee39f41e4a84ac839d5319658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectPanel
+  panelUI: {fileID: 513817631}
 --- !u!1 &553866093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.2000732, y: -35.8}
+  m_AnchoredPosition: {x: -1.2000732, y: -33}
   m_SizeDelta: {x: 200.5363, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732605784
@@ -4147,6 +4177,8 @@ GameObject:
   - component: {fileID: 1482134742}
   - component: {fileID: 1482134744}
   - component: {fileID: 1482134743}
+  - component: {fileID: 1482134746}
+  - component: {fileID: 1482134745}
   m_Layer: 5
   m_Name: StatusEffectsMainPlayer
   m_TagString: Untagged
@@ -4173,7 +4205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -805, y: -17}
+  m_AnchoredPosition: {x: -805, y: -56.800007}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482134743
@@ -4214,6 +4246,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482134741}
   m_CullTransparentMesh: 1
+--- !u!114 &1482134745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482134741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d281fd3b1ef11478a7ee09cce3754f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectUI
+  iconImage: {fileID: 2034389696}
+  effectNameText: {fileID: 732605784}
+  playerNameText: {fileID: 188162321}
+--- !u!114 &1482134746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482134741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53c94cee39f41e4a84ac839d5319658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectPanel
+  panelUI: {fileID: 1482134745}
 --- !u!1 &1489468284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4831,6 +4891,118 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1826199345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826199347}
+  - component: {fileID: 1826199346}
+  - component: {fileID: 1826199348}
+  m_Layer: 0
+  m_Name: StatusEffectUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1826199346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826199345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058432efd6e212b4aa329c5e8b1c34b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectDatabase
+  effects:
+  - effectName: burning
+    icon: {fileID: 21300000, guid: 2e47f8e36f1a4004e91528cb7cb50816, type: 3}
+  - effectName: poisoned
+    icon: {fileID: 21300000, guid: 34439e0a74f29ab43b5638e01995443c, type: 3}
+  - effectName: sickened
+    icon: {fileID: 21300000, guid: 85e9b17557a1c3f45823b0a905f2f575, type: 3}
+  - effectName: shocked
+    icon: {fileID: 21300000, guid: 47656bf2e90835647b31ae62eff1316f, type: 3}
+  - effectName: bleeding
+    icon: {fileID: 21300000, guid: 37c37dc4e4f1b2a40b076cfe664d0312, type: 3}
+  - effectName: stressed
+    icon: {fileID: 21300000, guid: ab789eeea872a6144a24f3e9c1d485a8, type: 3}
+  - effectName: frozen
+    icon: {fileID: 21300000, guid: f73bc1995afd9264fb6f72663047c94d, type: 3}
+  - effectName: sleepy
+    icon: {fileID: 21300000, guid: 7d0fbb5c9d2384044a0442435828bb8c, type: 3}
+  - effectName: paralyzed
+    icon: {fileID: 21300000, guid: 44d2beedc3c83ac4481d26d56c25853d, type: 3}
+  - effectName: constricted
+    icon: {fileID: 21300000, guid: 2e47f8e36f1a4004e91528cb7cb50816, type: 3}
+  - effectName: stunned
+    icon: {fileID: 21300000, guid: b3060d741fbe2d248b0f2513e035f43c, type: 3}
+  - effectName: hypnotized
+    icon: {fileID: 21300000, guid: 44d2beedc3c83ac4481d26d56c25853d, type: 3}
+  - effectName: concussed
+    icon: {fileID: 21300000, guid: b3060d741fbe2d248b0f2513e035f43c, type: 3}
+  - effectName: slowed
+    icon: {fileID: 21300000, guid: f47b559b4e3d8744b8cf70a395ae9fa2, type: 3}
+  - effectName: confused
+    icon: {fileID: 21300000, guid: 0f990aeffe9bb5541956018ca71a2f08, type: 3}
+  - effectName: dizzy
+    icon: {fileID: 21300000, guid: ba75fdf6759779f46b025c3fd08bb86e, type: 3}
+  - effectName: blinded
+    icon: {fileID: 21300000, guid: ecc0f40cb4fa03e4d8aed750b36dd4e1, type: 3}
+  - effectName: deafened
+    icon: {fileID: 21300000, guid: f416716c57c725f4a8ed17f6de74a995, type: 3}
+  - effectName: distracted
+    icon: {fileID: 21300000, guid: 6163a67897616f6498ffd5b3e9066a1e, type: 3}
+  - effectName: scared
+    icon: {fileID: 21300000, guid: 2972050a1b2f7264089f959dae272bd2, type: 3}
+  - effectName: numb
+    icon: {fileID: 21300000, guid: ba75fdf6759779f46b025c3fd08bb86e, type: 3}
+  - effectName: weakened
+    icon: {fileID: 21300000, guid: f7adb079cba0f21409797a949bd87730, type: 3}
+  - effectName: hyperfocused
+    icon: {fileID: 21300000, guid: ab789eeea872a6144a24f3e9c1d485a8, type: 3}
+  - effectName: hardened
+    icon: {fileID: 21300000, guid: 6d4680543fa421c4bb4d66e8f1261a37, type: 3}
+  - effectName: strengthened
+    icon: {fileID: 21300000, guid: 541be9006aeabbc42bfdf90b02fff34f, type: 3}
+  - effectName: strengthened
+    icon: {fileID: 21300000, guid: 2e47f8e36f1a4004e91528cb7cb50816, type: 3}
+--- !u!4 &1826199347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826199345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1826199348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826199345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aaf28a4192cb7649b65d818496ca3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
+  mainPlayerPanel: {fileID: 1482134746}
+  buddyPanel: {fileID: 513817632}
 --- !u!1 &1829633664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5449,14 +5621,14 @@ RectTransform:
   m_GameObject: {fileID: 2034389694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.4, y: 0.48000002, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1482134742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12.4}
+  m_AnchoredPosition: {x: 0, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034389696
@@ -5479,7 +5651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 44d2beedc3c83ac4481d26d56c25853d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f73bc1995afd9264fb6f72663047c94d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5510,7 +5682,7 @@ GameObject:
   - component: {fileID: 2061152904}
   m_Layer: 5
   m_Name: Buddy
-  m_TagString: Player
+  m_TagString: PlayerBuddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5633,6 +5805,7 @@ SceneRoots:
   - {fileID: 1884664884}
   - {fileID: 1829633666}
   - {fileID: 1406268199}
+  - {fileID: 1826199347}
   - {fileID: 506090847}
   - {fileID: 408731266}
   - {fileID: 882039387}

@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 83c2585122b930941afb46635d7612ef, type: 3}
+  m_Sprite: {fileID: 1434670398, guid: fbcd2d841d5c9104198021e59465211e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.7, y: 2.7}
+    oldSize: {x: 0.96, y: 0.96}
     newSize: {x: 2.7, y: 2.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -158,12 +158,22 @@ MonoBehaviour:
   currentPP: 1
   level: 1
   currentEXP: 0
+  immuneDOTEffects: 
+  immuneStunEffects: 
+  immuneMissEffects: 
+  immuneOffDefEffects: 
   enemyLoadout: {fileID: 11400000, guid: b01b7b4e08693e7418e609d83277fca7, type: 2}
+  dropReward: {fileID: 0}
+  expReward: 5
+  currencyReward: 5
   attacks: []
+  playerStats: {fileID: 0}
   activeStatusEffects: []
   activeStunEffects: []
   activeMissEffects: []
+  activeOffDefEffects: []
   overtimeDamage: 2
+  isPlayer: 0
 --- !u!82 &8290771254279514223
 AudioSource:
   m_ObjectHideFlags: 0
