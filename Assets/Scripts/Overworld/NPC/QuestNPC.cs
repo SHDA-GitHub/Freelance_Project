@@ -111,7 +111,7 @@ public class QuestNPC : MonoBehaviour
     {
         yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
-        yield return new WaitForSeconds(0.51f);
+        yield return new WaitForSeconds(0.37f);
 
         audioSource.clip = itemGetSound;
         audioSource.Play();

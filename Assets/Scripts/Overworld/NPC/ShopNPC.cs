@@ -65,7 +65,7 @@ public class ShopNPC : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (player.isInteracting && !DialogueManager.Instance.IsDialogueActive() && !isDialogueActive)
+        if (other.CompareTag("Player"))
         {
             StartInteraction();
         }
@@ -73,9 +73,9 @@ public class ShopNPC : MonoBehaviour
 
     private void StartInteraction()
     {
-        isDialogueActive = true;
-        currentState = ShopState.Intro;
-        greetingDialogue.TriggerDialogue();
+            isDialogueActive = true;
+            currentState = ShopState.Intro;
+            greetingDialogue.TriggerDialogue();
     }
 
     void HandleGreetingChoice(bool wantToShop)
@@ -90,15 +90,14 @@ public class ShopNPC : MonoBehaviour
         else
         {
             currentState = ShopState.Finished;
-            isDialogueActive = false;
         }
     }
 
-    void HandleBuySellChoice(bool isBuying)
+    void HandleBuySellChoice(bool wasYes)
     {
         if (currentState != ShopState.Decision) return;
 
-        if (isBuying)
+        if (wasYes)
         {
             OpenShopUI();
         }

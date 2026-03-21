@@ -41,7 +41,7 @@ public class ShopUIController : MonoBehaviour
 
             var button = Instantiate(itemButtonPrefab, targetGrid);
 
-            button.GetComponent<ShopItemButton>().Setup(currentItems[i]);
+            button.GetComponent<ShopItemButton>().Setup(currentItems[i], this);
         }
 
         UpdateNavButtons();
@@ -89,5 +89,71 @@ public class ShopUIController : MonoBehaviour
     {
         foreach (Transform child in grid)
             Destroy(child.gameObject);
+    }
+
+    public void TryBuyItem(ShopItem item)
+    {
+        if (DialogueManager.Instance == null)
+            return;
+
+        NPCDialogue tempDialogue = new NPCDialogue();
+
+        string itemName = (item.type == ShopItemType.Item)
+            ? item.item.itemName
+            : item.specialAttack.specAttackName;
+
+        NPCDialogue.DialogueLine confirmLine = new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"Do you want to buy {itemName} for {item.price}?",
+            isChoiceActive = true,
+            yesButtonText = "Yes",
+            noButtonText = "No"
+        };
+
+        confirmLine.yesDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You bought {itemName}."
+        }
+        };
+
+        confirmLine.noDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You decided not to buy {itemName}."
+        }
+        };
+
+        tempDialogue.onChoiceMade += (bool yes) =>
+        {
+            if (yes)
+            {
+                BuyItem(item);
+            }
+        };
+
+        DialogueManager.Instance.StartDialogue(
+            tempDialogue,
+            new NPCDialogue.DialogueLine[] { confirmLine },
+            null
+        );
+    }
+
+    void BuyItem(ShopItem item)
+    {
+        switch (item.type)
+        {
+            case ShopItemType.Item:
+                Inventory.Instance.AddItem(item.item);
+                Debug.Log("Bought item: " + item.item.itemName);
+                break;
+
+            case ShopItemType.SpecialAttack:
+                Inventory.Instance.AddSpecialAttack(item.specialAttack);
+                Debug.Log("Bought special: " + item.specialAttack.specAttackName);
+                break;
+        }
     }
 }

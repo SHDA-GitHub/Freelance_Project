@@ -7,10 +7,12 @@ public class ShopItemButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
 
     private ShopItem itemData;
+    private ShopUIController shopUI;
 
-    public void Setup(ShopItem item)
+    public void Setup(ShopItem item, ShopUIController controller)
     {
         itemData = item;
+        shopUI = controller;
 
         switch (item.type)
         {
@@ -28,17 +30,9 @@ public class ShopItemButton : MonoBehaviour
 
     public void OnClick()
     {
-        switch (itemData.type)
+        if (shopUI != null)
         {
-            case ShopItemType.Item:
-                Inventory.Instance.AddItem(itemData.item);
-                Debug.Log("Bought item: " + itemData.item.itemName);
-                break;
-
-            case ShopItemType.SpecialAttack:
-                Inventory.Instance.AddSpecialAttack(itemData.specialAttack);
-                Debug.Log("Bought special: " + itemData.specialAttack.specAttackName);
-                break;
+            shopUI.TryBuyItem(itemData);
         }
     }
 }
