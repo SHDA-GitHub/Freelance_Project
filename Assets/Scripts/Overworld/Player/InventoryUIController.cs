@@ -284,9 +284,9 @@ public class InventoryUIController : MonoBehaviour
         }
         };
 
-        tempDialogue.onChoiceMade += (bool yes) =>
+        tempDialogue.onChoiceMade += (string yes) =>
         {
-            if (yes)
+            if (yes == "yes")
             {
                 RemoveItem(invItem);
             }
@@ -337,9 +337,9 @@ public class InventoryUIController : MonoBehaviour
         }
         };
 
-        tempDialogue.onChoiceMade += (bool yes) =>
+        tempDialogue.onChoiceMade += (string yes) =>
         {
-            if (yes)
+            if (yes == "yes")
             {
                 RemoveSpecial(invSpecial);
             }

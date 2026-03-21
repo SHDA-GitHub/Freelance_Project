@@ -74,9 +74,9 @@ public class OverworldEnemyInteract : MonoBehaviour
         }
     }
 
-    private void OnDialogueChoiceMade(bool yesChosen)
+    private void OnDialogueChoiceMade(string yesChosen)
     {
-        if (!yesChosen && allowNoBattleChoice)
+        if (yesChosen != "yes" && allowNoBattleChoice)
         {
             playerChoseNo = true;
         }

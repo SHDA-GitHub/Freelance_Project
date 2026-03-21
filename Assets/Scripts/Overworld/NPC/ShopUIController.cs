@@ -126,9 +126,9 @@ public class ShopUIController : MonoBehaviour
         }
         };
 
-        tempDialogue.onChoiceMade += (bool yes) =>
+        tempDialogue.onChoiceMade += (string yes) =>
         {
-            if (yes)
+            if (yes == "yes")
             {
                 BuyItem(item);
             }

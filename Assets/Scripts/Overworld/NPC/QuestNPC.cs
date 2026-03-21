@@ -79,17 +79,17 @@ public class QuestNPC : MonoBehaviour
         }
     }
 
-    void HandleQuestOfferChoice(bool accepted)
+    void HandleQuestOfferChoice(string accepted)
     {
-        if (accepted)
+        if (accepted == "yes")
         {
             questAccepted = true;
         }
     }
 
-    void HandleTurnInChoice(bool gaveItem)
+    void HandleTurnInChoice(string gaveItem)
     {
-        if (!gaveItem)
+        if (gaveItem != "yes")
             return;
 
         InventoryItem foundItem = Inventory.Instance.keyItems

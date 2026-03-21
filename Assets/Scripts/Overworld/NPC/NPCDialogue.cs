@@ -10,12 +10,14 @@ public class NPCDialogue : MonoBehaviour
 
         [Header("Yes Choice")]
         public DialogueLine[] yesDialogueLines;
+        public string yesChoiceID = "yes";
 
         [TextArea(2, 5)]
         public string yesButtonText = "Yes";
 
         [Header("No Choice")]
         public DialogueLine[] noDialogueLines;
+        public string noChoiceID = "no";
 
         [TextArea(2, 5)]
         public string noButtonText = "No";
@@ -29,7 +31,7 @@ public class NPCDialogue : MonoBehaviour
     [Header("Optional Dialogue Music")]
     [SerializeField] private AudioClip dialogueMusic;
 
-    public System.Action<bool> onChoiceMade;
+    public System.Action<string> onChoiceMade;
 
     public void TriggerDialogue()
     {

@@ -145,7 +145,8 @@ public class DialogueManager : MonoBehaviour
             dialogueIndex++;
         }
         onChoiceMadeCallback?.Invoke();
-        currentNPCDialogue?.onChoiceMade?.Invoke(isYes);
+        string choiceID = isYes ? currentLine.yesChoiceID : currentLine.noChoiceID;
+        currentNPCDialogue?.onChoiceMade?.Invoke(choiceID);
 
         yield return null;
     }

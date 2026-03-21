@@ -2,6 +2,7 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class ShopNPC : MonoBehaviour
 {
@@ -78,11 +79,11 @@ public class ShopNPC : MonoBehaviour
             greetingDialogue.TriggerDialogue();
     }
 
-    void HandleGreetingChoice(bool wantToShop)
+    void HandleGreetingChoice(string decision)
     {
         if (currentState != ShopState.Intro) return;
 
-        if (wantToShop)
+        if (decision == "wantToShop")
         {
             currentState = ShopState.Decision;
             buySellDialogue.TriggerDialogue();
@@ -93,11 +94,11 @@ public class ShopNPC : MonoBehaviour
         }
     }
 
-    void HandleBuySellChoice(bool wasYes)
+    void HandleBuySellChoice(string choiceID)
     {
         if (currentState != ShopState.Decision) return;
 
-        if (wasYes)
+        if (choiceID == "yes")
         {
             OpenShopUI();
         }
