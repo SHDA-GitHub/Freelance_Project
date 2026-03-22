@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ShopItemButton : MonoBehaviour
@@ -8,11 +9,19 @@ public class ShopItemButton : MonoBehaviour
 
     private ShopItem itemData;
     private ShopUIController shopUI;
+    private Button button;
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
 
     public void Setup(ShopItem item, ShopUIController controller)
     {
         itemData = item;
         shopUI = controller;
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => shopUI.TryBuyItem(item));
 
         switch (item.type)
         {
@@ -26,13 +35,6 @@ public class ShopItemButton : MonoBehaviour
         }
 
         priceText.text = item.price.ToString();
-    }
 
-    public void OnClick()
-    {
-        if (shopUI != null)
-        {
-            shopUI.TryBuyItem(itemData);
-        }
     }
 }

@@ -16851,8 +16851,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2079088646}
-  - {fileID: 9078148763857584861}
   - {fileID: 1012722166}
+  - {fileID: 9078148763857584861}
   - {fileID: 921197764}
   - {fileID: 1820251737}
   - {fileID: 362711670}
@@ -19242,7 +19242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopNPC
   greetingDialogue: {fileID: 1545824648}
-  buySellDialogue: {fileID: 1545824648}
   shopUIRoot: {fileID: 1012722165}
   shopUIController: {fileID: 1545824646}
   shopFirstSelectedButton: {fileID: 712993753}

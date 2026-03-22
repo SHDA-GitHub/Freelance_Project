@@ -132,5 +132,6 @@ public class ShopNPC : MonoBehaviour
         enemyPatrolSurface.enabled = true;
 
         isDialogueActive = false;
+        canInteract = true;
     }
 }
