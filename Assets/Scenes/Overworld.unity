@@ -14707,7 +14707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   prePickupDialogue:
-  - You reached to the object on the ground...
+  - You reached for the object on the ground...
   items:
   - {fileID: 11400000, guid: 7a0326f21a60fa34994806c307a988e2, type: 2}
   specialAttacks: []
@@ -19352,9 +19352,9 @@ MonoBehaviour:
     noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"Whaddaya want?"'
+  - dialogueText: '"Whaddaya want, snotnose?"'
     yesDialogueLines:
-    - dialogueText: '"Well take a look at some of my wares, then!"'
+    - dialogueText: '"Well take a gander at some of my wares, then!"'
       yesDialogueLines: []
       yesChoiceID: 
       yesButtonText: 
@@ -23450,7 +23450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0

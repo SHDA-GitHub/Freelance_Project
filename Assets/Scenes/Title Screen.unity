@@ -1713,10 +1713,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PreLoadingScript
   musicTracks:
   - {fileID: 8300000, guid: e7cd713b4de6d37459e32b5aecdbcf1a, type: 3}
+  - {fileID: 8300000, guid: 3d0d89601c76f9840820a842da565219, type: 3}
   - {fileID: 8300000, guid: 66d7931d18273884cadd173646861278, type: 3}
   - {fileID: 8300000, guid: d031c9a17dbde134f84e473879d6f20c, type: 3}
   - {fileID: 8300000, guid: 79633e99eb886a94393f0996a68cc8ee, type: 3}
   - {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
+  - {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!4 &1662960236
 Transform:
   m_ObjectHideFlags: 0
