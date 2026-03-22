@@ -824,8 +824,10 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Bark! Bark!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
@@ -4105,32 +4107,42 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"I know who you are."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"The child of legend..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"With his gifted powers and strong emotional resolve."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"But you cannot stop the Moon Soldiers from taking over your planet."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"For the glory of the Chorus Beyond!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 8300000, guid: 352ee1acfa6a77a43a4c37db5a02834f, type: 3}
@@ -7771,6 +7783,8 @@ GameObject:
   m_Component:
   - component: {fileID: 546121680}
   - component: {fileID: 546121681}
+  - component: {fileID: 546121682}
+  - component: {fileID: 546121683}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -7814,6 +7828,162 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.07, y: 1.57, z: 0.3}
   m_Center: {x: 0, y: 0.23, z: 0}
+--- !u!114 &546121682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546121679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogueLines:
+  - dialogueText: '"Welcome to Slickster Sleazebag''s emporium."'
+    yesDialogueLines: []
+    yesChoiceID: yes
+    yesButtonText: 
+    noDialogueLines: []
+    noChoiceID: no
+    noButtonText: 
+    isChoiceActive: 0
+  - dialogueText: '"Whaddaya want?"'
+    yesDialogueLines:
+    - dialogueText: '"And what exactly are we looking for?"'
+      yesDialogueLines:
+      - dialogueText: '"Well, take a gander at some of my wares, then!"'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      yesChoiceID: wantToShop
+      yesButtonText: To buy
+      noDialogueLines:
+      - dialogueText: '"Do I look like a damn thrift shop owner to you?"'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      - dialogueText: '"Take your garbage somewhere else!"
+
+'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      noChoiceID: wantToSell
+      noButtonText: To sell
+      isChoiceActive: 1
+    yesChoiceID: yes
+    yesButtonText: 'I''m looking for something
+
+'
+    noDialogueLines:
+    - dialogueText: '"Well then get the hell outta my store!"'
+      yesDialogueLines: []
+      yesChoiceID: yes
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: no
+      noButtonText: 
+      isChoiceActive: 0
+    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
+      yesDialogueLines: []
+      yesChoiceID: yes
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: no
+      noButtonText: 
+      isChoiceActive: 0
+    noChoiceID: no
+    noButtonText: Nothing
+    isChoiceActive: 1
+  dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
+--- !u!114 &546121683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546121679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  dialogueLines:
+  - dialogueText: '"Whaddaya want?"'
+    yesDialogueLines:
+    - dialogueText: '"And what exactly are we looking for?"'
+      yesDialogueLines:
+      - dialogueText: '"Well, take a gander at some of my wares, then!"'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      yesChoiceID: yes
+      yesButtonText: To buy
+      noDialogueLines:
+      - dialogueText: '"Do I look like a damn thrift shop owner to you?"'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      - dialogueText: '"Take your garbage somewhere else!"
+
+'
+        yesDialogueLines: []
+        yesChoiceID: yes
+        yesButtonText: 
+        noDialogueLines: []
+        noChoiceID: no
+        noButtonText: 
+        isChoiceActive: 0
+      noChoiceID: no
+      noButtonText: To sell
+      isChoiceActive: 1
+    yesChoiceID: yes
+    yesButtonText: 'I''m looking for something
+
+'
+    noDialogueLines:
+    - dialogueText: '"Well then get the hell outta my store!"'
+      yesDialogueLines: []
+      yesChoiceID: yes
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: no
+      noButtonText: 
+      isChoiceActive: 0
+    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
+      yesDialogueLines: []
+      yesChoiceID: yes
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: no
+      noButtonText: 
+      isChoiceActive: 0
+    noChoiceID: no
+    noButtonText: Nothing
+    isChoiceActive: 1
+  dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!1 &547434253
 GameObject:
   m_ObjectHideFlags: 0
@@ -10416,56 +10586,74 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Hello there, kind fella!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"The name''s Cheerful Chester!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Isn''t this town so nice?"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"The serenity..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"The peaceful greenery..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"The birds chirping..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"It''s just wonderful, right?"'
     yesDialogueLines:
     - dialogueText: '"Glad you think so too!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: Yeah, it's nice
     noDialogueLines:
     - dialogueText: '"Oh. Well, agree to disagree!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: No, it sucks
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: d031c9a17dbde134f84e473879d6f20c, type: 3}
@@ -14159,21 +14347,27 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Woah there, kid!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Easy on the personal space. I''m trying to look good"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"And you''re emanating an aura of ugliness that makes me look
       worse."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"You get me?"'
@@ -14182,40 +14376,54 @@ MonoBehaviour:
       yesDialogueLines:
       - dialogueText: '"Oh, so you want to pick a fight, huh?"'
         yesDialogueLines: []
+        yesChoiceID: yes
         yesButtonText: 
         noDialogueLines: []
+        noChoiceID: no
         noButtonText: 
         isChoiceActive: 0
       - dialogueText: '"You''re asking for it!"'
         yesDialogueLines: []
+        yesChoiceID: yes
         yesButtonText: 
         noDialogueLines: []
+        noChoiceID: no
         noButtonText: 
         isChoiceActive: 0
+      yesChoiceID: yes
       yesButtonText: I said I'm gonna punch the veneers out your mouth.
       noDialogueLines:
       - dialogueText: '"That''s what I thought"'
         yesDialogueLines: []
+        yesChoiceID: yes
         yesButtonText: 
         noDialogueLines: []
+        noChoiceID: no
         noButtonText: 
         isChoiceActive: 0
+      noChoiceID: no
       noButtonText: Nothing!
       isChoiceActive: 1
+    yesChoiceID: yes
     yesButtonText: What a punchable face you have.
     noDialogueLines:
     - dialogueText: '"That''s alright. Not everyone can be as beautiful as me, anyways."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Don''t take it to heart, you''re just very, very, VERY hideous-looking."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: I understand. Sorry, sir.
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 79633e99eb886a94393f0996a68cc8ee, type: 3}
@@ -16313,53 +16521,69 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"My wife thinks I''m being way too hard on my son."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"It''s only a couple of spakings, a thorough lecture and no allowance
       for a week..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"That was because he left the fridge open last night."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Do you also think that I''m being too harsh with his punishments?"'
     yesDialogueLines:
     - dialogueText: '"Are you giving me lip, boy?!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"I''ll teach you to respect your elders!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: 'Tell him the truth
 
 '
     noDialogueLines:
     - dialogueText: '"Of course I''m not!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"I''m his dad, obviously I know what''s best."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: Lie
     isChoiceActive: 1
   dialogueMusic: {fileID: 0}
@@ -17788,32 +18012,42 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '*Bzzt* DO NOT RESIST'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: YOU HAVE *whirr* BEEN PLACED UNDER CAPTURE OF *beep* THE MOON SOLDIERS
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: SURRENDER NOW, OR FACE *blip boop* UTTER ANNIHILATION
     yesDialogueLines:
     - dialogueText: NOW STAND STILL AND I WILL *chk* INITIATE CAPTURE SEQUENCE
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines:
     - dialogueText: THEN *fssh* FACE THE WRATH OF *brrrzt* DECIMATOR MK. II
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 0c0487d46f457b644a21d6207e8e8e77, type: 3}
@@ -18987,8 +19221,6 @@ GameObject:
   - component: {fileID: 1545824642}
   - component: {fileID: 1545824641}
   - component: {fileID: 1545824646}
-  - component: {fileID: 1545824645}
-  - component: {fileID: 1545824647}
   - component: {fileID: 1545824648}
   m_Layer: 0
   m_Name: Shop NPC
@@ -19009,8 +19241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caff75d00e0d2c44d9a69dea90cfb07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopNPC
-  greetingDialogue: {fileID: 1545824645}
-  buySellDialogue: {fileID: 1545824647}
+  greetingDialogue: {fileID: 1545824648}
+  buySellDialogue: {fileID: 1545824648}
   shopUIRoot: {fileID: 1012722165}
   shopUIController: {fileID: 1545824646}
   shopFirstSelectedButton: {fileID: 712993753}
@@ -19082,72 +19314,6 @@ Transform:
   - {fileID: 546121680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1545824645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545824640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogueLines:
-  - dialogueText: '"Welcome to Slickster Sleazebag''s emporium."'
-    yesDialogueLines: []
-    yesButtonText: 
-    noDialogueLines: []
-    noButtonText: 
-    isChoiceActive: 0
-  - dialogueText: '"Whaddaya want?"'
-    yesDialogueLines:
-    - dialogueText: '"And what exactly are we looking for?"'
-      yesDialogueLines:
-      - dialogueText: '"Well, take a gander at some of my wares, then!"'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      yesButtonText: To buy
-      noDialogueLines:
-      - dialogueText: '"Do I look like a damn thrift shop owner to you?"'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      - dialogueText: '"Take your garbage somewhere else!"
-
-'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      noButtonText: To sell
-      isChoiceActive: 1
-    yesButtonText: 'I''m looking for something
-
-'
-    noDialogueLines:
-    - dialogueText: '"Well then get the hell outta my store!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    noButtonText: Nothing
-    isChoiceActive: 1
-  dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!114 &1545824646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19166,66 +19332,6 @@ MonoBehaviour:
   itemButtonPrefab: {fileID: 5277018814131681285, guid: 70cf6ee9ee0aa624ab27aa53fdbe8d1b, type: 3}
   leftButton: {fileID: 712993753}
   rightButton: {fileID: 2055290091}
---- !u!114 &1545824647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545824640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogueLines:
-  - dialogueText: '"Whaddaya want?"'
-    yesDialogueLines:
-    - dialogueText: '"And what exactly are we looking for?"'
-      yesDialogueLines:
-      - dialogueText: '"Well, take a gander at some of my wares, then!"'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      yesButtonText: To buy
-      noDialogueLines:
-      - dialogueText: '"Do I look like a damn thrift shop owner to you?"'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      - dialogueText: '"Take your garbage somewhere else!"
-
-'
-        yesDialogueLines: []
-        yesButtonText: 
-        noDialogueLines: []
-        noButtonText: 
-        isChoiceActive: 0
-      noButtonText: To sell
-      isChoiceActive: 1
-    yesButtonText: 'I''m looking for something
-
-'
-    noDialogueLines:
-    - dialogueText: '"Well then get the hell outta my store!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
-      yesDialogueLines: []
-      yesButtonText: 
-      noDialogueLines: []
-      noButtonText: 
-      isChoiceActive: 0
-    noButtonText: Nothing
-    isChoiceActive: 1
-  dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!114 &1545824648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19239,12 +19345,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   dialogueLines:
-  - dialogueText: '"Welcome to Slickster Sleazebag''s emporium."'
+  - dialogueText: '"Welcome to Samuel Sleazebag''s Emporium."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
+  - dialogueText: '"Whaddaya want?"'
+    yesDialogueLines:
+    - dialogueText: '"Well take a look at some of my wares, then!"'
+      yesDialogueLines: []
+      yesChoiceID: 
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: 
+      noButtonText: 
+      isChoiceActive: 0
+    yesChoiceID: buy
+    yesButtonText: I'm looking for something
+    noDialogueLines:
+    - dialogueText: '"Well then get the hell outta my store!"'
+      yesDialogueLines: []
+      yesChoiceID: 
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: 
+      noButtonText: 
+      isChoiceActive: 0
+    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
+      yesDialogueLines: []
+      yesChoiceID: 
+      yesButtonText: 
+      noDialogueLines: []
+      noChoiceID: 
+      noButtonText: 
+      isChoiceActive: 0
+    noChoiceID: leave
+    noButtonText: Nothing
+    isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
 --- !u!1 &1547858069
 GameObject:
@@ -21095,51 +21235,67 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Why hello there, dearie..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Could you help find something for me?"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"I''m afraid I''ve lost it and I cannot find it on my own..."'
     yesDialogueLines:
     - dialogueText: '"You''re such a kindhearted young man!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Anywho, I''ve lost my mirror..."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"I always have it with me, but for some reason I cannot find
         it anymore."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Please, find it and return it to me."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: Sure thing!
     noDialogueLines:
     - dialogueText: '"How heartless and cruel..."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: Go get it yourself granny
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
@@ -21224,38 +21380,50 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Have you found my mirror yet..?"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Oh, there it is!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Could I have it back, please?"'
     yesDialogueLines:
     - dialogueText: '"Oh, you''re a true livesaver!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Here, take this as a token of my appreciation."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: Of course, ma'am
     noDialogueLines:
     - dialogueText: '"Oh... That''s a shame..."'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: Finders keepers, losers weepers
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
@@ -21274,14 +21442,18 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Have you found my mirror yet..?"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Oh, that''s alright! Take as much time as you need."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
@@ -21326,8 +21498,10 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"If only the world had more good people like you..."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
@@ -21346,16 +21520,20 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"You''re still carrying too much right now."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Come back when you''ve made some space, dear."
 
 '
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
@@ -21374,14 +21552,18 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Oh! It seems you''re carrying too much right now."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   - dialogueText: '"Come back when you''ve made some space, dear."'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
@@ -21900,63 +22082,83 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '"Why hello there, youngin!"'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: Yes
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: No
     isChoiceActive: 0
   - dialogueText: '"Are you looking for something?"'
     yesDialogueLines:
     - dialogueText: '"Wha? What''s that, sonny?"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"You''re going on a journey to stop an evil alien overlord from
         destroying the earth?"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Heh, kids these days with their wild imaginations!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Well, you have fun out there, kiddo!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    yesChoiceID: yes
     yesButtonText: Tell him the truth
     noDialogueLines:
     - dialogueText: '"Wha? What''s that, sonny?"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"I don''t take too kindly to that type of language!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"I may be old, but I''m not stupid!"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
     - dialogueText: '"Err... What was I talking about again?"'
       yesDialogueLines: []
+      yesChoiceID: yes
       yesButtonText: 
       noDialogueLines: []
+      noChoiceID: no
       noButtonText: 
       isChoiceActive: 0
+    noChoiceID: no
     noButtonText: Be a big stinky meanie
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: 79bdb85db6ed0304baa917f531b76b57, type: 3}
@@ -23146,8 +23348,10 @@ MonoBehaviour:
   dialogueLines:
   - dialogueText: '*Do you wish to battle King Maros?*'
     yesDialogueLines: []
+    yesChoiceID: yes
     yesButtonText: 
     noDialogueLines: []
+    noChoiceID: no
     noButtonText: 
     isChoiceActive: 1
   dialogueMusic: {fileID: 8300000, guid: ebe4b0c2c1abcd14194b0ebb7071ae3b, type: 3}

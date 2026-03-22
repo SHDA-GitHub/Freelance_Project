@@ -2,6 +2,8 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem.XR;
 
 public class ShopNPC : MonoBehaviour
@@ -11,7 +13,6 @@ public class ShopNPC : MonoBehaviour
 
     [Header("Dialogue Data")]
     [SerializeField] private NPCDialogue greetingDialogue;
-    [SerializeField] private NPCDialogue buySellDialogue;
 
     [Header("Shop UI Elements")]
     [SerializeField] private GameObject shopUIRoot;
@@ -25,6 +26,7 @@ public class ShopNPC : MonoBehaviour
     private Controls controls;
     [SerializeField] private NavMeshSurface enemyPatrolSurface;
     private bool isDialogueActive = false;
+    private bool canInteract = true;
 
     private void Awake()
     {
@@ -39,9 +41,6 @@ public class ShopNPC : MonoBehaviour
         if (greetingDialogue != null)
             greetingDialogue.onChoiceMade += HandleGreetingChoice;
 
-        if (buySellDialogue != null)
-            buySellDialogue.onChoiceMade += HandleBuySellChoice;
-
         controls.UI.Enable();
     }
 
@@ -49,9 +48,6 @@ public class ShopNPC : MonoBehaviour
     {
         if (greetingDialogue != null)
             greetingDialogue.onChoiceMade -= HandleGreetingChoice;
-
-        if (buySellDialogue != null)
-            buySellDialogue.onChoiceMade -= HandleBuySellChoice;
 
         controls.UI.Disable();
     }
@@ -66,49 +62,45 @@ public class ShopNPC : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            StartInteraction();
-        }
+        if (!other.CompareTag("Player"))
+            return;
+
+        PlayerControl player = other.GetComponent<PlayerControl>();
+
+        if (!player.isInteracting || !canInteract)
+            return;
+
+        if (DialogueManager.Instance.IsDialogueActive() || isDialogueActive)
+            return;
+
+        StartInteraction();
     }
 
     private void StartInteraction()
     {
-            isDialogueActive = true;
-            currentState = ShopState.Intro;
-            greetingDialogue.TriggerDialogue();
+        isDialogueActive = true;
+        canInteract = false;
+        greetingDialogue.TriggerDialogue();
     }
 
-    void HandleGreetingChoice(string decision)
+    void HandleGreetingChoice(string choiceID)
     {
-        if (currentState != ShopState.Intro) return;
-
-        if (decision == "wantToShop")
-        {
-            currentState = ShopState.Decision;
-            buySellDialogue.TriggerDialogue();
-        }
-        else
-        {
-            currentState = ShopState.Finished;
-        }
+        StartCoroutine(HandleChoiceAfterDialogue(choiceID));
     }
 
-    void HandleBuySellChoice(string choiceID)
+    IEnumerator HandleChoiceAfterDialogue(string choiceID)
     {
-        if (currentState != ShopState.Decision) return;
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
 
-        if (choiceID == "yes")
+        switch (choiceID)
         {
-            OpenShopUI();
+            case "buy":
+                OpenShopUI();
+                yield break;
         }
-        else
-        {
-            OpenSellUI();
-        }
-
-        currentState = ShopState.Finished;
         isDialogueActive = false;
+        yield return new WaitForSeconds(0.2f);
+        canInteract = true;
     }
 
     private void OpenShopUI()
@@ -131,40 +123,14 @@ public class ShopNPC : MonoBehaviour
         }
     }
 
-    private void OpenSellUI()
-    {
-        InventoryUIController invUI = FindFirstObjectByType<InventoryUIController>();
-        if (invUI != null)
-        {
-            DialogueManager.Instance.isExternalUILocked = true;
-            invUI.RefreshItemUI();
-            invUI.ShowItemsInventory();
-            invUI.SendMessage("OpenInventory", SendMessageOptions.DontRequireReceiver);
-        }
-    }
-
     public void CloseShopUI()
     {
         DialogueManager.Instance.isExternalUILocked = false;
         shopUIRoot.SetActive(false);
+
         player.EnableControls();
         enemyPatrolSurface.enabled = true;
+
         isDialogueActive = false;
-
-        if (currentState == ShopState.Finished)
-        {
-            currentState = ShopState.Decision;
-
-            var lines = buySellDialogue.GetDialogueLines();
-
-            if (lines != null && lines.Length > 1)
-            {
-                DialogueManager.Instance.StartDialogue(buySellDialogue, new NPCDialogue.DialogueLine[] { lines[1] }, buySellDialogue.GetDialogueMusic());
-            }
-            else
-            {
-                buySellDialogue.TriggerDialogue();
-            }
-        }
     }
 }

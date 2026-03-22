@@ -113,14 +113,12 @@ public class QuestNPC : MonoBehaviour
 
         yield return new WaitForSeconds(0.37f);
 
-        audioSource.clip = itemGetSound;
-        audioSource.Play();
-
         GiveRewards();
     }
 
     void GiveRewards()
     {
+
         Dictionary<string, int> rewardCounts = new Dictionary<string, int>();
         List<string> dialogueLines = new List<string>();
 
@@ -159,6 +157,9 @@ public class QuestNPC : MonoBehaviour
 
             rewardCounts[attack.specAttackName]++;
         }
+
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
 
         foreach (var pair in rewardCounts)
         {
@@ -213,15 +214,14 @@ public class QuestNPC : MonoBehaviour
             }
         }
 
-        audioSource.clip = itemGetSound;
-        audioSource.Play();
-
         foreach (var pair in rewardCounts)
         {
             dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
         }
 
         ShowDialogue(dialogueLines);
+        audioSource.clip = itemGetSound;
+        audioSource.Play();
 
         if (pendingItems.Count > 0 || pendingAttacks.Count > 0)
         {
