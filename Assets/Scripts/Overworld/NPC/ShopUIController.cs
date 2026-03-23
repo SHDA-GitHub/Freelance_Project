@@ -142,7 +142,23 @@ public class ShopUIController : MonoBehaviour
     }
 
     void BuyItem(ShopItem item)
-    {        
+    {
+        if (CurrencyManager.Instance == null)
+        {
+            Debug.LogWarning("CurrencyManager not found!");
+            return;
+        }
+
+        float price = item.price;
+
+        if (!CurrencyManager.Instance.SpendCoins(price))
+        {
+            Debug.Log("Not enough money!");
+
+            ShowSimpleDialogue("You don't have enough money.");
+            return;
+        }
+
         switch (item.type)
         {
             case ShopItemType.Item:
@@ -155,5 +171,21 @@ public class ShopUIController : MonoBehaviour
                 Debug.Log("Bought special: " + item.specialAttack.specAttackName);
                 break;
         }
+    }
+
+    void ShowSimpleDialogue(string text)
+    {
+        NPCDialogue tempDialogue = new NPCDialogue();
+
+        NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+        {
+            dialogueText = text
+        };
+
+        DialogueManager.Instance.StartDialogue(
+            tempDialogue,
+            new NPCDialogue.DialogueLine[] { line },
+            null
+        );
     }
 }
