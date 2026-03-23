@@ -19245,6 +19245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopNPC
   greetingDialogue: {fileID: 1545824648}
+  repeatDialogue: {fileID: 1545824649}
   shopUIRoot: {fileID: 1012722165}
   shopUIController: {fileID: 1545824646}
   shopFirstSelectedButton: {fileID: 712993753}
@@ -23499,7 +23500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0
