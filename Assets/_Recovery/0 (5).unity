@@ -2885,7 +2885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataOverworld
   playerStats: {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
-  playerName: Billy
+  playerName: 
   characterName: {fileID: 683444645}
   hpText: {fileID: 1813521073}
   ppText: {fileID: 2082548124}
@@ -8501,7 +8501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataOverworld
   playerStats: {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
-  playerName: Cassie
+  playerName: 
   characterName: {fileID: 0}
   hpText: {fileID: 0}
   ppText: {fileID: 0}
@@ -19224,7 +19224,6 @@ GameObject:
   - component: {fileID: 1545824641}
   - component: {fileID: 1545824646}
   - component: {fileID: 1545824648}
-  - component: {fileID: 1545824649}
   m_Layer: 0
   m_Name: Shop NPC
   m_TagString: Enemy
@@ -19355,52 +19354,6 @@ MonoBehaviour:
     noChoiceID: no
     noButtonText: 
     isChoiceActive: 0
-  - dialogueText: '"Whaddaya want, snotnose?"'
-    yesDialogueLines:
-    - dialogueText: '"Well take a gander at some of my wares, then!"'
-      yesDialogueLines: []
-      yesChoiceID: 
-      yesButtonText: 
-      noDialogueLines: []
-      noChoiceID: 
-      noButtonText: 
-      isChoiceActive: 0
-    yesChoiceID: buy
-    yesButtonText: I'm looking for something
-    noDialogueLines:
-    - dialogueText: '"Well then get the hell outta my store!"'
-      yesDialogueLines: []
-      yesChoiceID: 
-      yesButtonText: 
-      noDialogueLines: []
-      noChoiceID: 
-      noButtonText: 
-      isChoiceActive: 0
-    - dialogueText: '"You''re takin'' up my precious business time, ya little runt!"'
-      yesDialogueLines: []
-      yesChoiceID: 
-      yesButtonText: 
-      noDialogueLines: []
-      noChoiceID: 
-      noButtonText: 
-      isChoiceActive: 0
-    noChoiceID: leave
-    noButtonText: Nothing
-    isChoiceActive: 1
-  dialogueMusic: {fileID: 8300000, guid: a345f36a8a6b74742be84e29e140d1e5, type: 3}
---- !u!114 &1545824649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545824640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91b691bc06f4641996f97a3286f2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogueLines:
   - dialogueText: '"Whaddaya want, snotnose?"'
     yesDialogueLines:
     - dialogueText: '"Well take a gander at some of my wares, then!"'
@@ -23499,7 +23452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0

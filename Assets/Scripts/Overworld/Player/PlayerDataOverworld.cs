@@ -4,6 +4,7 @@ using TMPro;
 public class PlayerDataOverworld : MonoBehaviour
 {
     public PlayerStatsSO playerStats;
+    public string playerName;
 
     public TMP_Text characterName;
     public TMP_Text hpText;

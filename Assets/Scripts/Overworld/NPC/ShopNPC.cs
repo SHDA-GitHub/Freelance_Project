@@ -13,6 +13,7 @@ public class ShopNPC : MonoBehaviour
 
     [Header("Dialogue Data")]
     [SerializeField] private NPCDialogue greetingDialogue;
+    [SerializeField] private NPCDialogue repeatDialogue;
 
     [Header("Shop UI Elements")]
     [SerializeField] private GameObject shopUIRoot;
@@ -41,6 +42,9 @@ public class ShopNPC : MonoBehaviour
         if (greetingDialogue != null)
             greetingDialogue.onChoiceMade += HandleGreetingChoice;
 
+        if (repeatDialogue != null)
+            repeatDialogue.onChoiceMade += HandleGreetingChoice;
+
         controls.UI.Enable();
     }
 
@@ -48,6 +52,9 @@ public class ShopNPC : MonoBehaviour
     {
         if (greetingDialogue != null)
             greetingDialogue.onChoiceMade -= HandleGreetingChoice;
+
+        if (repeatDialogue != null)
+            repeatDialogue.onChoiceMade -= HandleGreetingChoice;
 
         controls.UI.Disable();
     }
@@ -57,6 +64,7 @@ public class ShopNPC : MonoBehaviour
         if (shopUIRoot.activeSelf)
         {
             CloseShopUI();
+            StartCoroutine(StartRepeatDialogue());
         }
     }
 
@@ -97,6 +105,12 @@ public class ShopNPC : MonoBehaviour
             case "buy":
                 OpenShopUI();
                 yield break;
+
+            case "leave":
+                isDialogueActive = false;
+                yield return new WaitForSeconds(0.2f);
+                canInteract = true;
+                yield break;
         }
         isDialogueActive = false;
         yield return new WaitForSeconds(0.2f);
@@ -130,8 +144,16 @@ public class ShopNPC : MonoBehaviour
 
         player.EnableControls();
         enemyPatrolSurface.enabled = true;
+    }
 
-        isDialogueActive = false;
-        canInteract = true;
+    IEnumerator StartRepeatDialogue()
+    {
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+
+        isDialogueActive = true;
+        canInteract = false;
+
+        if (repeatDialogue != null)
+            repeatDialogue.TriggerDialogue();
     }
 }
