@@ -107,11 +107,10 @@ public class ShopNPC : MonoBehaviour
                 yield break;
 
             case "leave":
-                isDialogueActive = false;
-                yield return new WaitForSeconds(0.2f);
-                canInteract = true;
-                yield break;
+                currentState = ShopState.Intro;
+                break;
         }
+
         isDialogueActive = false;
         yield return new WaitForSeconds(0.2f);
         canInteract = true;
@@ -154,6 +153,19 @@ public class ShopNPC : MonoBehaviour
         canInteract = false;
 
         if (repeatDialogue != null)
+        {
             repeatDialogue.TriggerDialogue();
+
+            StartCoroutine(ResetAfterDialogueEnds());
+        }
+    }
+
+    IEnumerator ResetAfterDialogueEnds()
+    {
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+
+        isDialogueActive = false;
+        yield return new WaitForSeconds(0.2f);
+        canInteract = true;
     }
 }
