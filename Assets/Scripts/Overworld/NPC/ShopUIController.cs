@@ -110,12 +110,31 @@ public class ShopUIController : MonoBehaviour
             noButtonText = "No"
         };
 
-        confirmLine.yesDialogueLines = new NPCDialogue.DialogueLine[]
+        tempDialogue.onChoiceMade += (string choiceID) =>
         {
-        new NPCDialogue.DialogueLine
-        {
-            dialogueText = $"You bought {itemName}."
-        }
+            if (choiceID == "yes")
+            {
+                BuyResult result = BuyItem(item);
+
+                string resultText = "";
+
+                switch (result)
+                {
+                    case BuyResult.Success:
+                        resultText = $"You bought {itemName}.";
+                        break;
+
+                    case BuyResult.NotEnoughMoney:
+                        resultText = "You don't have enough money to buy this item.";
+                        break;
+
+                    case BuyResult.InventoryFull:
+                        resultText = "Your inventory is too full to buy this item.";
+                        break;
+                }
+
+                ShowResultDialogue(resultText);
+            }
         };
 
         confirmLine.noDialogueLines = new NPCDialogue.DialogueLine[]
@@ -141,51 +160,59 @@ public class ShopUIController : MonoBehaviour
         );
     }
 
-    void BuyItem(ShopItem item)
+    enum BuyResult
+    {
+        Success,
+        NotEnoughMoney,
+        InventoryFull
+    }
+
+    BuyResult BuyItem(ShopItem item)
     {
         if (CurrencyManager.Instance == null)
         {
             Debug.LogWarning("CurrencyManager not found!");
-            return;
+            return BuyResult.NotEnoughMoney;
         }
 
         float price = item.price;
 
         if (!CurrencyManager.Instance.SpendCoins(price))
         {
-            Debug.Log("Not enough money!");
-
-            ShowSimpleDialogue("You don't have enough money.");
-            return;
+            return BuyResult.NotEnoughMoney;
         }
+
+        bool addedSuccessfully = false;
 
         switch (item.type)
         {
             case ShopItemType.Item:
-                Inventory.Instance.AddItem(item.item);
-                Debug.Log("Bought item: " + item.item.itemName);
+                addedSuccessfully = Inventory.Instance.AddItem(item.item);
                 break;
 
             case ShopItemType.SpecialAttack:
-                Inventory.Instance.AddSpecialAttack(item.specialAttack);
-                Debug.Log("Bought special: " + item.specialAttack.specAttackName);
+                addedSuccessfully = Inventory.Instance.AddSpecialAttack(item.specialAttack);
                 break;
         }
+
+        if (!addedSuccessfully)
+        {
+            CurrencyManager.Instance.AddCoins(price);
+            return BuyResult.InventoryFull;
+        }
+
+        return BuyResult.Success;
     }
 
-    void ShowSimpleDialogue(string text)
+    void ShowResultDialogue(string text)
     {
-        NPCDialogue tempDialogue = new NPCDialogue();
+        if (DialogueManager.Instance == null) return;
 
-        NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+        NPCDialogue.DialogueLine resultLine = new NPCDialogue.DialogueLine
         {
             dialogueText = text
         };
 
-        DialogueManager.Instance.StartDialogue(
-            tempDialogue,
-            new NPCDialogue.DialogueLine[] { line },
-            null
-        );
+        DialogueManager.Instance.InjectDialogueLine(resultLine);
     }
 }

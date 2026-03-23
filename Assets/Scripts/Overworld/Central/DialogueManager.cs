@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -202,4 +203,13 @@ public class DialogueManager : MonoBehaviour
         return dialogueActive;
     }
 
+    public void InjectDialogueLine(NPCDialogue.DialogueLine newLine)
+    {
+        List<DialogueLine> lines = new List<DialogueLine>(currentDialogueLines);
+
+        int insertIndex = Mathf.Clamp(dialogueIndex + 1, 0, lines.Count);
+
+        lines.Insert(insertIndex, newLine);
+        currentDialogueLines = lines.ToArray();
+    }
 }
