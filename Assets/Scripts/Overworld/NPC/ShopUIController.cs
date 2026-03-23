@@ -142,7 +142,7 @@ public class ShopUIController : MonoBehaviour
     }
 
     void BuyItem(ShopItem item)
-    {
+    {        
         switch (item.type)
         {
             case ShopItemType.Item:
