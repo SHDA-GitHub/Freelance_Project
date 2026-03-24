@@ -162,7 +162,7 @@ MonoBehaviour:
   immuneStunEffects: 02000000
   immuneMissEffects: 
   immuneOffDefEffects: 0100000003000000
-  enemyLoadout: {fileID: 11400000, guid: 75fdf0d1febe76140b2f427598bdcee5, type: 2}
+  enemyLoadout: {fileID: 11400000, guid: 1245296d29f937c4db5440a024d3ce74, type: 2}
   dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5

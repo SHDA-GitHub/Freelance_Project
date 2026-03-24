@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011281e9c3951d44a9577f90f99a9aa5, type: 3}
-  m_Name: Dad Rage
+  m_Name: Fib
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   targetAllEnemies: 0
   targetSelf: 0
@@ -31,8 +31,8 @@ MonoBehaviour:
   missStatusChance: 0
   statStatusChance: 0
   statusDuration: 1
-  attackName: Dad Rage
+  attackName: Fib
   powerCost: 0
-  damage: 2
-  attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
-  flavorText: '{attacker} yelled some profanities at {target}'
+  damage: 0
+  attackSound: {fileID: 8300000, guid: ea212acb0790ee44188f37e42ebea348, type: 3}
+  flavorText: '{attacker} threatened {target} to use them as a sacrifice'

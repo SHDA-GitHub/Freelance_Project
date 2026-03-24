@@ -27,7 +27,7 @@ MonoBehaviour:
   healAmount: 0
   descriptionText: 
   dotStatusChance: 0
-  stunStatusChance: 25
+  stunStatusChance: 15
   missStatusChance: 0
   statStatusChance: 65
   statusDuration: 1

@@ -26,7 +26,7 @@ MonoBehaviour:
   healOnHit: 0
   healAmount: 0
   descriptionText: 
-  dotStatusChance: 55
+  dotStatusChance: 45
   stunStatusChance: 0
   missStatusChance: 0
   statStatusChance: 0

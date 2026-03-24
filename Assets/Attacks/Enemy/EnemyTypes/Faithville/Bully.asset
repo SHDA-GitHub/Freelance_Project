@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5517bbdf8c82bc24c937ca6bfedb1ad3, type: 3}
+  m_Name: Bully
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoadout
+  enemyName: Bully
+  attackSlots:
+  - {fileID: 11400000, guid: 79a66e876ff388e4a8c3bb9ca508273d, type: 2}
+  - {fileID: 11400000, guid: b8e284944fe97a44d9625628ed4ed1f3, type: 2}
+  - {fileID: 11400000, guid: 38dae857a6c15224b93c32780942d469, type: 2}
+  - {fileID: 11400000, guid: c8cd255dbcd2c144f9ce511ab858ecb8, type: 2}

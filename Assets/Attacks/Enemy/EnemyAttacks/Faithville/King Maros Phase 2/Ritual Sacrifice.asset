@@ -30,7 +30,7 @@ MonoBehaviour:
   stunStatusChance: 0
   missStatusChance: 0
   statStatusChance: 0
-  statusDuration: 3
+  statusDuration: 2
   attackName: Ritual Sacrifice
   powerCost: 0
   damage: 2

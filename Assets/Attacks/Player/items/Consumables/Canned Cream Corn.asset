@@ -27,7 +27,7 @@ MonoBehaviour:
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
-  statusEffect: 0
+  statusEffect: 3
   stunstatusEffect: 0
   missStatusEffect: 0
   statChangeEffect: 0
@@ -40,8 +40,11 @@ MonoBehaviour:
 
     PP: 8
 
-    If split: divide per party member'
-  dotStatusChance: 0
+    If split: divided per party member
+
+    Sickness
+    Chance: 10'
+  dotStatusChance: 10
   stunStatusChance: 0
   missStatusChance: 0
   statStatusChance: 0

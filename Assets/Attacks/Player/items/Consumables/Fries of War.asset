@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ee54fbe44ec61438f66ce86504d72b, type: 3}
-  m_Name: German Fries
+  m_Name: Fries of War
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: German Fries
+  itemName: Fries of War
   healAmount: 0
   healAllParty: 0
   splitHealAcrossParty: 0
@@ -20,25 +20,29 @@ MonoBehaviour:
   restorePPToAllParty: 0
   splitPPAcrossParty: 0
   removeAllStatusEffects: 0
-  removeDOT: 0
-  removeStun: 0
-  removeMiss: 0
+  removeDOTEffects: 
+  removeStunEffects: 
+  removeMissEffects: 
+  removeStatEffects: 
   drainPPInstead: 0
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
   missStatusEffect: 0
-  statChangeEffect: 0
-  offenseChange: 0
+  statChangeEffect: 6
+  offenseChange: 1
   defenseChange: 0
   itemSound: {fileID: 8300000, guid: ee1799f9f10172f428ea8f060b207837, type: 3}
   isKeyItem: 0
   consumableKey: 0
   descriptionText: 'HP: 8
 
-    Stuffed chance: 20'
-  statusChance: 20
+    Strength Chance: 20'
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 20
   statusDuration: 1
   consumable: 1
-  flavorText: 
+  flavorText: '{attacker} ate the {action}'

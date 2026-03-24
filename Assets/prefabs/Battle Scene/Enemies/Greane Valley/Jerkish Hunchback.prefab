@@ -163,7 +163,9 @@ MonoBehaviour:
   immuneMissEffects: 06000000
   immuneOffDefEffects: 0100000003000000
   enemyLoadout: {fileID: 11400000, guid: d1fa8108abf7d634f85487e115f99c61, type: 2}
+  dropReward: {fileID: 0}
   expReward: 5
+  currencyReward: 5
   attacks: []
   playerStats: {fileID: 0}
   activeStatusEffects: []
