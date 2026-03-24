@@ -628,6 +628,133 @@ MonoBehaviour:
   m_Spacing: {x: -53, y: -3}
   m_Constraint: 1
   m_ConstraintCount: 4
+--- !u!1 &155057205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155057208}
+  - component: {fileID: 155057207}
+  - component: {fileID: 155057206}
+  m_Layer: 5
+  m_Name: Buddy (Jacob)
+  m_TagString: PlayerBuddy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &155057206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155057205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
+  characterName: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxPP: 0
+  currentPP: 0
+  level: 0
+  currentEXP: 0
+  immuneDOTEffects: 
+  immuneStunEffects: 
+  immuneMissEffects: 
+  immuneOffDefEffects: 
+  enemyLoadout: {fileID: 0}
+  dropReward: {fileID: 0}
+  expReward: 5
+  currencyReward: 5
+  attacks:
+  - {fileID: 11400000, guid: 7cdd0bfd0506d3e47b90840c87bfcafd, type: 2}
+  playerStats: {fileID: 11400000, guid: 880bbb26917fda940a94c67a992b671f, type: 2}
+  activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
+  activeOffDefEffects: []
+  overtimeDamage: 2
+  isPlayer: 1
+--- !u!212 &155057207
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155057205}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1609148262, guid: 0da7b224e2e450d4ab4f39cfa10774a2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &155057208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155057205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.48, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188162319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,7 +1322,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 9d0b7dad4bdd7a84d89b1d487dcacaba, type: 3}
+  m_Resource: {fileID: 8300000, guid: dd618b4a5abd790408cc31c4017d8b91, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -1700,6 +1827,8 @@ MonoBehaviour:
   playerParty:
   - {fileID: 879654192}
   - {fileID: 2061152904}
+  - {fileID: 155057206}
+  - {fileID: 650304409}
   enemyParty: []
   isBattleActive: 1
   battleHUD: {fileID: 506090856}
@@ -1719,6 +1848,8 @@ MonoBehaviour:
   playerStats:
   - {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
   - {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
+  - {fileID: 11400000, guid: 880bbb26917fda940a94c67a992b671f, type: 2}
+  - {fileID: 11400000, guid: 3dda0fb298c15ae4f812ead8515d1215, type: 2}
   victoryFade: {fileID: 1884664883}
   victoryFadeDuration: 0.75
   overworldSceneName: Overworld
@@ -2111,6 +2242,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614641300}
   m_CullTransparentMesh: 1
+--- !u!1 &650304408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650304411}
+  - component: {fileID: 650304410}
+  - component: {fileID: 650304409}
+  m_Layer: 5
+  m_Name: Buddy (Rodney)
+  m_TagString: PlayerBuddy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &650304409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650304408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
+  characterName: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxPP: 0
+  currentPP: 0
+  level: 0
+  currentEXP: 0
+  immuneDOTEffects: 
+  immuneStunEffects: 
+  immuneMissEffects: 
+  immuneOffDefEffects: 
+  enemyLoadout: {fileID: 0}
+  dropReward: {fileID: 0}
+  expReward: 5
+  currencyReward: 5
+  attacks:
+  - {fileID: 11400000, guid: 3bd6479bc2257da429b497589fe53f10, type: 2}
+  playerStats: {fileID: 11400000, guid: 3dda0fb298c15ae4f812ead8515d1215, type: 2}
+  activeStatusEffects: []
+  activeStunEffects: []
+  activeMissEffects: []
+  activeOffDefEffects: []
+  overtimeDamage: 2
+  isPlayer: 1
+--- !u!212 &650304410
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650304408}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1609148262, guid: 0da7b224e2e450d4ab4f39cfa10774a2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &650304411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650304408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.48, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732605782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5833,7 +6091,7 @@ GameObject:
   - component: {fileID: 2061152905}
   - component: {fileID: 2061152904}
   m_Layer: 5
-  m_Name: Buddy
+  m_Name: Buddy (Cassie)
   m_TagString: PlayerBuddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5966,5 +6224,7 @@ SceneRoots:
   - {fileID: 778720918}
   - {fileID: 879654188}
   - {fileID: 2061152906}
+  - {fileID: 155057208}
+  - {fileID: 650304411}
   - {fileID: 1760178836}
   - {fileID: 855608626}

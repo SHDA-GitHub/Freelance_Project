@@ -711,8 +711,6 @@ public class TurnManager : MonoBehaviour
     {
         isBattleActive = false;
 
-        StartCoroutine(VictoryScreenFade());
-
         foreach (var enemy in enemyParty)
         {
             if (enemy != null)
@@ -727,7 +725,7 @@ public class TurnManager : MonoBehaviour
             audioManager.clip = victoryClip;
             audioManager.Play();
         }
-
+        StartCoroutine(VictoryScreenFade());
         yield return flavorTextUI.ShowTextCoroutine("You won!");
 
         yield return new WaitForSeconds(0.3f);

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: PlayerStats (Jacob)
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   characterName: Jacob
-  maxHealth: 9
-  currentHealth: 9
+  maxHealth: 8
+  currentHealth: 8
   maxPP: 6
   currentPP: 6
   level: 1
   currentEXP: 0
-  baseHealth: 9
+  baseHealth: 8
   basePP: 6
   baseLevel: 1
   baseEXP: 0

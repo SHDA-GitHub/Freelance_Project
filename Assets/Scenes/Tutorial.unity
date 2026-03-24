@@ -4003,6 +4003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763290234}
   - component: {fileID: 763290233}
+  - component: {fileID: 763290235}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -4023,8 +4024,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   flavorTextUI: {fileID: 0}
-  items: []
-  specAttacks: []
+  items:
+  - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
+    quantity: 1
+  keyItems: []
+  specAttacks:
+  - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}
+    quantity: 1
 --- !u!4 &763290234
 Transform:
   m_ObjectHideFlags: 0
@@ -4040,6 +4046,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &763290235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763290232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3623bb49297d45a40a50388682d93c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
+  dollars: 5
 --- !u!1 &770508689
 GameObject:
   m_ObjectHideFlags: 0
