@@ -100,6 +100,11 @@ public class BattleTransitionManager : MonoBehaviour
 
         yield return new WaitForSeconds(delayBeforeSceneLoad);
 
-        SceneManager.LoadScene(battleSceneName);
+        Scene overworld = SceneManager.GetSceneByName("Overworld");
+        foreach (GameObject obj in overworld.GetRootGameObjects())
+        {
+            obj.SetActive(false);
+        }
+        SceneManager.LoadScene(battleSceneName, LoadSceneMode.Additive);
     }
 }

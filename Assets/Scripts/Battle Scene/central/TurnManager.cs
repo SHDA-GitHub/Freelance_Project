@@ -747,7 +747,12 @@ public class TurnManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene(overworldSceneName);
+        SceneManager.UnloadSceneAsync("Battle Scene");
+        Scene overworld = SceneManager.GetSceneByName("Overworld");
+        foreach (GameObject obj in overworld.GetRootGameObjects())
+        {
+            obj.SetActive(true);
+        }
     }
 
     private IEnumerator VictoryScreenFade()

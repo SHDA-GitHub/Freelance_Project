@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: 0
+  characterName: Jacob
   maxHealth: 0
   currentHealth: 0
   maxPP: 0
@@ -2272,7 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: 0
+  characterName: Rodney
   maxHealth: 0
   currentHealth: 0
   maxPP: 0
@@ -6109,7 +6109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8aae2ce4454340a7366177667a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterName: 0
+  characterName: Cassie
   maxHealth: 0
   currentHealth: 0
   maxPP: 0

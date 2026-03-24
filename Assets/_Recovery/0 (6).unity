@@ -20928,7 +20928,6 @@ MonoBehaviour:
   flavorTextUI: {fileID: 1711264370}
   musicManager: {fileID: 921197766}
   isExternalUILocked: 0
-  keepDialogueMusicActive: 0
 --- !u!114 &1711264372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23501,7 +23500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0
