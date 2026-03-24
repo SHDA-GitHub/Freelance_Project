@@ -701,6 +701,11 @@ public class TurnManager : MonoBehaviour
     private void EndBattle(bool playerWon)
     {
         isBattleActive = false;
+
+        BattleResultBridge.BattleWon = playerWon;
+        BattleResultBridge.TotalEXP = totalBattleEXP;
+        BattleResultBridge.BattleOutcomeText = playerWon ? "You won the battle!" : "You were defeated...";
+
         if (playerWon)
             StartCoroutine(HandleVictory());
         else

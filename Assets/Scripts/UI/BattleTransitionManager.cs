@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class BattleTransitionManager : MonoBehaviour
 {
+    public static BattleTransitionManager Instance;
+
     [Header("Transitions")]
     [SerializeField] private List<BattleTransition> transitions;
 
@@ -30,6 +32,7 @@ public class BattleTransitionManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         fade = FindFirstObjectByType<FadeScript>();
         player = FindFirstObjectByType<PlayerControl>();
     }
@@ -106,5 +109,41 @@ public class BattleTransitionManager : MonoBehaviour
             obj.SetActive(false);
         }
         SceneManager.LoadScene(battleSceneName, LoadSceneMode.Additive);
+    }
+
+    public void ResetBattleTransitionForOverworld()
+    {
+        StartCoroutine(ResetTransitionCoroutine());
+    }
+
+    private IEnumerator ResetTransitionCoroutine()
+    {
+        if (audioSource != null)
+            audioSource.Stop();
+
+        foreach (var transition in transitions)
+        {
+            transition.rootObject.SetActive(true);
+
+            foreach (var img in transition.fillImages)
+            {
+                img.fillAmount = 0f;
+            }
+        }
+
+        if (fade != null)
+        {
+            yield return fade.SpriteFadeInFlash();
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        foreach (var transition in transitions)
+        {
+            transition.rootObject.SetActive(false);
+        }
+
+        transitionPlaying = false;
+        BattleResultBridge.ResetBridge();
     }
 }
