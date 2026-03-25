@@ -755,9 +755,22 @@ public class TurnManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("Battle Scene");
         Scene overworld = SceneManager.GetSceneByName("Overworld");
-        foreach (GameObject obj in overworld.GetRootGameObjects())
+        foreach (GameObject root in overworld.GetRootGameObjects())
         {
-            obj.SetActive(true);
+            RestoreRecursive(root, root.name);
+        }
+    }
+
+    private void RestoreRecursive(GameObject obj, string path)
+    {
+        if (BattleDataBridge.overworldActiveStates.TryGetValue(path, out bool wasActive))
+        {
+            obj.SetActive(wasActive);
+        }
+
+        foreach (Transform child in obj.transform)
+        {
+            RestoreRecursive(child.gameObject, path + "/" + child.name);
         }
     }
 

@@ -109,11 +109,25 @@ public class BattleTransitionManager : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeSceneLoad);
 
         Scene overworld = SceneManager.GetSceneByName("Overworld");
+        BattleDataBridge.SaveOverworldState(overworld);
+        SceneManager.LoadScene("Battle Scene", LoadSceneMode.Additive);
         foreach (GameObject obj in overworld.GetRootGameObjects())
         {
             obj.SetActive(false);
         }
-        SceneManager.LoadScene(battleSceneName, LoadSceneMode.Additive);
+    }
+
+    private void RestoreRecursive(GameObject obj, string path)
+    {
+        if (BattleDataBridge.overworldActiveStates.TryGetValue(path, out bool wasActive))
+        {
+            obj.SetActive(wasActive);
+        }
+
+        foreach (Transform child in obj.transform)
+        {
+            RestoreRecursive(child.gameObject, path + "/" + child.name);
+        }
     }
 
     public void ResetBattleTransitionForOverworld()
