@@ -27,7 +27,7 @@ MonoBehaviour:
 
     DMG: 1
 
-    Freezing Chance: 65'
+    Freeze Chance: 65'
   dotStatusChance: 0
   stunStatusChance: 65
   missStatusChance: 0

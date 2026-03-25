@@ -22,12 +22,10 @@ MonoBehaviour:
   missStatusEffect: 0
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   descriptionText: 'Req. PP: 4
 
     DMG: 3
-
-    Lowers DEF -1
 
     Applies Freezing'
   dotStatusChance: 0
@@ -39,6 +37,6 @@ MonoBehaviour:
   powerCost: 4
   damage: 3
   attackSound: {fileID: 8300000, guid: 32a607d077477a4468b8f749fd3f00ea, type: 3}
-  specialAttackCamShake: 0
+  specialAttackCamShake: 1
   oneUse: 1
-  flavorText: 
+  flavorText: '{attacker} threw a {action} at {target}'

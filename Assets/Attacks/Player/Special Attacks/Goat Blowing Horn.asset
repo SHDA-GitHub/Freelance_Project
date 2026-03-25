@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Stopwatch
+  m_Name: Goat Blowing Horn
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
   targetSelf: 0
@@ -19,20 +19,24 @@ MonoBehaviour:
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
+  missStatusEffect: 5
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  descriptionText: 
+  descriptionText: 'Req. PP: 2
+
+    DMG: 1
+
+    Deaf Chance: 65'
   dotStatusChance: 0
   stunStatusChance: 0
-  missStatusChance: 0
+  missStatusChance: 65
   statStatusChance: 0
   statusDuration: 2
-  specAttackName: Stopwatch
-  powerCost: 0
-  damage: 0
-  attackSound: {fileID: 0}
+  specAttackName: Goat Blowing Horn
+  powerCost: 2
+  damage: 1
+  attackSound: {fileID: 8300000, guid: 093bf7170e866634f9dcb859549b7022, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: 
+  flavorText: '{attacker} blew onto the Goat Horn'

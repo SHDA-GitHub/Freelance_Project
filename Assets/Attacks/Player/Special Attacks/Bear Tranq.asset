@@ -22,15 +22,12 @@ MonoBehaviour:
   missStatusEffect: 0
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   descriptionText: 'Req. PP: 4
 
     DMG: 3
 
-    Lowers DEF -1
-
-    Sleepiness Chance:
-    90'
+    Sleepy Chance: 90'
   dotStatusChance: 0
   stunStatusChance: 90
   missStatusChance: 0
@@ -42,4 +39,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw the {action} at {target}!'
+  flavorText: '{attacker} threw the {action} at {target}'

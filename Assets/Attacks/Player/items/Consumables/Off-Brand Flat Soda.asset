@@ -40,8 +40,8 @@ MonoBehaviour:
 
     PP: 3
 
-    Sickness Chance: 40'
-  dotStatusChance: 40
+    Sick Chance: 25'
+  dotStatusChance: 25
   stunStatusChance: 0
   missStatusChance: 0
   statStatusChance: 0

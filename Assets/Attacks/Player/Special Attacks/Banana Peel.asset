@@ -25,7 +25,7 @@ MonoBehaviour:
   defenseChange: 0
   descriptionText: 'Req PP: 1
 
-    Slowed Chance: 70'
+    Slow Chance: 70'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 70
@@ -37,4 +37,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} threw the {action} and made {target} slip!'
+  flavorText: '{attacker} threw the {action} and made {target} slip'

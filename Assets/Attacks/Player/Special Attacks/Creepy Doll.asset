@@ -22,10 +22,8 @@ MonoBehaviour:
   missStatusEffect: 0
   statChangeEffect: 1
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   descriptionText: 'Req. PP: 1
-
-    Lowers DEF -1
 
     Fear Chance: 80'
   dotStatusChance: 0

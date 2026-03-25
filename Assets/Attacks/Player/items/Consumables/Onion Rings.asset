@@ -38,7 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 6
 
-    Dizziness Chance: 20'
+    Dizzy Chance: 20'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 20

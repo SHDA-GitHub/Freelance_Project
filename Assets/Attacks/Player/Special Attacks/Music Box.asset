@@ -25,7 +25,7 @@ MonoBehaviour:
   defenseChange: 0
   descriptionText: 'Req. PP: 1
 
-    Sleepiness Chance: 85'
+    Sleepy Chance: 85'
   dotStatusChance: 0
   stunStatusChance: 85
   missStatusChance: 0
@@ -37,4 +37,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 3bd0e75d4fb5f35448e16ebb678d111a, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} played a {action}!'
+  flavorText: '{attacker} played a {action}'

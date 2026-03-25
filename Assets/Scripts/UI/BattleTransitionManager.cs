@@ -41,6 +41,11 @@ public class BattleTransitionManager : MonoBehaviour
     {
         foreach (var t in transitions)
             t.rootObject.SetActive(false);
+
+        if (BattleResultBridge.HasResult && BattleResultBridge.BattleWon)
+        {
+            ResetBattleTransitionForOverworld();
+        }
     }
 
     public void StartBattleTransition(BattleTransitionType type)
@@ -133,8 +138,9 @@ public class BattleTransitionManager : MonoBehaviour
 
         if (fade != null)
         {
-            yield return fade.SpriteFadeInFlash();
+            yield return fade.SpriteFadeOutFlash();
         }
+        enemyPatrolSurface.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
 

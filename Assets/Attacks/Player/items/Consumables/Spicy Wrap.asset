@@ -38,7 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 6
 
-    Burning Chance: 25'
+    Burn Chance: 25'
   dotStatusChance: 25
   stunStatusChance: 0
   missStatusChance: 0

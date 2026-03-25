@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf1b5389d6609b4d820e1cb70fe5f2b, type: 3}
-  m_Name: Bag of Marbles
+  m_Name: Jar of Wasps
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   targetAllEnemies: 0
   targetSelf: 0
@@ -19,20 +19,24 @@ MonoBehaviour:
   dotDrainsPP: 0
   statusEffect: 0
   stunstatusEffect: 0
-  missStatusEffect: 0
+  missStatusEffect: 6
   statChangeEffect: 0
   offenseChange: 0
   defenseChange: 0
-  descriptionText: 
+  descriptionText: 'Req. PP: 3
+
+    DMG: 2
+
+    Distract Chance: 80'
   dotStatusChance: 0
   stunStatusChance: 0
-  missStatusChance: 0
+  missStatusChance: 80
   statStatusChance: 0
   statusDuration: 2
-  specAttackName: Bag of Marbles
-  powerCost: 0
-  damage: 0
-  attackSound: {fileID: 0}
+  specAttackName: Jar of Wasps
+  powerCost: 3
+  damage: 2
+  attackSound: {fileID: 8300000, guid: 4021a23d038bf19499af94f7033bfa89, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: 
+  flavorText: '{attacker} opened the {action} and unleashed them upon {target}'

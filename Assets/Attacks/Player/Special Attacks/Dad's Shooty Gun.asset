@@ -26,7 +26,10 @@ MonoBehaviour:
   descriptionText: 'Req. PP: 4
 
     DMG: 5'
-  statusChance: 0
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 2
   specAttackName: Dad's Shooty Gun
   powerCost: 4
@@ -34,4 +37,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} shot {action} at {target}!'
+  flavorText: '{attacker} shot {action} at {target}'

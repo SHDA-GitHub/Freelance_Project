@@ -25,7 +25,7 @@ MonoBehaviour:
   defenseChange: 0
   descriptionText: 'Req. PP: 1
 
-    Deafness Chance: 65'
+    Deaf Chance: 65'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 65

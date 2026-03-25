@@ -42,7 +42,7 @@ MonoBehaviour:
 
     If split: divided per party member
 
-    Dizziness
+    Dizzy
     Chance: 85'
   dotStatusChance: 0
   stunStatusChance: 0

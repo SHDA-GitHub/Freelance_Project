@@ -27,7 +27,7 @@ MonoBehaviour:
 
     DMG: 2
 
-    Burning Chance: 75'
+    Burn Chance: 75'
   dotStatusChance: 75
   stunStatusChance: 0
   missStatusChance: 0

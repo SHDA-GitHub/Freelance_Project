@@ -29,8 +29,8 @@ MonoBehaviour:
 
     Multi-Enemy attack
 
-    Dizziness
-    Chance: 40'
+    Dizzy Chance:
+    40'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 40
@@ -42,4 +42,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 413bd974bdd00954f8798b713305935b, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw a {action}!'
+  flavorText: '{attacker} threw a {action}'

@@ -1,20 +1,33 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class OverworldBattleHandler : MonoBehaviour
 {
-    private static bool hasCheckedBattle = false;
-
     private void OnEnable()
     {
-        if (!hasCheckedBattle)
-        {
-            hasCheckedBattle = true;
-            CheckBattleResult();
-        }
+        StartCoroutine(HandleBattleResult());
+    }
+
+    private IEnumerator HandleBattleResult()
+    {
+        yield return null;
+
+        yield return new WaitUntil(() => BattleTransitionManager.Instance != null);
+
+        CheckBattleResult();
+    }
+
+    public void ProcessBattleResultDirectly()
+    {
+        CheckBattleResult();
     }
 
     private void CheckBattleResult()
     {
+        if (!BattleResultBridge.HasResult)
+            return;
+
         if (BattleResultBridge.BattleWon)
         {
             if (BattleTransitionManager.Instance != null)
@@ -28,8 +41,6 @@ public class OverworldBattleHandler : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("Overworld");
         }
 
-        BattleResultBridge.BattleWon = false;
-        BattleResultBridge.TotalEXP = 0;
-        BattleResultBridge.BattleOutcomeText = "";
+        BattleResultBridge.ResetBridge();
     }
 }

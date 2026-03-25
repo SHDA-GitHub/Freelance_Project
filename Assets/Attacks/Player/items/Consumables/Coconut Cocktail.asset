@@ -40,7 +40,7 @@ MonoBehaviour:
 
     PP: 3
 
-    Dizziness Chance: 20'
+    Dizzy Chance: 20'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 20

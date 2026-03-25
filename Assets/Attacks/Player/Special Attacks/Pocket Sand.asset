@@ -22,12 +22,10 @@ MonoBehaviour:
   missStatusEffect: 4
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   descriptionText: 'Req. PP: 1
 
-    Lowers DEF -1
-
-    Blindness Chance: 90'
+    Blind Chance: 90'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 90
@@ -39,4 +37,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 11f049487d3833845bf9c621b9c81d0e, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw {action} into {target}''s eyes!'
+  flavorText: '{attacker} threw {action} into {target}''s eyes'

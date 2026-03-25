@@ -42,7 +42,7 @@ MonoBehaviour:
 
     If split: divided per party member
 
-    Sickness
+    Sick
     Chance: 10'
   dotStatusChance: 10
   stunStatusChance: 0

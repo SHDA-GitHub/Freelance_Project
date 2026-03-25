@@ -38,7 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 7
 
-    Slowness Chance: 25'
+    Slow Chance: 25'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 25

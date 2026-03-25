@@ -29,8 +29,8 @@ MonoBehaviour:
 
     Multi-Enemy attack
 
-    Dizziness
-    Chance: 45'
+    Dizzy Chance:
+    45'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 45

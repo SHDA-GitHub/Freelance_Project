@@ -34,7 +34,7 @@ MonoBehaviour:
   specAttackName: Weakness in a Can
   powerCost: 2
   damage: 0
-  attackSound: {fileID: 8300000, guid: 3aa4e91896568fe4cbc07731889cd210, type: 3}
+  attackSound: {fileID: 8300000, guid: 4ddc42853fe329340bb9c2bf43b4b6ba, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
   flavorText: '{attacker} sprayed {action} onto {target}'

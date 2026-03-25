@@ -27,7 +27,7 @@ MonoBehaviour:
 
     DMG: 4
 
-    Dizziness Chance: 5'
+    Dizzy Chance: 5'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 5
@@ -39,4 +39,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} hits {target} with a {action}!'
+  flavorText: '{attacker} hits {target} with a {action}'

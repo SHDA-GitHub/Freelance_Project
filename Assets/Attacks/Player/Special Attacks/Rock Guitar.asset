@@ -29,8 +29,8 @@ MonoBehaviour:
 
     Multi-Enemy Attack
 
-    Deafness
-    Chance: 75'
+    Deaf Chance:
+    75'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 75
@@ -42,4 +42,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 1b7cd1056faaa6c4b9330dcca5a4e6c7, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} played an incredibly loud riff with the {action}!'
+  flavorText: '{attacker} played an incredibly loud riff with the {action}'

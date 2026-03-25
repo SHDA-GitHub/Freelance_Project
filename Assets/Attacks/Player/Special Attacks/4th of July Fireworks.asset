@@ -29,7 +29,7 @@ MonoBehaviour:
 
     Multi-Enemy Attack
 
-    Burning Chance:
+    Burn Chance:
     75'
   dotStatusChance: 75
   stunStatusChance: 0
@@ -42,4 +42,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} shot off the {action}!'
+  flavorText: '{attacker} shot off the {action}'

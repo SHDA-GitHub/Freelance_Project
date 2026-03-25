@@ -27,7 +27,7 @@ MonoBehaviour:
 
     DMG: 2
 
-    Blindness Chance: 70'
+    Blind Chance: 70'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 70
@@ -39,4 +39,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 2e0e1036172ccec4c99933b13d9c8064, type: 3}
   specialAttackCamShake: 0
   oneUse: 1
-  flavorText: '{attacker} threw the {action} at {target}!'
+  flavorText: '{attacker} threw the {action} at {target}'

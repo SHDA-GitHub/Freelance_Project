@@ -40,7 +40,7 @@ MonoBehaviour:
 
     PP: 2
 
-    Slowness Chance: 90'
+    Slow Chance: 90'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 90

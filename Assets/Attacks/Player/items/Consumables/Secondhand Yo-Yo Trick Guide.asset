@@ -33,7 +33,7 @@ MonoBehaviour:
   statChangeEffect: 6
   offenseChange: 1
   defenseChange: 0
-  itemSound: {fileID: 8300000, guid: dd1ee2e412ab63645a1b1a1f021d100d, type: 3}
+  itemSound: {fileID: 8300000, guid: 72a589c568dcb6c46b17eab252512e5d, type: 3}
   isKeyItem: 0
   consumableKey: 0
   descriptionText: Applies Strength +1
@@ -41,6 +41,6 @@ MonoBehaviour:
   stunStatusChance: 0
   missStatusChance: 0
   statStatusChance: 100
-  statusDuration: 2
+  statusDuration: 1
   consumable: 1
   flavorText: '{target} read through the {action}'

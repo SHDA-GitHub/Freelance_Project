@@ -29,8 +29,8 @@ MonoBehaviour:
 
     Multi-Enemy attack
 
-    Blindness
-    Chance: 5'
+    Blind Chance:
+    5'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 5

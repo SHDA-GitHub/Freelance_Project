@@ -38,7 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'PP: 5
 
-    Numbness Chance: 35'
+    Numb Chance: 35'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 0

@@ -702,6 +702,7 @@ public class TurnManager : MonoBehaviour
     {
         isBattleActive = false;
 
+        BattleResultBridge.HasResult = true;
         BattleResultBridge.BattleWon = playerWon;
         BattleResultBridge.TotalEXP = totalBattleEXP;
         BattleResultBridge.BattleOutcomeText = playerWon ? "You won the battle!" : "You were defeated...";

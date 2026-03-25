@@ -40,7 +40,7 @@ MonoBehaviour:
 
     PP: 5
 
-    Freezing Chance: 25'
+    Freeze Chance: 25'
   dotStatusChance: 0
   stunStatusChance: 25
   missStatusChance: 0

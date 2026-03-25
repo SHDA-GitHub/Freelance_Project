@@ -42,7 +42,7 @@ MonoBehaviour:
 
     Cures Sleepiness, Hypnosis, Freezing
 
-    Sickness
+    Sick
     chance: 15'
   dotStatusChance: 15
   stunStatusChance: 0

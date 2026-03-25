@@ -22,12 +22,10 @@ MonoBehaviour:
   missStatusEffect: 2
   statChangeEffect: 0
   offenseChange: 0
-  defenseChange: -1
+  defenseChange: 0
   descriptionText: 'Req. PP: 1
 
-    Lowers DEF -1
-
-    Confusion Chance: 85'
+    Confuse Chance: 85'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 85

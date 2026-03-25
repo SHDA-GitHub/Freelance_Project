@@ -40,7 +40,7 @@ MonoBehaviour:
 
     PP: 8
 
-    Confusion Chance: 15'
+    Confuse Chance: 15'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 15

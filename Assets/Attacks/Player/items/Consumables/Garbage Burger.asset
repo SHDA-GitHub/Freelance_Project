@@ -38,7 +38,7 @@ MonoBehaviour:
   consumableKey: 0
   descriptionText: 'HP: 7
 
-    Sickness Chance: 65'
+    Sick Chance: 65'
   dotStatusChance: 65
   stunStatusChance: 0
   missStatusChance: 0

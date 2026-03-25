@@ -29,8 +29,8 @@ MonoBehaviour:
 
     Multi-Enemy attack
 
-    Blindness
-    Chance: 30'
+    Blind Chance:
+    30'
   dotStatusChance: 0
   stunStatusChance: 0
   missStatusChance: 30
@@ -42,4 +42,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: a0f532ce86c1dbe4a970933195d5c4cf, type: 3}
   specialAttackCamShake: 1
   oneUse: 1
-  flavorText: '{attacker} sprayed flame-retardant foam with a {action}!'
+  flavorText: '{attacker} sprayed flame-retardant foam with a {action}'

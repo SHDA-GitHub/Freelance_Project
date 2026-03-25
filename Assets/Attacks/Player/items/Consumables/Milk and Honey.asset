@@ -42,8 +42,7 @@ MonoBehaviour:
 
     Cures Inaccuracy
 
-    Sleepiness Chance:
-    25'
+    Sleepy Chance: 25'
   dotStatusChance: 0
   stunStatusChance: 25
   missStatusChance: 0

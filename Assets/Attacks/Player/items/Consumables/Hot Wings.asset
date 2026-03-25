@@ -40,7 +40,7 @@ MonoBehaviour:
 
     If split: divided per party member
 
-    Burning Chance:
+    Burn Chance:
     40'
   dotStatusChance: 40
   stunStatusChance: 0
