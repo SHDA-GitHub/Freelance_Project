@@ -117,19 +117,6 @@ public class BattleTransitionManager : MonoBehaviour
         }
     }
 
-    private void RestoreRecursive(GameObject obj, string path)
-    {
-        if (BattleDataBridge.overworldActiveStates.TryGetValue(path, out bool wasActive))
-        {
-            obj.SetActive(wasActive);
-        }
-
-        foreach (Transform child in obj.transform)
-        {
-            RestoreRecursive(child.gameObject, path + "/" + child.name);
-        }
-    }
-
     public void ResetBattleTransitionForOverworld()
     {
         StartCoroutine(ResetTransitionCoroutine());
