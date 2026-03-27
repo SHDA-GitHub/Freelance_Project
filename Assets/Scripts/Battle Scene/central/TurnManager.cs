@@ -780,7 +780,7 @@ public class TurnManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.35f);
 
-        RewardsGiven();
+        rewardsGiven = true;
     }
 
     private void RestoreRecursive(GameObject obj, string path)

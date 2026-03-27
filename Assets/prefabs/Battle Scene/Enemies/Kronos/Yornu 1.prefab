@@ -164,7 +164,9 @@ MonoBehaviour:
   immuneMissEffects: 0100000003000000040000000500000006000000
   immuneOffDefEffects: 02000000030000000500000006000000
   enemyLoadout: {fileID: 11400000, guid: e95967b53f950b44da7b55ee5c31a96c, type: 2}
+  dropReward: {fileID: 0}
   expReward: 5
+  currencyReward: 5
   attacks: []
   playerStats: {fileID: 0}
   activeStatusEffects: []
@@ -293,6 +295,9 @@ MonoBehaviour:
     transformDialogue:
     - Yornu became abstract!
   flashOverlay: {fileID: 0}
+  basicTransition: 0
+  advancedTransition: 1
+  bossTransition: 1
   flashSpeed: 0.05
   flashCount: 4
   shareHPBetweenPhases: 1

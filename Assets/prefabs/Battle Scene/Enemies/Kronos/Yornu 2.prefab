@@ -164,7 +164,9 @@ MonoBehaviour:
   immuneMissEffects: 0100000003000000040000000500000006000000
   immuneOffDefEffects: 02000000030000000500000006000000
   enemyLoadout: {fileID: 11400000, guid: 117b4de97e2106b42a86a7c3e2d43234, type: 2}
+  dropReward: {fileID: 0}
   expReward: 5
+  currencyReward: 5
   attacks: []
   playerStats: {fileID: 0}
   activeStatusEffects: []
@@ -293,6 +295,9 @@ MonoBehaviour:
     transformDialogue:
     - Yornu became ungraspable!
   flashOverlay: {fileID: 0}
+  basicTransition: 0
+  advancedTransition: 1
+  bossTransition: 3
   flashSpeed: 0.05
   flashCount: 4
   shareHPBetweenPhases: 1

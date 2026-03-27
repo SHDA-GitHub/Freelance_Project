@@ -116,4 +116,48 @@ public class MusicManager : MonoBehaviour
 
         audioSource.volume = 0;
     }
+
+    public float GetPlaybackTime()
+    {
+        return audioSource.time;
+    }
+
+    public void PlayTrackFromTime(AudioClip clip, float time)
+    {
+        if (clip == null) return;
+
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        fadeCoroutine = StartCoroutine(FadeToTrackFromTime(clip, time));
+    }
+
+    IEnumerator FadeToTrackFromTime(AudioClip newTrack, float time)
+    {
+        float startVolume = audioSource.volume;
+
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = 0;
+
+        audioSource.clip = newTrack;
+        audioSource.time = time;
+        audioSource.Play();
+
+        t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(0, startVolume, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = startVolume;
+    }
 }

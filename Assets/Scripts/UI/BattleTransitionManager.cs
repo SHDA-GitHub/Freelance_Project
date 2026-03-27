@@ -28,6 +28,8 @@ public class BattleTransitionManager : MonoBehaviour
 
     private PlayerControl player;
     private FadeScript fade;
+    private AudioClip savedOverworldTrack;
+    private float savedPlaybackTime;
     private bool transitionPlaying = false;
 
     private void Awake()
@@ -72,7 +74,12 @@ public class BattleTransitionManager : MonoBehaviour
             enemyPatrolSurface.enabled = false;
 
         if (MusicManager.Instance != null)
+        {
+            savedOverworldTrack = MusicManager.Instance.GetCurrentTrack();
+            savedPlaybackTime = MusicManager.Instance.GetPlaybackTime();
+
             MusicManager.Instance.FadeOutMusic();
+        }
 
         yield return new WaitForSeconds(0.1f);
 
@@ -141,6 +148,12 @@ public class BattleTransitionManager : MonoBehaviour
         {
             yield return fade.SpriteFadeOutFlash();
         }
+
+        if (MusicManager.Instance != null && savedOverworldTrack != null)
+        {
+            MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
+        }
+
         enemyPatrolSurface.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
