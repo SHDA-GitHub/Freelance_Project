@@ -298,6 +298,9 @@ MonoBehaviour:
     transformDialogue:
     - Some cult followers appeared!
   flashOverlay: {fileID: 0}
+  basicTransition: 0
+  advancedTransition: 1
+  bossTransition: 1
   flashSpeed: 0.05
   flashCount: 6
   shareHPBetweenPhases: 1

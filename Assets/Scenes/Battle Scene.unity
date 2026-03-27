@@ -1923,7 +1923,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: dd618b4a5abd790408cc31c4017d8b91, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0bf21aa2fc2f6bb418a963cf7a0fb3a8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -6408,6 +6408,123 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1343735604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1343735605}
+  - component: {fileID: 1343735606}
+  m_Layer: 0
+  m_Name: BossPhaseTransition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1343735605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343735604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1343735606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343735604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b37244f5d39dae4ab7eb54ed85340b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPhaseTransition
+  basicTransition: 1
+  advancedTransition: 0
+  transitionType: 0
+  fillSpeed: 2
+  delayBeforeFade: 0.4
+  delayBeforeSceneLoad: 0.9
+  audioSource: {fileID: 0}
+  transitionSound: {fileID: 0}
+  transitions:
+  - type: 0
+    rootObject: {fileID: 1156453298}
+    fillImages:
+    - {fileID: 1184302795}
+    - {fileID: 1606329199}
+    - {fileID: 101603704}
+    - {fileID: 1250496097}
+    - {fileID: 167933519}
+    introSound: {fileID: 0}
+  - type: 2
+    rootObject: {fileID: 1664572361}
+    fillImages:
+    - {fileID: 1260449151}
+    - {fileID: 568074994}
+    - {fileID: 1777341841}
+    - {fileID: 1153273922}
+    - {fileID: 641308157}
+    introSound: {fileID: 0}
+  - type: 1
+    rootObject: {fileID: 1775515151}
+    fillImages:
+    - {fileID: 1137563047}
+    - {fileID: 932884365}
+    - {fileID: 1808043220}
+    - {fileID: 313983117}
+    - {fileID: 777740052}
+    - {fileID: 1789314191}
+    - {fileID: 267312269}
+    - {fileID: 243682010}
+    - {fileID: 1422008182}
+    - {fileID: 466603089}
+    - {fileID: 1373247103}
+    - {fileID: 1431435751}
+    - {fileID: 1800700610}
+    - {fileID: 1394814872}
+    - {fileID: 1297689306}
+    - {fileID: 81218964}
+    - {fileID: 1426962524}
+    - {fileID: 509608079}
+    - {fileID: 1757683826}
+    - {fileID: 762285199}
+    - {fileID: 986590472}
+    - {fileID: 665464604}
+    - {fileID: 1376972681}
+    - {fileID: 321949908}
+    - {fileID: 394350360}
+    introSound: {fileID: 0}
+  - type: 3
+    rootObject: {fileID: 1811138520}
+    fillImages:
+    - {fileID: 1926653631}
+    - {fileID: 1014437966}
+    - {fileID: 1108853549}
+    - {fileID: 841315118}
+    - {fileID: 672976507}
+    - {fileID: 1995513338}
+    - {fileID: 1319623849}
+    - {fileID: 1362719567}
+    - {fileID: 1770452643}
+    - {fileID: 1654345391}
+    - {fileID: 753298667}
+    - {fileID: 1413318469}
+    - {fileID: 633719423}
+    introSound: {fileID: 0}
 --- !u!1 &1362719565
 GameObject:
   m_ObjectHideFlags: 0
@@ -6938,7 +7055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10025,9 +10142,10 @@ SceneRoots:
   - {fileID: 1406268199}
   - {fileID: 1826199347}
   - {fileID: 506090847}
-  - {fileID: 408731266}
   - {fileID: 882039387}
+  - {fileID: 408731266}
   - {fileID: 485524772}
+  - {fileID: 1343735605}
   - {fileID: 849644932}
   - {fileID: 778720918}
   - {fileID: 879654188}

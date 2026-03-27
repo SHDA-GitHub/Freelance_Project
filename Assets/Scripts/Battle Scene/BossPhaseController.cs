@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class BossPhaseController : MonoBehaviour
 {
     [SerializeField] private List<BossPhase> phases = new List<BossPhase>();
     [SerializeField] private SpriteRenderer flashOverlay;
+    [SerializeField] private bool basicTransition = true;
+    [SerializeField] private bool advancedTransition = false;
+    [SerializeField] private BattleTransitionType bossTransition;
     private BackgroundManager backgroundManager;
     [SerializeField] private float flashSpeed = 0.05f;
     [SerializeField] private int flashCount = 6;
@@ -17,11 +22,13 @@ public class BossPhaseController : MonoBehaviour
     public bool newBackground = true;
 
     private AudioSource musicSource;
+    private BossPhaseTransition transition;
 
     private void Awake()
     {
         stats = GetComponent<CharacterStats>();
         backgroundManager = FindFirstObjectByType<BackgroundManager>();
+        transition = FindFirstObjectByType<BossPhaseTransition>();
 
         if (backgroundManager == null)
         {
@@ -103,9 +110,20 @@ public class BossPhaseController : MonoBehaviour
                 .ShowTextCoroutine($"{stats.characterName} is changing form...");
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
 
-        yield return StartCoroutine(FlashWhite());
+        if (basicTransition == true)
+        {
+            yield return StartCoroutine(FlashWhite());
+            yield return new WaitForSeconds(0.3f);
+
+        }
+
+        if (advancedTransition == true)
+        {
+            transition.playTransition(bossTransition);
+            yield return new WaitUntil(() => !transition.TransitionPlaying());
+        }
 
         ChangeMusic(phase);
         ChangeBackground(phase);

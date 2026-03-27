@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6103015167136381858}
   - component: {fileID: 3292925586076724261}
   - component: {fileID: 8290771254279514223}
+  - component: {fileID: 7514992013291482800}
   m_Layer: 5
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -271,3 +272,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7514992013291482800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878713560090045014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e792a06f0ed60f541836ff298f10711e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPhaseController
+  phases:
+  - hpThreshold: 8
+    backgroundPrefab: {fileID: 6758234784956051809, guid: 42a04c17d55dad048a50c8b584c8f183, type: 3}
+    phaseName: ad
+    phaseMusic: {fileID: 8300000, guid: d81a8cbf215046647a72267766ad1ac7, type: 3}
+    newEnemyPreset: {fileID: 11400000, guid: 79b5d3ea6a87f0540a55764497d0e037, type: 2}
+    introDialogue:
+    - WASD
+    transformDialogue:
+    - L
+  flashOverlay: {fileID: 0}
+  basicTransition: 0
+  advancedTransition: 1
+  bossTransition: 2
+  flashSpeed: 0.05
+  flashCount: 6
+  shareHPBetweenPhases: 1
+  newBackground: 1

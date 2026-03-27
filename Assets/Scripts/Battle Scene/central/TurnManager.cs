@@ -32,7 +32,9 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionTextUI;
     private int currentTargetIndex = 0;
     private int totalBattleEXP = 0;
+    private int totalBattleCurrency = 0;
     private bool isSelectingTarget = false;
+    private bool rewardsGiven = false;
     private Coroutine targetFlickerCoroutine;
     [SerializeField] private float fadeDuration = 1.5f;
     private CharacterStats lastTarget;
@@ -104,6 +106,8 @@ public class TurnManager : MonoBehaviour
     private IEnumerator ApplyBattleConditions()
     {
         totalBattleEXP = 0;
+        totalBattleCurrency = 0;
+        rewardsGiven = false;
         Debug.Log($"Starting battle - Player party count: {playerParty.Count}");
         if (BattleDataBridge.UpcomingEnemyPreset != null)
         {
@@ -735,23 +739,9 @@ public class TurnManager : MonoBehaviour
         yield return flavorTextUI.ShowTextCoroutine("You won!");
 
         yield return new WaitForSeconds(0.3f);
+        StartCoroutine(RewardSystem());
 
-        if (totalBattleEXP > 0)
-        {
-            yield return flavorTextUI.ShowTextCoroutine(
-                $"Your team earned {totalBattleEXP} EXP each!"
-            );
-
-            foreach (CharacterStats player in playerParty)
-            {
-                if (player != null)
-                {
-                    player.GainEXP(totalBattleEXP);
-                }
-            }
-        }
-
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() => RewardsGiven());
 
         SceneManager.UnloadSceneAsync("Battle Scene");
         Scene overworld = SceneManager.GetSceneByName("Overworld");
@@ -759,6 +749,38 @@ public class TurnManager : MonoBehaviour
         {
             RestoreRecursive(root, root.name);
         }
+    }
+
+    public bool RewardsGiven()
+    {
+        return rewardsGiven;
+    }
+
+    private IEnumerator RewardSystem()
+    {
+        if (totalBattleEXP > 0)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"You earned {totalBattleEXP} EXP each!"
+            );
+        }
+        yield return new WaitForSeconds(0.35f);
+
+        if (totalBattleCurrency == 1)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"Your team earned {totalBattleCurrency} dollar!"
+            );
+        }
+        else if (totalBattleCurrency > 0)
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"Your team earned {totalBattleCurrency} dollars!"
+            );
+        }
+        yield return new WaitForSeconds(0.35f);
+
+        RewardsGiven();
     }
 
     private void RestoreRecursive(GameObject obj, string path)
@@ -909,6 +931,7 @@ public class TurnManager : MonoBehaviour
         if (enemyParty.Contains(enemy))
         {
             totalBattleEXP += enemy.expReward;
+            totalBattleCurrency += enemy.currencyReward;
             yield return StartCoroutine(FadeOutEnemy(enemy));
             enemyParty.Remove(enemy);
 
