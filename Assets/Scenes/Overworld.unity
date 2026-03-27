@@ -781,7 +781,7 @@ MonoBehaviour:
     spawnChance: 0.6
   - enemy: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
     spawnChance: 0.4
-  battleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  battleMusic: {fileID: 8300000, guid: 00ede3274ec4f614e8601997dfa16d4f, type: 3}
   backgroundType: 0
   transitionType: 0
   battleSceneName: Battle Scene

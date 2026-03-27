@@ -380,7 +380,7 @@ public class TurnManager : MonoBehaviour
         );
         yield return new WaitForSeconds(0.3f);
         List<CharacterStats> alivePlayers = playerParty
-            .FindAll(p => p != null && p.currentHealth > 0);
+            .FindAll(p => p != null && p.currentHealth > 0 && p.gameObject.activeInHierarchy);
 
         if (alivePlayers.Count == 0)
         {
@@ -456,33 +456,34 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        currentTargetIndex = GetNextValidIndex(possibleTargets, 0, includeDead);
+        currentTargetIndex = currentTargetIndex = GetNextValidIndex(possibleTargets, -1, +1);
         StartCoroutine(TargetSelectionRoutine(possibleTargets, onTargetConfirmed, includeDead));
     }
 
-    private int GetNextValidIndex(List<CharacterStats> list, int startIndex, bool includeDead)
+    private int GetNextValidIndex(List<CharacterStats> list, int startIndex, int direction)
     {
         if (list.Count == 0)
             return -1;
 
         int count = list.Count;
-        startIndex = (startIndex % count + count) % count;
 
-        for (int i = 0; i < count; i++)
+        for (int i = 1; i <= count; i++)
         {
-            int index = (startIndex + i) % count;
+            int index = (startIndex + i * direction) % count;
+
+            if (index < 0)
+                index += count;
 
             if (list[index] == null)
                 continue;
 
-            if (includeDead)
-                return index;
+            if (!list[index].gameObject.activeInHierarchy)
+                continue;
 
-            if (list[index].currentHealth > 0)
-                return index;
+            return index;
         }
 
-        return -1;
+        return startIndex;
     }
 
     private IEnumerator TargetSelectionRoutine(
@@ -522,10 +523,10 @@ public class TurnManager : MonoBehaviour
                 Vector2 input = controls.UI.Navigate.ReadValue<Vector2>();
 
                 if (input.x > 0)
-                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex - 1, includeDead);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex, +1);
 
                 if (input.x < 0)
-                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex + 1, includeDead);
+                    currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex, -1);
             }
 
             if (controls.UI.Submit.triggered)
@@ -968,7 +969,7 @@ public class TurnManager : MonoBehaviour
         if (attack.targetAllEnemies)
         {
             List<CharacterStats> aliveEnemies =
-                enemyParty.FindAll(e => e != null && e.currentHealth > 0);
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0 && e.gameObject.activeInHierarchy);
 
             yield return CombatSystem.Instance.ExecuteAttackOnAll(
                 player,
@@ -1024,7 +1025,7 @@ public class TurnManager : MonoBehaviour
         if (target == null)
         {
             List<CharacterStats> aliveEnemies =
-                enemyParty.FindAll(e => e != null && e.currentHealth > 0);
+                enemyParty.FindAll(e => e != null && e.currentHealth > 0 && e.gameObject.activeInHierarchy);
 
             yield return CombatSystem.Instance.ExecuteSpecialAttackOnAll(
                 player,
