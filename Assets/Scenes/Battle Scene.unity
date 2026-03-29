@@ -7055,7 +7055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7071,45 +7071,37 @@ MonoBehaviour:
   flavorTextUI: {fileID: 506090852}
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
-  - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
-  - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
-    quantity: 0
-  - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 6c30037ec97db3a4d814c86066af81a3, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
-    quantity: 0
-  - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 72ace85841430034c980dd64eedb2bbf, type: 2}
-    quantity: 0
+    quantity: 1
   keyItems: []
   specAttacks:
   - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}

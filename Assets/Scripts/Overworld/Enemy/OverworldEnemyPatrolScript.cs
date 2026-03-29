@@ -122,7 +122,12 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
         BattleDataBridge.BattleMusic = battleMusic;
         BattleDataBridge.BackgroundSelection = backgroundType;
 
-        FindFirstObjectByType<BattleTransitionManager>()
-            .StartBattleTransition(transitionType);
+        var manager = FindFirstObjectByType<BattleTransitionManager>();
+
+        if (manager != null)
+        {
+            manager.RegisterEncounterEnemy(gameObject);
+            manager.StartBattleTransition(transitionType);
+        }
     }
 }

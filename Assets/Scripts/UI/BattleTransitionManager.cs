@@ -26,9 +26,12 @@ public class BattleTransitionManager : MonoBehaviour
     [Header("Movement Control")]
     [SerializeField] private Unity.AI.Navigation.NavMeshSurface enemyPatrolSurface;
 
+    [Header("Current Encounter")]
+    [SerializeField] private GameObject currentEnemy;
+
     private PlayerControl player;
     private FadeScript fade;
-    private AudioClip savedOverworldTrack;
+    [SerializeField] private AudioClip savedOverworldTrack;
     private float savedPlaybackTime;
     private bool transitionPlaying = false;
 
@@ -46,6 +49,12 @@ public class BattleTransitionManager : MonoBehaviour
 
         if (BattleResultBridge.HasResult && BattleResultBridge.BattleWon)
         {
+            if (currentEnemy != null)
+            {
+                Destroy(currentEnemy);
+                currentEnemy = null;
+            }
+
             ResetBattleTransitionForOverworld();
         }
     }
@@ -55,6 +64,11 @@ public class BattleTransitionManager : MonoBehaviour
         if (transitionPlaying) return;
         transitionPlaying = true;
         StartCoroutine(PlayTransition(type));
+    }
+
+    public void RegisterEncounterEnemy(GameObject enemy)
+    {
+        currentEnemy = enemy;
     }
 
     private IEnumerator PlayTransition(BattleTransitionType type)
@@ -149,11 +163,6 @@ public class BattleTransitionManager : MonoBehaviour
             yield return fade.SpriteFadeOutFlash();
         }
 
-        if (MusicManager.Instance != null && savedOverworldTrack != null)
-        {
-            MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
-        }
-
         enemyPatrolSurface.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
@@ -165,5 +174,10 @@ public class BattleTransitionManager : MonoBehaviour
 
         transitionPlaying = false;
         BattleResultBridge.ResetBridge();
+        if (MusicManager.Instance != null && savedOverworldTrack != null)
+        {
+            MusicManager.Instance.FadeInMusic();
+            MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
+        }
     }
 }
