@@ -37,6 +37,11 @@ public class Buttons : MonoBehaviour
         StartCoroutine(QuitSequence());
     }
 
+    public void Credits()
+    {
+        StartCoroutine(CreditsSequence());
+    }
+
     private void TryChangeScene(IEnumerator sequence)
     {
         StartCoroutine(sequence);
@@ -74,6 +79,14 @@ public class Buttons : MonoBehaviour
         yield return fade.SpriteFadeInFlash();
         yield return new WaitForSeconds(0.9f);
         SceneManager.LoadScene("Title Screen");
+    }
+
+    private IEnumerator CreditsSequence()
+    {
+        PlayConfirmEffect();
+        yield return fade.SpriteFadeInFlash();
+        yield return new WaitForSeconds(0.9f);
+        SceneManager.LoadScene("Credits");
     }
 
     private IEnumerator QuitSequence()
