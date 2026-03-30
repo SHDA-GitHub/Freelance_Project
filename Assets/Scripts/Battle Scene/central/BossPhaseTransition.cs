@@ -5,11 +5,6 @@ using UnityEngine.Audio;
 
 public class BossPhaseTransition : MonoBehaviour
 {
-    [Header("Transitions")]
-    [SerializeField] private bool basicTransition = true;
-    [SerializeField] private bool advancedTransition = false;
-    [SerializeField] private BattleTransitionType transitionType;
-
     [Header("Timing")]
     [SerializeField] private float fillSpeed = 2f;
     [SerializeField] private float delayBeforeFade = 0.4f;

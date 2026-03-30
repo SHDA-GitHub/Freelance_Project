@@ -111,12 +111,16 @@ public class PlayerControl : MonoBehaviour
     public void EnableControls()
     {
         controlsEnabled = true;
+        if (!controlsEnabled) return;
+        m_Speed = originalSpeed;
     }
 
     public void DisableControls()
     {
         controlsEnabled = false;
         m_Movement = Vector3.zero;
+        if (!controlsEnabled) return;
+        m_Speed = originalSpeed;
     }
 
     void FixedUpdate()

@@ -165,7 +165,7 @@ MonoBehaviour:
   immuneOffDefEffects: 03000000
   enemyLoadout: {fileID: 11400000, guid: 6525d257291d57844a2ce52bfd73fae5, type: 2}
   dropReward: {fileID: 0}
-  expReward: 5
+  expReward: 1
   currencyReward: 5
   attacks: []
   playerStats: {fileID: 0}
@@ -290,9 +290,14 @@ MonoBehaviour:
     phaseName: 
     phaseMusic: {fileID: 8300000, guid: 71bbee68ba5f80c459d67911abdef198, type: 3}
     newEnemyPreset: {fileID: 11400000, guid: 9c42e9d9580cb914ebb6c930fee0c88a, type: 2}
-    introDialogue: []
-    transformDialogue: []
+    introDialogue:
+    - Spoiled Child began to cry out for its parent annoyingly
+    transformDialogue:
+    - Protective Parent appeared to assist!
   flashOverlay: {fileID: 0}
+  basicTransition: 1
+  advancedTransition: 0
+  bossTransition: 0
   flashSpeed: 0.05
   flashCount: 6
   shareHPBetweenPhases: 1

@@ -131,7 +131,7 @@ public class BattleTransitionManager : MonoBehaviour
 
         Scene overworld = SceneManager.GetSceneByName("Overworld");
         BattleDataBridge.SaveOverworldState(overworld);
-        SceneManager.LoadScene("Battle Scene", LoadSceneMode.Additive);
+        SceneManager.LoadScene(battleSceneName, LoadSceneMode.Additive);
         foreach (GameObject obj in overworld.GetRootGameObjects())
         {
             obj.SetActive(false);
@@ -169,12 +169,15 @@ public class BattleTransitionManager : MonoBehaviour
         enemyPatrolSurface.enabled = true;
 
         BattleResultBridge.ResetBridge();
+
+        yield return new WaitForSeconds(0.2f);
+
         if (MusicManager.Instance != null && savedOverworldTrack != null)
         {
             MusicManager.Instance.FadeInMusic();
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
 
         MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
         foreach (var transition in transitions)

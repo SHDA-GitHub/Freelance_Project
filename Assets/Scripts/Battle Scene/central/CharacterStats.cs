@@ -20,7 +20,6 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Enemy Only")]
     public EnemyLoadout enemyLoadout;
-    public Item dropReward;
     public int expReward = 5;
     public int currencyReward = 5;
 

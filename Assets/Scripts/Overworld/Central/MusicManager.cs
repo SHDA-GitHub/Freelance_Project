@@ -133,11 +133,11 @@ public class MusicManager : MonoBehaviour
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0.45f, t / fadeDuration);
+            audioSource.volume = Mathf.Lerp(startVolume, 4.5f, t / fadeDuration);
             yield return null;
         }
 
-        audioSource.volume = 0.45f;
+        audioSource.volume = 4.5f;
     }
 
     public float GetPlaybackTime()

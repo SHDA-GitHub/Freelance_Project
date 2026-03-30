@@ -1944,6 +1944,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 98750ca6c8083a6458f320ab87c79f31, type: 3}
   - {fileID: 8300000, guid: 2cdb50d559c9b7b44afe3c6c52cd7f62, type: 3}
   - {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  soundEffects:
+  - {fileID: 8300000, guid: d6a4fa204e0f56a49af07e5f6da950ad, type: 3}
+  - {fileID: 8300000, guid: 35920d34207189746a542564bafcd4fe, type: 3}
+  - {fileID: 8300000, guid: 35aa967d0a76c2b4d8c8af842eb10eaf, type: 3}
 --- !u!4 &1662960236
 Transform:
   m_ObjectHideFlags: 0
