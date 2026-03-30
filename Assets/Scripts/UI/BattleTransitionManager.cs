@@ -44,6 +44,7 @@ public class BattleTransitionManager : MonoBehaviour
 
     private void Start()
     {
+        savedOverworldTrack = MusicManager.Instance.GetCurrentTrack();
         foreach (var t in transitions)
             t.rootObject.SetActive(false);
 
@@ -89,7 +90,6 @@ public class BattleTransitionManager : MonoBehaviour
 
         if (MusicManager.Instance != null)
         {
-            savedOverworldTrack = MusicManager.Instance.GetCurrentTrack();
             savedPlaybackTime = MusicManager.Instance.GetPlaybackTime();
 
             MusicManager.Instance.FadeOutMusic();
@@ -163,21 +163,25 @@ public class BattleTransitionManager : MonoBehaviour
             yield return fade.SpriteFadeOutFlash();
         }
 
+        if (player != null)
+            player.EnableControls();
+
         enemyPatrolSurface.enabled = true;
+
+        BattleResultBridge.ResetBridge();
+        if (MusicManager.Instance != null && savedOverworldTrack != null)
+        {
+            MusicManager.Instance.FadeInMusic();
+        }
 
         yield return new WaitForSeconds(0.2f);
 
+        MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
         foreach (var transition in transitions)
         {
             transition.rootObject.SetActive(false);
         }
 
         transitionPlaying = false;
-        BattleResultBridge.ResetBridge();
-        if (MusicManager.Instance != null && savedOverworldTrack != null)
-        {
-            MusicManager.Instance.FadeInMusic();
-            MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
-        }
     }
 }

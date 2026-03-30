@@ -100,6 +100,7 @@ public class InventoryUIController : MonoBehaviour
     public void OpenInventory()
     {
         DialogueManager.Instance.isExternalUILocked = true;
+        PartyManager.Instance.UpdateCoinUI();
         uiTabController.ResetTabs();
         inventoryOpen = true;
 

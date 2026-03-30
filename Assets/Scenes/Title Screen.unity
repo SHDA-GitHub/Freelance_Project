@@ -788,7 +788,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1933,12 +1933,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PreLoadingScript
   musicTracks:
   - {fileID: 8300000, guid: e7cd713b4de6d37459e32b5aecdbcf1a, type: 3}
+  - {fileID: 8300000, guid: 411f6d59fc963204a9a0c046decd126d, type: 3}
   - {fileID: 8300000, guid: 3d0d89601c76f9840820a842da565219, type: 3}
   - {fileID: 8300000, guid: 66d7931d18273884cadd173646861278, type: 3}
   - {fileID: 8300000, guid: d031c9a17dbde134f84e473879d6f20c, type: 3}
   - {fileID: 8300000, guid: 79633e99eb886a94393f0996a68cc8ee, type: 3}
   - {fileID: 8300000, guid: 3e1908685854ac14e8904008ea2d83e6, type: 3}
   - {fileID: 8300000, guid: 5018ed83599b4ff44a5d9aaa7397792a, type: 3}
+  - {fileID: 8300000, guid: 00ede3274ec4f614e8601997dfa16d4f, type: 3}
+  - {fileID: 8300000, guid: 98750ca6c8083a6458f320ab87c79f31, type: 3}
+  - {fileID: 8300000, guid: 2cdb50d559c9b7b44afe3c6c52cd7f62, type: 3}
+  - {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
 --- !u!4 &1662960236
 Transform:
   m_ObjectHideFlags: 0

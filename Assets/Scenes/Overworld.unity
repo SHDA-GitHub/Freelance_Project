@@ -18867,9 +18867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   dialogueLines:
-  - dialogueText: '"Whaddaya want, snotnose?"'
+  - dialogueText: '"What are you just standing around for?!"'
     yesDialogueLines:
-    - dialogueText: '"Well take a gander at some of my wares, then!"'
+    - dialogueText: '"Go buy some more of my stuff, then!"'
       yesDialogueLines: []
       yesChoiceID: 
       yesButtonText: 
@@ -20555,6 +20555,8 @@ MonoBehaviour:
   transitionSound: {fileID: 0}
   battleSceneName: Battle Scene
   enemyPatrolSurface: {fileID: 551887789}
+  currentEnemy: {fileID: 0}
+  savedOverworldTrack: {fileID: 0}
 --- !u!114 &1711264376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22866,37 +22868,37 @@ MonoBehaviour:
   flavorTextUI: {fileID: 0}
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
     quantity: 3
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
     quantity: 2
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: d1b91cea75ad02d48bd17920e14d08d7, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
     quantity: 2
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: 20e8eb8d1352f674394c293150fd6470, type: 2}
-    quantity: 0
+    quantity: 1
   - itemData: {fileID: 11400000, guid: ccf78ab03705f9344bf1ea475ff1f496, type: 2}
-    quantity: 0
+    quantity: 1
   keyItems: []
   specAttacks:
   - attackData: {fileID: 11400000, guid: 3689e8715dedf1e4f864a4eb76e21548, type: 2}

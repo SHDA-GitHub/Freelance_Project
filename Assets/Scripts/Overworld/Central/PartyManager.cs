@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
+    public static PartyManager Instance;
     public List<PlayerStatsSO> partyMembers = new List<PlayerStatsSO>();
     private int currentIndex = 0;
 
@@ -12,6 +14,7 @@ public class PartyManager : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         if (partyMembers.Count > 0)
         {
             UpdateUI();
@@ -43,7 +46,7 @@ public class PartyManager : MonoBehaviour
         UpdateCoinUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (uiDisplay != null)
         {
@@ -51,7 +54,7 @@ public class PartyManager : MonoBehaviour
         }
     }
 
-    private void UpdateCoinUI()
+    public void UpdateCoinUI()
     {
         if (coinText != null)
             coinText.text = $"Balance: {CurrencyManager.Instance.GetCoinCount()} Dollars";

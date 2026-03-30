@@ -145,14 +145,6 @@ public class ShopUIController : MonoBehaviour
         }
         };
 
-        tempDialogue.onChoiceMade += (string choiceID) =>
-        {
-            if (choiceID == "yes")
-            {
-                BuyItem(item);
-            }
-        };
-
         DialogueManager.Instance.StartDialogue(
             tempDialogue,
             new NPCDialogue.DialogueLine[] { confirmLine },
