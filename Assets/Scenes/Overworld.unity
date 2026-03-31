@@ -775,18 +775,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62968691}
-  - component: {fileID: 62968692}
   - component: {fileID: 62968689}
   - component: {fileID: 62968688}
-  - component: {fileID: 62968693}
   - component: {fileID: 62968694}
+  - component: {fileID: 62968695}
   m_Layer: 0
   m_Name: Dog Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &62968688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -829,12 +828,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.9, z: 0.02}
-  m_Center: {x: 0, y: 0.09, z: 0}
+  m_Size: {x: 1.3, y: 1, z: 0.48}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &62968691
 Transform:
   m_ObjectHideFlags: 0
@@ -851,54 +850,8 @@ Transform:
   - {fileID: 1806502671}
   - {fileID: 1151961841}
   - {fileID: 451651343}
-  - {fileID: 469427919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &62968692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62968687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e7108772321e54f82bfb9f7da34802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyPatrolScript
-  enemies:
-  - enemy: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
-    spawnChance: 0.6
-  - enemy: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
-    spawnChance: 0.4
-  battleMusic: {fileID: 8300000, guid: 00ede3274ec4f614e8601997dfa16d4f, type: 3}
-  backgroundType: 0
-  transitionType: 0
-  battleSceneName: Battle Scene
-  wanderRadius: 3
-  wanderTimer: 0.75
---- !u!195 &62968693
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62968687}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 65
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.95
-  m_BaseOffset: 0.35
-  m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &62968694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +874,29 @@ MonoBehaviour:
     noButtonText: 
     isChoiceActive: 0
   dialogueMusic: {fileID: 0}
+--- !u!114 &62968695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62968687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6f94f6533932a44aa5a0287c65cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverworldEnemyInteract
+  enemies:
+  - enemy: {fileID: 11400000, guid: c8cbe7bf254a141469a491ecf0294459, type: 2}
+    spawnChance: 0.65
+  - enemy: {fileID: 11400000, guid: c4786b8eb62baba40ba0f7055c80a4f1, type: 2}
+    spawnChance: 0.4
+  battleMusic: {fileID: 8300000, guid: 00ede3274ec4f614e8601997dfa16d4f, type: 3}
+  backgroundType: 0
+  transitionType: 0
+  battleSceneName: Battle Scene
+  dialogue: {fileID: 62968694}
+  allowNoBattleChoice: 0
 --- !u!1 &63448723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,10 +6647,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451651343}
-  - component: {fileID: 451651344}
   - component: {fileID: 451651347}
   m_Layer: 0
-  m_Name: BattleTrigger
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6695,21 +6670,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 62968691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &451651344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451651342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6accf3ebcccd6334a90702b0e7926eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BattleSceneTrigger
-  OEPS: {fileID: 62968692}
-  dialogue: {fileID: 62968694}
-  allowNoBattleChoice: 0
 --- !u!65 &451651347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6725,80 +6685,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3, y: 1, z: 0.3}
+  m_Size: {x: 1.3, y: 1, z: 0.18}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &469427918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 469427919}
-  - component: {fileID: 469427921}
-  - component: {fileID: 469427920}
-  m_Layer: 0
-  m_Name: Locator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &469427919
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469427918}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 62968691}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &469427920
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469427918}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &469427921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469427918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b29ba4e2f00b74b8d890c35f3805b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyLocator
-  enemy: {fileID: 62968692}
-  enemyObject: {fileID: 0}
 --- !u!1 &469607424
 GameObject:
   m_ObjectHideFlags: 0
@@ -23070,7 +22962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1820251737
 Transform:
   m_ObjectHideFlags: 0

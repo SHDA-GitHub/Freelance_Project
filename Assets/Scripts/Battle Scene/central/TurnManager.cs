@@ -765,9 +765,20 @@ public class TurnManager : MonoBehaviour
                 $"You earned {totalBattleEXP} EXP each!"
             );
         }
-        yield return new WaitForSeconds(0.35f);
 
-        CurrencyManager.Instance.AddCoins(totalBattleCurrency);
+        List<CharacterStats> activeMembers = playerParty.FindAll(
+         p => p != null &&
+         p.isPlayer &&
+         p.currentHealth > 0 &&
+         p.gameObject.activeInHierarchy
+        );
+
+        foreach (var member in activeMembers)
+        {
+            member.GainEXP(totalBattleEXP);
+        }
+
+        yield return new WaitForSeconds(0.35f);
 
         if (totalBattleCurrency == 1)
         {
@@ -781,6 +792,9 @@ public class TurnManager : MonoBehaviour
                 $"Your team earned {totalBattleCurrency} dollars!"
             );
         }
+
+        CurrencyManager.Instance.AddCoins(totalBattleCurrency);
+
         yield return new WaitForSeconds(0.35f);
 
         rewardsGiven = true;
