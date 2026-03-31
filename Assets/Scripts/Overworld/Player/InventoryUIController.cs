@@ -75,7 +75,7 @@ public class InventoryUIController : MonoBehaviour
         uiTabController = GetComponent<UITabController>();
         controls = new Controls();
 
-        controls.Player.InventoryOpen.started += OnInventoryToggle;
+        controls.Player.InventoryOpen.performed += OnInventoryToggle;
         controls.UI.Cancel.performed += OnCancel;
 
         controls.Player.Enable();
@@ -410,7 +410,7 @@ public class InventoryUIController : MonoBehaviour
         foreach (var screen in inventoryScreens)
             screen.SetActive(false);
 
-        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(rootFirstButton);
         player.EnableControls();
         controls.Player.Enable();
         enemyPatrolSurface.enabled = true;

@@ -313,6 +313,15 @@ public class TurnManager : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
+        if (player.IsStatChange())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{player.characterName}'s focus is shifted"
+            );
+            player.ReduceOffDefEffects();
+            yield return new WaitForSeconds(0.3f);
+        }
+
         yield return flavorTextUI.ShowTextCoroutine($"It's {player.characterName}'s turn!");
 
         UIManager.Instance.ShowPlayerOptions(player);
@@ -355,6 +364,15 @@ public class TurnManager : MonoBehaviour
                 $"{enemy.characterName}'s accuracy is disrupted"
             );
             enemy.ReduceMissEffects();
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        if (enemy.IsStatChange())
+        {
+            yield return flavorTextUI.ShowTextCoroutine(
+                $"{enemy.characterName}'s focus is shifted"
+            );
+            enemy.ReduceOffDefEffects();
             yield return new WaitForSeconds(0.3f);
         }
 

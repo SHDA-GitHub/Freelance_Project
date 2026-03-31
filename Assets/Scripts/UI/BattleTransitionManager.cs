@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -30,6 +33,7 @@ public class BattleTransitionManager : MonoBehaviour
     [SerializeField] private GameObject currentEnemy;
 
     private PlayerControl player;
+    private Controls controls;
     private FadeScript fade;
     [SerializeField] private AudioClip savedOverworldTrack;
     private float savedPlaybackTime;
@@ -40,6 +44,7 @@ public class BattleTransitionManager : MonoBehaviour
         Instance = this;
         fade = FindFirstObjectByType<FadeScript>();
         player = FindFirstObjectByType<PlayerControl>();
+        controls = new Controls();
     }
 
     private void Start()
@@ -141,6 +146,10 @@ public class BattleTransitionManager : MonoBehaviour
     public void ResetBattleTransitionForOverworld()
     {
         StartCoroutine(ResetTransitionCoroutine());
+        controls?.Player.Enable();
+        controls?.UI.Enable();
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     private IEnumerator ResetTransitionCoroutine()
@@ -169,17 +178,23 @@ public class BattleTransitionManager : MonoBehaviour
         enemyPatrolSurface.enabled = true;
 
         DialogueManager.Instance.isExternalUILocked = false;
+        controls.Player.Disable();
+        yield return new WaitForSeconds(0.05f);
+        controls.Player.Enable();
+        controls.UI.Enable();
+
+        InputSystem.ResetHaptics();
 
         BattleResultBridge.ResetBridge();
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         if (MusicManager.Instance != null && savedOverworldTrack != null)
         {
             MusicManager.Instance.FadeInMusic();
         }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
 
         MusicManager.Instance.PlayTrackFromTime(savedOverworldTrack, savedPlaybackTime);
         foreach (var transition in transitions)

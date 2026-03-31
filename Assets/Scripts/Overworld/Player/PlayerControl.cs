@@ -13,13 +13,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float historyDuration = 5f;
 
     [SerializeField] private Transform playerCamera;
+    [SerializeField] private Transform cameraPivotPoint;
 
     [Header("Player movement settings")]
     [SerializeField] private float m_Speed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravityMultiplier = 2.5f;
     [SerializeField] private float fallMultiplier = 3.5f;
-
 
     [Header("Player groundcheck")]
     [SerializeField] private Transform groundCheck;
@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Animator animatorBack;
 
     public bool controlsEnabled = true;
+    public bool rotated = false;
     private float lastZDirection = 1f;
     public bool isInteracting = false;
     private Controls controls;
@@ -42,6 +43,8 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         isInteracting = false;
+        cameraPivotPoint.position = cameraPivotPoint.position;
+        cameraPivotPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     private void Awake()
@@ -59,6 +62,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         originalSpeed = m_Speed;
     }
+
     private void OnMove(InputAction.CallbackContext context)
     {
         if (!controlsEnabled) return;
@@ -125,6 +129,11 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (cameraPivotPoint != null)
+        {
+            cameraPivotPoint.position = transform.position;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (m_Movement != Vector3.zero)
@@ -162,9 +171,18 @@ public class PlayerControl : MonoBehaviour
             lastZDirection = Mathf.Sign(m_Movement.z);
         }
 
-        float targetYRotation = (lastZDirection > 0) ? 0f : 180f;
-        Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+        if (rotated == false)
+        {
+            float targetYRotation = (lastZDirection > 0) ? 0f : 180f;
+            Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+        }
+        else if (rotated == true)
+        {
+            float targetYRotation = (lastZDirection > 0) ? 0f : 90f;
+            Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+        }
 
         if (rb.linearVelocity.y < 0)
         {
@@ -192,6 +210,22 @@ public class PlayerControl : MonoBehaviour
         if (history.Count > maxTime)
         {
             history.RemoveAt(0);
+        }
+    }
+
+    public void SetCameraPivotRotation(float rotationY)
+    {
+        if (cameraPivotPoint != null)
+        {
+            cameraPivotPoint.rotation = Quaternion.Euler(0f, rotationY, 0f);
+        }
+    }
+
+    public void ResetCameraPivotRotation()
+    {
+        if (cameraPivotPoint != null)
+        {
+            cameraPivotPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 }
