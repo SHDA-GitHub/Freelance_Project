@@ -767,6 +767,8 @@ public class TurnManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.35f);
 
+        CurrencyManager.Instance.AddCoins(totalBattleCurrency);
+
         if (totalBattleCurrency == 1)
         {
             yield return flavorTextUI.ShowTextCoroutine(
