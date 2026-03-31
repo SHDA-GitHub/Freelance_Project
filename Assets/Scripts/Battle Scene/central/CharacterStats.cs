@@ -213,6 +213,7 @@ public class CharacterStats : MonoBehaviour
 
             if (activeStatusEffects[i].duration <= 0)
             {
+                Debug.Log($"{characterName} is no longer {activeStatusEffects[i].type}");
                 activeStatusEffects.RemoveAt(i);
                 removedAny = true;
             }
@@ -230,6 +231,7 @@ public class CharacterStats : MonoBehaviour
             activeStunEffects[i].duration--;
             if (activeStunEffects[i].duration <= 0)
             {
+                Debug.Log($"{characterName} is no longer {activeStunEffects[i].type}");
                 activeStunEffects.RemoveAt(i);
                 removedAny = true;
             }
@@ -246,6 +248,7 @@ public class CharacterStats : MonoBehaviour
             activeMissEffects[i].duration--;
             if (activeMissEffects[i].duration <= 0)
             {
+                Debug.Log($"{characterName} is no longer {activeMissEffects[i].type}");
                 activeMissEffects.RemoveAt(i);
                 removedAny = true;
             }
@@ -263,6 +266,7 @@ public class CharacterStats : MonoBehaviour
 
             if (activeOffDefEffects[i].duration <= 0)
             {
+                Debug.Log($"{characterName} is no longer {activeOffDefEffects[i].type}");
                 activeOffDefEffects.RemoveAt(i);
                 removedAny = true;
             }

@@ -164,7 +164,6 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 11400000, guid: b01b7b4e08693e7418e609d83277fca7, type: 2}
-  dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5
   attacks: []
@@ -285,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPhaseController
   phases:
-  - hpThreshold: 8
+  - hpThreshold: 0
     backgroundPrefab: {fileID: 6758234784956051809, guid: 42a04c17d55dad048a50c8b584c8f183, type: 3}
     phaseName: ad
     phaseMusic: {fileID: 8300000, guid: d81a8cbf215046647a72267766ad1ac7, type: 3}

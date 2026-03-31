@@ -297,7 +297,7 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} is locked in place and cannot move"
             );
-            player.ReduceStunEffects();
+            player.ReduceAllEffectsAfterTurn();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
@@ -342,7 +342,7 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName} is locked in place and cannot move"
             );
-            enemy.ReduceStunEffects();
+            enemy.ReduceAllEffectsAfterTurn();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
