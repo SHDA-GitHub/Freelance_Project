@@ -168,6 +168,8 @@ public class BattleTransitionManager : MonoBehaviour
 
         enemyPatrolSurface.enabled = true;
 
+        DialogueManager.Instance.isExternalUILocked = false;
+
         BattleResultBridge.ResetBridge();
 
         yield return new WaitForSeconds(0.2f);

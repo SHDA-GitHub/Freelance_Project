@@ -18,18 +18,18 @@ MonoBehaviour:
   dotAmount: 1
   dotDrainsPP: 0
   statusEffect: 1
-  stunstatusEffect: 0
-  missStatusEffect: 0
-  statChangeEffect: 0
+  stunstatusEffect: 1
+  missStatusEffect: 1
+  statChangeEffect: 4
   offenseChange: 0
   defenseChange: 0
   healOnHit: 0
   healAmount: 0
   descriptionText: 
   dotStatusChance: 100
-  stunStatusChance: 0
-  missStatusChance: 0
-  statStatusChance: 0
+  stunStatusChance: 100
+  missStatusChance: 100
+  statStatusChance: 100
   statusDuration: 1
   attackName: Dummypunch
   powerCost: 0
