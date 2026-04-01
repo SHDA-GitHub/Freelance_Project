@@ -820,7 +820,6 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5
   attacks:
@@ -1923,7 +1922,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0bf21aa2fc2f6bb418a963cf7a0fb3a8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 73f63693d5bc02b4396c18cb6d3a9a61, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -2532,7 +2531,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: 2d6c072de85355c4ba125599fa5d0934, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 17a16f3f9df3c494894a748ada1e96e3, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}
@@ -3260,7 +3259,6 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5
   attacks:
@@ -4183,7 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 1
+  useBattleDataBridge: 0
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -4210,6 +4208,7 @@ MonoBehaviour:
   - {fileID: 7668502924311082037, guid: 683ae233babe45d428ac6d676d7dffb2, type: 3}
   - {fileID: 3942843387887549817, guid: 4acd37e01fa0c754dadc3f1e240421ec, type: 3}
   - {fileID: 7487059447172081155, guid: 50cb704906e63214bacf0e20c26eb45e, type: 3}
+  - {fileID: 8772746210605243445, guid: 4baeba74f8d252646b8d0c6ed04f3839, type: 3}
   minibossBG:
   - {fileID: 5287798275954189025, guid: a80f7bf9a45aa5c4b986af16282d0f69, type: 3}
   - {fileID: 4623175695548337017, guid: 48e631ef3e06d454bbde2a533b41a7b7, type: 3}
@@ -4239,6 +4238,7 @@ MonoBehaviour:
   - {fileID: 5712292818012293154, guid: 62bcb921126e3034b92a3a8b5c5a03c2, type: 3}
   - {fileID: 446823161134650585, guid: a1f5e9277e5d1834199407302036dd3f, type: 3}
   - {fileID: 6437069287677522384, guid: ae6cb6cf33a4dd942a3579f0acdb5cb0, type: 3}
+  - {fileID: 939388019258641837, guid: 19d623041af33704bbc0ab41c15718c3, type: 3}
   finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
   finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
@@ -4455,7 +4455,6 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5
   attacks:
@@ -6452,9 +6451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b37244f5d39dae4ab7eb54ed85340b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPhaseTransition
-  basicTransition: 1
-  advancedTransition: 0
-  transitionType: 0
   fillSpeed: 2
   delayBeforeFade: 0.4
   delayBeforeSceneLoad: 0.9
@@ -7072,36 +7068,52 @@ MonoBehaviour:
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 6c30037ec97db3a4d814c86066af81a3, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
     quantity: 1
+    healing: 0
   - itemData: {fileID: 11400000, guid: 72ace85841430034c980dd64eedb2bbf, type: 2}
     quantity: 1
+    healing: 0
   keyItems: []
   specAttacks:
   - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}
@@ -10038,7 +10050,6 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  dropReward: {fileID: 0}
   expReward: 5
   currencyReward: 5
   attacks:

@@ -25,13 +25,16 @@ MonoBehaviour:
   defenseChange: -1
   healOnHit: 0
   healAmount: 0
-  descriptionText: 'DMG: 1
+  descriptionText: 'DMG: 2
 
     Weaken Chance: 5'
-  statusChance: 5
+  dotStatusChance: 0
+  stunStatusChance: 0
+  missStatusChance: 0
+  statStatusChance: 0
   statusDuration: 1
   attackName: Tough Kick
   powerCost: 0
-  damage: 1
+  damage: 2
   attackSound: {fileID: 8300000, guid: 1526639be640c1d4fb9a1bdafecaf4fb, type: 3}
-  flavorText: '{attacker} strikes {target} with a kick'
+  flavorText: '{attacker} kicks {target} hard'
