@@ -302,6 +302,104 @@ public class InventoryUIController : MonoBehaviour
         );
     }
 
+    public void UseItem()
+    {
+        if (!(lockedActionData is InventoryItem invItem))
+            return;
+
+        if (DialogueManager.Instance == null)
+            return;
+
+        string itemName = invItem.itemData.itemName;
+
+        if (!invItem.healing)
+        {
+            NPCDialogue failDialogue = new NPCDialogue();
+
+            NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+            {
+                dialogueText = $"You cannot use the {itemName} outside of battle."
+            };
+
+            CloseItemMenu();
+
+            DialogueManager.Instance.StartDialogue(
+                failDialogue,
+                new NPCDialogue.DialogueLine[] { line },
+                null
+            );
+
+            return;
+        }
+
+        NPCDialogue tempDialogue = new NPCDialogue();
+
+        NPCDialogue.DialogueLine confirmLine = new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"Do you want to use the {itemName}?",
+            isChoiceActive = true,
+            yesButtonText = "Yes",
+            noButtonText = "No"
+        };
+
+        confirmLine.yesDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You used the {itemName}."
+        }
+        };
+
+        confirmLine.noDialogueLines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You decided not to use the {itemName}."
+        }
+        };
+
+        tempDialogue.onChoiceMade += (string choice) =>
+        {
+            if (choice == "yes")
+            {
+                ApplyItemEffect(invItem);
+                RemoveItem(invItem);
+            }
+        };
+
+        CloseItemMenu();
+
+        DialogueManager.Instance.StartDialogue(
+            tempDialogue,
+            new NPCDialogue.DialogueLine[] { confirmLine },
+            null
+        );
+    }
+
+    void ApplyItemEffect(InventoryItem invItem)
+    {
+        PlayerDataOverworld playerData = FindFirstObjectByType<PlayerDataOverworld>();
+
+        if (playerData == null)
+        {
+            Debug.LogWarning("No PlayerDataOverworld found in scene!");
+            return;
+        }
+
+        PlayerStatsSO stats = playerData.playerStats;
+        Item item = invItem.itemData;
+
+        if (item.healAmount > 0)
+        {
+            stats.OverworldAddHP(item.healAmount);
+        }
+
+        if (item.ppAmount > 0)
+        {
+            stats.OverworldAddPP(item.ppAmount);
+        }
+    }
+
     public void DropSpecialAttack()
     {
         if (!(lockedActionData is InventorySpecialAttack invSpecial))
@@ -353,6 +451,24 @@ public class InventoryUIController : MonoBehaviour
             new NPCDialogue.DialogueLine[] { confirmLine },
             null
         );
+    }
+
+    public void UseSpecAttack()
+    {
+        if (!(lockedActionData is InventorySpecialAttack invSpecAttack))
+            return;
+
+        if (DialogueManager.Instance == null)
+            return;
+
+        string itemName = invSpecAttack.attackData.specAttackName;
+
+        NPCDialogue failDialogue = new NPCDialogue();
+
+        NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You cannot use {itemName} outside of battle."
+        };
     }
 
     void RemoveItem(InventoryItem invItem)

@@ -32,6 +32,16 @@ public class PlayerStatsSO : ScriptableObject
         }
     }
 
+    public void OverworldAddHP(int healAmount)
+    {
+        currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
+    }
+
+    public void OverworldAddPP(int restoreAmount)
+    {
+        currentPP = Mathf.Min(currentPP + restoreAmount, maxPP);
+    }
+
     public void GainEXP(int amount)
     {
         currentEXP = currentEXP + amount;
