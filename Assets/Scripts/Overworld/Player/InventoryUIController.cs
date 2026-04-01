@@ -61,6 +61,7 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private GameObject partySelectMenu;
     [SerializeField] private GameObject partyFirstButton;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject inputBlocker;
     [SerializeField] private AudioClip useItemSFX;
 
     private InventoryItem pendingItemUse;
@@ -112,6 +113,7 @@ public class InventoryUIController : MonoBehaviour
         inventoryOpen = true;
 
         inventoryRoot.SetActive(true);
+        SetInputBlocked(false);
 
         RefreshItemUI();
         ShowItemGrid(0);
@@ -236,8 +238,9 @@ public class InventoryUIController : MonoBehaviour
         lockedActionData = action;
         itemMenuOpen = true;
 
-        itemActionMenu.SetActive(true);
+        SetInputBlocked(true);
 
+        itemActionMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(useButton);
     }
 
@@ -252,12 +255,13 @@ public class InventoryUIController : MonoBehaviour
         lockedActionData = null;
 
         itemActionMenu.SetActive(false);
-
         EventSystem.current.SetSelectedGameObject(rootFirstButton);
     }
 
     public void DropItem()
     {
+        SetInputBlocked(true);
+
         if (!(lockedActionData is InventoryItem invItem))
             return;
 
@@ -307,10 +311,17 @@ public class InventoryUIController : MonoBehaviour
             new NPCDialogue.DialogueLine[] { confirmLine },
             null
         );
+
+        if (!DialogueManager.Instance.IsDialogueActive())
+        {
+            SetInputBlocked(false);
+        }
     }
 
     public void UseItem()
     {
+        SetInputBlocked(true);
+
         if (!(lockedActionData is InventoryItem invItem))
             return;
 
@@ -366,11 +377,20 @@ public class InventoryUIController : MonoBehaviour
 
         CloseItemMenu();
 
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
         DialogueManager.Instance.StartDialogue(
             tempDialogue,
             new NPCDialogue.DialogueLine[] { confirmLine },
             null
         );
+    }
+
+    private void HandleItemResultDialogueEnd()
+    {
+        SetInputBlocked(false);
+
+        DialogueManager.Instance.onDialogueEnded -= HandleItemResultDialogueEnd;
     }
 
     void ShowCannotUseDialogue(InventoryItem invItem)
@@ -386,11 +406,19 @@ public class InventoryUIController : MonoBehaviour
 
         CloseItemMenu();
 
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
         DialogueManager.Instance.StartDialogue(
             failDialogue,
             new NPCDialogue.DialogueLine[] { line },
             null
         );
+    }
+
+    private void SetInputBlocked(bool blocked)
+    {
+        if (inputBlocker != null)
+            inputBlocker.SetActive(blocked);
     }
 
     public void OnPartyMemberSelected(PlayerStatsSO target)
@@ -460,6 +488,8 @@ public class InventoryUIController : MonoBehaviour
 
         NPCDialogue resultDialogue = new NPCDialogue();
 
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
         DialogueManager.Instance.StartDialogue(resultDialogue, lines.ToArray(), null);
     }
 
@@ -483,6 +513,8 @@ public class InventoryUIController : MonoBehaviour
 
     public void DropSpecialAttack()
     {
+        SetInputBlocked(true);
+
         if (!(lockedActionData is InventorySpecialAttack invSpecial))
             return;
 
@@ -522,10 +554,13 @@ public class InventoryUIController : MonoBehaviour
             if (yes == "yes")
             {
                 RemoveSpecial(invSpecial);
+
             }
         };
 
         CloseItemMenu();
+
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
 
         DialogueManager.Instance.StartDialogue(
             tempDialogue,
@@ -536,6 +571,8 @@ public class InventoryUIController : MonoBehaviour
 
     public void UseSpecAttack()
     {
+        SetInputBlocked(true);
+
         if (!(lockedActionData is InventorySpecialAttack invSpecAttack))
             return;
 
@@ -550,6 +587,14 @@ public class InventoryUIController : MonoBehaviour
         {
             dialogueText = $"You cannot use {itemName} outside of battle."
         };
+
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+        DialogueManager.Instance.StartDialogue(
+            failDialogue,
+            new NPCDialogue.DialogueLine[] { line },
+            null
+        );
     }
 
     void RemoveItem(InventoryItem invItem)
@@ -603,6 +648,7 @@ public class InventoryUIController : MonoBehaviour
         screenLocked = false;
 
         inventoryRoot.SetActive(false);
+        SetInputBlocked(false);
 
         foreach (var screen in inventoryScreens)
             screen.SetActive(false);
@@ -646,6 +692,7 @@ public class InventoryUIController : MonoBehaviour
         if (itemMenuOpen)
         {
             CloseItemMenu();
+            SetInputBlocked(false);
             return;
         }
 

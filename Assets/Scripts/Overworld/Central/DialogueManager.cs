@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private NavMeshSurface enemyPatrolSurface;
     public FlavorTextUI flavorTextUI;
     private Controls controls;
+    public System.Action onDialogueEnded;
 
     [Header("Music")]
     [SerializeField] private MusicManager musicManager;
@@ -188,6 +189,8 @@ public class DialogueManager : MonoBehaviour
         {
             MusicManager.Instance.ClearOverrideMusic();
         }
+
+        onDialogueEnded?.Invoke();
 
         StartCoroutine(DialogueCooldown());
     }
