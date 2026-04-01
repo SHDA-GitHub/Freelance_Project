@@ -7,6 +7,7 @@ public class PlayerRotationTrigger : MonoBehaviour
     private PlayerControl playerControl;
 
     [SerializeField] private float targetRotationY = 90f;
+    [SerializeField] private bool setRotateToX = true;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +21,16 @@ public class PlayerRotationTrigger : MonoBehaviour
             if (playerControl != null)
             {
                 playerControl.SetCameraPivotRotation(targetRotationY);
-                playerControl.rotated = true;
-                playerControl.SetRotated(true);
+                if (setRotateToX == true)
+                {
+                    playerControl.rotated = true;
+                    playerControl.SetRotated(true);
+                }
+                else
+                {
+                    playerControl.rotated = false;
+                    playerControl.SetRotated(false);
+                }
             }
         }
     }
