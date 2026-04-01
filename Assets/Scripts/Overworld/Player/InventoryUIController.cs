@@ -57,6 +57,14 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private GameObject rootFirstButton;
     [SerializeField] private NavMeshSurface enemyPatrolSurface;
 
+    [Header("Party Selection")]
+    [SerializeField] private GameObject partySelectMenu;
+    [SerializeField] private GameObject partyFirstButton;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip useItemSFX;
+
+    private InventoryItem pendingItemUse;
+
     private Controls controls;
 
     private bool inventoryOpen = false;
@@ -309,27 +317,13 @@ public class InventoryUIController : MonoBehaviour
         if (DialogueManager.Instance == null)
             return;
 
-        string itemName = invItem.itemData.itemName;
-
         if (!invItem.healing)
         {
-            NPCDialogue failDialogue = new NPCDialogue();
-
-            NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
-            {
-                dialogueText = $"You cannot use the {itemName} outside of battle."
-            };
-
-            CloseItemMenu();
-
-            DialogueManager.Instance.StartDialogue(
-                failDialogue,
-                new NPCDialogue.DialogueLine[] { line },
-                null
-            );
-
+            ShowCannotUseDialogue(invItem);
             return;
         }
+
+        string itemName = invItem.itemData.itemName;
 
         NPCDialogue tempDialogue = new NPCDialogue();
 
@@ -345,7 +339,7 @@ public class InventoryUIController : MonoBehaviour
         {
         new NPCDialogue.DialogueLine
         {
-            dialogueText = $"You used the {itemName}."
+            dialogueText = $"Select a party member."
         }
         };
 
@@ -361,8 +355,12 @@ public class InventoryUIController : MonoBehaviour
         {
             if (choice == "yes")
             {
-                ApplyItemEffect(invItem);
-                RemoveItem(invItem);
+                pendingItemUse = invItem;
+
+                partySelectMenu.SetActive(true);
+
+                if (partyFirstButton != null)
+                    EventSystem.current.SetSelectedGameObject(partyFirstButton);
             }
         };
 
@@ -375,27 +373,111 @@ public class InventoryUIController : MonoBehaviour
         );
     }
 
-    void ApplyItemEffect(InventoryItem invItem)
+    void ShowCannotUseDialogue(InventoryItem invItem)
     {
-        PlayerDataOverworld playerData = FindFirstObjectByType<PlayerDataOverworld>();
+        string itemName = invItem.itemData.itemName;
 
-        if (playerData == null)
+        NPCDialogue failDialogue = new NPCDialogue();
+
+        NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
         {
-            Debug.LogWarning("No PlayerDataOverworld found in scene!");
+            dialogueText = $"You cannot use the {itemName} outside of battle."
+        };
+
+        CloseItemMenu();
+
+        DialogueManager.Instance.StartDialogue(
+            failDialogue,
+            new NPCDialogue.DialogueLine[] { line },
+            null
+        );
+    }
+
+    public void OnPartyMemberSelected(PlayerStatsSO target)
+    {
+        if (pendingItemUse == null)
             return;
+
+        InventoryItem item = pendingItemUse;
+
+        int beforeHP = target.currentHealth;
+        int beforePP = target.currentPP;
+
+        ApplyItemEffectToTarget(item, target);
+
+        if (audioSource != null && useItemSFX != null)
+            audioSource.PlayOneShot(useItemSFX);
+
+        ShowItemResultDialogue(item, target, beforeHP, beforePP);
+
+        RemoveItem(item);
+
+        pendingItemUse = null;
+
+        partySelectMenu.SetActive(false);
+    }
+
+    void ShowItemResultDialogue(InventoryItem invItem, PlayerStatsSO target, int beforeHP, int beforePP)
+    {
+        if (DialogueManager.Instance == null)
+            return;
+
+        string itemName = invItem.itemData.itemName;
+        string targetName = target.characterName;
+
+        int heal = invItem.itemData.healAmount;
+        int pp = invItem.itemData.ppAmount;
+
+        var lines = new System.Collections.Generic.List<NPCDialogue.DialogueLine>();
+
+        lines.Add(new NPCDialogue.DialogueLine
+        {
+            dialogueText = $"You used the {itemName} on {targetName}."
+        });
+
+        int actualHeal = target.currentHealth - beforeHP;
+        int actualPP = target.currentPP - beforePP;
+
+        if (heal > 0)
+        {
+            lines.Add(new NPCDialogue.DialogueLine
+            {
+                dialogueText = actualHeal > 0
+                    ? $"{targetName} recovered {actualHeal} HP."
+                    : $"But it had no effect."
+            });
         }
 
-        PlayerStatsSO stats = playerData.playerStats;
+        if (pp > 0)
+        {
+            lines.Add(new NPCDialogue.DialogueLine
+            {
+                dialogueText = actualPP > 0
+                    ? $"{targetName} recovered {actualPP} PP."
+                    : $"But it had no effect."
+            });
+        }
+
+        NPCDialogue resultDialogue = new NPCDialogue();
+
+        DialogueManager.Instance.StartDialogue(resultDialogue, lines.ToArray(), null);
+    }
+
+    void ApplyItemEffectToTarget(InventoryItem invItem, PlayerStatsSO targetStats)
+    {
+        if (targetStats == null)
+            return;
+
         Item item = invItem.itemData;
 
         if (item.healAmount > 0)
         {
-            stats.OverworldAddHP(item.healAmount);
+            targetStats.OverworldAddHP(item.healAmount);
         }
 
         if (item.ppAmount > 0)
         {
-            stats.OverworldAddPP(item.ppAmount);
+            targetStats.OverworldAddPP(item.ppAmount);
         }
     }
 
@@ -549,6 +631,15 @@ public class InventoryUIController : MonoBehaviour
 
     void OnCancel(InputAction.CallbackContext ctx)
     {
+        if (partySelectMenu.activeSelf)
+        {
+            partySelectMenu.SetActive(false);
+            pendingItemUse = null;
+
+            EventSystem.current.SetSelectedGameObject(rootFirstButton);
+            return;
+        }
+
         if (!inventoryOpen)
             return;
 

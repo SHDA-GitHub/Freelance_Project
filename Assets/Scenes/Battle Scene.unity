@@ -820,8 +820,8 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  expReward: 5
-  currencyReward: 5
+  expReward: 0
+  currencyReward: 0
   attacks:
   - {fileID: 11400000, guid: 7cdd0bfd0506d3e47b90840c87bfcafd, type: 2}
   playerStats: {fileID: 11400000, guid: 880bbb26917fda940a94c67a992b671f, type: 2}
@@ -3259,8 +3259,8 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  expReward: 5
-  currencyReward: 5
+  expReward: 0
+  currencyReward: 0
   attacks:
   - {fileID: 11400000, guid: 3bd6479bc2257da429b497589fe53f10, type: 2}
   playerStats: {fileID: 11400000, guid: 3dda0fb298c15ae4f812ead8515d1215, type: 2}
@@ -4249,7 +4249,7 @@ MonoBehaviour:
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
   MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
   isNormalEnemy: 0
-  isMiniBoss: 0
+  isMiniBoss: 1
   isBoss: 0
   isFinalBossPhase: 0
   isMoonSoldier: 0
@@ -4459,8 +4459,8 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  expReward: 5
-  currencyReward: 5
+  expReward: 0
+  currencyReward: 0
   attacks:
   - {fileID: 11400000, guid: 502b01155265578449b518b37786765d, type: 2}
   playerStats: {fileID: 11400000, guid: 97ea139304449104fa727ca8525471d1, type: 2}
@@ -10054,8 +10054,8 @@ MonoBehaviour:
   immuneMissEffects: 
   immuneOffDefEffects: 
   enemyLoadout: {fileID: 0}
-  expReward: 5
-  currencyReward: 5
+  expReward: 0
+  currencyReward: 0
   attacks:
   - {fileID: 11400000, guid: ee61256953abfd5438595d5fd282da4f, type: 2}
   playerStats: {fileID: 11400000, guid: 948b83aa6abff754d93ff318425f1957, type: 2}
