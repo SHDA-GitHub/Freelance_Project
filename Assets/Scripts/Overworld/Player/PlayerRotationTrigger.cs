@@ -8,7 +8,7 @@ public class PlayerRotationTrigger : MonoBehaviour
 
     [SerializeField] private float targetRotationY = 90f;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -20,23 +20,27 @@ public class PlayerRotationTrigger : MonoBehaviour
             if (playerControl != null)
             {
                 playerControl.SetCameraPivotRotation(targetRotationY);
+                playerControl.rotated = true;
+                playerControl.SetRotated(true);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (playerControl == null)
-            {
-                playerControl = other.GetComponent<PlayerControl>();
-            }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        if (playerControl == null)
+    //        {
+    //            playerControl = other.GetComponent<PlayerControl>();
+    //        }
 
-            if (playerControl != null)
-            {
-                playerControl.ResetCameraPivotRotation();
-            }
-        }
-    }
+    //        if (playerControl != null)
+    //        {
+    //            playerControl.ResetCameraPivotRotation();
+    //            playerControl.rotated = false;
+    //            playerControl.SetRotated(false);
+    //        }
+    //    }
+    //}
 }

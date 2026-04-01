@@ -30,6 +30,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Animator animatorFront;
     [SerializeField] private Animator animatorBack;
 
+    [Header("Camera rotation")]
+    [SerializeField] private float rotationCooldown = 0.5f;
+    private float lastRotationTime = -Mathf.Infinity;
+    [SerializeField] private float cameraRotationSpeed = 10f;
+    private Quaternion targetCameraRotation;
+
     public bool controlsEnabled = true;
     public bool rotated = false;
     private float lastZDirection = 1f;
@@ -43,6 +49,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         isInteracting = false;
+        targetCameraRotation = cameraPivotPoint.rotation;
         cameraPivotPoint.position = cameraPivotPoint.position;
         cameraPivotPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
@@ -166,23 +173,38 @@ public class PlayerControl : MonoBehaviour
             animatorBack.SetFloat("BlendY", 0f);
         }
 
-        if (Mathf.Abs(m_Movement.z) > 0.01f)
+        if (cameraPivotPoint != null)
         {
-            lastZDirection = Mathf.Sign(m_Movement.z);
+            cameraPivotPoint.rotation = Quaternion.Slerp(
+                cameraPivotPoint.rotation,
+                targetCameraRotation,
+                Time.fixedDeltaTime * cameraRotationSpeed
+            );
         }
 
         if (rotated == false)
         {
-            float targetYRotation = (lastZDirection > 0) ? 0f : 180f;
-            Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+            if (Mathf.Abs(m_Movement.z) > 0.01f)
+            {
+                lastZDirection = Mathf.Sign(m_Movement.z);
+            }
         }
         else if (rotated == true)
         {
-            float targetYRotation = (lastZDirection > 0) ? 0f : 90f;
-            Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
+            if (Mathf.Abs(m_Movement.x) > 0.01f)
+            {
+                lastZDirection = Mathf.Sign(m_Movement.x);
+            }
         }
+
+        float baseRotation = (lastZDirection > 0) ? 0f : 180f;
+
+        float rotationOffset = rotated ? 90f : 0f;
+
+        float targetYRotation = baseRotation + rotationOffset;
+
+        Quaternion targetRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f));
 
         if (rb.linearVelocity.y < 0)
         {
@@ -213,11 +235,26 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void SetRotated(bool value)
+    {
+        if (Time.time < lastRotationTime + rotationCooldown)
+            return;
+
+        if (rotated == value)
+            return;
+
+        rotated = value;
+        lastRotationTime = Time.time;
+
+        float rotationY = rotated ? 90f : 0f;
+        SetCameraPivotRotation(rotationY);
+    }
+
     public void SetCameraPivotRotation(float rotationY)
     {
         if (cameraPivotPoint != null)
         {
-            cameraPivotPoint.rotation = Quaternion.Euler(0f, rotationY, 0f);
+            targetCameraRotation = Quaternion.Euler(0f, rotationY, 0f);
         }
     }
 
@@ -225,7 +262,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (cameraPivotPoint != null)
         {
-            cameraPivotPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+            targetCameraRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 }

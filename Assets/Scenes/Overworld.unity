@@ -2848,6 +2848,8 @@ MonoBehaviour:
     m_Bits: 72
   animatorFront: {fileID: 427892033}
   animatorBack: {fileID: 1630026426}
+  rotationCooldown: 0.5
+  cameraRotationSpeed: 10
   controlsEnabled: 1
   rotated: 0
   isInteracting: 0
@@ -2915,7 +2917,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.65, y: 1, z: 0.1}
+  m_Size: {x: 0.65, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &233498937
 MonoBehaviour:
