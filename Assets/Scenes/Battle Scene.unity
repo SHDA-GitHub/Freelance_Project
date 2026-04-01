@@ -4024,6 +4024,7 @@ Transform:
   - {fileID: 1079281201}
   - {fileID: 1342313075}
   - {fileID: 1130058720}
+  - {fileID: 849644932}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811546544
@@ -4161,12 +4162,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849644931}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 778720918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &849644933
 MonoBehaviour:
@@ -4209,6 +4210,7 @@ MonoBehaviour:
   - {fileID: 3942843387887549817, guid: 4acd37e01fa0c754dadc3f1e240421ec, type: 3}
   - {fileID: 7487059447172081155, guid: 50cb704906e63214bacf0e20c26eb45e, type: 3}
   - {fileID: 8772746210605243445, guid: 4baeba74f8d252646b8d0c6ed04f3839, type: 3}
+  - {fileID: 4804318576894960763, guid: 532054bf640ace140a98a8c5443f1ac9, type: 3}
   minibossBG:
   - {fileID: 5287798275954189025, guid: a80f7bf9a45aa5c4b986af16282d0f69, type: 3}
   - {fileID: 4623175695548337017, guid: 48e631ef3e06d454bbde2a533b41a7b7, type: 3}
@@ -4226,6 +4228,8 @@ MonoBehaviour:
   - {fileID: 5633153452372568433, guid: 137d2dc0ba5abf74eafad829cc5192d1, type: 3}
   - {fileID: 4672329282121529146, guid: a46c454f786a39c4aa38b1cdc9b191f4, type: 3}
   - {fileID: 6664012475648694917, guid: 4b48395d550ca2f4ca9e0b88b3169b5a, type: 3}
+  - {fileID: 3277221737660318854, guid: 4e2936b32e110314994e5c6786b42e78, type: 3}
+  - {fileID: 8604900633964432659, guid: eb7c953213e3dbd4899624a7d9ffc5b4, type: 3}
   bossBG:
   - {fileID: 333796785875307681, guid: 51ffc683d823f944e9ec8f703ce7f826, type: 3}
   - {fileID: 1332187399029924822, guid: bc3182312683c634a9d943452c3ac739, type: 3}
@@ -4239,11 +4243,12 @@ MonoBehaviour:
   - {fileID: 446823161134650585, guid: a1f5e9277e5d1834199407302036dd3f, type: 3}
   - {fileID: 6437069287677522384, guid: ae6cb6cf33a4dd942a3579f0acdb5cb0, type: 3}
   - {fileID: 939388019258641837, guid: 19d623041af33704bbc0ab41c15718c3, type: 3}
+  - {fileID: 5988988972922765413, guid: 3c51c5306380f9348b943e115d9af0ea, type: 3}
   finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
   finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
-  MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
+  MoonSoldierBG: {fileID: 8604900633964432659, guid: eb7c953213e3dbd4899624a7d9ffc5b4, type: 3}
   isNormalEnemy: 0
   isMiniBoss: 0
   isBoss: 0
@@ -10149,7 +10154,6 @@ SceneRoots:
   - {fileID: 408731266}
   - {fileID: 485524772}
   - {fileID: 1343735605}
-  - {fileID: 849644932}
   - {fileID: 778720918}
   - {fileID: 879654188}
   - {fileID: 2061152906}

@@ -288,7 +288,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} took {player.overtimeDamage} damage from their affliction"
             );
-            player.ReduceDOTDurations();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -297,7 +296,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} is locked in place and cannot move"
             );
-            player.ReduceAllEffectsAfterTurn();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
@@ -309,7 +307,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName}'s accuracy is disrupted"
             );
-            player.ReduceMissEffects();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -318,7 +315,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName}'s focus is shifted"
             );
-            player.ReduceOffDefEffects();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -342,7 +338,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName} took {enemy.overtimeDamage} damage from their affliction"
             );
-            enemy.ReduceDOTDurations();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -351,7 +346,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName} is locked in place and cannot move"
             );
-            enemy.ReduceAllEffectsAfterTurn();
             yield return new WaitForSeconds(0.3f);
 
             EndTurn();
@@ -363,7 +357,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName}'s accuracy is disrupted"
             );
-            enemy.ReduceMissEffects();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -372,7 +365,6 @@ public class TurnManager : MonoBehaviour
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{enemy.characterName}'s focus is shifted"
             );
-            enemy.ReduceOffDefEffects();
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -453,6 +445,7 @@ public class TurnManager : MonoBehaviour
         if (!isBattleActive)
             return;
 
+        currentActingCharacter.ReduceAllEffectsAfterTurn();
         currentCharacterIndex++;
         StartTurn();
     }
