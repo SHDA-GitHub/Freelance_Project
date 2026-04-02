@@ -472,7 +472,7 @@ public class InventoryUIController : MonoBehaviour
             {
                 dialogueText = actualHeal > 0
                     ? $"{targetName} recovered {actualHeal} HP."
-                    : $"But it had no effect."
+                    : $"{targetName}'s HP was maxed out."
             });
         }
 
@@ -482,7 +482,7 @@ public class InventoryUIController : MonoBehaviour
             {
                 dialogueText = actualPP > 0
                     ? $"{targetName} recovered {actualPP} PP."
-                    : $"But it had no effect."
+                    : $"{targetName}'s PP was maxed out."
             });
         }
 

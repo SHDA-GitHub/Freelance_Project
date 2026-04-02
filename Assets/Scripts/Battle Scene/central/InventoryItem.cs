@@ -9,6 +9,6 @@ public class InventoryItem
     {
         itemData = item;
         quantity = amount;
-        healing = false;
+        healing = true;
     }
 }

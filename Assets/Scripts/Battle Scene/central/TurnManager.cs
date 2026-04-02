@@ -298,7 +298,9 @@ public class TurnManager : MonoBehaviour
             );
             yield return new WaitForSeconds(0.3f);
 
-            EndTurn();
+            player.ReduceAllEffectsAfterTurn();
+            currentCharacterIndex++;
+            StartTurn();
             yield break;
         }
 
@@ -348,7 +350,9 @@ public class TurnManager : MonoBehaviour
             );
             yield return new WaitForSeconds(0.3f);
 
-            EndTurn();
+            enemy.ReduceAllEffectsAfterTurn();
+            currentCharacterIndex++;
+            StartTurn();
             yield break;
         }
 

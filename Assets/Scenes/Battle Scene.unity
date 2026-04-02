@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 1
+  useBattleDataBridge: 0
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -4210,6 +4210,7 @@ MonoBehaviour:
   - {fileID: 7487059447172081155, guid: 50cb704906e63214bacf0e20c26eb45e, type: 3}
   - {fileID: 8772746210605243445, guid: 4baeba74f8d252646b8d0c6ed04f3839, type: 3}
   - {fileID: 4804318576894960763, guid: 532054bf640ace140a98a8c5443f1ac9, type: 3}
+  - {fileID: 4838971069652913623, guid: 31bc44c331b1b5d4daafc3e46366b326, type: 3}
   minibossBG:
   - {fileID: 5287798275954189025, guid: a80f7bf9a45aa5c4b986af16282d0f69, type: 3}
   - {fileID: 4623175695548337017, guid: 48e631ef3e06d454bbde2a533b41a7b7, type: 3}
@@ -4229,6 +4230,7 @@ MonoBehaviour:
   - {fileID: 6664012475648694917, guid: 4b48395d550ca2f4ca9e0b88b3169b5a, type: 3}
   - {fileID: 3277221737660318854, guid: 4e2936b32e110314994e5c6786b42e78, type: 3}
   - {fileID: 8604900633964432659, guid: eb7c953213e3dbd4899624a7d9ffc5b4, type: 3}
+  - {fileID: 7876096609235773976, guid: b1a6a6c8a57b1f8428ca3aee880406c1, type: 3}
   bossBG:
   - {fileID: 333796785875307681, guid: 51ffc683d823f944e9ec8f703ce7f826, type: 3}
   - {fileID: 1332187399029924822, guid: bc3182312683c634a9d943452c3ac739, type: 3}
@@ -4243,16 +4245,17 @@ MonoBehaviour:
   - {fileID: 6437069287677522384, guid: ae6cb6cf33a4dd942a3579f0acdb5cb0, type: 3}
   - {fileID: 939388019258641837, guid: 19d623041af33704bbc0ab41c15718c3, type: 3}
   - {fileID: 5988988972922765413, guid: 3c51c5306380f9348b943e115d9af0ea, type: 3}
+  - {fileID: 5754598127852371823, guid: 96e668ec2721ffd46b6960e1828d4d08, type: 3}
   finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
   finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
-  MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
+  MoonSoldierBG: {fileID: 8604900633964432659, guid: eb7c953213e3dbd4899624a7d9ffc5b4, type: 3}
   isNormalEnemy: 0
-  isMiniBoss: 1
+  isMiniBoss: 0
   isBoss: 0
   isFinalBossPhase: 0
-  isMoonSoldier: 0
+  isMoonSoldier: 1
 --- !u!1 &855608624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7055,7 +7058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7072,52 +7075,52 @@ MonoBehaviour:
   items:
   - itemData: {fileID: 11400000, guid: 165a47fc9d7f98042bd1e5d6b7348874, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: cef2ca7f74978d54d9b993c26df55e72, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 6aafd5a98b1859c4c90f1ce1a05f30e7, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: b478c026f9d7a214f8af816eeb17cf73, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: dc532b6138d16c34a98229018aef84dd, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: a708617771a8d3146ba1da60d625d608, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: ffb5fd2ba1f3d974eba0f4095f2a9b6f, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 61379c30fa8747f45a3a9a17593f7810, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 96ba712d0664a594189bea5fcf727d52, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 6c30037ec97db3a4d814c86066af81a3, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 25e5fb63084adcc408cb221feae7950e, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 6784590e55079974ba0ce70f05fedba9, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 0ba5c8265db7edc4fb56dfbfa3e44a17, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 1b596717cfe755c478f688bcbb1f595e, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   - itemData: {fileID: 11400000, guid: 72ace85841430034c980dd64eedb2bbf, type: 2}
     quantity: 1
-    healing: 0
+    healing: 1
   keyItems: []
   specAttacks:
   - attackData: {fileID: 11400000, guid: e7918c4901f951642817c8b251840e24, type: 2}
