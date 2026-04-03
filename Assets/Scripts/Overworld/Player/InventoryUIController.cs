@@ -648,7 +648,6 @@ public class InventoryUIController : MonoBehaviour
         screenLocked = false;
 
         inventoryRoot.SetActive(false);
-        SetInputBlocked(false);
 
         foreach (var screen in inventoryScreens)
             screen.SetActive(false);
@@ -699,10 +698,12 @@ public class InventoryUIController : MonoBehaviour
         if (screenLocked)
         {
             CloseScreen();
+            SetInputBlocked(false);
         }
         else
         {
             CloseInventory();
+            SetInputBlocked(false);
         }
     }
 

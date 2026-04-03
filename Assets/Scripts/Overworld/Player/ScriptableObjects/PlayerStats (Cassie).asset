@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   characterName: Cassie
   maxHealth: 7
-  currentHealth: 7
+  currentHealth: 5
   maxPP: 5
   currentPP: 5
   level: 1

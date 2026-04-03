@@ -202,6 +202,17 @@ public class BattleTransitionManager : MonoBehaviour
             transition.rootObject.SetActive(false);
         }
 
+        if (BattleResultBridge.HasResult && BattleResultBridge.BattleWon)
+        {
+            if (currentEnemy != null)
+            {
+                Destroy(currentEnemy);
+                currentEnemy = null;
+            }
+
+            ResetBattleTransitionForOverworld();
+        }
+
         transitionPlaying = false;
     }
 }
