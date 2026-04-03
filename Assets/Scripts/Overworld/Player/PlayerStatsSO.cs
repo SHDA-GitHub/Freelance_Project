@@ -40,26 +40,4 @@ public class PlayerStatsSO : ScriptableObject
     {
         currentPP = Mathf.Min(currentPP + restoreAmount, maxPP);
     }
-
-    public void GainEXP(int amount)
-    {
-        currentEXP = currentEXP + amount;
-        int expToNext = level * 50;
-        while (currentEXP >= expToNext)
-        {
-            currentEXP -= expToNext;
-            LevelUp();
-            expToNext = level * 50;
-        }
-    }
-
-    void LevelUp()
-    {
-        level++;
-        currentEXP = 0;
-        maxHealth += 2;
-        maxPP += 1;
-        currentHealth = maxHealth;
-        currentPP = maxPP;
-    }
 }

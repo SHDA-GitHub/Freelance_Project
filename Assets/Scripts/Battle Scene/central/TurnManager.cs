@@ -108,6 +108,7 @@ public class TurnManager : MonoBehaviour
         totalBattleEXP = 0;
         totalBattleCurrency = 0;
         rewardsGiven = false;
+        battleEnded = false;
         Debug.Log($"Starting battle - Player party count: {playerParty.Count}");
         if (BattleDataBridge.UpcomingEnemyPreset != null)
         {
@@ -718,8 +719,13 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    private bool battleEnded = false;
+
     private void EndBattle(bool playerWon)
     {
+        if (battleEnded) return;
+
+        battleEnded = true;
         isBattleActive = false;
 
         BattleResultBridge.HasResult = true;

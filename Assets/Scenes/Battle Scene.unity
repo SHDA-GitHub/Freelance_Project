@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 0
+  useBattleDataBridge: 1
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -4246,16 +4246,17 @@ MonoBehaviour:
   - {fileID: 939388019258641837, guid: 19d623041af33704bbc0ab41c15718c3, type: 3}
   - {fileID: 5988988972922765413, guid: 3c51c5306380f9348b943e115d9af0ea, type: 3}
   - {fileID: 5754598127852371823, guid: 96e668ec2721ffd46b6960e1828d4d08, type: 3}
+  - {fileID: 4053963436406924651, guid: a5c052b425fa145458f72028c5f7ef44, type: 3}
   finalBossBGPhase1: {fileID: 6616174003824031980, guid: db1ec6404eb34ca418a3724b267a5f56, type: 3}
   finalBossBGPhase2: {fileID: 305343579380040118, guid: 775a36881e4a5574ab8a4cccf5ffdb43, type: 3}
   finalBossBGPhase3: {fileID: 3824841777406602840, guid: fdbd90c879a066046b9597103c728f4c, type: 3}
   finalBossBGPhase4: {fileID: 893665025908112444, guid: 7a4054811741f12418d40cddf8b466f3, type: 3}
-  MoonSoldierBG: {fileID: 8604900633964432659, guid: eb7c953213e3dbd4899624a7d9ffc5b4, type: 3}
+  MoonSoldierBG: {fileID: 5758549930862612429, guid: 90babee2f363bd249acdbf16daebe536, type: 3}
   isNormalEnemy: 0
   isMiniBoss: 0
   isBoss: 0
   isFinalBossPhase: 0
-  isMoonSoldier: 1
+  isMoonSoldier: 0
 --- !u!1 &855608624
 GameObject:
   m_ObjectHideFlags: 0

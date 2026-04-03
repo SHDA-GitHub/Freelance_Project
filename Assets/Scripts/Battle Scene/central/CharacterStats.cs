@@ -347,6 +347,28 @@ public class CharacterStats : MonoBehaviour
     {
         if (!isPlayer) return;
 
-        playerStats.GainEXP(amount);
+        currentEXP += amount;
+
+        int expToNext = level * 50;
+
+        while (currentEXP >= expToNext)
+        {
+            currentEXP -= expToNext;
+            LevelUp();
+            expToNext = level * 50;
+        }
+
+        playerStats.currentEXP = currentEXP;
+        playerStats.level = level;
+    }
+
+    void LevelUp()
+    {
+        level++;
+        currentEXP = 0;
+        maxHealth += 2;
+        maxPP += 1;
+        currentHealth = maxHealth;
+        currentPP = maxPP;
     }
 }
