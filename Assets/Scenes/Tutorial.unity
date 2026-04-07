@@ -5400,8 +5400,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You can use the enter key to confirm that action or backspace to cancel
-    the action.
+  m_text: 'You can use the A key to confirm that action or backspace to cancel the
+    action.
 
 '
   m_isRightToLeft: 0
