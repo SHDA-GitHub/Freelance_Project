@@ -761,7 +761,13 @@ MonoBehaviour:
     AntumDeluge
 
 
-    Jorge Avila'
+    Jorge Avila
+
+
+    scofangod
+
+
+    angelee'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -2672,6 +2678,7 @@ GameObject:
   - component: {fileID: 792476529}
   - component: {fileID: 792476528}
   - component: {fileID: 792476527}
+  - component: {fileID: 792476530}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -2853,6 +2860,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792476525}
   m_CullTransparentMesh: 1
+--- !u!114 &792476530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792476525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab304c2caa6ea204e91a246b3de7191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AntiSpamButton
+  useCooldown: 1
+  cooldown: 7
 --- !u!1 &899052898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,7 +3577,14 @@ MonoBehaviour:
     Spring Spring
 
 
-    el-corleo'
+    el-corleo
+
+
+    Tarush Singhal
+
+
+    Mike
+    Lopez'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -5819,7 +5847,14 @@ MonoBehaviour:
     malcolmriley
 
 
-    geloescht'
+    geloescht
+
+
+    Night
+    Blade
+
+
+    Yubatake'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
@@ -6505,7 +6540,10 @@ MonoBehaviour:
     Zane Little Music
 
 
-    kbmSFX'
+    kbmSFX
+
+
+    Macro'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d30589d78e182914c8f08938201b089a, type: 2}
   m_sharedMaterial: {fileID: -740934079422682047, guid: d30589d78e182914c8f08938201b089a, type: 2}
