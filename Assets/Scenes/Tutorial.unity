@@ -4027,6 +4027,7 @@ MonoBehaviour:
   items:
   - itemData: {fileID: 11400000, guid: 099608adec4416b4f98a50fba22357c6, type: 2}
     quantity: 1
+    healing: 0
   keyItems: []
   specAttacks:
   - attackData: {fileID: 11400000, guid: 4a323d6a6cae64d4399defe6f387e01d, type: 2}

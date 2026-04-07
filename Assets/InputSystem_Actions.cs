@@ -427,6 +427,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BattleSubmit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5079db3-1efa-4808-99d1-84aa37d0d1a2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -594,6 +603,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""FasterDialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72c79ade-ffc2-4535-a70d-1c52f2b9dc5b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Gamepad"",
+                    ""action"": ""BattleSubmit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -677,6 +697,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_FasterDialogue = m_UI.FindAction("FasterDialogue", throwIfNotFound: true);
+        m_UI_BattleSubmit = m_UI.FindAction("BattleSubmit", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -935,6 +956,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_FasterDialogue;
+    private readonly InputAction m_UI_BattleSubmit;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -962,6 +984,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/FasterDialogue".
         /// </summary>
         public InputAction @FasterDialogue => m_Wrapper.m_UI_FasterDialogue;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/BattleSubmit".
+        /// </summary>
+        public InputAction @BattleSubmit => m_Wrapper.m_UI_BattleSubmit;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1000,6 +1026,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @FasterDialogue.started += instance.OnFasterDialogue;
             @FasterDialogue.performed += instance.OnFasterDialogue;
             @FasterDialogue.canceled += instance.OnFasterDialogue;
+            @BattleSubmit.started += instance.OnBattleSubmit;
+            @BattleSubmit.performed += instance.OnBattleSubmit;
+            @BattleSubmit.canceled += instance.OnBattleSubmit;
         }
 
         /// <summary>
@@ -1023,6 +1052,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @FasterDialogue.started -= instance.OnFasterDialogue;
             @FasterDialogue.performed -= instance.OnFasterDialogue;
             @FasterDialogue.canceled -= instance.OnFasterDialogue;
+            @BattleSubmit.started -= instance.OnBattleSubmit;
+            @BattleSubmit.performed -= instance.OnBattleSubmit;
+            @BattleSubmit.canceled -= instance.OnBattleSubmit;
         }
 
         /// <summary>
@@ -1220,5 +1252,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFasterDialogue(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "BattleSubmit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBattleSubmit(InputAction.CallbackContext context);
     }
 }

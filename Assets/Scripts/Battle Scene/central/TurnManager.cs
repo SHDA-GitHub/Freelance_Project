@@ -545,7 +545,7 @@ public class TurnManager : MonoBehaviour
                     currentTargetIndex = GetNextValidIndex(targetList, currentTargetIndex, -1);
             }
 
-            if (controls.UI.Submit.triggered)
+            if (controls.UI.BattleSubmit.triggered)
             {
                 isSelectingTarget = false;
 
@@ -596,7 +596,7 @@ public class TurnManager : MonoBehaviour
 
         while (isSelectingTarget)
         {
-            if (controls.UI.Submit.triggered)
+            if (controls.UI.BattleSubmit.triggered)
             {
                 isSelectingTarget = false;
 

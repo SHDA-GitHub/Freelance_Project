@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   backgroundParent: {fileID: 1829633666}
-  useBattleDataBridge: 0
+  useBattleDataBridge: 1
   enemyBG:
   - {fileID: 8478688359877415795, guid: 18c29d575bf488e459f3382920366bad, type: 3}
   - {fileID: 4766903464297333909, guid: 86e3b14ff2bcc8e46a49bf6862fecad1, type: 3}
@@ -7059,7 +7059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1406268198
 MonoBehaviour:
   m_ObjectHideFlags: 0

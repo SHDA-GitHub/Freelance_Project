@@ -4,6 +4,7 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class BattleTransitionManager : MonoBehaviour
 
     [Header("Transitions")]
     [SerializeField] private List<BattleTransition> transitions;
+    [SerializeField] private GameObject defaultSelectedButton;
 
     [Header("Timing")]
     [SerializeField] private float fillSpeed = 2f;
@@ -89,6 +91,7 @@ public class BattleTransitionManager : MonoBehaviour
 
         if (player != null)
             player.DisableControls();
+            controls.Player.Disable();
 
         if (enemyPatrolSurface != null)
             enemyPatrolSurface.enabled = false;
@@ -146,10 +149,20 @@ public class BattleTransitionManager : MonoBehaviour
     public void ResetBattleTransitionForOverworld()
     {
         StartCoroutine(ResetTransitionCoroutine());
+        player.EnableControls();
         controls?.Player.Enable();
         controls?.UI.Enable();
 
-        EventSystem.current.SetSelectedGameObject(null);
+        StartCoroutine(RestoreUIFocusNextFrame());
+    }
+
+    IEnumerator RestoreUIFocusNextFrame()
+    {
+        yield return null;
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(defaultSelectedButton);
+        }
     }
 
     private IEnumerator ResetTransitionCoroutine()
@@ -184,6 +197,8 @@ public class BattleTransitionManager : MonoBehaviour
         controls.UI.Enable();
 
         InputSystem.ResetHaptics();
+        InputSystem.ResetDevice(Keyboard.current);
+        StartCoroutine(RestoreUIFocusNextFrame());
 
         BattleResultBridge.ResetBridge();
 

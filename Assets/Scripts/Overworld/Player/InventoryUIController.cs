@@ -124,7 +124,10 @@ public class InventoryUIController : MonoBehaviour
         player.DisableControls();
         controls.Player.Disable();
         enemyPatrolSurface.enabled = false;
-        EventSystem.current.SetSelectedGameObject(rootFirstButton);
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(rootFirstButton);
+        }
     }
 
     public void NextGrid()
