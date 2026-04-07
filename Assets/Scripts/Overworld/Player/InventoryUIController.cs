@@ -271,6 +271,28 @@ public class InventoryUIController : MonoBehaviour
         if (DialogueManager.Instance == null)
             return;
 
+        if (invItem.itemData.isKeyItem)
+        {
+            NPCDialogue cannotDropDialogue = new NPCDialogue();
+
+            NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+            {
+                dialogueText = $"You cannot drop a key item."
+            };
+
+            CloseItemMenu();
+
+            DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+            DialogueManager.Instance.StartDialogue(
+                cannotDropDialogue,
+                new NPCDialogue.DialogueLine[] { line },
+                null
+            );
+
+            return;
+        }
+
         NPCDialogue tempDialogue = new NPCDialogue();
 
         string itemName = invItem.itemData.itemName;
@@ -331,9 +353,31 @@ public class InventoryUIController : MonoBehaviour
         if (DialogueManager.Instance == null)
             return;
 
-        if (!invItem.healing)
+        if (invItem.itemData.healAmount <= 0 && invItem.itemData.ppAmount <= 0)
         {
             ShowCannotUseDialogue(invItem);
+            return;
+        }
+
+        if (invItem.itemData.isKeyItem)
+        {
+            NPCDialogue cannotDropDialogue = new NPCDialogue();
+
+            NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+            {
+                dialogueText = $"You cannot use a key item."
+            };
+
+            CloseItemMenu();
+
+            DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+            DialogueManager.Instance.StartDialogue(
+                cannotDropDialogue,
+                new NPCDialogue.DialogueLine[] { line },
+                null
+            );
+
             return;
         }
 
@@ -592,6 +636,8 @@ public class InventoryUIController : MonoBehaviour
         };
 
         DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+        CloseItemMenu();
 
         DialogueManager.Instance.StartDialogue(
             failDialogue,
