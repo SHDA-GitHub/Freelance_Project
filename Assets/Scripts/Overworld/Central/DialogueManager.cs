@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button yesButton;
     [SerializeField] private Button noButton;
     [SerializeField] private GameObject endDialogueIndicator;
-    [SerializeField] private NavMeshSurface enemyPatrolSurface;
+    private List<NavMeshSurface> navMeshSurfaces = new List<NavMeshSurface>();
     public FlavorTextUI flavorTextUI;
     private Controls controls;
     public System.Action onDialogueEnded;
@@ -47,6 +47,8 @@ public class DialogueManager : MonoBehaviour
 
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+
+        navMeshSurfaces.AddRange(FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None));
     }
 
     public void StartDialogue(NPCDialogue npcDialogue, NPCDialogue.DialogueLine[] dialogueLines, AudioClip dialogueMusic = null)
@@ -55,7 +57,7 @@ public class DialogueManager : MonoBehaviour
 
         playerCancelledChoice = false;
         player.DisableControls();
-        enemyPatrolSurface.enabled = false;
+        SetNavMeshSurfacesEnabled(false);
         currentNPCDialogue = npcDialogue;
         currentDialogueLines = dialogueLines;
         dialogueIndex = 0;
@@ -178,7 +180,7 @@ public class DialogueManager : MonoBehaviour
         if (!isExternalUILocked)
         {
             player.EnableControls();
-            enemyPatrolSurface.enabled = true;
+            SetNavMeshSurfacesEnabled(true);
         }
 
         if (previousTrack != null && MusicManager.Instance.GetCurrentTrack() != previousTrack)
@@ -214,5 +216,14 @@ public class DialogueManager : MonoBehaviour
 
         lines.Insert(insertIndex, newLine);
         currentDialogueLines = lines.ToArray();
+    }
+
+    private void SetNavMeshSurfacesEnabled(bool state)
+    {
+        foreach (var surface in navMeshSurfaces)
+        {
+            if (surface != null)
+                surface.enabled = state;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -55,7 +56,7 @@ public class InventoryUIController : MonoBehaviour
 
     [Header("First Selected Buttons")]
     [SerializeField] private GameObject rootFirstButton;
-    [SerializeField] private NavMeshSurface enemyPatrolSurface;
+    private List<NavMeshSurface> navMeshSurfaces = new List<NavMeshSurface>();
 
     [Header("Party Selection")]
     [SerializeField] private GameObject partySelectMenu;
@@ -83,6 +84,7 @@ public class InventoryUIController : MonoBehaviour
         uiTabController = GetComponent<UITabController>();
         controls = new Controls();
 
+        navMeshSurfaces.AddRange(FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None));
         controls.Player.InventoryOpen.performed += OnInventoryToggle;
         controls.UI.Cancel.performed += OnCancel;
 
@@ -123,7 +125,7 @@ public class InventoryUIController : MonoBehaviour
 
         player.DisableControls();
         controls.Player.Disable();
-        enemyPatrolSurface.enabled = false;
+        SetNavMeshSurfacesEnabled(false);
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             EventSystem.current.SetSelectedGameObject(rootFirstButton);
@@ -280,9 +282,9 @@ public class InventoryUIController : MonoBehaviour
                 dialogueText = $"You cannot drop a key item."
             };
 
-            CloseItemMenu();
-
             DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+            CloseItemMenu();
 
             DialogueManager.Instance.StartDialogue(
                 cannotDropDialogue,
@@ -329,6 +331,8 @@ public class InventoryUIController : MonoBehaviour
             }
         };
 
+        DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
         CloseItemMenu();
 
         DialogueManager.Instance.StartDialogue(
@@ -336,11 +340,6 @@ public class InventoryUIController : MonoBehaviour
             new NPCDialogue.DialogueLine[] { confirmLine },
             null
         );
-
-        if (!DialogueManager.Instance.IsDialogueActive())
-        {
-            SetInputBlocked(false);
-        }
     }
 
     public void UseItem()
@@ -368,9 +367,9 @@ public class InventoryUIController : MonoBehaviour
                 dialogueText = $"You cannot use a key item."
             };
 
-            CloseItemMenu();
-
             DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+            CloseItemMenu();
 
             DialogueManager.Instance.StartDialogue(
                 cannotDropDialogue,
@@ -416,15 +415,15 @@ public class InventoryUIController : MonoBehaviour
                 pendingItemUse = invItem;
 
                 partySelectMenu.SetActive(true);
-
+                SetInputBlocked(true);
                 if (partyFirstButton != null)
                     EventSystem.current.SetSelectedGameObject(partyFirstButton);
             }
         };
 
-        CloseItemMenu();
-
         DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+        CloseItemMenu();
 
         DialogueManager.Instance.StartDialogue(
             tempDialogue,
@@ -451,9 +450,9 @@ public class InventoryUIController : MonoBehaviour
             dialogueText = $"You cannot use the {itemName} outside of battle."
         };
 
-        CloseItemMenu();
-
         DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+        CloseItemMenu();
 
         DialogueManager.Instance.StartDialogue(
             failDialogue,
@@ -537,6 +536,8 @@ public class InventoryUIController : MonoBehaviour
 
         DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
 
+        CloseItemMenu();
+
         DialogueManager.Instance.StartDialogue(resultDialogue, lines.ToArray(), null);
     }
 
@@ -605,9 +606,9 @@ public class InventoryUIController : MonoBehaviour
             }
         };
 
-        CloseItemMenu();
-
         DialogueManager.Instance.onDialogueEnded += HandleItemResultDialogueEnd;
+
+        CloseItemMenu();
 
         DialogueManager.Instance.StartDialogue(
             tempDialogue,
@@ -693,6 +694,7 @@ public class InventoryUIController : MonoBehaviour
     void CloseInventory()
     {
         DialogueManager.Instance.isExternalUILocked = false;
+        SetInputBlocked(false);
         inventoryOpen = false;
         screenLocked = false;
 
@@ -704,7 +706,7 @@ public class InventoryUIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(rootFirstButton);
         player.EnableControls();
         controls.Player.Enable();
-        enemyPatrolSurface.enabled = true;
+        SetNavMeshSurfacesEnabled(true);
     }
 
     public void OpenScreen(int index)
@@ -820,4 +822,12 @@ public class InventoryUIController : MonoBehaviour
         descriptionMenu.SetActive(false);
     }
 
+    private void SetNavMeshSurfacesEnabled(bool state)
+    {
+        foreach (var surface in navMeshSurfaces)
+        {
+            if (surface != null)
+                surface.enabled = state;
+        }
+    }
 }

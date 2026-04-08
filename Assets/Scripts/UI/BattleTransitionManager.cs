@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,7 +30,7 @@ public class BattleTransitionManager : MonoBehaviour
     [SerializeField] private string battleSceneName = "Battle Scene";
 
     [Header("Movement Control")]
-    [SerializeField] private Unity.AI.Navigation.NavMeshSurface enemyPatrolSurface;
+    private List<NavMeshSurface> navMeshSurfaces = new List<NavMeshSurface>();
 
     [Header("Current Encounter")]
     [SerializeField] private GameObject currentEnemy;
@@ -93,8 +94,7 @@ public class BattleTransitionManager : MonoBehaviour
             player.DisableControls();
             controls.Player.Disable();
 
-        if (enemyPatrolSurface != null)
-            enemyPatrolSurface.enabled = false;
+            SetNavMeshSurfacesEnabled(false);
 
         if (MusicManager.Instance != null)
         {
@@ -188,7 +188,7 @@ public class BattleTransitionManager : MonoBehaviour
         if (player != null)
             player.EnableControls();
 
-        enemyPatrolSurface.enabled = true;
+        SetNavMeshSurfacesEnabled(true);
 
         DialogueManager.Instance.isExternalUILocked = false;
         controls.Player.Disable();
@@ -229,5 +229,14 @@ public class BattleTransitionManager : MonoBehaviour
         }
 
         transitionPlaying = false;
+    }
+
+    private void SetNavMeshSurfacesEnabled(bool state)
+    {
+        foreach (var surface in navMeshSurfaces)
+        {
+            if (surface != null)
+                surface.enabled = state;
+        }
     }
 }

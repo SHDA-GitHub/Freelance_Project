@@ -25,7 +25,7 @@ public class ShopNPC : MonoBehaviour
 
     private PlayerControl player;
     private Controls controls;
-    [SerializeField] private NavMeshSurface enemyPatrolSurface;
+    private List<NavMeshSurface> navMeshSurfaces = new List<NavMeshSurface>();
     private bool isDialogueActive = false;
     private bool canInteract = true;
 
@@ -35,6 +35,7 @@ public class ShopNPC : MonoBehaviour
         controls = new Controls();
 
         controls.UI.Cancel.performed += OnBackspacePressed;
+        navMeshSurfaces.AddRange(FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None));
     }
 
     private void OnEnable()
@@ -124,7 +125,7 @@ public class ShopNPC : MonoBehaviour
             shopUIRoot.SetActive(true);
 
             player.DisableControls();
-            enemyPatrolSurface.enabled = false;
+            SetNavMeshSurfacesEnabled(false);
 
             shopUIController.OpenShop(shopStock);
 
@@ -142,7 +143,7 @@ public class ShopNPC : MonoBehaviour
         shopUIRoot.SetActive(false);
 
         player.EnableControls();
-        enemyPatrolSurface.enabled = true;
+        SetNavMeshSurfacesEnabled(true);
     }
 
     IEnumerator StartRepeatDialogue()
@@ -167,5 +168,14 @@ public class ShopNPC : MonoBehaviour
         isDialogueActive = false;
         yield return new WaitForSeconds(0.2f);
         canInteract = true;
+    }
+
+    private void SetNavMeshSurfacesEnabled(bool state)
+    {
+        foreach (var surface in navMeshSurfaces)
+        {
+            if (surface != null)
+                surface.enabled = state;
+        }
     }
 }
