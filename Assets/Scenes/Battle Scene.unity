@@ -1922,7 +1922,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: bb5100cb9b174f94380c60064591d7e6, type: 3}
+  m_Resource: {fileID: 8300000, guid: 72a7c3347cbdc8a49a533ce57b479544, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -2531,7 +2531,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 2a07496054f4e5c45a9d0b38777a883b, type: 3}
   fadeOverlay: {fileID: 1760178835}
   gameOverFadeDuration: 2
-  currentEnemyPreset: {fileID: 11400000, guid: ecf3ff374614214499fa1bee591ca669, type: 2}
+  currentEnemyPreset: {fileID: 11400000, guid: 7ea7459a18ce55e438f653bedc7fd119, type: 2}
   middleSlot: {fileID: 1253999261}
   leftSlot: {fileID: 1398990469}
   rightSlot: {fileID: 1079281201}

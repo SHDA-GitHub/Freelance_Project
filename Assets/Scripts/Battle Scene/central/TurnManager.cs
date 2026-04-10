@@ -34,6 +34,7 @@ public class TurnManager : MonoBehaviour
     private int totalBattleEXP = 0;
     private int totalBattleCurrency = 0;
     private bool isSelectingTarget = false;
+    public bool isActionInProgress = false;
     private bool rewardsGiven = false;
     private Coroutine targetFlickerCoroutine;
     [SerializeField] private float fadeDuration = 1.5f;
@@ -328,6 +329,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator EnemyTurnCoroutine(CharacterStats enemy)
     {
+        isActionInProgress = true;
         enemy.ApplyStatusEffects();
 
         if (enemy.currentHealth <= 0)
@@ -443,6 +445,7 @@ public class TurnManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.3f);
         EndTurn();
+        isActionInProgress = false;
     }
 
     public void EndTurn()
@@ -461,6 +464,9 @@ public class TurnManager : MonoBehaviour
         bool targetAll = false,
         bool includeDead = false)
     {
+        if (isActionInProgress || currentTurn != TurnType.Player)
+            return;
+
         if (possibleTargets == null || possibleTargets.Count == 0)
             return;
 
@@ -559,7 +565,7 @@ public class TurnManager : MonoBehaviour
                 yield break;
             }
 
-            if (controls.UI.Cancel.triggered)
+            if (controls.UI.Cancel.triggered && !isActionInProgress)
             {
                 isSelectingTarget = false;
 
@@ -615,7 +621,7 @@ public class TurnManager : MonoBehaviour
                 yield break;
             }
 
-            if (controls.UI.Cancel.triggered)
+            if (controls.UI.Cancel.triggered && !isActionInProgress)
             {
                 isSelectingTarget = false;
 
@@ -987,8 +993,11 @@ public class TurnManager : MonoBehaviour
         CharacterStats target,
         Attack attack)
     {
+        isActionInProgress = true;
+
         if (player.currentPP < attack.powerCost)
         {
+            isActionInProgress = false;
             ResetTargetVisual();
             yield return flavorTextUI.ShowTextCoroutine(
                 $"{player.characterName} does not have enough PP to use {attack.attackName}!"
@@ -1032,6 +1041,8 @@ public class TurnManager : MonoBehaviour
         }
 
         EndTurn();
+
+        isActionInProgress = false;
     }
 
     private IEnumerator PlayerSpecialAttackRoutine(
