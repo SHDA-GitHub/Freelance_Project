@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static BattleDataBridge;
@@ -10,10 +11,14 @@ public class OverworldEnemyInteract : MonoBehaviour
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
     public BattleTransitionType transitionType = BattleTransitionType.Normal;
-    [SerializeField] private string battleSceneName = "Battle Scene";
 
     [Header("Optional Dialogue")]
     [SerializeField] private NPCDialogue dialogue;
+
+    [Header("Bribe Settings")]
+    [SerializeField] private bool allowPayToSkipBattle = false;
+    [SerializeField] private float skipBattleCost = 5f;
+    private bool hasProcessedDialogueResult = false;
 
     [Header("Battle Control")]
     [SerializeField] private bool allowNoBattleChoice = false;
@@ -25,6 +30,7 @@ public class OverworldEnemyInteract : MonoBehaviour
 
     private void Start()
     {
+        hasProcessedDialogueResult = true;
         playerControl = FindFirstObjectByType<PlayerControl>();
     }
 
@@ -52,17 +58,18 @@ public class OverworldEnemyInteract : MonoBehaviour
                 dialogue.onChoiceMade = OnDialogueChoiceMade;
                 dialogue.TriggerDialogue();
                 waitingForDialogue = true;
+                hasProcessedDialogueResult = false;
             }
             else
             {
-                StartBattle();
+                 StartBattle();
             }
         }
 
         if (waitingForDialogue && !DialogueManager.Instance.IsDialogueActive())
         {
             waitingForDialogue = false;
-
+            
             if (!DialogueManager.Instance.PlayerCancelledChoice() || !allowNoBattleChoice)
             {
                 StartBattle();
@@ -70,6 +77,11 @@ public class OverworldEnemyInteract : MonoBehaviour
             else
             {
                 Debug.Log("Battle cancelled because player chose No.");
+
+                if (allowPayToSkipBattle && hasProcessedDialogueResult == false)
+                {
+                    StartCoroutine(TryPayToSkipBattle());
+                }
             }
         }
     }
@@ -80,6 +92,20 @@ public class OverworldEnemyInteract : MonoBehaviour
         {
             playerChoseNo = true;
         }
+    }
+
+    private IEnumerator TryPayToSkipBattle()
+    {
+            CurrencyManager.Instance.SpendCoins(skipBattleCost);
+            Debug.Log($"Player paid {skipBattleCost} to skip battle.");
+            NPCDialogue.DialogueLine line = new NPCDialogue.DialogueLine
+            {
+                dialogueText = $"You gave up {skipBattleCost} dollars.",
+                isChoiceActive = false,
+            };
+            yield return new WaitForSeconds(0.4f);
+            DialogueManager.Instance.InjectDialogueLine(line);
+            hasProcessedDialogueResult = true;
     }
 
     private EnemyPreset GetRandomEnemy()

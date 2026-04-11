@@ -17,7 +17,6 @@ public class OverworldEnemyPatrolScript : MonoBehaviour
     public AudioClip battleMusic;
     public BattleBackgroundType backgroundType;
     public BattleTransitionType transitionType = BattleTransitionType.Normal;
-    [SerializeField] private string battleSceneName = "Battle Scene";
 
     [SerializeField] private float wanderRadius = 25f;
     [SerializeField] private float wanderTimer = 5f;
