@@ -185,6 +185,7 @@ public class DialogueManager : MonoBehaviour
 
         if (previousTrack != null && MusicManager.Instance.GetCurrentTrack() != previousTrack)
         {
+            MusicManager.Instance.FadeInMusic();
             MusicManager.Instance.PlayOverrideMusic(previousTrack);
         }
         else

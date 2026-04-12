@@ -40,7 +40,7 @@ public class PlayerControl : MonoBehaviour
     public bool rotated = false;
     private float lastZDirection = 1f;
     public bool isInteracting = false;
-    private Controls controls;
+    public Controls controls;
     private bool isGrounded;
     private Rigidbody rb;
     private float originalSpeed;

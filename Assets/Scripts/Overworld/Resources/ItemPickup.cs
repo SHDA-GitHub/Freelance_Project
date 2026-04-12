@@ -15,7 +15,16 @@ public class ItemPickup : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] private AudioClip itemGetSound;
+    [SerializeField] private AudioClip grandItemGetSound;
     [SerializeField] private AudioSource audioSource;
+
+    [Header("Suspense")]
+    [SerializeField] private bool cutMusicOnPickup = false;
+    [SerializeField] private bool grandItem = false;
+
+    [Header("Optional")]
+    [SerializeField] private DemoScript demoScript;
+    [SerializeField] private bool endDemo = false;
 
     private bool playerInRange = false;
     private PlayerControl playerControl;
@@ -23,6 +32,7 @@ public class ItemPickup : MonoBehaviour
 
     private void Start()
     {
+        demoScript = FindFirstObjectByType<DemoScript>();
         playerControl = FindFirstObjectByType<PlayerControl>();
     }
 
@@ -55,6 +65,11 @@ public class ItemPickup : MonoBehaviour
         bool itemInventoryFull = false;
         bool specialAttackInventoryFull = false;
         bool pickedUpSomething = false;
+
+        if (cutMusicOnPickup && MusicManager.Instance != null)
+        {
+            MusicManager.Instance.FadeOutMusic();
+        }
 
         if (prePickupDialogue != null && prePickupDialogue.Length > 0)
         {
@@ -124,7 +139,7 @@ public class ItemPickup : MonoBehaviour
             specialAttacks.Remove(attack);
         }
 
-        if (pickedUpSomething && audioSource != null && itemGetSound != null)
+        if (!grandItem && pickedUpSomething && audioSource != null && itemGetSound != null)
         {
             audioSource.clip = itemGetSound;
             audioSource.Play();
@@ -136,6 +151,11 @@ public class ItemPickup : MonoBehaviour
                 dialogueLines.Add($"You received {pair.Key} x{pair.Value}!");
             else
                 dialogueLines.Add($"You found {pair.Key}!");
+            if (grandItem && pickedUpSomething && audioSource != null && itemGetSound != null)
+            {
+                audioSource.clip = grandItemGetSound;
+                audioSource.Play();
+            }
         }
 
         if (itemInventoryFull)
@@ -154,8 +174,14 @@ public class ItemPickup : MonoBehaviour
                 dialogueList.Add(new NPCDialogue.DialogueLine { dialogueText = line });
             }
 
+            if (endDemo)
+            {
+                DialogueManager.Instance.onDialogueEnded += EndDemo;
+            }
+
             DialogueManager.Instance.StartDialogue(tempDialogue, dialogueList.ToArray(), null);
         }
+
 
         InventoryUIController ui = FindFirstObjectByType<InventoryUIController>();
 
@@ -174,4 +200,8 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    private void EndDemo()
+    {
+        demoScript.EndDemo();
+    }
 }
