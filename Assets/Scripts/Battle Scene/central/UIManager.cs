@@ -93,6 +93,12 @@ public class UIManager : MonoBehaviour
         specialMenu.SetActive(false);
     }
 
+    public void OnRunPressed()
+    {
+        HideAllMenus();
+        StartCoroutine(TurnManager.Instance.TryRun());
+    }
+
     public void HideAllMenus()
     {
         mainMenu.SetActive(false);

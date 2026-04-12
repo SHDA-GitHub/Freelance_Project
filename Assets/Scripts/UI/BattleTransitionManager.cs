@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BattleTransitionManager : MonoBehaviour
 {

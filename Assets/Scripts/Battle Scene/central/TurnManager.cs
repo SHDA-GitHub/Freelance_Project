@@ -70,6 +70,10 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private BackgroundManager backgroundManager;
     [SerializeField] private AudioClip defaultBattleMusic;
 
+    [Header("Run Sounds")]
+    [SerializeField] private AudioClip runSoundSuccess;
+    [SerializeField] private AudioClip runSoundFail;
+
     private HashSet<CharacterStats> processedEnemies = new HashSet<CharacterStats>();
 
     private void Awake()
@@ -1112,6 +1116,60 @@ public class TurnManager : MonoBehaviour
         InventorySpecialAttack invSpecAttack)
     {
         StartCoroutine(PlayerSpecialAttackRoutine(player, target, invSpecAttack));
+    }
+
+    public IEnumerator TryRun()
+    {
+        if (!isBattleActive)
+            yield break;
+
+        isActionInProgress = true;
+
+        yield return flavorTextUI.ShowTextCoroutine($"{currentActingCharacter.characterName} is trying to run away...");
+
+        yield return new WaitForSeconds(2f);
+
+        bool escaped = Random.value < 0.5f;
+
+        if (!escaped)
+        {
+            AudioManager.Instance.PlaySFX(runSoundFail);
+            yield return flavorTextUI.ShowTextCoroutine("Couldn't run!");
+            yield return new WaitForSeconds(0.5f);
+
+            isActionInProgress = false;
+
+            currentCharacterIndex++;
+            StartTurn();
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(runSoundSuccess);
+            yield return flavorTextUI.ShowTextCoroutine("Escaped successfully!");
+            yield return new WaitForSeconds(0.5f);
+
+            StartCoroutine(HandleEscape());
+        }
+    }
+
+    private IEnumerator HandleEscape()
+    {
+        isBattleActive = false;
+
+        if (musicManager != null) musicManager.Stop();
+        if (musicSource != null) musicSource.Stop();
+
+        if (fadeManager != null)
+            yield return fadeManager.SpriteFadeInFlash();
+
+        rewardsGiven = true;
+
+        SceneManager.UnloadSceneAsync("Battle Scene");
+        Scene overworld = SceneManager.GetSceneByName("Overworld");
+        foreach (GameObject root in overworld.GetRootGameObjects())
+        {
+            RestoreRecursive(root, root.name);
+        }
     }
 
     private void SpawnEnemiesFromPreset()

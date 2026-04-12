@@ -2518,6 +2518,7 @@ MonoBehaviour:
   playerDeath: {fileID: 8300000, guid: 73d35dc7869c2514285a30e2beac857b, type: 3}
   descriptionMenu: {fileID: 1889044144}
   descriptionTextUI: {fileID: 13011477}
+  isActionInProgress: 0
   fadeDuration: 1.5
   playerRevive: 1
   playerStats:
@@ -2540,6 +2541,8 @@ MonoBehaviour:
   musicManager: {fileID: 408731265}
   backgroundManager: {fileID: 849644933}
   defaultBattleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
+  runSoundSuccess: {fileID: 0}
+  runSoundFail: {fileID: 0}
 --- !u!114 &506090854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7880,7 +7883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.9, y: -34.799995}
+  m_AnchoredPosition: {x: -24.9, y: -33}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533117251
@@ -7926,7 +7929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 506090854}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnRunPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1533117253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9270,7 +9285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.9, y: -10.2}
+  m_AnchoredPosition: {x: -24.9, y: -8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854574070
