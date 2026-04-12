@@ -2541,8 +2541,8 @@ MonoBehaviour:
   musicManager: {fileID: 408731265}
   backgroundManager: {fileID: 849644933}
   defaultBattleMusic: {fileID: 8300000, guid: cce49be03567fd24e89614bfe1b29ddd, type: 3}
-  runSoundSuccess: {fileID: 0}
-  runSoundFail: {fileID: 0}
+  runSoundSuccess: {fileID: 8300000, guid: 9df97abc59dadfc4ea18f435c60e01f8, type: 3}
+  runSoundFail: {fileID: 8300000, guid: 9d448dc3ef59911478311e47cd32a29b, type: 3}
 --- !u!114 &506090854
 MonoBehaviour:
   m_ObjectHideFlags: 0

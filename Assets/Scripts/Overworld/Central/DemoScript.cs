@@ -12,6 +12,7 @@ public class DemoScript : MonoBehaviour
 
     void Start()
     {
+        SetChildrenActive(false);
         player = FindFirstObjectByType<PlayerControl>();
     }
 
@@ -24,7 +25,16 @@ public class DemoScript : MonoBehaviour
 
     public void FadeIn()
     {
+        SetChildrenActive(true);
         StartCoroutine(FadeRoutine(0f, 1f));
+    }
+
+    void SetChildrenActive(bool state)
+    {
+        foreach (Transform child in targetParent)
+        {
+            child.gameObject.SetActive(state);
+        }
     }
 
     IEnumerator FadeRoutine(float startAlpha, float endAlpha)

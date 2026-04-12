@@ -1129,7 +1129,7 @@ public class TurnManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        bool escaped = Random.value < 0.5f;
+        bool escaped = Random.value < 0.40f;
 
         if (!escaped)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class LockAndKeyMechanic : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class LockAndKeyMechanic : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField] private NPCDialogue openDoorDialogue;
-    [SerializeField] private NPCDialogue missingItemDialogue;
+    [SerializeField] private NPCDialogue confirmDialogue;
+    [SerializeField] private NPCDialogue rejectDialogue;
 
     [Header("Door Setup")]
     [SerializeField] private Transform leftDoor;
@@ -76,15 +78,45 @@ public class LockAndKeyMechanic : MonoBehaviour
             opening = true;
             opened = true;
 
+            string itemName = foundItem.itemData.itemName;
+
             if (consumeItem)
             {
                 Inventory.Instance.keyItems.Remove(foundItem);
             }
+
+            StartCoroutine(ShowConfirmSequence(itemName));
         }
         else
         {
-            if (missingItemDialogue != null)
-                missingItemDialogue.TriggerDialogue();
+            StartCoroutine(ShowRejectSequence());
         }
+    }
+
+    private IEnumerator ShowConfirmSequence(string itemName)
+    {
+        yield return new WaitForSeconds(0.37f);
+        NPCDialogue tempDialogue = new NPCDialogue();
+        var lines = new NPCDialogue.DialogueLine[]
+        {
+        new NPCDialogue.DialogueLine { dialogueText = $"You used {itemName}." }
+        };
+
+        DialogueManager.Instance.StartDialogue(tempDialogue, lines, null);
+
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+        yield return new WaitForSeconds(0.37f);
+
+        if (confirmDialogue != null)
+            confirmDialogue.TriggerDialogue();
+    }
+
+    private IEnumerator ShowRejectSequence()
+    {
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+        yield return new WaitForSeconds(0.37f);
+
+        if (rejectDialogue != null)
+            rejectDialogue.TriggerDialogue();
     }
 }
