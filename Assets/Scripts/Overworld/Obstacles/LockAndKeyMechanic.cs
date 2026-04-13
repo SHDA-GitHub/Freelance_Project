@@ -70,6 +70,15 @@ public class LockAndKeyMechanic : MonoBehaviour
         if (choice != "Yes")
             return;
 
+        if (requiredItem == null)
+        {
+            opening = true;
+            opened = true;
+
+            StartCoroutine(ShowSimpleConfirmSequence());
+            return;
+        }
+
         InventoryItem foundItem = Inventory.Instance.keyItems
             .Find(i => i.itemData == requiredItem);
 
@@ -118,5 +127,14 @@ public class LockAndKeyMechanic : MonoBehaviour
 
         if (rejectDialogue != null)
             rejectDialogue.TriggerDialogue();
+    }
+
+    private IEnumerator ShowSimpleConfirmSequence()
+    {
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsDialogueActive());
+        yield return new WaitForSeconds(0.37f);
+
+        if (confirmDialogue != null)
+            confirmDialogue.TriggerDialogue();
     }
 }
