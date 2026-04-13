@@ -18,7 +18,6 @@ public class OverworldEnemyInteract : MonoBehaviour
     [Header("Bribe Settings")]
     [SerializeField] private bool allowPayToSkipBattle = false;
     [SerializeField] private float skipBattleCost = 5f;
-    private bool hasProcessedDialogueResult = false;
 
     [Header("Battle Control")]
     [SerializeField] private bool allowNoBattleChoice = false;
@@ -30,7 +29,6 @@ public class OverworldEnemyInteract : MonoBehaviour
 
     private void Start()
     {
-        hasProcessedDialogueResult = true;
         playerControl = FindFirstObjectByType<PlayerControl>();
     }
 
@@ -58,7 +56,6 @@ public class OverworldEnemyInteract : MonoBehaviour
                 dialogue.onChoiceMade = OnDialogueChoiceMade;
                 dialogue.TriggerDialogue();
                 waitingForDialogue = true;
-                hasProcessedDialogueResult = false;
             }
             else
             {
@@ -77,11 +74,6 @@ public class OverworldEnemyInteract : MonoBehaviour
             else
             {
                 Debug.Log("Battle cancelled because player chose No.");
-
-                if (allowPayToSkipBattle && hasProcessedDialogueResult == false)
-                {
-                    StartCoroutine(TryPayToSkipBattle());
-                }
             }
         }
     }
@@ -91,6 +83,10 @@ public class OverworldEnemyInteract : MonoBehaviour
         if (yesChosen != "yes" && allowNoBattleChoice)
         {
             playerChoseNo = true;
+            if (allowPayToSkipBattle)
+            {
+                StartCoroutine(TryPayToSkipBattle());
+            }
         }
     }
 
@@ -105,7 +101,6 @@ public class OverworldEnemyInteract : MonoBehaviour
             };
             yield return new WaitForSeconds(0.4f);
             DialogueManager.Instance.InjectDialogueLine(line);
-            hasProcessedDialogueResult = true;
     }
 
     private EnemyPreset GetRandomEnemy()

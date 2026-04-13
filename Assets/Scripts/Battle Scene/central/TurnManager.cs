@@ -1164,7 +1164,11 @@ public class TurnManager : MonoBehaviour
 
         rewardsGiven = true;
 
+        BattleResultBridge.HasResult = true;
+        BattleResultBridge.BattleWon = false;
+
         SceneManager.UnloadSceneAsync("Battle Scene");
+
         Scene overworld = SceneManager.GetSceneByName("Overworld");
         foreach (GameObject root in overworld.GetRootGameObjects())
         {
