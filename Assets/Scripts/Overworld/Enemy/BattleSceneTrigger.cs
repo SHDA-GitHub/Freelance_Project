@@ -13,8 +13,14 @@ public class BattleSceneTrigger : MonoBehaviour
     [Header("Battle Control")]
     [SerializeField] private bool allowNoBattleChoice = false;
 
+    private PlayerControl playerControl;
     private bool waitingForDialogue = false;
     private bool playerChoseNo = false;
+
+    private void Start()
+    {
+        playerControl = FindFirstObjectByType<PlayerControl>();
+    }
 
     private void Update()
     {
@@ -41,15 +47,18 @@ public class BattleSceneTrigger : MonoBehaviour
 
         if (DialogueManager.Instance.IsDialogueActive()) return;
 
-        if (dialogue != null)
+        if (playerControl.isInteracting)
         {
-            dialogue.onChoiceMade = OnDialogueChoiceMade;
-            dialogue.TriggerDialogue();
-            waitingForDialogue = true;
-        }
-        else
-        {
-            OEPS.StartBattle();
+            if (dialogue != null)
+            {
+                dialogue.onChoiceMade = OnDialogueChoiceMade;
+                dialogue.TriggerDialogue();
+                waitingForDialogue = true;
+            }
+            else
+            {
+                OEPS.StartBattle();
+            }
         }
     }
 
