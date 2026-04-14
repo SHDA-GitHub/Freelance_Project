@@ -565,7 +565,13 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStatus(item.statusEffect, item.statusDuration, item.dotAmount, item.dotDrainsPP);
+                    int duration = item.statusDuration;
+
+                    if (target == TurnManager.Instance.GetCurrentPlayer())
+                    {
+                        duration += 1;
+                    }
+                    target.ApplyStatus(item.statusEffect, duration, item.dotAmount, item.dotDrainsPP);
                     StatusEffectManager.Instance.ShowStatusEffect(target);
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {item.statusEffect}!"
@@ -612,7 +618,13 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStun(item.stunstatusEffect, item.statusDuration);
+                    int duration = item.statusDuration;
+
+                    if (target == TurnManager.Instance.GetCurrentPlayer())
+                    {
+                        duration += 1;
+                    }
+                    target.ApplyStun(item.stunstatusEffect, duration);
                     StatusEffectManager.Instance.ShowStatusEffect(target);
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {item.stunstatusEffect}!"
@@ -639,7 +651,13 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyMiss(item.missStatusEffect, item.statusDuration);
+                    int duration = item.statusDuration;
+
+                    if (target == TurnManager.Instance.GetCurrentPlayer())
+                    {
+                        duration += 1;
+                    }
+                    target.ApplyMiss(item.missStatusEffect, duration);
                     StatusEffectManager.Instance.ShowStatusEffect(target);
                     yield return flavorTextUI.ShowTextCoroutine(
                         $"{target.characterName} is now {item.missStatusEffect}!"
@@ -686,7 +704,13 @@ public class CombatSystem : MonoBehaviour
                 }
                 else
                 {
-                    target.ApplyStatChange(item.statChangeEffect, item.statusDuration, item.offenseChange, item.defenseChange);
+                    int duration = item.statusDuration;
+
+                    if (target == TurnManager.Instance.GetCurrentPlayer())
+                    {
+                        duration += 1;
+                    }
+                    target.ApplyStatChange(item.statChangeEffect, duration, item.offenseChange, item.defenseChange);
                     StatusEffectManager.Instance.ShowStatusEffect(target);
                     yield return flavorTextUI.ShowTextCoroutine($"{target.characterName} is now {item.statChangeEffect}!");
                     audioManager.clip = statusEffectGain;
