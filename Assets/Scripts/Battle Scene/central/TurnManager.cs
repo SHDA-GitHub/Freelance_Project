@@ -305,6 +305,7 @@ public class TurnManager : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
 
             player.ReduceAllEffectsAfterTurn();
+            isActionInProgress = false;
             currentCharacterIndex++;
             StartTurn();
             yield break;
